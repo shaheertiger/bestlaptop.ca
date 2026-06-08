@@ -10,6 +10,7 @@ import { Newsletter } from "@/components/Newsletter";
 import { laptops, getLaptop, laptopHref } from "@/data/laptops";
 import { comparisons, comparisonLaptops } from "@/data/comparisons";
 import { DEFAULT_WEIGHTS, WEIGHT_LABELS, formatCAD, lowestPrice } from "@/lib/scoring";
+import { laptopRankings } from "@/lib/insights";
 import { SITE } from "@/lib/site";
 import type { CategoryScores, UseCaseScores } from "@/lib/types";
 
@@ -40,6 +41,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
 
   const related = laptops.filter((x) => x.id !== l.id && x.categories.some((c) => l.categories.includes(c))).slice(0, 3);
   const relatedComparisons = comparisons.filter((c) => c.a === l.id || c.b === l.id).slice(0, 6);
+  const rankings = laptopRankings(l);
 
   const reviewLd = {
     "@context": "https://schema.org",
@@ -146,6 +148,21 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
 
           <div className="mt-4"><AffiliateDisclosure /></div>
           <div className="mt-4"><AuthorBox updated={l.testedDate} testBench={l.testBench} /></div>
+
+          {rankings.length > 0 && (
+            <div className="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+              <p className="text-sm">
+                <span className="font-semibold text-ink-900">Featured in our rankings:</span>{" "}
+                {rankings.slice(0, 6).map((cat, i) => (
+                  <span key={cat.slug}>
+                    {i > 0 && ", "}
+                    <Link href={`/laptop/reviews/best/${cat.slug}`} className="link">{cat.title}</Link>
+                  </span>
+                ))}
+                .
+              </p>
+            </div>
+          )}
 
           <div className="mt-8 space-y-8">
             <SectionCard id="verdict" title="Quick Verdict">

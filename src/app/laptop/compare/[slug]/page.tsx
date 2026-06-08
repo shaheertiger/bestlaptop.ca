@@ -10,6 +10,7 @@ import { Newsletter } from "@/components/Newsletter";
 import { comparisons, getComparison, comparisonLaptops } from "@/data/comparisons";
 import { laptopHref } from "@/data/laptops";
 import { formatCAD, lowestPrice } from "@/lib/scoring";
+import { comparisonAnalysis, sharedRankings } from "@/lib/insights";
 
 export function generateStaticParams() {
   return comparisons.map((c) => ({ slug: c.slug }));
@@ -45,6 +46,8 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
   const c = getComparison(slug);
   if (!c) notFound();
   const [a, b] = comparisonLaptops(c);
+  const { paragraphs: analysis, differences } = comparisonAnalysis(a, b);
+  const shared = sharedRankings(a, b);
 
   const faq = [
     { q: `Should I buy the ${a.model} or the ${b.model}?`, a: c.verdict },
@@ -76,6 +79,39 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
         <SectionCard id="verdict" title="Quick Verdict">
           <p>{c.verdict}</p>
         </SectionCard>
+
+        {differences.length > 0 && (
+          <section id="key-differences" className="mt-8">
+            <h2 className="mb-3 text-2xl font-bold">Key Differences</h2>
+            <ul className="card list-disc space-y-1.5 p-5 pl-9 text-ink-700">
+              {differences.map((d) => <li key={d}>{d}</li>)}
+            </ul>
+          </section>
+        )}
+
+        <section id="analysis" className="mt-8">
+          <h2 className="mb-3 text-2xl font-bold">{a.model} vs {b.model}: Full Breakdown</h2>
+          <div className="prose-site space-y-4">
+            {analysis.map((p, i) => <p key={i}>{p}</p>)}
+            <p>
+              For the complete testing data, read our full{" "}
+              <Link href={laptopHref(a)} className="link">{a.brand} {a.model} review</Link> and{" "}
+              <Link href={laptopHref(b)} className="link">{b.brand} {b.model} review</Link>.
+            </p>
+          </div>
+        </section>
+
+        {shared.length > 0 && (
+          <section id="rankings" className="mt-8">
+            <h2 className="mb-3 text-2xl font-bold">Where these laptops rank</h2>
+            <p className="mb-3 text-ink-600">Both the {a.model} and the {b.model} feature in these BestLaptop.ca rankings:</p>
+            <div className="flex flex-wrap gap-2">
+              {shared.slice(0, 8).map((cat) => (
+                <Link key={cat.slug} href={`/laptop/reviews/best/${cat.slug}`} className="chip hover:bg-brand-100">{cat.title}</Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section id="use-cases" className="mt-8">
           <h2 className="mb-3 text-2xl font-bold">Winner by Use Case</h2>
