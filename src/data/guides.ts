@@ -156,13 +156,13 @@ export const guides: Guide[] = [
   ...quickGuide("business-laptop-buying-guide", "Business Laptop Buying Guide", "Buying advice", "A good business laptop has a great keyboard, strong security, a reliable build, and long battery life. ThinkPad, EliteBook, and Latitude lines are the safe picks, ideally with onsite warranty."),
   ...quickGuide("chromebook-vs-windows-laptop", "Chromebook vs Windows Laptop", "Comparisons", "Choose a Chromebook for cheap, simple, web-based computing with long battery life. Choose Windows for software flexibility, gaming, and professional apps. Most students can manage on a Chromebook; most professionals need Windows."),
   ...quickGuide("macbook-vs-windows-laptop", "MacBook vs Windows Laptop", "Comparisons", "MacBooks lead on battery life, efficiency, and build, and suit creators. Windows laptops offer more choice, better gaming, and lower entry prices. Pick based on the software you rely on."),
-  ...quickGuide("laptop-battery-life-explained", "Laptop Battery Life Explained", "Specs explained", "Real battery life depends on the screen brightness, workload, and chip efficiency, not just the battery's Wh rating. We test web browsing and video playback at a fixed brightness so results are comparable."),
+  ...quickGuide("laptop-battery-life-explained", "Laptop Battery Life Explained", "Specs explained", "Real battery life depends on the screen brightness, workload, and chip efficiency, not just the battery's Wh rating. We test web browsing and video playback at a fixed brightness so results are comparable.", "Already have a laptop? See [how to extend your battery life on Windows](/laptop/learn/extend-battery-life-windows) for settings and habits that add hours."),
   ...quickGuide("laptop-ports-explained", "Laptop Ports Explained", "Specs explained", "USB-C and Thunderbolt handle charging, data, and displays; USB-A connects older accessories; HDMI drives monitors. Thunderbolt 4/USB4 is the most flexible. Count the ports you actually need before buying a thin laptop."),
   ...quickGuide("when-is-the-best-time-to-buy-a-laptop-in-canada", "Best Time to Buy a Laptop", "Buying advice", "The best times to buy a laptop in Canada are Black Friday, Boxing Day, and back-to-school season, plus right after new models launch when last year's models are discounted."),
   ...quickGuide("is-a-gaming-laptop-good-for-school", "Is a Gaming Laptop Good for School?", "Gaming", "A gaming laptop works for school but is heavier and has shorter battery life than a typical student laptop. It makes sense if you also game or do creative work; otherwise a lighter ultraportable is a better fit."),
-  ...quickGuide("how-long-should-a-laptop-last", "How Long Should a Laptop Last?", "Buying advice", "A well-chosen laptop should last four to six years. Buying enough RAM and storage up front, and a model with a healthy battery and good build, extends its useful life."),
+  ...quickGuide("how-long-should-a-laptop-last", "How Long Should a Laptop Last?", "Buying advice", "A well-chosen laptop should last four to six years. Buying enough RAM and storage up front, and a model with a healthy battery and good build, extends its useful life.", "Battery wear is a common reason laptops feel old; see [how to extend your battery life on Windows](/laptop/learn/extend-battery-life-windows) and [how to check your battery health](/laptop/learn/how-to-check-laptop-battery-health)."),
   ...quickGuide("should-you-buy-a-used-laptop", "Should You Buy a Used Laptop?", "Buying advice", "A used laptop can be a good deal if you verify battery health, check for damage, and confirm the configuration. Certified refurbished with a warranty is safer than a private used sale."),
-  ...quickGuide("how-to-check-laptop-battery-health", "How to Check Laptop Battery Health", "Maintenance", "On Windows, run 'powercfg /batteryreport' to see design vs full-charge capacity. On macOS, check System Settings > Battery for cycle count and condition. A battery below 80% of its design capacity is worn."),
+  ...quickGuide("how-to-check-laptop-battery-health", "How to Check Laptop Battery Health", "Maintenance", "On Windows, run 'powercfg /batteryreport' to see design vs full-charge capacity. On macOS, check System Settings > Battery for cycle count and condition. A battery below 80% of its design capacity is worn.", "If your battery is healthy but still drains fast, see [how to extend your battery life on Windows](/laptop/learn/extend-battery-life-windows)."),
   ...quickGuide("laptop-warranty-explained-canada", "Laptop Warranty Explained Canada", "Buying advice", "Most laptops include a one-year limited warranty in Canada. Onsite and accidental-damage coverage cost extra but are worth it for business use. Check whether service is mail-in or onsite before buying."),
   {
     slug: "laptop-buying-guide",
@@ -349,7 +349,7 @@ export const guides: Guide[] = [
       {
         heading: "Protect long-term battery health",
         body: [
-          "Extending runtime is about today; protecting battery health is about keeping that runtime over the years. Lithium-ion batteries wear out with charge cycles, time, heat, and being kept at extreme charge levels. A battery that holds 100% of its capacity new might hold 80% after a few hundred cycles — and you can slow that decline.",
+          "Extending runtime is about today; protecting battery health is about keeping that runtime over the years. Lithium-ion batteries wear out with charge cycles, time, heat, and being kept at extreme charge levels. A battery that holds 100% of its capacity new might hold 80% after a few hundred cycles — and you can slow that decline. For background on how runtime is measured versus advertised, see [laptop battery life explained](/laptop/learn/laptop-battery-life-explained).",
           "### Avoid the extremes (20–80%)",
           "Keeping a battery at a very high or very low state of charge stresses it. If your laptop offers a charge limit (often called Battery Conservation, Charge Limit, or 'Smart Charging' in the manufacturer's app or BIOS), capping charging at around 80% greatly reduces wear for a laptop that mostly lives on a desk. Lenovo, ASUS, Dell, HP, and others all offer some version of this. For occasional travel days, switch back to 100% the night before.",
           "### Heat is the enemy",
@@ -359,7 +359,7 @@ export const guides: Guide[] = [
           "### Storage charge",
           "If you are storing a laptop for weeks, leave it at roughly 50% and power it down. A battery stored full or empty for long periods degrades faster, and a fully discharged battery left for months can become unrecoverable.",
           "### Occasional full cycles",
-          "You do not need to fully drain modern batteries — in fact, deep discharges are mildly harmful. The only reason to do an occasional full discharge-and-recharge is to recalibrate the battery gauge so its percentage estimate stays accurate, and even that is rarely necessary on current laptops.",
+          "You do not need to fully drain modern batteries — in fact, deep discharges are mildly harmful. The only reason to do an occasional full discharge-and-recharge is to recalibrate the battery gauge so its percentage estimate stays accurate, and even that is rarely necessary on current laptops. To track wear over time, follow [how to check your laptop's battery health](/laptop/learn/how-to-check-laptop-battery-health), and see [how long a laptop should last](/laptop/learn/how-long-should-a-laptop-last) for realistic lifespan expectations.",
         ],
       },
       {
@@ -411,7 +411,7 @@ export const guides: Guide[] = [
         body: [
           "Different situations call for different trade-offs. Here are three practical presets you can switch between.",
           "### Maximum endurance (travel / exams)",
-          "Power mode 'Best power efficiency'; Energy Saver 'Always'; brightness ~40%; refresh rate 60Hz; Bluetooth off; Wi-Fi off if working offline; maximum processor state ~80%; dark mode on; all non-essential background apps restricted; dGPU forced off. On a modern ultrabook this can stretch a workday's worth of writing and reading well past what the spec sheet promises.",
+          "Power mode 'Best power efficiency'; Energy Saver 'Always'; brightness ~40%; refresh rate 60Hz; Bluetooth off; Wi-Fi off if working offline; maximum processor state ~80%; dark mode on; all non-essential background apps restricted; dGPU forced off. On a modern ultrabook this can stretch a workday's worth of writing and reading well past what the spec sheet promises. If your current laptop simply cannot last, our [best laptops for working from home](/laptop/reviews/best/working-from-home) and the [results table](/laptop/tools/table) (sortable by measured battery life) are good starting points.",
           "### Balanced (everyday work)",
           "Power mode 'Balanced'; Energy Saver at 30%; brightness to comfort; refresh rate dynamic or 60Hz on battery; radios on as needed; browser efficiency/sleeping tabs enabled. This is the all-day default that keeps the machine responsive while still being frugal.",
           "### Video calls",
@@ -468,7 +468,12 @@ export const guides: Guide[] = [
   },
 ];
 
-function quickGuide(slug: string, title: string, category: string, answer: string): Guide[] {
+function quickGuide(slug: string, title: string, category: string, answer: string, related?: string): Guide[] {
+  const fitsBody = [
+    "Use this alongside our tested reviews and the [results table](/laptop/tools/table) to match the recommendation to a specific model and Canadian price.",
+    "Every recommendation on BestLaptop.ca is based on standardized testing, not manufacturer claims.",
+  ];
+  if (related) fitsBody.push(related);
   return [
     {
       slug,
@@ -481,13 +486,7 @@ function quickGuide(slug: string, title: string, category: string, answer: strin
       answer,
       sections: [
         { heading: "The short answer", body: [answer] },
-        {
-          heading: "How this fits your buying decision",
-          body: [
-            "Use this alongside our tested reviews and the results table to match the recommendation to a specific model and Canadian price.",
-            "Every recommendation on BestLaptop.ca is based on standardized testing, not manufacturer claims.",
-          ],
-        },
+        { heading: "How this fits your buying decision", body: fitsBody },
       ],
       faq: [
         { q: `Quick answer: ${title}`, a: answer },

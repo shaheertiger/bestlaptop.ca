@@ -24,8 +24,32 @@ export async function generateMetadata({ params }: { params: Promise<{ topic: st
   };
 }
 
-// Render a guide section body, supporting "### " sub-headings and "- " bullet
-// lists alongside plain paragraphs so long-form articles read well.
+// Convert inline markdown links [label](/url) into clickable links so articles
+// can interlink other guides, reviews, and tools in natural anchor text.
+function linkify(text: string): React.ReactNode {
+  const re = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const parts: React.ReactNode[] = [];
+  let last = 0;
+  let key = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text)) !== null) {
+    if (m.index > last) parts.push(text.slice(last, m.index));
+    const [, label, url] = m;
+    parts.push(
+      url.startsWith("/") ? (
+        <Link key={key++} href={url} className="link">{label}</Link>
+      ) : (
+        <a key={key++} href={url} className="link">{label}</a>
+      ),
+    );
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts.length ? parts : text;
+}
+
+// Render a guide section body, supporting "### " sub-headings, "- " bullet
+// lists, and inline [label](/url) links so long-form articles read well.
 function renderBlocks(body: string[]) {
   const out: React.ReactNode[] = [];
   let list: string[] = [];
@@ -33,7 +57,7 @@ function renderBlocks(body: string[]) {
     if (list.length) {
       out.push(
         <ul key={`ul-${key}`} className="mb-4 list-disc space-y-1 pl-5">
-          {list.map((li, i) => <li key={i}>{li}</li>)}
+          {list.map((li, i) => <li key={i}>{linkify(li)}</li>)}
         </ul>,
       );
       list = [];
@@ -47,7 +71,7 @@ function renderBlocks(body: string[]) {
       out.push(<h3 key={i} className="mb-2 mt-5 text-lg font-bold text-ink-900">{line.slice(4)}</h3>);
     } else {
       flush(`${i}`);
-      out.push(<p key={i}>{line}</p>);
+      out.push(<p key={i}>{linkify(line)}</p>);
     }
   });
   flush("end");
@@ -58,7 +82,11 @@ export default async function GuidePage({ params }: { params: Promise<{ topic: s
   const { topic } = await params;
   const g = getGuide(topic);
   if (!g) notFound();
-  const related = guides.filter((x) => x.slug !== g.slug && x.category === g.category).slice(0, 4);
+  // Interlink generously: same-category guides first, then fill with others so
+  // every article links out to a healthy set of related blogs.
+  const sameCategory = guides.filter((x) => x.slug !== g.slug && x.category === g.category);
+  const otherGuides = guides.filter((x) => x.slug !== g.slug && x.category !== g.category);
+  const related = [...sameCategory, ...otherGuides].slice(0, 6);
   const relatedReviews = laptops.slice(0, 3);
 
   const articleLd = {
@@ -99,6 +127,19 @@ export default async function GuidePage({ params }: { params: Promise<{ topic: s
           </div>
 
           <div className="mt-10"><FAQ items={g.faq} /></div>
+
+          <section className="mt-10">
+            <h2 className="mb-4 text-2xl font-bold">Continue reading</h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {related.map((r) => (
+                <Link key={r.slug} href={`/laptop/learn/${r.slug}`} className="card p-4 transition hover:shadow-md">
+                  <span className="chip">{r.category}</span>
+                  <h3 className="mt-2 text-sm font-semibold leading-snug">{r.title}</h3>
+                  <p className="mt-1 line-clamp-2 text-xs text-ink-500">{r.excerpt}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
 
           <section className="mt-10">
             <h2 className="mb-3 text-2xl font-bold">Related Reviews</h2>
