@@ -184,10 +184,10 @@ export function UsefulTools() {
 
 export function PopularArticles() {
   const featured = [
+    "extend-battery-life-windows",
     "oled-vs-ips-laptop-displays",
     "how-much-ram-do-you-need",
     "is-a-gaming-laptop-good-for-school",
-    "best-time-to-buy-a-laptop-in-canada",
     "intel-vs-amd-vs-apple-silicon",
     "refurbished-laptop-buying-guide-canada",
   ];

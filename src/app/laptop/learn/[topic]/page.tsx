@@ -24,6 +24,36 @@ export async function generateMetadata({ params }: { params: Promise<{ topic: st
   };
 }
 
+// Render a guide section body, supporting "### " sub-headings and "- " bullet
+// lists alongside plain paragraphs so long-form articles read well.
+function renderBlocks(body: string[]) {
+  const out: React.ReactNode[] = [];
+  let list: string[] = [];
+  const flush = (key: string) => {
+    if (list.length) {
+      out.push(
+        <ul key={`ul-${key}`} className="mb-4 list-disc space-y-1 pl-5">
+          {list.map((li, i) => <li key={i}>{li}</li>)}
+        </ul>,
+      );
+      list = [];
+    }
+  };
+  body.forEach((line, i) => {
+    if (line.startsWith("- ")) {
+      list.push(line.slice(2));
+    } else if (line.startsWith("### ")) {
+      flush(`${i}`);
+      out.push(<h3 key={i} className="mb-2 mt-5 text-lg font-bold text-ink-900">{line.slice(4)}</h3>);
+    } else {
+      flush(`${i}`);
+      out.push(<p key={i}>{line}</p>);
+    }
+  });
+  flush("end");
+  return out;
+}
+
 export default async function GuidePage({ params }: { params: Promise<{ topic: string }> }) {
   const { topic } = await params;
   const g = getGuide(topic);
@@ -63,7 +93,7 @@ export default async function GuidePage({ params }: { params: Promise<{ topic: s
             {g.sections.map((s) => (
               <section key={s.heading} id={s.heading.toLowerCase().replace(/[^a-z0-9]+/g, "-")} className="scroll-mt-20">
                 <h2 className="mb-2 text-2xl font-bold">{s.heading}</h2>
-                {s.body.map((p, i) => <p key={i}>{p}</p>)}
+                {renderBlocks(s.body)}
               </section>
             ))}
           </div>
