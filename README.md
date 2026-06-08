@@ -13,7 +13,13 @@ npm install
 npm run dev      # http://localhost:3000
 npm run build    # production build (fully static + SSG)
 npm run start    # serve the production build
+npm run indexnow # submit all sitemap URLs to IndexNow (after the domain is live)
 ```
+
+> `npm run indexnow` reads the live sitemap and pings IndexNow (Bing/Yandex). It
+> only succeeds once `bestlaptop.ca` is deployed and serving the key file at
+> `/85612cad3e794add8e4b33f466c6e10d.txt`. Override with `SITEMAP=…` or
+> `INDEXNOW_KEY=…` env vars.
 
 ## Architecture
 
