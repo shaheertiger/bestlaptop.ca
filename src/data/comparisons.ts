@@ -78,6 +78,71 @@ const curatedComparisons: Comparison[] = [
       { useCase: "Upgradeability", winner: "acer-aspire-5-15-2025" },
     ],
   },
+  {
+    slug: "macbook-air-13-m4-vs-macbook-air-15-m4",
+    a: "apple-macbook-air-13-m4",
+    b: "apple-macbook-air-15-m4",
+    verdict:
+      "Both run the M4 and offer the same all-day battery life; the choice is mostly size and price. The 13-inch Air is lighter and cheaper, while the 15-inch Air has a bigger screen and slightly faster graphics. Choose the 13 for portability and value; choose the 15 for screen space.",
+    winnerByUseCase: [
+      { useCase: "Portability", winner: "apple-macbook-air-13-m4" },
+      { useCase: "Value", winner: "apple-macbook-air-13-m4" },
+      { useCase: "Screen size", winner: "apple-macbook-air-15-m4" },
+      { useCase: "Performance", winner: "apple-macbook-air-15-m4" },
+    ],
+  },
+  {
+    slug: "zenbook-14-oled-2025-vs-xps-13-9350",
+    a: "asus-zenbook-14-oled-2025",
+    b: "dell-xps-13-9350",
+    verdict:
+      "The Zenbook 14 OLED has a better display, more ports, and a lower price, while the XPS 13 is a touch more compact with strong battery life. Choose the Zenbook for the OLED screen and value; choose the XPS for the smallest footprint.",
+    winnerByUseCase: [
+      { useCase: "Display", winner: "asus-zenbook-14-oled-2025" },
+      { useCase: "Ports", winner: "asus-zenbook-14-oled-2025" },
+      { useCase: "Value", winner: "asus-zenbook-14-oled-2025" },
+      { useCase: "Portability", winner: "dell-xps-13-9350" },
+    ],
+  },
+  {
+    slug: "tuf-gaming-a15-2025-vs-rog-zephyrus-g14-2025",
+    a: "asus-tuf-gaming-a15-2025",
+    b: "asus-rog-zephyrus-g14-2025",
+    verdict:
+      "The TUF Gaming A15 delivers strong 1080p frame rates and upgradeability for half the price, while the Zephyrus G14 is far more portable with a much better OLED display. Choose the TUF for value gaming; choose the G14 for portability and screen quality.",
+    winnerByUseCase: [
+      { useCase: "Value", winner: "asus-tuf-gaming-a15-2025" },
+      { useCase: "1080p frame rates", winner: "asus-tuf-gaming-a15-2025" },
+      { useCase: "Portability", winner: "asus-rog-zephyrus-g14-2025" },
+      { useCase: "Display", winner: "asus-rog-zephyrus-g14-2025" },
+    ],
+  },
+  {
+    slug: "omen-transcend-14-2026-vs-blade-14-2025",
+    a: "hp-omen-transcend-14-2026",
+    b: "razer-blade-14-2025",
+    verdict:
+      "The OMEN Transcend 14 has newer RTX 5070 graphics, an OLED display, and a lower price, while the Blade 14 has a more premium aluminium build. Choose the OMEN for performance, screen, and value; choose the Blade for the nicer chassis.",
+    winnerByUseCase: [
+      { useCase: "Gaming performance", winner: "hp-omen-transcend-14-2026" },
+      { useCase: "Display", winner: "hp-omen-transcend-14-2026" },
+      { useCase: "Value", winner: "hp-omen-transcend-14-2026" },
+      { useCase: "Build quality", winner: "razer-blade-14-2025" },
+    ],
+  },
+  {
+    slug: "laptop-13-2025-vs-xps-13-9350",
+    a: "framework-laptop-13-2025",
+    b: "dell-xps-13-9350",
+    verdict:
+      "The Framework Laptop 13 is far more repairable and upgradeable with configurable ports, while the XPS 13 is more polished with better battery life and a more compact build. Choose the Framework for longevity; choose the XPS for refinement and endurance.",
+    winnerByUseCase: [
+      { useCase: "Upgradeability", winner: "framework-laptop-13-2025" },
+      { useCase: "Ports", winner: "framework-laptop-13-2025" },
+      { useCase: "Battery life", winner: "dell-xps-13-9350" },
+      { useCase: "Portability", winner: "dell-xps-13-9350" },
+    ],
+  },
 ];
 
 // Auto-generate a comparison for every laptop pair so each "{A} vs {B}" query
