@@ -48,6 +48,16 @@ Every laptop pair also gets a real `{A} vs {B}` comparison page (auto-generated 
 - Sitemap emits real per-content `lastModified` dates (review tested dates, guide update dates) and `daily` change frequency on best lists.
 - Self-referential `hreflang` (`en-CA` + `x-default`), `theme-color`, and 2026-framed titles/descriptions.
 
+## LLM / AI search optimization (GEO)
+
+For visibility and citations in AI search (ChatGPT, Perplexity, Google AI Overviews, Claude):
+
+- **`/llms.txt`** — a curated, link-first markdown map of the site (best lists, top reviews, comparisons, guides, brands, tools, deals, methodology) following the emerging llms.txt convention, so models can find and cite the most useful pages.
+- **AI crawlers explicitly allowed** in `robots.ts` (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, anthropic-ai, PerplexityBot, Google-Extended, Applebot-Extended, CCBot, and more).
+- **Extractable answers** — every guide leads with a direct "Short answer", every review with a "Quick verdict", and FAQs use FAQ schema, so models can lift clean, attributable passages.
+- **`speakable` structured data** marks the headline and direct answer as the key quotable passages.
+- **Comparison tables, scored lists, and consistent entity naming** make data easy for models to parse and reproduce accurately.
+
 ## Measurement
 
 Wire GA4 + Search Console and event-track: comparison builds, table filter usage, retailer (affiliate) clicks, and newsletter signups.

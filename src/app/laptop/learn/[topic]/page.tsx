@@ -93,11 +93,17 @@ export default async function GuidePage({ params }: { params: Promise<{ topic: s
     "@context": "https://schema.org",
     "@type": "Article",
     headline: g.title,
+    description: g.answer,
+    inLanguage: "en-CA",
     datePublished: g.updated,
     dateModified: g.updated,
-    author: { "@type": "Organization", name: SITE.name },
-    publisher: { "@type": "Organization", name: SITE.name },
+    author: { "@type": "Organization", name: `${SITE.name} Test Team`, url: SITE.url },
+    publisher: { "@type": "Organization", name: SITE.name, logo: { "@type": "ImageObject", url: `${SITE.url}/icon.svg` } },
     mainEntityOfPage: `${SITE.url}/laptop/learn/${g.slug}`,
+    // Marks the direct answer and headline as the key, quotable passages —
+    // useful for AI answers, voice results, and featured snippets.
+    speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".guide-answer"] },
+    about: { "@type": "Thing", name: "Laptops" },
   };
 
   return (
@@ -112,7 +118,7 @@ export default async function GuidePage({ params }: { params: Promise<{ topic: s
           <h1 className="mt-3 text-3xl font-extrabold sm:text-4xl">{g.h1}</h1>
           <p className="mt-2 text-sm text-ink-400">Updated {g.updated} · {g.readingTime} min read · BestLaptop.ca Test Team</p>
 
-          <div className="mt-5 rounded-xl border-l-4 border-brand-500 bg-brand-50 p-4">
+          <div className="guide-answer mt-5 rounded-xl border-l-4 border-brand-500 bg-brand-50 p-4">
             <p className="font-semibold text-ink-900">Short answer</p>
             <p className="mt-1 text-ink-700">{g.answer}</p>
           </div>
