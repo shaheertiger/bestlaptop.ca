@@ -237,12 +237,22 @@ export const bestCategories: BestCategory[] = [
   {
     slug: "under-1000-canada",
     navLabel: "Best Under $1,000 (Canada)",
-    title: "Best Laptops Under $1,000 in Canada",
+    title: "Best Laptop Under $1,000 Canada",
     h1: "The Best Laptops Under $1,000 in Canada (2026)",
     group: "price",
     intro: "Under $1,000 in Canada you can get a genuinely capable everyday laptop. We picked the models that deliver the most for the money, with current Canadian pricing.",
     criteria: "We weight value, everyday performance, and battery life within the budget.",
     filter: (l) => l.currentPrice <= 1000,
+  },
+  {
+    slug: "under-500-canada",
+    navLabel: "Best Under $500 (Canada)",
+    title: "Best Laptop Under $500 Canada",
+    h1: "The Best Laptops Under $500 in Canada (2026)",
+    group: "price",
+    intro: "Under $500 in Canada, set realistic expectations: a capable everyday machine for browsing, documents, and streaming. We focused on which models hold up best at this price, with current Canadian pricing.",
+    criteria: "We weight Canadian value and everyday usability above raw performance.",
+    filter: (l) => l.currentPrice <= 500,
   },
   {
     slug: "brands",

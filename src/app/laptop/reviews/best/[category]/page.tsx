@@ -36,7 +36,7 @@ export default async function BestListPage({ params }: { params: Promise<{ categ
   const picks = categoryPicks(cat);
   if (picks.length === 0) notFound();
 
-  const updated = "2026-06-01";
+  const updated = "2026-06-08";
   const toc = [
     { id: "summary", label: "Our picks at a glance" },
     ...picks.slice(0, 6).map((l, i) => ({ id: `pick-${i}`, label: `${ROLES[i] ?? "Notable Mention"}: ${l.brand} ${l.model}` })),
@@ -73,7 +73,10 @@ export default async function BestListPage({ params }: { params: Promise<{ categ
         <div className="min-w-0">
           <header>
             <h1 className="text-3xl font-extrabold sm:text-4xl">{cat.h1}</h1>
-            <p className="mt-2 text-sm text-ink-400">Updated {updated} · Test Bench {SITE.testBench}</p>
+            <div className="mt-3 flex flex-wrap items-center gap-2 text-sm text-ink-400">
+              <span className="inline-flex items-center rounded-full bg-accent-500/10 px-2.5 py-0.5 text-xs font-bold text-accent-600">Updated for 2026</span>
+              <span>Last updated {updated} · Test Bench {SITE.testBench}</span>
+            </div>
             <div className="mt-4"><AuthorBox updated={updated} testBench={SITE.testBench} /></div>
             <p className="mt-4 text-lg text-ink-700">{cat.intro}</p>
             <p className="mt-2 text-ink-600">{cat.criteria}</p>

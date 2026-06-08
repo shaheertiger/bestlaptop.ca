@@ -32,6 +32,25 @@ function buildKeywords(): KeywordTarget[] {
   };
   const phrase = (...parts: string[]) => parts.filter(Boolean).join(" ");
 
+  // 0) Priority Canada-market targets (exact phrases + 2026 variants)
+  const priority: [string, string][] = [
+    ["best 2-in-1 laptops", "/laptop/reviews/best/2-in-1"],
+    ["best 2 in 1 laptops canada", "/laptop/reviews/best/2-in-1"],
+    ["best 2 in 1 laptops 2026", "/laptop/reviews/best/2-in-1"],
+    ["best windows laptops", "/laptop/reviews/best/windows"],
+    ["best windows laptops canada", "/laptop/reviews/best/windows"],
+    ["best windows laptops 2026", "/laptop/reviews/best/windows"],
+    ["best laptop under $500 canada", "/laptop/reviews/best/under-500-canada"],
+    ["best laptop under 500 canada", "/laptop/reviews/best/under-500-canada"],
+    ["best laptop under $500 canada 2026", "/laptop/reviews/best/under-500-canada"],
+    ["best laptops under $500 canada", "/laptop/reviews/best/under-500-canada"],
+    ["best laptop under $1,000 canada", "/laptop/reviews/best/under-1000-canada"],
+    ["best laptop under 1000 canada", "/laptop/reviews/best/under-1000-canada"],
+    ["best laptop under $1000 canada 2026", "/laptop/reviews/best/under-1000-canada"],
+    ["best laptops under $1,000 canada", "/laptop/reviews/best/under-1000-canada"],
+  ];
+  for (const [kw, url] of priority) add(kw, url, "Priority (Canada)");
+
   // 1) Best-list categories x modifiers x geo
   for (const c of bestCategories) {
     const base = c.navLabel.replace(/^Best /, "").toLowerCase();
