@@ -3,6 +3,7 @@ import type { Deal } from "@/lib/types";
 import { getLaptopById, laptopHref } from "@/data/laptops";
 import { dealQualityScore } from "@/data/pipeline";
 import { formatCAD } from "@/lib/scoring";
+import { AFFILIATE_URL } from "@/lib/site";
 import { ProductImage } from "./ProductImage";
 import { ScoreBadge } from "./Score";
 
@@ -33,7 +34,7 @@ export function DealCard({ deal }: { deal: Deal }) {
       </div>
       <div className="flex items-center justify-between border-t border-slate-100 bg-slate-50 px-4 py-2.5 text-sm">
         <span className="flex items-center gap-2">Deal quality <ScoreBadge score={dealQualityScore(deal)} /></span>
-        <a href="#" rel="nofollow sponsored" className="btn-primary px-4 py-2">View deal</a>
+        <a href={AFFILIATE_URL} target="_blank" rel="nofollow sponsored noopener" className="btn-primary px-4 py-2">View deal</a>
       </div>
     </article>
   );

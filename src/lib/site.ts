@@ -1,3 +1,6 @@
+// Default affiliate destination used for deal "View deal" links.
+export const AFFILIATE_URL = "https://amzn.to/3RW6gfZ";
+
 export const SITE = {
   name: "BestLaptop.ca",
   url: "https://bestlaptop.ca",
