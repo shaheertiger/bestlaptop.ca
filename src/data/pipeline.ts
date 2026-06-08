@@ -31,12 +31,13 @@ export const deals: Deal[] = [
 ];
 
 export const dealCategories = [
-  { slug: "laptop", title: "Best Laptop Deals in Canada" },
-  { slug: "gaming", title: "Best Gaming Laptop Deals in Canada" },
-  { slug: "macbook", title: "Best MacBook Deals in Canada" },
-  { slug: "student", title: "Best Student Laptop Deals in Canada" },
-  { slug: "business", title: "Best Business Laptop Deals in Canada" },
-  { slug: "refurbished", title: "Best Refurbished Laptop Deals in Canada" },
+  { slug: "laptop", tag: "laptop", title: "Best Laptop Deals in Canada" },
+  { slug: "best-laptop-deals-canada", tag: "laptop", title: "Best Laptop Deals in Canada" },
+  { slug: "gaming", tag: "gaming", title: "Best Gaming Laptop Deals in Canada" },
+  { slug: "macbook", tag: "macbook", title: "Best MacBook Deals in Canada" },
+  { slug: "student", tag: "student", title: "Best Student Laptop Deals in Canada" },
+  { slug: "business", tag: "business", title: "Best Business Laptop Deals in Canada" },
+  { slug: "refurbished", tag: "refurbished", title: "Best Refurbished Laptop Deals in Canada" },
 ];
 
 export function dealQualityScore(d: Deal): number {

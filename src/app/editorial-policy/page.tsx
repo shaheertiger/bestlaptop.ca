@@ -26,7 +26,7 @@ export default function Page() {
       <h2>Corrections</h2>
       <p>We correct errors promptly and note material changes. If you spot a mistake, <Link href="/contact" className="link">tell us</Link> and include supporting data where possible.</p>
       <h2>Funding</h2>
-      <p>We're funded by affiliate commissions and <Link href="/membership" className="link">memberships</Link>. Neither influences our scores. See <Link href="/how-we-make-money" className="link">how we make money</Link>.</p>
+      <p>We're funded by affiliate commissions. They never influence our scores. See <Link href="/how-we-make-money" className="link">how we make money</Link>.</p>
     </ContentPage>
   );
 }

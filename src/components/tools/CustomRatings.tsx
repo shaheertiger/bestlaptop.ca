@@ -67,7 +67,7 @@ export function CustomRatings() {
             </div>
           ))}
         </div>
-        <p className="mt-4 rounded-lg bg-brand-50 p-3 text-sm text-brand-700">Save custom rating profiles and apply them in the results table with <Link href="/membership" className="underline">Membership</Link>.</p>
+        <p className="mt-4 rounded-lg bg-brand-50 p-3 text-sm text-brand-700">Adjust the weights or pick a preset, then apply what you learn in the <Link href="/laptop/tools/table" className="underline">results table</Link>.</p>
       </div>
     </div>
   );

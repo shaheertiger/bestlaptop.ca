@@ -27,7 +27,7 @@ export default async function DealCategoryPage({ params }: { params: Promise<{ c
   const { category } = await params;
   const cat = dealCategories.find((x) => x.slug === category);
   if (!cat) notFound();
-  const list = deals.filter((d) => d.category.includes(category));
+  const list = deals.filter((d) => d.category.includes(cat.tag));
 
   return (
     <>
@@ -36,7 +36,7 @@ export default async function DealCategoryPage({ params }: { params: Promise<{ c
       <div className="container-site pb-12">
         <h1 className="text-3xl font-extrabold">{cat.title}</h1>
         <div className="my-4 flex flex-wrap gap-2">
-          {dealCategories.filter((c) => c.slug !== cat.slug).map((c) => (
+          {dealCategories.filter((c) => c.slug !== cat.slug && c.slug !== "best-laptop-deals-canada").map((c) => (
             <Link key={c.slug} href={`/laptop/deals/${c.slug}`} className="chip hover:bg-brand-100">{c.title.replace("Best ", "").replace(" in Canada", "")}</Link>
           ))}
         </div>

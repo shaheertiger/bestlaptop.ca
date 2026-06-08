@@ -22,7 +22,6 @@ src/
 ├── app/                      # App Router pages (one route per folder)
 │   ├── page.tsx              # Homepage (/)
 │   ├── laptop/               # Laptop hub, reviews, best lists, tools, deals, learn, tests
-│   ├── membership/           # Membership plans
 │   ├── about|contact|...     # Company + legal pages
 │   ├── sitemap.ts            # XML sitemap
 │   ├── robots.ts             # robots.txt
@@ -74,7 +73,6 @@ The "database" is a typed in-repo dataset so the whole site builds statically. T
 /laptop/tests/changelogs                  Test Bench version history
 /laptop/brands                            Brands hub
 /laptop/news                              News & updates
-/membership                               Membership plans
 /about /contact /how-we-make-money
 /editorial-policy /affiliate-disclosure
 /privacy-policy /terms                    Company + legal
@@ -86,7 +84,7 @@ See `docs/` for the strategy deliverables:
 - [`docs/scoring-methodology.md`](docs/scoring-methodology.md)
 - [`docs/seo-strategy.md`](docs/seo-strategy.md)
 - [`docs/editorial-style-guide.md`](docs/editorial-style-guide.md)
-- [`docs/monetization-and-membership.md`](docs/monetization-and-membership.md)
+- [`docs/monetization.md`](docs/monetization.md)
 - [`docs/build-and-launch-plan.md`](docs/build-and-launch-plan.md)
 - [`docs/database-schema.md`](docs/database-schema.md)
 

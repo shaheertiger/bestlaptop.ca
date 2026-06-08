@@ -66,7 +66,7 @@ export function VoteTool() {
         <div className="card p-5 text-sm text-ink-600">
           <h2 className="font-bold text-ink-900">How voting works</h2>
           <p className="mt-2">Votes help us prioritize what to buy and test next. One vote per laptop per visitor.</p>
-          <p className="mt-2">Members get a voting boost that counts double.</p>
+          <p className="mt-2">The most-requested laptops move up our review pipeline.</p>
         </div>
       </aside>
     </div>

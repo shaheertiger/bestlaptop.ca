@@ -121,7 +121,7 @@ export function TableTool({ initialQuery = "" }: { initialQuery?: string }) {
           <button onClick={reset} className="btn-secondary flex-1">Reset</button>
           <button onClick={exportCsv} className="btn-secondary flex-1">Export CSV</button>
         </div>
-        <p className="rounded-lg bg-brand-50 p-2 text-xs text-brand-700">Save filters and custom rating columns are available with <Link href="/membership" className="underline">Membership</Link>.</p>
+        <p className="rounded-lg bg-brand-50 p-2 text-xs text-brand-700">Tip: select two or more laptops to open them in the <Link href="/laptop/tools/compare" className="underline">compare tool</Link>.</p>
       </aside>
 
       {/* Table */}

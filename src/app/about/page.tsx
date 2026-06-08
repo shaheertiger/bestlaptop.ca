@@ -16,7 +16,7 @@ export default function AboutPage() {
         <li>Build tools that help you choose: a results table, compare tool, graph tool, and custom ratings.</li>
       </ul>
       <h2>How we stay independent</h2>
-      <p>No manufacturer pays for a score or approves a review. We fund our work through affiliate commissions and memberships, kept separate from editorial decisions. Read our <Link href="/editorial-policy" className="link">editorial policy</Link> and <Link href="/how-we-make-money" className="link">how we make money</Link>.</p>
+      <p>No manufacturer pays for a score or approves a review. We fund our work through affiliate commissions, kept separate from editorial decisions. Read our <Link href="/editorial-policy" className="link">editorial policy</Link> and <Link href="/how-we-make-money" className="link">how we make money</Link>.</p>
       <h2>Contact</h2>
       <p>Questions, corrections, or testing requests? <Link href="/contact" className="link">Get in touch</Link>.</p>
     </ContentPage>

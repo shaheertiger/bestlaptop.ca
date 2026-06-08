@@ -10,11 +10,11 @@
 ## Recommended production stack
 
 - **Hosting/CDN**: Vercel or Cloudflare Pages + Cloudflare CDN
-- **Database**: PostgreSQL or Supabase for the laptop database, votes, comments, and membership state
+- **Database**: PostgreSQL or Supabase for the laptop database, votes, and comments
 - **CMS**: a headless CMS (e.g. Sanity/Contentful) for articles and editorial content
 - **Search**: Algolia / Meilisearch / Typesense for instant laptop + content search
 - **Images**: `next/image` with AVIF/WebP, real product photography, lazy loading
-- **Auth + billing**: Auth provider + Stripe for membership
+- **Auth (optional)**: Auth provider for saved comparisons/shortlists
 - **Price tracking**: scheduled jobs writing price history + deal-quality scores
 - **Analytics**: GA4 + Search Console; event tracking for compares, filters, retailer clicks, signups
 
@@ -31,7 +31,7 @@
 - **Phase 0 — Foundation (done)**: Next.js scaffold, data model, scoring, all page types, tools, SEO infra.
 - **Phase 1 — Content**: 30–50 real tested reviews, 15+ best lists, 20+ guides, brand pages.
 - **Phase 2 — Data & search**: migrate to DB, add search, price tracking, deal automation.
-- **Phase 3 — Accounts**: auth, membership billing, saved comparisons/shortlists, alerts.
+- **Phase 3 — Accounts (optional)**: auth, saved comparisons/shortlists, alerts.
 - **Phase 4 — Growth**: programmatic SEO expansion, newsletter, YouTube/social, structured-data monitoring.
 - **Phase 5 — Authority**: published Test Bench updates, methodology transparency, community voting and comments.
 

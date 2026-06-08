@@ -29,7 +29,6 @@ export const primaryNav = [
   { label: "How We Test", href: "/laptop/learn/how-we-test" },
   { label: "Brands", href: "/laptop/brands" },
   { label: "News", href: "/laptop/news" },
-  { label: "Membership", href: "/membership" },
 ];
 
 // Tools used in secondary nav and tool cards
@@ -48,7 +47,6 @@ export const footerNav = {
   company: [
     { label: "About", href: "/about" },
     { label: "How We Make Money", href: "/how-we-make-money" },
-    { label: "Membership", href: "/membership" },
     { label: "Contact", href: "/contact" },
   ],
   editorial: [

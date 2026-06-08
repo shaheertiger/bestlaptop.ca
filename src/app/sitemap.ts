@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   const staticPages = [
-    "/", "/laptop", "/membership", "/about", "/how-we-make-money", "/editorial-policy",
+    "/", "/laptop", "/about", "/how-we-make-money", "/editorial-policy",
     "/affiliate-disclosure", "/contact", "/privacy-policy", "/terms",
     "/laptop/reviews", "/laptop/reviews/index", "/laptop/brands", "/laptop/news",
     "/laptop/deals", "/laptop/review-pipeline", "/laptop/vote", "/laptop/learn",

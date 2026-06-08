@@ -71,17 +71,17 @@ export function CredibilityMetrics() {
   );
 }
 
-export function MembershipBanner() {
+export function SupportBanner() {
   return (
     <section className="container-site py-8">
       <div className="card flex flex-col items-start justify-between gap-4 bg-slate-50 p-6 md:flex-row md:items-center">
         <div>
-          <h2 className="text-lg font-bold">Support independent testing with Membership</h2>
+          <h2 className="text-lg font-bold">Independent testing, Canadian pricing</h2>
           <p className="mt-1 text-sm text-ink-500">
-            Membership unlocks extra test results, saved comparisons, custom ratings, and Canadian deal alerts.
+            We buy the laptops we test and publish the data behind every score. No manufacturer pays for a recommendation.
           </p>
         </div>
-        <Link href="/membership" className="btn-primary shrink-0">Become a member</Link>
+        <Link href="/laptop/learn/how-we-test" className="btn-primary shrink-0">How we test</Link>
       </div>
     </section>
   );
@@ -258,7 +258,7 @@ export function LandingPage({ h1, intro, whatsNewLabel }: { h1: string; intro: s
   return (
     <>
       <Hero h1={h1} intro={intro} />
-      <MembershipBanner />
+      <SupportBanner />
       <TopPicks />
       <PopularComparisons />
       <PopularReviews />

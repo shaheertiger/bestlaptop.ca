@@ -164,6 +164,50 @@ export const guides: Guide[] = [
   ...quickGuide("should-you-buy-a-used-laptop", "Should You Buy a Used Laptop?", "Buying advice", "A used laptop can be a good deal if you verify battery health, check for damage, and confirm the configuration. Certified refurbished with a warranty is safer than a private used sale."),
   ...quickGuide("how-to-check-laptop-battery-health", "How to Check Laptop Battery Health", "Maintenance", "On Windows, run 'powercfg /batteryreport' to see design vs full-charge capacity. On macOS, check System Settings > Battery for cycle count and condition. A battery below 80% of its design capacity is worn."),
   ...quickGuide("laptop-warranty-explained-canada", "Laptop Warranty Explained Canada", "Buying advice", "Most laptops include a one-year limited warranty in Canada. Onsite and accidental-damage coverage cost extra but are worth it for business use. Check whether service is mail-in or onsite before buying."),
+  {
+    slug: "laptop-buying-guide",
+    title: "Laptop Buying Guide",
+    h1: "Laptop Buying Guide (Canada, 2026)",
+    excerpt: "A complete, testing-backed laptop buying guide for Canadians, from setting a budget to choosing the right specs.",
+    category: "Getting started",
+    updated: "2026-06-01",
+    readingTime: 9,
+    answer:
+      "To buy the right laptop, define your main use case, set a Canadian budget, then prioritize the few specs that matter most for that use: usually CPU, 16GB of RAM, a 512GB SSD, battery life, and a good display. Match those to a tested model in your price range rather than chasing the highest specs.",
+    sections: [
+      { heading: "Step 1: Define your use case", body: ["Most buyers fall into everyday/school, business, gaming, or creative work. Your use case decides which specs matter most.", "For school and office work, prioritize battery life, weight, and the keyboard. For gaming and creative work, prioritize the GPU, CPU, and display."] },
+      { heading: "Step 2: Set a Canadian budget", body: ["Under $700 buys a solid everyday laptop. $1,000–$1,500 buys a strong all-rounder. Gaming and creator laptops usually start around $1,800 in Canada.", "Watch back-to-school, Black Friday, and Boxing Day for meaningful discounts."] },
+      { heading: "Step 3: Choose the specs that matter", body: ["Aim for 16GB of RAM, a 512GB SSD, and a recent CPU. A bright 16:10 or 3:2 display is worth prioritizing.", "Don't overpay for a discrete GPU if you never game or edit video."] },
+      { heading: "Step 4: Check tested battery life and weight", body: ["If you move around, look for a measured battery result above 10 hours of web use and a weight under 1.6 kg.", "Our reviews report measured battery life, not manufacturer claims."] },
+      { heading: "Step 5: Compare finalists", body: ["Use the results table to filter by the specs you care about, then the compare tool to weigh two or three finalists side by side before buying."] },
+    ],
+    faq: [
+      { q: "How much should I spend on a laptop in Canada?", a: "Most people are well served between $800 and $1,500. Spend more only for gaming or creative work." },
+      { q: "What specs matter most?", a: "For most people: a recent CPU, 16GB RAM, a 512GB SSD, good battery life, and a bright display." },
+      { q: "Should I wait for a sale?", a: "If you can, buy around Black Friday, Boxing Day, or back-to-school, or right after new models launch when last year's models are discounted." },
+    ],
+  },
+  {
+    slug: "refurbished-laptops-canada",
+    title: "Refurbished Laptops Canada",
+    h1: "Refurbished Laptops in Canada: Buying Guide",
+    excerpt: "How to buy a refurbished laptop safely in Canada, what to check, and where to shop for the best value.",
+    category: "Buying advice",
+    updated: "2026-05-30",
+    readingTime: 7,
+    answer:
+      "To buy a refurbished laptop safely in Canada, choose certified refurbished units from the manufacturer or a reputable retailer, confirm the warranty, check battery health and cycle count, and verify the configuration. Certified refurbished typically saves 20–40% with low risk.",
+    sections: [
+      { heading: "Buy certified, not just used", body: ["Certified refurbished units are tested, repaired, and warrantied. Manufacturer outlets (Apple, Dell, Lenovo, HP) and major Canadian retailers are the safest sources."] },
+      { heading: "Confirm the warranty", body: ["Look for at least 90 days, ideally a year. The warranty is the main thing separating a good refurb from a risky used purchase."] },
+      { heading: "Check battery health", body: ["Ask for the battery cycle count or health percentage. A worn battery is the most common weak point on a used laptop. See our guide on checking battery health."] },
+      { heading: "Where to shop in Canada", body: ["Manufacturer outlet stores, Best Buy Geek Squad Certified, Canada Computers, and Amazon Renewed are common options. Compare the refurbished price against current sale prices on new units."] },
+    ],
+    faq: [
+      { q: "Are refurbished laptops worth it in Canada?", a: "Yes, if they're certified refurbished with a warranty. You typically save 20–40% versus new." },
+      { q: "What should I check before buying?", a: "Warranty length, battery health/cycle count, physical condition, and that the configuration matches what's advertised." },
+    ],
+  },
 ];
 
 function quickGuide(slug: string, title: string, category: string, answer: string): Guide[] {

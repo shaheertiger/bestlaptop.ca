@@ -26,7 +26,7 @@ export default function DealsPage() {
         </header>
 
         <div className="mb-6 flex flex-wrap gap-2">
-          {dealCategories.map((c) => (
+          {dealCategories.filter((c) => c.slug !== "best-laptop-deals-canada").map((c) => (
             <Link key={c.slug} href={`/laptop/deals/${c.slug}`} className="chip hover:bg-brand-100">{c.title.replace("Best ", "").replace(" in Canada", "")}</Link>
           ))}
         </div>

@@ -37,7 +37,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className={`rounded-md px-2.5 py-2 text-sm font-medium hover:bg-slate-100 ${item.label === "Membership" ? "ml-1 bg-brand-600 text-white hover:bg-brand-700" : "text-ink-700"}`}
+              className="rounded-md px-2.5 py-2 text-sm font-medium text-ink-700 hover:bg-slate-100"
             >
               {item.label}
             </Link>
