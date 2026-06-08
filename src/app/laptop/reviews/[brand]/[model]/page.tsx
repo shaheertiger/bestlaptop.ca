@@ -39,7 +39,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
   if (!l) notFound();
 
   const related = laptops.filter((x) => x.id !== l.id && x.categories.some((c) => l.categories.includes(c))).slice(0, 3);
-  const relatedComparisons = comparisons.filter((c) => c.a === l.id || c.b === l.id);
+  const relatedComparisons = comparisons.filter((c) => c.a === l.id || c.b === l.id).slice(0, 6);
 
   const reviewLd = {
     "@context": "https://schema.org",
@@ -48,13 +48,23 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
       "@type": "Product",
       name: `${l.brand} ${l.model}`,
       brand: { "@type": "Brand", name: l.brand },
+      category: "Laptop",
+      operatingSystem: l.os,
       image: `${SITE.url}/og/${l.id}.png`,
-      offers: { "@type": "Offer", price: lowestPrice(l), priceCurrency: "CAD", availability: "https://schema.org/InStock" },
+      offers: {
+        "@type": "AggregateOffer",
+        priceCurrency: "CAD",
+        lowPrice: lowestPrice(l),
+        highPrice: l.msrp,
+        offerCount: l.retailers.length,
+        availability: "https://schema.org/InStock",
+      },
     },
     reviewRating: { "@type": "Rating", ratingValue: l.overall, bestRating: 10, worstRating: 1 },
-    author: { "@type": "Organization", name: SITE.name },
-    publisher: { "@type": "Organization", name: SITE.name },
-    datePublished: l.testedDate,
+    author: { "@type": "Organization", name: `${SITE.name} Test Team`, url: SITE.url },
+    publisher: { "@type": "Organization", name: SITE.name, logo: { "@type": "ImageObject", url: `${SITE.url}/icon.svg` } },
+    datePublished: l.releaseDate,
+    dateModified: l.testedDate,
   };
 
   const faq = [

@@ -3,7 +3,7 @@ export const SITE = {
   url: "https://bestlaptop.ca",
   tagline: "Independent laptop reviews, Canadian prices, side-by-side comparisons, and test-based buying advice.",
   description:
-    "BestLaptop.ca is Canada's independent laptop testing site. We buy and test laptops, then publish objective reviews, comparisons, rankings, deals, and buying guides with Canadian pricing.",
+    "BestLaptop.ca is Canada's independent laptop testing site. We buy and test laptops, then publish objective 2026 reviews, comparisons, rankings, deals, and buying guides with Canadian pricing.",
   testBench: "1.2",
   metrics: {
     tested: 168,
@@ -53,7 +53,7 @@ export const footerNav = {
     { label: "Editorial Policy", href: "/editorial-policy" },
     { label: "How We Test", href: "/laptop/learn/how-we-test" },
     { label: "Affiliate Disclosure", href: "/affiliate-disclosure" },
-    { label: "Independence Policy", href: "/editorial-policy#independence" },
+    { label: "Popular Searches", href: "/laptop/popular-searches" },
   ],
   legal: [
     { label: "Privacy Policy", href: "/privacy-policy" },

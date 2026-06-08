@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SITE, toolsNav } from "@/lib/site";
 import { bestCategories, categoryPicks, getBestCategory } from "@/data/categories";
-import { comparisons, comparisonLaptops } from "@/data/comparisons";
+import { featuredComparisons, comparisonLaptops } from "@/data/comparisons";
 import { laptops } from "@/data/laptops";
 import { guides } from "@/data/guides";
 import { LaptopCard } from "./LaptopCard";
@@ -127,7 +127,7 @@ export function PopularComparisons() {
       <div className="container-site">
         <SectionHeading title="Popular Laptop Comparisons" href="/laptop/tools/compare" cta="Compare tool" />
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {comparisons.map((c) => {
+          {featuredComparisons.map((c) => {
             const [a, b] = comparisonLaptops(c);
             return (
               <Link key={c.slug} href={`/laptop/compare/${c.slug}`} className="card overflow-hidden p-4 transition hover:shadow-md">

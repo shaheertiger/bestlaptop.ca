@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SecondaryNav } from "@/components/SecondaryNav";
 import { laptops, laptopHref } from "@/data/laptops";
-import { comparisons, comparisonLaptops } from "@/data/comparisons";
+import { featuredComparisons as comparisons, comparisonLaptops } from "@/data/comparisons";
 import { testBenches } from "@/data/tests";
 
 export const metadata: Metadata = {

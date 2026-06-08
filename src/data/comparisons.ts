@@ -1,7 +1,8 @@
-import { getLaptopById } from "./laptops";
+import { getLaptopById, laptops } from "./laptops";
+import { formatCAD, lowestPrice } from "@/lib/scoring";
 import type { Laptop } from "@/lib/types";
 
-// Curated head-to-head comparisons served at /laptop/compare/{slug}.
+// Head-to-head comparisons served at /laptop/compare/{slug}.
 export interface Comparison {
   slug: string;
   a: string; // laptop id
@@ -10,7 +11,8 @@ export interface Comparison {
   winnerByUseCase: { useCase: string; winner: string }[];
 }
 
-export const comparisons: Comparison[] = [
+// Hand-written verdicts for the highest-interest match-ups.
+const curatedComparisons: Comparison[] = [
   {
     slug: "macbook-air-15-m4-vs-dell-xps-13-9350",
     a: "apple-macbook-air-15-m4",
@@ -77,6 +79,48 @@ export const comparisons: Comparison[] = [
     ],
   },
 ];
+
+// Auto-generate a comparison for every laptop pair so each "{A} vs {B}" query
+// has a real page. Curated verdicts take precedence for their match-ups.
+const USE_CASE_KEYS: { key: keyof Laptop["useCases"]; label: string }[] = [
+  { key: "school", label: "School" },
+  { key: "business", label: "Business" },
+  { key: "gaming", label: "Gaming" },
+  { key: "multimedia", label: "Multimedia" },
+  { key: "programming", label: "Programming" },
+  { key: "travel", label: "Travel" },
+];
+
+const pairKey = (x: string, y: string) => [x, y].sort().join("|");
+const curatedKeys = new Set(curatedComparisons.map((c) => pairKey(c.a, c.b)));
+
+function generatedComparison(a: Laptop, b: Laptop): Comparison {
+  const winnerByUseCase = USE_CASE_KEYS.map(({ key, label }) => ({
+    useCase: label,
+    winner: a.useCases[key] >= b.useCases[key] ? a.id : b.id,
+  }));
+  const better = a.overall >= b.overall ? a : b;
+  const other = better.id === a.id ? b : a;
+  const cheaper = lowestPrice(a) <= lowestPrice(b) ? a : b;
+  const verdict =
+    `The ${better.brand} ${better.model} scores ${better.overall.toFixed(1)} versus ${other.overall.toFixed(1)} for the ${other.brand} ${other.model}, making it the stronger all-rounder. ` +
+    `The ${cheaper.brand} ${cheaper.model} is the cheaper option at ${formatCAD(lowestPrice(cheaper))}. ` +
+    `Choose based on the use cases below: the ${better.model} leads overall, while the ${other.model} can still be the better pick for specific needs.`;
+  return { slug: `${a.slug}-vs-${b.slug}`, a: a.id, b: b.id, verdict, winnerByUseCase };
+}
+
+const generated: Comparison[] = [];
+for (let i = 0; i < laptops.length; i++) {
+  for (let j = i + 1; j < laptops.length; j++) {
+    if (curatedKeys.has(pairKey(laptops[i].id, laptops[j].id))) continue;
+    generated.push(generatedComparison(laptops[i], laptops[j]));
+  }
+}
+
+export const comparisons: Comparison[] = [...curatedComparisons, ...generated];
+
+// The most prominent comparisons to surface in UI (curated first).
+export const featuredComparisons: Comparison[] = curatedComparisons;
 
 export function getComparison(slug: string): Comparison | undefined {
   return comparisons.find((c) => c.slug === slug);

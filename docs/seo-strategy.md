@@ -34,6 +34,20 @@ Scalable page types generated from data:
 
 Adding a row to the relevant `src/data/*` file creates a fully-formed, interlinked, schema-marked page. Target query families include: "best laptops Canada", "best laptops under $X Canada", "best {use case} laptops", "best {brand} laptops Canada", "{A} vs {B}", and "{topic} explained".
 
+## Keyword coverage (2,500+)
+
+`src/data/keywords.ts` generates a deduplicated map of **2,500+ Canadian laptop keywords** from templates, each assigned to the on-site URL best positioned to rank for it. Groups: best lists × modifiers × geo, brands, brand × category, price points, comparisons, reviews, guides, deals, activities/software, majors, value, retailer intent, brand-vs-brand, and size × use. The full set is surfaced as an internal-linking hub at `/laptop/popular-searches`.
+
+Every laptop pair also gets a real `{A} vs {B}` comparison page (auto-generated in `src/data/comparisons.ts`), so head-to-head queries land on a dedicated page.
+
+## 2026 freshness & rich-result signals
+
+- `robots` set to `max-image-preview:large`, `max-snippet:-1`, `max-video-preview:-1` for full rich-result eligibility.
+- `WebSite` + `SearchAction` JSON-LD (sitelinks search box) and `Organization` with logo + `areaServed: Canada`.
+- `Review` schema uses `datePublished`/`dateModified` and `AggregateOffer` (low/high price, offer count) in CAD.
+- Sitemap emits real per-content `lastModified` dates (review tested dates, guide update dates) and `daily` change frequency on best lists.
+- Self-referential `hreflang` (`en-CA` + `x-default`), `theme-color`, and 2026-framed titles/descriptions.
+
 ## Measurement
 
 Wire GA4 + Search Console and event-track: comparison builds, table filter usage, retailer (affiliate) clicks, and newsletter signups.
