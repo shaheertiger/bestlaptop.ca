@@ -6,9 +6,9 @@ export const SITE = {
     "BestLaptop.ca is Canada's independent laptop testing site. We buy and test laptops, then publish objective 2026 reviews, comparisons, rankings, deals, and buying guides with Canadian pricing.",
   testBench: "1.2",
   metrics: {
-    tested: 168,
-    inTesting: 7,
-    recentlyReviewed: 12,
+    tested: 184,
+    inTesting: 6,
+    recentlyReviewed: 18,
   },
   social: {
     youtube: "https://youtube.com/@bestlaptopca",
