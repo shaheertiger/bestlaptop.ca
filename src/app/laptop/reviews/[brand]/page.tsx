@@ -11,6 +11,8 @@ import { brands, getBrand } from "@/data/brands";
 import { laptops, laptopHref } from "@/data/laptops";
 import { getBestCategory } from "@/data/categories";
 import { formatCAD, lowestPrice } from "@/lib/scoring";
+import { laptopRankings } from "@/lib/insights";
+import { guides } from "@/data/guides";
 
 export function generateStaticParams() {
   return brands.map((b) => ({ brand: b.slug }));
@@ -33,6 +35,18 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
   if (!b) notFound();
   const models = laptops.filter((l) => l.brandSlug === b.slug).sort((a, c) => c.overall - a.overall);
   const hasBestList = !!getBestCategory(b.slug);
+
+  // Best-list rankings any of this brand's tested models qualify for (excluding
+  // the brand's own list and the generic "all laptops" list).
+  const useCaseLists = Array.from(
+    new Map(
+      models
+        .flatMap((m) => laptopRankings(m))
+        .filter((c) => c.slug !== b.slug && c.slug !== "laptop" && (c.group === "use-case" || c.group === "type" || c.group === "price"))
+        .map((c) => [c.slug, c] as const),
+    ).values(),
+  ).slice(0, 8);
+  const relatedGuides = guides.filter((g) => ["Getting started", "Buying advice", "Comparisons"].includes(g.category)).slice(0, 4);
 
   return (
     <>
@@ -57,6 +71,23 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
         </div>
 
         <p className="mt-6 text-ink-700"><span className="font-semibold">Typical buyer:</span> {b.buyerProfile} <span className="font-semibold">Best use cases:</span> {b.bestUseCases.join(", ")}.</p>
+
+        {useCaseLists.length > 0 && (
+          <section className="mt-8">
+            <h2 className="mb-3 text-2xl font-bold">Best {b.name} laptops by use case</h2>
+            <p className="mb-3 text-ink-600">
+              Looking for a {b.name} laptop for something specific? These rankings include {b.name} models alongside the competition, tested the same way:
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {hasBestList && (
+                <Link href={`/laptop/reviews/best/${b.slug}`} className="chip bg-brand-100 hover:bg-brand-200">Best {b.name} laptops</Link>
+              )}
+              {useCaseLists.map((c) => (
+                <Link key={c.slug} href={`/laptop/reviews/best/${c.slug}`} className="chip hover:bg-brand-100">{c.navLabel}</Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         {models.length > 0 ? (
           <>
@@ -93,6 +124,18 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
         )}
 
         <div className="mt-10"><FAQ items={b.faq} heading={`${b.name} Laptop FAQ`} /></div>
+
+        <section className="mt-10">
+          <h2 className="mb-4 text-2xl font-bold">Helpful buying guides</h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {relatedGuides.map((g) => (
+              <Link key={g.slug} href={`/laptop/learn/${g.slug}`} className="card p-4 transition hover:shadow-md">
+                <span className="chip">{g.category}</span>
+                <h3 className="mt-2 text-sm font-semibold leading-snug">{g.title}</h3>
+              </Link>
+            ))}
+          </div>
+        </section>
       </div>
       <Newsletter />
     </>

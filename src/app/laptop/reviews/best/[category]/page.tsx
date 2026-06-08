@@ -9,6 +9,7 @@ import { ScoreBadge } from "@/components/Score";
 import { Newsletter } from "@/components/Newsletter";
 import { bestCategories, getBestCategory, categoryPicks } from "@/data/categories";
 import { laptopHref } from "@/data/laptops";
+import { comparisons, comparisonLaptops } from "@/data/comparisons";
 import { formatCAD, lowestPrice } from "@/lib/scoring";
 import { SITE } from "@/lib/site";
 
@@ -37,6 +38,10 @@ export default async function BestListPage({ params }: { params: Promise<{ categ
   if (picks.length === 0) notFound();
 
   const updated = "2026-06-08";
+  const pickIds = new Set(picks.slice(0, 6).map((l) => l.id));
+  const headToHead = comparisons
+    .filter((c) => pickIds.has(c.a) && pickIds.has(c.b))
+    .slice(0, 5);
   const toc = [
     { id: "summary", label: "Our picks at a glance" },
     ...picks.slice(0, 6).map((l, i) => ({ id: `pick-${i}`, label: `${ROLES[i] ?? "Notable Mention"}: ${l.brand} ${l.model}` })),
@@ -145,6 +150,18 @@ export default async function BestListPage({ params }: { params: Promise<{ categ
             </SectionCard>
 
             <section id="faq" className="scroll-mt-20"><FAQ items={faq} /></section>
+
+            {headToHead.length > 0 && (
+              <SectionCard id="head-to-head" title="Compare these picks head-to-head">
+                <p>Still deciding between our top picks? These side-by-side comparisons break down the differences with our test data:</p>
+                <ul className="mt-2 space-y-1">
+                  {headToHead.map((c) => {
+                    const [a, b] = comparisonLaptops(c);
+                    return <li key={c.slug}><Link href={`/laptop/compare/${c.slug}`} className="link">{a.brand} {a.model} vs {b.brand} {b.model}</Link></li>;
+                  })}
+                </ul>
+              </SectionCard>
+            )}
 
             <SectionCard id="related" title="Related Best Lists">
               <div className="flex flex-wrap gap-2">

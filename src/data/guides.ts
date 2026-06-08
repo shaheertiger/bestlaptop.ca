@@ -466,6 +466,218 @@ export const guides: Guide[] = [
       { q: "Do third-party battery saver apps work?", a: "Usually not better than Windows' built-in tools, and many add their own background processes that cost power. Stick with Energy Saver, Power mode, and the powercfg diagnostics." },
     ],
   },
+  {
+    slug: "speed-up-slow-laptop-windows",
+    title: "How to Speed Up a Slow Laptop on Windows",
+    h1: "How to Speed Up a Slow Laptop on Windows (2026 Guide)",
+    excerpt: "Practical, ordered steps to make a slow Windows 11 laptop fast again — from quick software fixes to the two upgrades that matter most.",
+    category: "Maintenance",
+    updated: "2026-06-08",
+    readingTime: 14,
+    answer:
+      "To speed up a slow Windows laptop, restart it, trim startup and background apps, free up disk space, run a malware scan, update Windows and drivers, and switch the power mode to Balanced or Best performance when plugged in. If it is still slow, the two upgrades that help most are adding RAM (to 16GB) and moving to an SSD. Most laptops feel noticeably faster within an hour of these steps.",
+    sections: [
+      {
+        heading: "Why laptops slow down over time",
+        body: [
+          "A laptop rarely slows down because the hardware 'wore out'. It slows because software piles up: startup programs, background services, browser extensions, fragmented or nearly-full storage, outdated drivers, and sometimes malware. A machine that felt fast new is usually still capable — it is just being asked to do more in the background than it should.",
+          "The fixes below are ordered from fastest and free to more involved. Work top to bottom and re-test after each group; most people fix the problem long before reaching the hardware steps. If your laptop is also dropping battery fast, pair this with our guide on [how to extend your battery life on Windows](/laptop/learn/extend-battery-life-windows), since many of the same background processes cost both speed and runtime.",
+        ],
+      },
+      {
+        heading: "Quick wins (do these first)",
+        body: [
+          "- Restart properly. 'Shut down' with Fast Startup on does not fully reset Windows; choose Restart, which clears memory and stuck processes. Do this before anything else.",
+          "- Close what you are not using. Too many open apps and browser tabs compete for RAM and CPU. Close them and see if responsiveness returns.",
+          "- Set the power mode. On Settings > System > Power & battery, set Power mode to 'Balanced' or 'Best performance' while plugged in. 'Best power efficiency' can make a plugged-in laptop feel sluggish.",
+          "- Check for a stuck process. Open Task Manager (Ctrl+Shift+Esc), sort by CPU, Memory, and Disk. If one app is pinning a resource at near 100%, that is your culprit — end it or address it specifically.",
+          "- Install pending updates and reboot. A half-applied update can drag performance until it finishes.",
+        ],
+      },
+      {
+        heading: "Trim startup and background apps",
+        body: [
+          "The single most common cause of a slow-feeling laptop is too much launching at login and running in the background.",
+          "### Startup apps",
+          "Open Task Manager > 'Startup apps'. Disable anything with 'High' startup impact that you do not need the moment you log in — updaters, launchers, RGB and vendor utilities, and cloud drives you rarely touch. Fewer startup items means a faster, lighter desktop.",
+          "### Background apps",
+          "Go to Settings > Apps > Installed apps, open an app's 'Advanced options', and set 'Let this app run in the background' to 'Never' or 'Power optimized' for anything that does not need live updates. Chat, mail, and weather apps are frequent offenders.",
+          "### Remove bloatware",
+          "Uninstall manufacturer and trial software you never use (Settings > Apps > Installed apps). Many of these run background services that cost performance for no benefit.",
+        ],
+      },
+      {
+        heading: "Free up disk space",
+        body: [
+          "A nearly-full drive makes Windows slow, because it needs free space for temporary files, updates, and virtual memory. Aim to keep at least 15–20% of your drive free.",
+          "- Run Storage Sense (Settings > System > Storage) to clear temporary files, the Recycle Bin, and old update files automatically.",
+          "- Uninstall large apps and games you no longer play.",
+          "- Move photos, videos, and large files to an external drive or cloud storage.",
+          "- Use 'Cleanup recommendations' in Storage settings to find big and unused files quickly.",
+          "If your laptop has a slow mechanical hard drive (HDD) rather than an SSD, this is also the clearest sign you would benefit from the SSD upgrade covered below.",
+        ],
+      },
+      {
+        heading: "Scan for malware",
+        body: [
+          "Malware and aggressive adware are a common, overlooked cause of slowdowns and constant disk or network activity. Windows Security (built in) is effective: open it and run a full scan, then a Microsoft Defender Offline scan for anything persistent. You do not need heavy third-party suites, which themselves can slow the system; if you run one, make sure you are not running two real-time scanners at once, which causes conflicts and lag.",
+        ],
+      },
+      {
+        heading: "Update Windows, drivers, and firmware",
+        body: [
+          "Outdated graphics and storage drivers can cause stutter and poor performance. Install all Windows updates (Settings > Windows Update), then update your graphics driver from Intel, AMD, or NVIDIA, and check your laptop maker's support app (Lenovo Vantage, MyASUS, Dell, HP) for BIOS/firmware updates. Firmware updates sometimes fix thermal-throttling and power bugs that quietly cap performance.",
+          "If your laptop runs hot and then slows under load, that is thermal throttling, not a software problem — see [why your laptop overheats and how to fix it](/laptop/learn/laptop-overheating-fixes).",
+        ],
+      },
+      {
+        heading: "Tune Windows for speed",
+        body: [
+          "- Reduce visual effects: search 'Adjust the appearance and performance of Windows' and choose 'Adjust for best performance', or turn off animations and transparency in Settings > Accessibility > Visual effects.",
+          "- Disable startup delay and unnecessary notifications that wake the system.",
+          "- Turn off search indexing for drives you do not search often if disk usage is constantly high (advanced; optional).",
+          "- Make sure you are not low on RAM: in Task Manager's Performance tab, if memory is consistently above ~80% during normal use, you are RAM-limited and the upgrade below will help most.",
+        ],
+      },
+      {
+        heading: "The two upgrades that actually matter",
+        body: [
+          "If software fixes are not enough, hardware is the answer — and only two upgrades reliably transform an older laptop.",
+          "### Add RAM",
+          "Going from 8GB to 16GB removes the single biggest bottleneck for multitasking and modern browsers. Check whether your laptop has accessible, socketed RAM (many thin laptops solder it and cannot be upgraded). Our reviews list each model's upgradeability; if you are buying, see [how much RAM you need](/laptop/learn/how-much-ram-do-you-need).",
+          "### Switch to an SSD",
+          "If your laptop still uses a mechanical hard drive, moving to an SSD is the most dramatic speed upgrade possible — boot, app launches, and file operations become many times faster. Most laptops from the last few years already have an SSD; if yours feels slow and has an HDD, this single change will feel like a new machine.",
+          "If your laptop has soldered RAM and a non-replaceable SSD, and it is several years old, it may be more sensible to replace it. In that case, our [best laptops in Canada](/laptop/reviews/best/laptop) and the [results table](/laptop/tools/table) are the place to start.",
+        ],
+      },
+      {
+        heading: "Reset Windows as a last resort",
+        body: [
+          "If the laptop is still slow after everything above, a clean reset clears years of accumulated software cruft. Settings > System > Recovery > 'Reset this PC' lets you keep your files while reinstalling Windows. Back up first, and reinstall only the apps you actually use afterward — the point is to avoid rebuilding the same bloat. A fresh install often restores near-original performance on capable hardware.",
+        ],
+      },
+      {
+        heading: "Keep it fast: a short maintenance routine",
+        body: [
+          "- Restart at least once a week rather than only sleeping.",
+          "- Review startup apps monthly and remove new additions.",
+          "- Keep 15–20% of your drive free.",
+          "- Install Windows, driver, and firmware updates promptly.",
+          "- Run a full malware scan occasionally.",
+          "- Clean the fans and vents a couple of times a year so heat does not force throttling.",
+          "Do this and most laptops stay responsive for their whole life. If yours simply cannot keep up with what you need, that is a hardware ceiling, not a tuning problem — and it is time to compare new models rather than fight the old one.",
+        ],
+      },
+    ],
+    faq: [
+      { q: "Why is my laptop so slow all of a sudden?", a: "Usually a background process, a pending update, low disk space, or malware. Open Task Manager, sort by CPU, Memory, and Disk to find what is pinned, restart, install updates, and run a malware scan." },
+      { q: "Does adding RAM make a laptop faster?", a: "Yes, if you are RAM-limited. Going from 8GB to 16GB greatly improves multitasking and browsing. Check first whether your laptop's RAM is upgradeable, since many thin laptops solder it." },
+      { q: "Will an SSD speed up my laptop?", a: "Dramatically, if you currently have a mechanical hard drive. Moving to an SSD is the biggest single speed upgrade for boot, app launches, and file operations." },
+      { q: "Do I need a third-party PC cleaner app?", a: "No. Windows' built-in Storage Sense, Task Manager, and Windows Security do the real work. Many third-party 'cleaners' add background processes and provide little benefit." },
+      { q: "Is it worth fixing a slow old laptop or buying new?", a: "If software fixes and a RAM/SSD upgrade are possible, fixing is usually cheaper. If the RAM and SSD are soldered and it is several years old, replacing it is often the better value." },
+    ],
+  },
+  {
+    slug: "laptop-overheating-fixes",
+    title: "Why Is My Laptop Overheating? Causes and Fixes",
+    h1: "Why Is My Laptop Overheating? Causes and Fixes (2026)",
+    excerpt: "What makes laptops overheat, how to tell, and a step-by-step set of fixes — from airflow and dust to thermal paste and power limits.",
+    category: "Maintenance",
+    updated: "2026-06-08",
+    readingTime: 13,
+    answer:
+      "Laptops overheat when heat is produced faster than the cooling system can remove it — usually from blocked vents, dust-clogged fans, a soft surface, heavy sustained workloads, or dried-out thermal paste. Fix it by using the laptop on a hard flat surface, cleaning the fans and vents, lowering the power/performance settings, closing runaway background processes, and, for older machines, repasting the cooler. Persistent overheating that none of these fix usually means a hardware or cooling fault.",
+    sections: [
+      {
+        heading: "Why laptops overheat",
+        body: [
+          "Every laptop is a balance between the heat its processor and graphics chip produce and how quickly its fans and heat pipes can move that heat out. When something tips that balance — extra heat, less airflow, or worse heat transfer — temperatures climb. To protect itself, the laptop then throttles: it lowers clock speeds, which reduces performance and causes stutter, and spins the fans loud.",
+          "Some warmth under load is completely normal, especially on thin and gaming laptops. Overheating is when the laptop runs hot at idle, throttles heavily during ordinary tasks, shuts down unexpectedly, or becomes uncomfortable to touch. The causes are almost always one of a short list, and most are fixable at home.",
+        ],
+      },
+      {
+        heading: "How to tell it is actually overheating",
+        body: [
+          "- Fans run loud and fast during light tasks like browsing.",
+          "- The keyboard or underside becomes hot to the touch.",
+          "- Performance drops or stutters after a few minutes of load (a sign of thermal throttling).",
+          "- The laptop shuts down or restarts on its own under heavy use.",
+          "You can confirm with a monitoring tool that shows CPU and GPU temperatures. Sustained temperatures pinned at the chip's limit (often around 95–100°C) with heavy throttling indicate a cooling problem worth addressing.",
+        ],
+      },
+      {
+        heading: "Quick fixes (start here)",
+        body: [
+          "- Use it on a hard, flat surface. Beds, couches, blankets, and laps block the intake vents underneath and trap heat. A desk or a lap desk fixes this instantly.",
+          "- Check the vents. Make sure nothing is covering the exhaust and intake grilles. Even a few millimetres of clearance helps airflow.",
+          "- Lower the power and performance settings. In Settings > System > Power & battery, try 'Balanced' instead of 'Best performance', or use your laptop maker's 'quiet'/'cool' thermal profile. This reduces the heat produced at the source.",
+          "- Close runaway processes. Open Task Manager and look for an app pinning the CPU or GPU. A stuck process or background task can heat the laptop for no reason — end it.",
+          "- Cool the room. Ambient temperature matters; a hot room leaves the cooling system less headroom. Avoid direct sun and hot cars.",
+        ],
+      },
+      {
+        heading: "Clean the fans and vents",
+        body: [
+          "Over months and years, dust clogs the fans and the fins of the heatsink, choking airflow. This is the most common cause of a laptop that used to run cool and now overheats.",
+          "- For a quick clean, use short bursts of compressed air into the exhaust and intake vents, holding the fans still if you can so you do not spin them too fast.",
+          "- For a thorough clean, if you are comfortable opening the laptop (and it will not void a warranty you care about), remove the bottom panel and gently clear dust from the fans and heatsink fins. This often drops temperatures by several degrees and quiets the fans noticeably.",
+          "- If you have never cleaned a laptop that is a few years old, this step alone frequently solves the problem.",
+        ],
+      },
+      {
+        heading: "Replace the thermal paste (older laptops)",
+        body: [
+          "Thermal paste sits between the processor and the heatsink to transfer heat. Over several years it can dry out and lose effectiveness, causing higher temperatures even when everything else is clean. Repasting — removing the old paste and applying fresh paste — can meaningfully lower temperatures on an older laptop.",
+          "This is a more advanced repair that involves opening the laptop and removing the cooler. If you are comfortable with it, it is inexpensive and effective. If not, a repair shop can do it quickly. Consider it when a laptop is several years old, runs hot despite clean fans, and you want to keep using it.",
+        ],
+      },
+      {
+        heading: "Reduce the heat at the source",
+        body: [
+          "Sometimes the cooling is fine and the workload is simply more than a thin laptop can sustain. You can lower the heat produced without giving up much usable performance.",
+          "### Cap performance for everyday use",
+          "In Windows power settings, lowering the 'Maximum processor state' (under advanced power options) to around 90–95% trims the least efficient boost clocks that produce the most heat, usually with little noticeable slowdown for ordinary tasks.",
+          "### Use vendor and undervolting tools",
+          "Manufacturer apps often include thermal profiles ('quiet', 'balanced', 'performance'). Use a cooler profile for daily work and save the performance profile for when you need it. On some laptops, undervolting reduces heat at the same performance, but it is advanced, can cause instability, and is often locked by the manufacturer — approach with caution.",
+          "### Mind background load",
+          "Heavy background processes — sync, indexing, updates, or a misbehaving app — generate heat continuously. The same steps that [speed up a slow laptop](/laptop/learn/speed-up-slow-laptop-windows) also reduce idle heat, and lowering sustained load helps both [battery life](/laptop/learn/extend-battery-life-windows) and temperatures.",
+        ],
+      },
+      {
+        heading: "Environment and accessories",
+        body: [
+          "- A cooling pad with fans can help, especially for gaming laptops on a desk, by feeding cooler air to the intakes. It is not a substitute for clean fans, but it adds headroom.",
+          "- Keep the laptop out of enclosed spaces (a tight shelf, a thick sleeve while running) where hot air recirculates.",
+          "- For sustained heavy work like gaming or video export, plug in and place the laptop where its exhaust is unobstructed; performance modes produce more heat by design.",
+        ],
+      },
+      {
+        heading: "When it is a hardware fault",
+        body: [
+          "If a laptop still overheats after clean fans, fresh paste, good airflow, and sensible power settings, the cooling hardware itself may be at fault — a failing fan, a detached heat pipe, or a manufacturing defect. Symptoms include a fan that never spins or rattles, one area that gets extremely hot, or shutdowns under light load. At that point, contact the manufacturer (especially under warranty) or a repair shop. Running a laptop that chronically overheats shortens the life of the battery and components, so it is worth resolving rather than ignoring.",
+        ],
+      },
+      {
+        heading: "Prevent overheating: a quick checklist",
+        body: [
+          "- Use the laptop on hard, flat surfaces with clear vents.",
+          "- Clean fans and vents a couple of times a year.",
+          "- Use cooler thermal/power profiles for everyday work.",
+          "- Keep background load and runaway processes in check.",
+          "- Plug in and ensure airflow for sustained heavy workloads.",
+          "- Repaste older laptops that run hot despite clean cooling.",
+          "Cooler laptops are quieter, faster (no throttling), and last longer. If you are shopping and thermals matter to you, our reviews measure fan noise and surface temperatures, and you can sort by them in the [results table](/laptop/tools/table); thin-and-light buyers may also like our [best laptops for working from home](/laptop/reviews/best/working-from-home).",
+        ],
+      },
+    ],
+    faq: [
+      { q: "Is it normal for my laptop to get hot?", a: "Some warmth under load is normal, especially on thin and gaming laptops. It is a problem when the laptop runs hot at idle, throttles during light tasks, becomes uncomfortable to touch, or shuts down unexpectedly." },
+      { q: "How do I stop my laptop from overheating?", a: "Use it on a hard flat surface with clear vents, clean the fans and vents, switch to a cooler power/thermal profile, close runaway background processes, and for older laptops, replace the thermal paste." },
+      { q: "Can dust cause a laptop to overheat?", a: "Yes — dust-clogged fans and heatsinks are the most common cause of a laptop that used to run cool and now overheats. Cleaning them often fixes it." },
+      { q: "Does a cooling pad actually help?", a: "It can add headroom, especially for gaming laptops on a desk, by feeding cooler air to the intakes. It is a supplement, not a substitute for clean fans and good airflow." },
+      { q: "Is laptop overheating dangerous?", a: "Modern laptops throttle and shut down to protect themselves, so sudden damage is rare, but chronic heat shortens battery and component life and hurts performance, so it is worth fixing." },
+    ],
+  },
 ];
 
 function quickGuide(slug: string, title: string, category: string, answer: string, related?: string): Guide[] {
