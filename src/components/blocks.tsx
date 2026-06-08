@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Laptop } from "@/lib/types";
 import { formatCAD } from "@/lib/scoring";
+import { AFFILIATE_URL } from "@/lib/site";
 
 export function AuthorBox({ updated, testBench }: { updated: string; testBench?: string }) {
   return (
@@ -63,8 +64,9 @@ export function RetailerButtons({ laptop }: { laptop: Laptop }) {
       {laptop.retailers.map((r) => (
         <a
           key={r.name}
-          href={r.url}
-          rel="nofollow sponsored"
+          href={AFFILIATE_URL}
+          target="_blank"
+          rel="nofollow sponsored noopener"
           className={`flex items-center justify-between rounded-lg border px-4 py-3 text-sm transition ${r.inStock ? "border-slate-300 hover:border-brand-400 hover:bg-brand-50" : "border-slate-200 opacity-60"}`}
         >
           <span className="font-medium">{r.name}{r.condition && r.condition !== "New" ? ` · ${r.condition}` : ""}</span>

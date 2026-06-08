@@ -1,9 +1,12 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SITE } from "@/lib/site";
 import { Analytics } from "@vercel/analytics/next";
+
+const ADSENSE_CLIENT = "ca-pub-2963693328827195";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -44,6 +47,7 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: "/", languages: { "en-CA": "/", "x-default": "/" } },
   formatDetection: { telephone: false },
+  other: { "google-adsense-account": ADSENSE_CLIENT },
 };
 
 export const viewport: Viewport = {
@@ -79,6 +83,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
   return (
     <html lang="en-CA">
+      <head>
+        <Script
+          id="adsbygoogle-init"
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </head>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteLd) }} />
