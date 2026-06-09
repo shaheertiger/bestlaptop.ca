@@ -10,7 +10,7 @@
 // https://<host>/<key>.txt for IndexNow to verify ownership (otherwise the
 // API returns 403 UserForbiddedToAccessSite).
 
-const KEY = process.env.INDEXNOW_KEY || "85612cad3e794add8e4b33f466c6e10d";
+const KEY = process.env.INDEXNOW_KEY || "39d6e0cd114542a2a65fab939a1acb21";
 const SITEMAP = process.env.SITEMAP || "https://bestlaptop.ca/sitemap.xml";
 const ENDPOINT = process.env.INDEXNOW_ENDPOINT || "https://api.indexnow.org/indexnow";
 
