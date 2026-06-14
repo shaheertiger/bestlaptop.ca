@@ -54,6 +54,17 @@ function buildKeywords(): KeywordTarget[] {
     ["best cheap laptop canada", "/laptop/reviews/best/cheap"],
     ["affordable laptops canada", "/laptop/reviews/best/cheap"],
     ["inexpensive laptops canada", "/laptop/reviews/best/cheap"],
+    ["best lightweight laptop canada", "/laptop/reviews/best/lightweight"],
+    ["best lightweight laptops canada", "/laptop/reviews/best/lightweight"],
+    ["lightest laptop canada", "/laptop/reviews/best/lightweight"],
+    ["best ultraportable laptop canada", "/laptop/reviews/best/lightweight"],
+    ["best laptop with long battery life", "/laptop/reviews/best/long-battery-life"],
+    ["best laptop battery life canada", "/laptop/reviews/best/long-battery-life"],
+    ["best laptop for battery life", "/laptop/reviews/best/long-battery-life"],
+    ["longest battery life laptop canada", "/laptop/reviews/best/long-battery-life"],
+    ["best laptop for graphic design canada", "/laptop/reviews/best/photo-editing"],
+    ["best laptop for teachers canada", "/laptop/reviews/best/working-from-home"],
+    ["best laptop for real estate agents canada", "/laptop/reviews/best/working-from-home"],
   ];
   for (const [kw, url] of priority) add(kw, url, "Priority (Canada)");
 
@@ -140,6 +151,9 @@ function buildKeywords(): KeywordTarget[] {
     ["fortnite", "gaming"], ["roblox", "budget"], ["excel", "business"], ["accounting", "business"],
     ["writers", "working-from-home"], ["note taking", "2-in-1"], ["drawing", "2-in-1"], ["travel", "laptop"],
     ["college", "college"], ["high school", "student"], ["nursing students", "student"],
+    ["graphic design", "photo-editing"], ["teachers", "working-from-home"], ["teaching", "working-from-home"],
+    ["real estate agents", "working-from-home"], ["realtors", "working-from-home"], ["lawyers", "business"],
+    ["accountants", "business"], ["small business", "business"], ["seniors", "laptop"], ["everyday use", "laptop"],
   ];
   for (const [act, slug] of activities) for (const g of ["", "canada", "2026"])
     add(phrase("best laptop for", act, g), `/laptop/reviews/best/${slug}`, "Activities");
