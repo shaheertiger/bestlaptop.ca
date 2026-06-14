@@ -255,6 +255,17 @@ export const bestCategories: BestCategory[] = [
     filter: (l) => l.currentPrice <= 500,
   },
   {
+    slug: "cheap",
+    navLabel: "Best Cheap Laptops",
+    title: "Best Cheap Laptops in Canada",
+    h1: "The Best Cheap Laptops in Canada (2026)",
+    group: "price",
+    intro:
+      "A cheap laptop does not have to feel cheap. We focused on the lowest-priced models in Canada that still browse, stream, and handle documents without frustration, and flagged where spending a little more genuinely pays off. Every pick here is one we would actually recommend at its price.",
+    criteria: "We weight Canadian price and everyday usability most heavily, then build quality and battery life.",
+    filter: (l) => l.currentPrice <= 900,
+  },
+  {
     slug: "brands",
     navLabel: "Best Laptop Brands",
     title: "Best Laptop Brands in Canada",

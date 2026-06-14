@@ -48,6 +48,12 @@ function buildKeywords(): KeywordTarget[] {
     ["best laptop under 1000 canada", "/laptop/reviews/best/under-1000-canada"],
     ["best laptop under $1000 canada 2026", "/laptop/reviews/best/under-1000-canada"],
     ["best laptops under $1,000 canada", "/laptop/reviews/best/under-1000-canada"],
+    ["cheap laptops canada", "/laptop/reviews/best/cheap"],
+    ["cheap laptop canada", "/laptop/reviews/best/cheap"],
+    ["cheap laptops canada 2026", "/laptop/reviews/best/cheap"],
+    ["best cheap laptop canada", "/laptop/reviews/best/cheap"],
+    ["affordable laptops canada", "/laptop/reviews/best/cheap"],
+    ["inexpensive laptops canada", "/laptop/reviews/best/cheap"],
   ];
   for (const [kw, url] of priority) add(kw, url, "Priority (Canada)");
 
