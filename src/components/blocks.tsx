@@ -81,6 +81,7 @@ export function RetailerButtons({ laptop }: { laptop: Laptop }) {
 }
 
 export function FAQ({ items, heading = "Frequently Asked Questions" }: { items: { q: string; a: string }[]; heading?: string }) {
+  if (items.length === 0) return null;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -94,17 +95,13 @@ export function FAQ({ items, heading = "Frequently Asked Questions" }: { items: 
     <section>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <h2 className="mb-4 text-2xl font-bold">{heading}</h2>
+      {/* Answers are always visible (not collapsed) so they are easy to read, quote and extract. */}
       <div className="divide-y divide-slate-200 rounded-xl border border-slate-200">
         {items.map((it) => (
-          <details key={it.q} className="group p-4">
-            <summary className="cursor-pointer list-none font-semibold text-ink-900 marker:hidden">
-              <span className="flex items-center justify-between gap-3">
-                {it.q}
-                <span className="text-brand-600 transition group-open:rotate-45" aria-hidden="true">+</span>
-              </span>
-            </summary>
-            <p className="mt-2 text-sm text-ink-600">{it.a}</p>
-          </details>
+          <div key={it.q} className="p-4">
+            <h3 className="font-semibold text-ink-900">{it.q}</h3>
+            <p className="mt-1.5 text-sm text-ink-600">{it.a}</p>
+          </div>
         ))}
       </div>
     </section>
@@ -133,4 +130,19 @@ export function SectionCard({ id, title, children }: { id: string; title: string
       <div className="prose-site">{children}</div>
     </section>
   );
+}
+
+// Render inline markdown links [label](/url) inside editorial copy.
+export function Linkify({ text }: { text: string }) {
+  const parts: React.ReactNode[] = [];
+  const re = /\[([^\]]+)\]\(([^)]+)\)/g;
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text))) {
+    if (m.index > last) parts.push(text.slice(last, m.index));
+    parts.push(<Link key={m.index} href={m[2]} className="link">{m[1]}</Link>);
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return <>{parts}</>;
 }

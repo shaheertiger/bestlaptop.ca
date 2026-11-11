@@ -6,8 +6,8 @@ export interface Crumb {
   href?: string;
 }
 
-export function Breadcrumbs({ items }: { items: Crumb[] }) {
-  const all: Crumb[] = [{ label: "Home", href: "/" }, ...items];
+export function Breadcrumbs({ items, home = { label: "Home", href: "/" } }: { items: Crumb[]; home?: Crumb }) {
+  const all: Crumb[] = [home, ...items];
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

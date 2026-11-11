@@ -155,6 +155,18 @@ export interface BestCategory {
   filter: (l: Laptop) => boolean;
   navLabel: string;
   group: "use-case" | "price" | "type" | "brand" | "size";
+  /** Optional hand-written <title>; otherwise generated from live data. */
+  seoTitle?: string;
+  /** How picks are ranked. Defaults to overall score. */
+  sort?: (a: Laptop, b: Laptop) => number;
+  /** The one test metric that matters most for this list, shown in the spec table and quick answer. */
+  metric?: { label: string; value: (l: Laptop) => string };
+  /** Question-phrased H2 sections, each targeting one sub-intent. */
+  sections?: { heading: string; body: string[] }[];
+  /** Category-specific FAQ (short, quotable answers). */
+  faq?: { q: string; a: string }[];
+  /** Hand-picked sibling lists for internal linking. */
+  related?: string[];
 }
 
 export interface Guide {
@@ -179,6 +191,10 @@ export interface Brand {
   buyerProfile: string;
   bestUseCases: string[];
   faq: { q: string; a: string }[];
+  /** Optional hand-written <title>. */
+  seoTitle?: string;
+  /** Optional question-phrased H2 sections. */
+  sections?: { heading: string; body: string[] }[];
 }
 
 export interface PipelineItem {

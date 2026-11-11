@@ -1,6 +1,7 @@
 import { SITE } from "@/lib/site";
 import { laptops, laptopHref } from "@/data/laptops";
-import { bestCategories } from "@/data/categories";
+import { bestCategories, categoryPicks } from "@/data/categories";
+import { frenchLists } from "@/data/fr";
 import { brands } from "@/data/brands";
 import { guides } from "@/data/guides";
 import { featuredComparisons, comparisonLaptops } from "@/data/comparisons";
@@ -31,7 +32,15 @@ export function GET() {
   push();
 
   push(`## Best Laptop Lists`);
-  for (const c of bestCategories) push(`- [${c.title}](${u(`/laptop/reviews/best/${c.slug}`)}): ${c.criteria}`);
+  for (const c of bestCategories) {
+    const top = categoryPicks(c)[0];
+    push(`- [${c.title}](${u(`/laptop/reviews/best/${c.slug}`)}): ${top ? `#1 ${top.brand} ${top.model} (${top.overall.toFixed(1)}/10). ` : ""}${c.criteria}`);
+  }
+  push();
+
+  push(`## En français (fr-CA)`);
+  push(`- [Meilleur ordinateur portable au Canada](${u("/fr")}): classements en français, prix en dollars canadiens.`);
+  for (const f of frenchLists) push(`- [${f.h1}](${u(`/fr/${f.slug}`)})`);
   push();
 
   push(`## Featured Laptop Reviews`);

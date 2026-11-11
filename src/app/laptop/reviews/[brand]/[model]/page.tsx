@@ -22,10 +22,14 @@ export async function generateMetadata({ params }: { params: Promise<{ brand: st
   const { brand, model } = await params;
   const l = getLaptop(brand, model);
   if (!l) return {};
+  // Number in the title: the tested score is the click and citation hook.
+  const title = `${l.brand} ${l.model} Review: ${l.overall.toFixed(1)}/10, Tested in Canada`;
+  const description = `${l.metaDescription} Score ${l.overall.toFixed(1)}/10 · ${l.test.batteryWebHours} h battery · from ${formatCAD(lowestPrice(l))} CAD.`;
   return {
-    title: l.seoTitle,
-    description: l.metaDescription,
+    title,
+    description,
     alternates: { canonical: laptopHref(l) },
+    openGraph: { type: "article", title, description, url: laptopHref(l) },
   };
 }
 

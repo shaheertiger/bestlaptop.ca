@@ -1,9 +1,10 @@
 import type { BestCategory, Laptop } from "@/lib/types";
+import { categoryContent } from "./categoryContent";
 
 const has = (cat: string) => (l: Laptop) => l.categories.includes(cat);
 
 // "Best" categories drive /laptop/reviews/best/{category} and the nav.
-export const bestCategories: BestCategory[] = [
+const baseCategories: BestCategory[] = [
   {
     slug: "laptop",
     navLabel: "Best Laptops",
@@ -62,9 +63,9 @@ export const bestCategories: BestCategory[] = [
   },
   {
     slug: "business",
-    navLabel: "Best Business Laptops",
-    title: "Best Business Laptops in Canada",
-    h1: "The Best Business Laptops in Canada (2026)",
+    navLabel: "Best Laptops for Work",
+    title: "Best Laptops for Work & Business in Canada",
+    h1: "The Best Laptops for Work & Business in Canada (2026)",
     group: "use-case",
     intro:
       "Business laptops should offer a great keyboard, strong security, reliable build, and long battery life. We tested typing, webcams, and battery, and considered manageability and warranty.",
@@ -206,13 +207,13 @@ export const bestCategories: BestCategory[] = [
   // Additional keyword-targeted best lists
   {
     slug: "budget-gaming",
-    navLabel: "Best Budget Gaming",
-    title: "Best Budget Gaming Laptops in Canada",
-    h1: "The Best Budget Gaming Laptops in Canada (2026)",
-    group: "use-case",
-    intro: "A good budget gaming laptop should deliver smooth 1080p frame rates without overspending. We ranked the best-value gaming laptops we have tested, weighing frame rates against Canadian price.",
-    criteria: "We weight gaming frame rates per dollar, then thermals and display.",
-    filter: has("gaming"),
+    navLabel: "Best Cheap Gaming Laptops",
+    title: "Best Cheap Gaming Laptops in Canada",
+    h1: "The Best Cheap Gaming Laptops in Canada (2026)",
+    group: "price",
+    intro: "A good cheap gaming laptop should deliver smooth 1080p frame rates without overspending. We ranked every gaming laptop we have tested by frames per dollar: average 1080p High FPS divided by the lowest current Canadian price.",
+    criteria: "We rank by measured 1080p frame rate per Canadian dollar, then weigh thermals and display.",
+    filter: (l) => l.categories.includes("gaming") && l.currentPrice <= 2600,
   },
   {
     slug: "university-students",
@@ -235,26 +236,6 @@ export const bestCategories: BestCategory[] = [
     filter: (l) => l.categories.includes("programming") || l.useCases.workstation >= 8,
   },
   {
-    slug: "under-1000-canada",
-    navLabel: "Best Under $1,000 (Canada)",
-    title: "Best Laptop Under $1,000 Canada",
-    h1: "The Best Laptops Under $1,000 in Canada (2026)",
-    group: "price",
-    intro: "Under $1,000 in Canada you can get a genuinely capable everyday laptop. We picked the models that deliver the most for the money, with current Canadian pricing.",
-    criteria: "We weight value, everyday performance, and battery life within the budget.",
-    filter: (l) => l.currentPrice <= 1000,
-  },
-  {
-    slug: "under-500-canada",
-    navLabel: "Best Under $500 (Canada)",
-    title: "Best Laptop Under $500 Canada",
-    h1: "The Best Laptops Under $500 in Canada (2026)",
-    group: "price",
-    intro: "Under $500 in Canada, set realistic expectations: a capable everyday machine for browsing, documents, and streaming. We focused on which models hold up best at this price, with current Canadian pricing.",
-    criteria: "We weight Canadian value and everyday usability above raw performance.",
-    filter: (l) => l.currentPrice <= 500,
-  },
-  {
     slug: "brands",
     navLabel: "Best Laptop Brands",
     title: "Best Laptop Brands in Canada",
@@ -264,7 +245,73 @@ export const bestCategories: BestCategory[] = [
     criteria: "We rank the highest-scoring laptops across all brands we test.",
     filter: has("laptop"),
   },
+  // Keyword-gap lists (Semrush CA, Nov 2026): battery life, lightweight, home use,
+  // touchscreen, retailer and price-band intents that had no dedicated page.
+  {
+    slug: "long-battery-life",
+    navLabel: "Best Battery Life",
+    title: "Laptops With the Best Battery Life in Canada",
+    h1: "Laptops With the Best Battery Life (2026)",
+    group: "use-case",
+    intro: "These are the laptops that lasted longest in our standardized web-browsing battery test at 150 nits, ranked by hours. Every result is measured in our lab, not taken from manufacturer claims.",
+    criteria: "We rank by measured web-browsing battery life, then by overall score.",
+    filter: (l) => l.test.batteryWebHours >= 13,
+  },
+  {
+    slug: "lightweight",
+    navLabel: "Best Lightweight Laptops",
+    title: "Best Lightweight Laptops in Canada",
+    h1: "The Best Lightweight Laptops in Canada (2026)",
+    group: "type",
+    intro: "Every laptop here weighs 1.3 kg or less on our scale, ranked from lightest up. We checked that low weight does not come at the cost of battery life, keyboard comfort or build quality.",
+    criteria: "We rank by measured weight, and only include laptops that score 7.5/10 or higher overall.",
+    filter: (l) => l.weightKg <= 1.3 && l.overall >= 7.5,
+  },
+  {
+    slug: "home-use",
+    navLabel: "Best for Home Use",
+    title: "Best Laptops for Home Use in Canada",
+    h1: "The Best Laptops for Home Use & Families in Canada (2026)",
+    group: "use-case",
+    intro: "A home laptop needs to handle browsing, streaming, banking, photos and video calls for years without costing a fortune. We ranked laptops under $1,700 CAD by overall score plus value.",
+    criteria: "We weight overall test score and value equally, for laptops under $1,700 CAD.",
+    filter: (l) => l.currentPrice <= 1700 && l.gpuType === "Integrated",
+  },
+  {
+    slug: "touchscreen",
+    navLabel: "Best Touchscreen Laptops",
+    title: "Best Touchscreen Laptops in Canada",
+    h1: "The Best Touchscreen Laptops in Canada (2026)",
+    group: "type",
+    intro: "These are the best laptops with touchscreens we have tested, from clamshells to 2-in-1 convertibles. We tested touch responsiveness, glare and the battery-life cost of the touch layer.",
+    criteria: "We rank touchscreen laptops by overall test score.",
+    filter: (l) => l.touchscreen,
+  },
+  {
+    slug: "best-buy",
+    navLabel: "Best at Best Buy",
+    title: "Best Laptops at Best Buy Canada",
+    h1: "The Best Laptops You Can Buy at Best Buy Canada (2026)",
+    group: "price",
+    intro: "Shopping at Best Buy Canada? These are the laptops we have tested that Best Buy sells, ranked by our overall score, with the Best Buy price we last recorded. We are independent and not affiliated with Best Buy.",
+    criteria: "We rank laptops sold at Best Buy Canada by overall test score.",
+    filter: (l) => l.retailers.some((r) => r.name === "Best Buy Canada"),
+  },
+  {
+    slug: "under-1500",
+    navLabel: "Best Laptops Under $1,500",
+    title: "Best Laptops Under $1,500 in Canada",
+    h1: "The Best Laptops Under $1,500 in Canada (2026)",
+    group: "price",
+    intro: "Under $1,500 CAD you can buy a premium ultraportable with all-day battery or a capable RTX gaming laptop. These are the highest-scoring laptops we have tested at or below that price.",
+    criteria: "We rank laptops priced at or under $1,500 CAD by overall test score.",
+    filter: (l) => l.currentPrice <= 1500,
+  },
 ];
+
+// Merge hand-written SEO content (sections, FAQ, metric, sort, related links).
+export const bestCategories: BestCategory[] = baseCategories.map((c) => ({ ...c, ...categoryContent[c.slug] }));
+
 
 export function getBestCategory(slug: string): BestCategory | undefined {
   return bestCategories.find((c) => c.slug === slug);
@@ -275,5 +322,5 @@ export function categoryPicks(c: BestCategory): Laptop[] {
   const { laptops } = require("./laptops") as typeof import("./laptops");
   return laptops
     .filter((l: Laptop) => l.status === "published" && c.filter(l))
-    .sort((a: Laptop, b: Laptop) => b.overall - a.overall);
+    .sort(c.sort ?? ((a: Laptop, b: Laptop) => b.overall - a.overall));
 }

@@ -40,14 +40,14 @@ function buildKeywords(): KeywordTarget[] {
     ["best windows laptops", "/laptop/reviews/best/windows"],
     ["best windows laptops canada", "/laptop/reviews/best/windows"],
     ["best windows laptops 2026", "/laptop/reviews/best/windows"],
-    ["best laptop under $500 canada", "/laptop/reviews/best/under-500-canada"],
-    ["best laptop under 500 canada", "/laptop/reviews/best/under-500-canada"],
-    ["best laptop under $500 canada 2026", "/laptop/reviews/best/under-500-canada"],
-    ["best laptops under $500 canada", "/laptop/reviews/best/under-500-canada"],
-    ["best laptop under $1,000 canada", "/laptop/reviews/best/under-1000-canada"],
-    ["best laptop under 1000 canada", "/laptop/reviews/best/under-1000-canada"],
-    ["best laptop under $1000 canada 2026", "/laptop/reviews/best/under-1000-canada"],
-    ["best laptops under $1,000 canada", "/laptop/reviews/best/under-1000-canada"],
+    ["best laptop under $500 canada", "/laptop/reviews/best/under-500"],
+    ["best laptop under 500 canada", "/laptop/reviews/best/under-500"],
+    ["best laptop under $500 canada 2026", "/laptop/reviews/best/under-500"],
+    ["best laptops under $500 canada", "/laptop/reviews/best/under-500"],
+    ["best laptop under $1,000 canada", "/laptop/reviews/best/under-1000"],
+    ["best laptop under 1000 canada", "/laptop/reviews/best/under-1000"],
+    ["best laptop under $1000 canada 2026", "/laptop/reviews/best/under-1000"],
+    ["best laptops under $1,000 canada", "/laptop/reviews/best/under-1000"],
   ];
   for (const [kw, url] of priority) add(kw, url, "Priority (Canada)");
 

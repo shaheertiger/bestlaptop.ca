@@ -5,7 +5,8 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 export const metadata: Metadata = {
   title: "Laptops — Reviews, Comparisons & Buying Guides (Canada)",
   description: "Find the best laptop for your needs with independent testing, Canadian pricing, comparisons, and buying guides.",
-  alternates: { canonical: "/laptop" },
+  // Same content as the homepage, so consolidate signals there.
+  alternates: { canonical: "/" },
 };
 
 export default function LaptopLanding() {

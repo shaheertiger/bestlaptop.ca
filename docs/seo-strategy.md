@@ -61,3 +61,31 @@ For visibility and citations in AI search (ChatGPT, Perplexity, Google AI Overvi
 ## Measurement
 
 Wire GA4 + Search Console and event-track: comparison builds, table filter usage, retailer (affiliate) clicks, and newsletter signups.
+
+## November 2026 update (Search Console + Semrush CA + playbook)
+
+Inputs: GSC last 3 months (13.6K CA impressions, avg position ~21), Semrush CA exports for "best laptop" (30K keywords) and "ordinateur portable" (30K keywords), and the programmatic-SEO playbook.
+
+**Template (all best lists, `src/app/laptop/reviews/best/[category]`)**
+- Answer in the title and meta description: count, #1 pick, score and CAD price, generated from live data so numbers always agree.
+- "Quick answer" block in the first screen (also the `speakable` selector).
+- One key metric per list (`metric` in `src/data/categoryContent.ts`) shown in the quick answer and summary table; lists like battery, weight, export time and FPS-per-dollar use their own `sort`.
+- Full crawlable specs & test-results table for every pick.
+- Question-phrased H2 sections per sub-intent and list-specific FAQs (answers < 50 words, always visible, FAQPage schema).
+- Single JSON-LD graph: Article (dateModified) + ItemList.
+- Hand-picked related lists instead of "first 8".
+
+**Pages**
+- Video editing (4.5K impressions, pos ~12): ranked by 4K export time; H2s for Windows, editing + gaming, budget, 4K specs, Mac vs Windows.
+- Framework brand page (pos ~5.5, low CTR): "Framework Laptop Canada" title + Canada buying, price, refurbished/used, 13 vs 16, comparison sections.
+- New lists: cheap gaming (rebuilt `budget-gaming`, KD 23 / 4.4K), long battery life, lightweight, home use, touchscreen, Best Buy Canada, under $1,500.
+- Duplicates `under-500-canada` / `under-1000-canada` 301 to their canonical lists.
+- Chromebook vs Windows guide expanded from a stub into a full guide.
+- Homepage: explicit title, quick answer, and a hub linking every best list. `/laptop` canonicalizes to `/`.
+- Review titles carry the tested score ("… Review: 7.6/10, Tested in Canada").
+
+**French (fr-CA)** — `/fr` hub + 15 lists at `/fr/{slug-traduit}` (`src/data/fr.ts`), reusing the English rankings, with reciprocal `hreflang` (en-CA / fr-CA / x-default). Targets "ordinateur portable" (12.1K, KD 35) and the "pas cher" cluster (~5.9K, KD ~26).
+
+**Technical** — honest sitemap `lastmod` (`CONTENT_UPDATED` in `src/lib/site.ts`, never "now"), robots disallow for utm/gclid/fbclid/msclkid URLs, llms.txt lists each list's #1 pick plus the French pages.
+
+**Next steps** — request indexing in GSC for `/fr`, `/laptop/reviews/best/video-editing`, `/laptop/reviews/framework` and the new lists; refresh `CONTENT_UPDATED` only when content really changes; re-pull GSC in 4–6 weeks and expand any page sitting at positions 4–15.

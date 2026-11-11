@@ -1,6 +1,11 @@
 // Default affiliate destination used for deal "View deal" links.
 export const AFFILIATE_URL = "https://amzn.to/3RW6gfZ";
 
+// Date the editorial content (best lists, hubs) was last reviewed. Used for
+// visible "Updated" stamps, Article schema dateModified, and sitemap lastmod,
+// so every signal agrees.
+export const CONTENT_UPDATED = "2026-11-11";
+
 export const SITE = {
   name: "BestLaptop.ca",
   url: "https://bestlaptop.ca",
@@ -57,6 +62,7 @@ export const footerNav = {
     { label: "How We Test", href: "/laptop/learn/how-we-test" },
     { label: "Affiliate Disclosure", href: "/affiliate-disclosure" },
     { label: "Popular Searches", href: "/laptop/popular-searches" },
+    { label: "Français (fr-CA)", href: "/fr" },
   ],
   legal: [
     { label: "Privacy Policy", href: "/privacy-policy" },

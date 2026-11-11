@@ -5,7 +5,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SecondaryNav } from "@/components/SecondaryNav";
 import { ReviewRowCard } from "@/components/LaptopCard";
 import { ScoreBadge } from "@/components/Score";
-import { FAQ, SectionCard } from "@/components/blocks";
+import { FAQ, SectionCard, Linkify } from "@/components/blocks";
 import { Newsletter } from "@/components/Newsletter";
 import { brands, getBrand } from "@/data/brands";
 import { laptops, laptopHref } from "@/data/laptops";
@@ -22,10 +22,19 @@ export async function generateMetadata({ params }: { params: Promise<{ brand: st
   const { brand } = await params;
   const b = getBrand(brand);
   if (!b) return {};
+  const models = laptops.filter((l) => l.brandSlug === b.slug && l.status === "published").sort((a, c) => c.overall - a.overall);
+  const top = models[0];
+  const title = b.seoTitle ?? (models.length
+    ? `${b.name} Laptops Canada (2026): ${models.length} Tested Model${models.length === 1 ? "" : "s"}, Prices & Reviews`
+    : `${b.name} Laptops Canada (2026): Reviews & Buying Advice`);
+  const description = top
+    ? `Our top-rated ${b.name} laptop is the ${top.model} (${top.overall.toFixed(1)}/10, from ${formatCAD(lowestPrice(top))} CAD). ${b.overview.split(". ")[0]}.`.slice(0, 200)
+    : b.overview.slice(0, 160);
   return {
-    title: `${b.name} Laptops — Reviews, Best Models & Comparison (Canada)`,
-    description: `${b.overview.slice(0, 150)}`,
+    title,
+    description,
     alternates: { canonical: `/laptop/reviews/${b.slug}` },
+    openGraph: { title, description, url: `/laptop/reviews/${b.slug}` },
   };
 }
 
@@ -54,7 +63,7 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
       <Breadcrumbs items={[{ label: "Laptops", href: "/laptop" }, { label: "Brands", href: "/laptop/brands" }, { label: b.name }]} />
       <div className="container-site pb-12">
         <header className="mb-6">
-          <h1 className="text-3xl font-extrabold sm:text-4xl">{b.name} Laptops</h1>
+          <h1 className="text-3xl font-extrabold sm:text-4xl">{b.name} Laptops in Canada</h1>
           <p className="mt-3 max-w-3xl text-lg text-ink-700">{b.overview}</p>
           {hasBestList && (
             <Link href={`/laptop/reviews/best/${b.slug}`} className="btn-primary mt-4">See the best {b.name} laptops →</Link>
@@ -69,6 +78,16 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
             <ul className="list-disc space-y-1 pl-5">{b.weaknesses.map((s) => <li key={s}>{s}</li>)}</ul>
           </SectionCard>
         </div>
+
+        {b.sections && b.sections.length > 0 && (
+          <div className="mt-8 space-y-8">
+            {b.sections.map((sec, i) => (
+              <SectionCard key={sec.heading} id={`q-${i}`} title={sec.heading}>
+                {sec.body.map((para, j) => <p key={j}><Linkify text={para} /></p>)}
+              </SectionCard>
+            ))}
+          </div>
+        )}
 
         <p className="mt-6 text-ink-700"><span className="font-semibold">Typical buyer:</span> {b.buyerProfile} <span className="font-semibold">Best use cases:</span> {b.bestUseCases.join(", ")}.</p>
 

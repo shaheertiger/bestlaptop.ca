@@ -5,6 +5,8 @@ import { featuredComparisons, comparisonLaptops } from "@/data/comparisons";
 import { laptops } from "@/data/laptops";
 import { guides } from "@/data/guides";
 import { LaptopCard } from "./LaptopCard";
+import { formatCAD, lowestPrice } from "@/lib/scoring";
+import { laptopHref } from "@/data/laptops";
 import { ProductImage } from "./ProductImage";
 import { ScoreBadge } from "./Score";
 import { ToolIcon } from "./icons";
@@ -25,7 +27,7 @@ export function Hero({ h1, intro }: { h1: string; intro: string }) {
               id="hero-search"
               name="q"
               type="search"
-              placeholder="Search 168 tested laptops…"
+              placeholder={`Search ${laptops.filter((l) => l.status === "published").length} laptop reviews…`}
               className="w-full rounded-lg border border-slate-300 px-4 py-3 text-base"
             />
             <button type="submit" className="btn-primary px-6 py-3">Search</button>
@@ -254,12 +256,80 @@ export function FeedbackWidget() {
   );
 }
 
+// "Quick answer" block: the direct, quotable answer to "what is the best laptop"
+// in the first screen, generated from live rankings so numbers always agree.
+export function QuickAnswer() {
+  const rows = [
+    ["Best overall", "laptop"],
+    ["Best budget", "budget"],
+    ["Best for students", "student"],
+    ["Best gaming", "gaming"],
+    ["Best cheap gaming", "budget-gaming"],
+    ["Best battery life", "long-battery-life"],
+  ] as const;
+  const top = categoryPicks(getBestCategory("laptop")!)[0];
+  return (
+    <section className="container-site pt-10" aria-labelledby="quick-answer-h">
+      <div id="quick-answer" className="rounded-2xl border-2 border-brand-200 bg-brand-50 p-6">
+        <h2 id="quick-answer-h" className="text-xl font-bold sm:text-2xl">What is the best laptop in Canada right now?</h2>
+        <p className="mt-2 text-ink-700">
+          The best laptop in Canada for 2026 is the <Link href={laptopHref(top)} className="font-semibold text-brand-700 hover:underline">{top.brand} {top.model}</Link>,
+          which scored {top.overall.toFixed(1)}/10 on our Test Bench and costs from {formatCAD(lowestPrice(top))} CAD. Our top pick for each need:
+        </p>
+        <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {rows.map(([role, slug]) => {
+            const cat = getBestCategory(slug);
+            const l = cat && categoryPicks(cat)[0];
+            if (!cat || !l) return null;
+            return (
+              <li key={slug} className="rounded-lg bg-white p-3 text-sm shadow-sm">
+                <Link href={`/laptop/reviews/best/${slug}`} className="font-semibold text-brand-700 hover:underline">{role}</Link>
+                <span className="block text-ink-700">{l.brand} {l.model} · {l.overall.toFixed(1)}/10 · {formatCAD(lowestPrice(l))}</span>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+// Crawlable hub linking every best list, grouped (keeps every list one click from home).
+export function BestListHub() {
+  const groups: { key: string; label: string }[] = [
+    { key: "use-case", label: "By use" },
+    { key: "price", label: "By budget" },
+    { key: "type", label: "By type" },
+    { key: "size", label: "By screen size" },
+    { key: "brand", label: "By brand" },
+  ];
+  return (
+    <section className="container-site py-10" aria-labelledby="hub-h">
+      <h2 id="hub-h" className="mb-4 text-xl font-bold sm:text-2xl">Best laptops in Canada, by need and budget</h2>
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        {groups.map((g) => (
+          <div key={g.key}>
+            <h3 className="mb-2 text-sm font-bold uppercase tracking-wide text-ink-400">{g.label}</h3>
+            <ul className="space-y-1.5 text-sm">
+              {bestCategories.filter((c) => c.group === g.key).map((c) => (
+                <li key={c.slug}><Link href={`/laptop/reviews/best/${c.slug}`} className="text-ink-700 hover:text-brand-700">{c.title.replace(/ in Canada$/, "")}</Link></li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export function LandingPage({ h1, intro, whatsNewLabel }: { h1: string; intro: string; whatsNewLabel: string }) {
   return (
     <>
       <Hero h1={h1} intro={intro} />
+      <QuickAnswer />
       <SupportBanner />
       <TopPicks />
+      <BestListHub />
       <PopularComparisons />
       <PopularReviews />
       <Newsletter />

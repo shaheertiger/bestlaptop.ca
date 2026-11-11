@@ -29,8 +29,9 @@ const AI_CRAWLERS = [
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: "*", allow: "/" },
-      { userAgent: AI_CRAWLERS, allow: "/" },
+      // Keep tracking-parameter duplicates out of the index.
+      { userAgent: "*", allow: "/", disallow: ["/*?*utm_", "/*?*gclid=", "/*?*fbclid=", "/*?*msclkid="] },
+      { userAgent: AI_CRAWLERS, allow: "/", disallow: ["/*?*utm_", "/*?*gclid=", "/*?*fbclid="] },
     ],
     sitemap: `${SITE.url}/sitemap.xml`,
     host: SITE.url,
