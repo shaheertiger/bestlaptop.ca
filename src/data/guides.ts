@@ -741,12 +741,12 @@ export const guides: Guide[] = [
   },
 ];
 
+// Short-answer guides. The answer is shown once, in the "Short answer" box; it is
+// not repeated as an H2 section or an FAQ entry, and there is no sitewide filler
+// paragraph (repeated text across siblings is what scaled-content updates cut).
+// These are candidates to expand into full guides, or prune if they earn no
+// impressions after 90 days (see docs/seo-strategy.md).
 function quickGuide(slug: string, title: string, category: string, answer: string, related?: string): Guide[] {
-  const fitsBody = [
-    "Use this alongside our tested reviews and the [results table](/laptop/tools/table) to match the recommendation to a specific model and Canadian price.",
-    "Every recommendation on BestLaptop.ca is based on standardized testing, not manufacturer claims.",
-  ];
-  if (related) fitsBody.push(related);
   return [
     {
       slug,
@@ -757,13 +757,8 @@ function quickGuide(slug: string, title: string, category: string, answer: strin
       updated: "2026-05-10",
       readingTime: 5,
       answer,
-      sections: [
-        { heading: "The short answer", body: [answer] },
-        { heading: "How this fits your buying decision", body: fitsBody },
-      ],
-      faq: [
-        { q: `Quick answer: ${title}`, a: answer },
-      ],
+      sections: related ? [{ heading: "Related reading", body: [related] }] : [],
+      faq: [],
     },
   ];
 }

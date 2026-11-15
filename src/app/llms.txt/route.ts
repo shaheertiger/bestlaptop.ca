@@ -48,6 +48,7 @@ export function GET() {
   push();
 
   push(`## Popular Comparisons`);
+  push(`- [All laptop comparisons](${u("/laptop/compare")}): every tested laptop compared head-to-head with measured battery, weight, benchmarks and CAD prices.`);
   for (const c of featuredComparisons) {
     const [a, b] = comparisonLaptops(c);
     push(`- [${a.brand} ${a.model} vs ${b.brand} ${b.model}](${u(`/laptop/compare/${c.slug}`)}): ${c.verdict}`);

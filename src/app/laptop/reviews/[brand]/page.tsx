@@ -11,7 +11,9 @@ import { brands, getBrand } from "@/data/brands";
 import { laptops, laptopHref } from "@/data/laptops";
 import { getBestCategory } from "@/data/categories";
 import { formatCAD, lowestPrice } from "@/lib/scoring";
-import { laptopRankings } from "@/lib/insights";
+import { laptopRankings, brandStats } from "@/lib/insights";
+import { CONTENT_UPDATED, SITE } from "@/lib/site";
+import { comparisons } from "@/data/comparisons";
 import { guides } from "@/data/guides";
 
 export function generateStaticParams() {
@@ -56,6 +58,20 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
     ).values(),
   ).slice(0, 8);
   const relatedGuides = guides.filter((g) => ["Getting started", "Buying advice", "Comparisons"].includes(g.category)).slice(0, 4);
+  const stats = brandStats(models);
+  // Head-to-heads between this brand's own models (e.g. "MacBook Air 13 vs 15").
+  const ids = new Set(models.map((m) => m.id));
+  const inBrand = comparisons.filter((c) => ids.has(c.a) && ids.has(c.b));
+
+  const itemListLd = models.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: `${b.name} laptops tested by ${SITE.name}`,
+        numberOfItems: models.length,
+        itemListElement: models.map((l, i) => ({ "@type": "ListItem", position: i + 1, name: `${l.brand} ${l.model}`, url: `${SITE.url}${laptopHref(l)}` })),
+      }
+    : null;
 
   return (
     <>
@@ -64,17 +80,32 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
       <div className="container-site pb-12">
         <header className="mb-6">
           <h1 className="text-3xl font-extrabold sm:text-4xl">{b.name} Laptops in Canada</h1>
-          <p className="mt-3 max-w-3xl text-lg text-ink-700">{b.overview}</p>
+          {itemListLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />}
+          {stats && (
+            <div id="quick-answer" className="mt-4 max-w-3xl rounded-xl border border-brand-200 bg-brand-50 p-4">
+              <p className="text-xs font-bold uppercase tracking-wide text-brand-700">Quick answer</p>
+              <p className="mt-1 text-ink-900">
+                The best {b.name} laptop we have tested is the <Link href={laptopHref(stats.top)} className="link font-semibold">{stats.top.model}</Link> ({stats.top.overall.toFixed(1)}/10, from {formatCAD(lowestPrice(stats.top))} CAD).
+                {stats.count > 1 && <>
+                  {" "}Across {stats.count} tested {b.name} models, scores range from {stats.scoreMin.toFixed(1)} to {stats.scoreMax.toFixed(1)} (median {stats.scoreMedian.toFixed(1)}) and prices from {formatCAD(stats.priceMin)} to {formatCAD(stats.priceMax)}.
+                  {" "}Longest battery: {stats.longestBattery.model} ({stats.longestBattery.test.batteryWebHours} h). Lightest: {stats.lightest.model} ({stats.lightest.weightKg} kg).
+                  {stats.cheapest.id !== stats.top.id && <> Cheapest: {stats.cheapest.model} ({formatCAD(lowestPrice(stats.cheapest))}).</>}
+                </>}
+              </p>
+              <p className="mt-2 text-xs text-ink-500">Computed from our lab results · Updated {CONTENT_UPDATED} · <Link href="/laptop/learn/how-we-test" className="link">How we test</Link></p>
+            </div>
+          )}
+          <p className="mt-4 max-w-3xl text-lg text-ink-700">{b.overview}</p>
           {hasBestList && (
             <Link href={`/laptop/reviews/best/${b.slug}`} className="btn-primary mt-4">See the best {b.name} laptops →</Link>
           )}
         </header>
 
         <div className="grid gap-6 md:grid-cols-2">
-          <SectionCard id="strengths" title="Strengths">
+          <SectionCard id="strengths" title={`What are ${b.name} laptops good at?`}>
             <ul className="list-disc space-y-1 pl-5">{b.strengths.map((s) => <li key={s}>{s}</li>)}</ul>
           </SectionCard>
-          <SectionCard id="weaknesses" title="Weaknesses">
+          <SectionCard id="weaknesses" title={`Where do ${b.name} laptops fall short?`}>
             <ul className="list-disc space-y-1 pl-5">{b.weaknesses.map((s) => <li key={s}>{s}</li>)}</ul>
           </SectionCard>
         </div>
@@ -111,12 +142,12 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
         {models.length > 0 ? (
           <>
             <section className="mt-10">
-              <h2 className="mb-4 text-2xl font-bold">{b.name} Reviews</h2>
+              <h2 className="mb-4 text-2xl font-bold">{b.name} laptop reviews</h2>
               <div className="grid gap-4">{models.map((l) => <ReviewRowCard key={l.id} laptop={l} />)}</div>
             </section>
 
             <section className="mt-10">
-              <h2 className="mb-4 text-2xl font-bold">{b.name} Comparison Table</h2>
+              <h2 className="mb-4 text-2xl font-bold">{b.name} laptops compared: scores, battery, weight and price</h2>
               <div className="overflow-x-auto rounded-xl border border-slate-200">
                 <table className="w-full text-sm">
                   <thead className="bg-slate-50 text-left text-xs uppercase text-ink-400">
@@ -140,6 +171,24 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
           </>
         ) : (
           <p className="mt-10 rounded-lg border border-slate-200 bg-slate-50 p-4 text-ink-500">We have not published a {b.name} review yet. <Link href="/laptop/vote" className="link">Vote to see one tested next</Link>.</p>
+        )}
+
+        {inBrand.length > 0 && (
+          <section className="mt-10">
+            <h2 className="mb-3 text-2xl font-bold">Which {b.name} laptop should you buy? Head-to-heads</h2>
+            <ul className="grid gap-x-6 gap-y-1.5 text-sm sm:grid-cols-2">
+              {inBrand.map((c) => {
+                const x = models.find((m) => m.id === c.a)!;
+                const y = models.find((m) => m.id === c.b)!;
+                return (
+                  <li key={c.slug}>
+                    <Link href={`/laptop/compare/${c.slug}`} className="link">{x.model} vs {y.model}</Link>{" "}
+                    <span className="text-ink-400">({x.overall.toFixed(1)} vs {y.overall.toFixed(1)})</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
         )}
 
         <div className="mt-10"><FAQ items={b.faq} heading={`${b.name} Laptop FAQ`} /></div>

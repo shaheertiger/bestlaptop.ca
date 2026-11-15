@@ -89,3 +89,54 @@ Inputs: GSC last 3 months (13.6K CA impressions, avg position ~21), Semrush CA e
 **Technical** — honest sitemap `lastmod` (`CONTENT_UPDATED` in `src/lib/site.ts`, never "now"), robots disallow for utm/gclid/fbclid/msclkid URLs, llms.txt lists each list's #1 pick plus the French pages.
 
 **Next steps** — request indexing in GSC for `/fr`, `/laptop/reviews/best/video-editing`, `/laptop/reviews/framework` and the new lists; refresh `CONTENT_UPDATED` only when content really changes; re-pull GSC in 4–6 weeks and expand any page sitting at positions 4–15.
+
+## Master SEO Playbook applied (Nov 15, 2026)
+
+Source: the "Master SEO Playbook" (FontB, EatBetter, LoadMuscle, BodyPal, NutriScan, guntherheller, Bing and best-X-apps sections). Only rules that fit a laptop review site were applied; app-funnel, locale-mirror and expired-domain rules do not apply here.
+
+**Answer first, with numbers, on every template**
+- Reviews: a "Quick answer" block under the H1 (score, battery hours, weight, 1080p FPS, CAD price, and the laptop's best computed rank), with source, last-verified date and links to the methodology and test results. `speakable` points at it.
+- Test results: title carries the measurements ("… Test Results: 15.2 h Battery, 478 Nits, 18 FPS"), meta description lists the full data answer, plus a quick answer.
+- Comparisons: query first, then the verdict and scores in the title ("{A} vs {B}: Apple Wins, 8.5 vs 8.0"); meta description is the data answer (scores, battery, weight, FPS, prices); quick answer block.
+- Brand hubs: quick answer computed from the brand's own models (best model, score range and median, price range, longest battery, lightest, cheapest).
+
+**One question-phrased H2 per sub-intent, with the model name in it.** Review H2s are the searches themselves ("How long does the XPS 13 9350 battery last?", "Can the XPS 13 9350 run games?", "Can you upgrade the XPS 13 9350?"). Comparison analysis is split into question sections (faster, battery, screen, lighter, value, other differences). Including the model name means sibling pages never share identical headings (the Founderpath cannibalisation finding).
+
+**Computed, page-unique data.** `metricRank` in `src/lib/insights.ts` ranks every laptop against all tested laptops ("#2 of 23 for lightness"). Ranks appear in review sections, FAQs, the quick answer, and a rank column on test-results pages. Comparisons add score-per-$1,000 and gaps in grams, hours and dollars.
+
+**FAQs carry numbers.** Review FAQs went from 4 generic answers to 9 data-driven ones (battery, gaming FPS, price and retailer, RAM upgradeability, weight, heat and noise, touchscreen, ports). Comparison use-case FAQs now include both use-case scores.
+
+**Schema**
+- Test results: `Dataset` with `variableMeasured` for every measurement (the playbook's "schema type competitors don't use" for tables of measured values).
+- Reviews: `positiveNotes` / `negativeNotes` (pros/cons) and `speakable`.
+- Comparisons: `Article` about two `Product`s (each with its review rating and CAD offer).
+- Brand hubs and the comparisons hub: `ItemList`.
+
+**Internal links: hubs link down, pages link sideways and up**
+- New hub `/laptop/compare` lists all 253 comparisons grouped by laptop in crawlable HTML; every comparison breadcrumb links to it.
+- Comparison "related" links are now the sibling match-ups of the two laptops on the page, not the same four links sitewide (the NutriScan "identical similar list" mistake). The same fix for guides: "Tested laptops for this guide" picks relevant reviews instead of the same three on every guide.
+- Reviews: the brand label links to the brand hub (SearchPilot +18% test: link existing text labels to the parent), the comparison table has a head-to-head link per rival, rivals are ordered by shared categories, and there is a link to all of the laptop's comparisons.
+- Brand hubs list head-to-heads between the brand's own models.
+
+**Thin and repeated text removed.** The 14 short-answer guides repeated the same answer three times (answer box, a "The short answer" H2, a one-question FAQ) plus a sitewide filler paragraph. Each now shows its answer once.
+
+**Technical**
+- `/sitemap.xml` is now a sitemap index with one sitemap per family (`/sitemaps/{pages,best-lists,reviews,test-results,comparisons,brands,guides,french}.xml`), so Search Console coverage can be read per template. Comparison lastmod = the newer of the two laptops' test dates. `npm run indexnow` follows the index.
+- `robots.txt` blocks AhrefsBot, DataForSeoBot and SERankingBacklinksBot (competitor research only). All search and AI crawlers stay allowed.
+- `npm run check:overlap` (after `npm run build`) reports 5-gram overlap between sibling pages per family. Target: median under 15%, investigate above 25%.
+
+**Overlap, before → after (median 5-gram Jaccard, `<main>` without nav)**
+
+| Family | Before | After |
+|---|---|---|
+| Comparisons (253) | 23.6% | 11.7% |
+| Test results (23) | 32.3% | 19.3% |
+| Reviews (23) | 22.9% | 17.6% |
+| Brands (13) | 17.4% | 15.7% |
+
+**Open items, need GSC data or an editorial decision**
+1. **Near-duplicate best lists.** Pairs above 60% overlap: best-buy ↔ brands (80%), chromebook ↔ under-500 (76%), brands ↔ laptop (73%), acer ↔ under-1000 (67%), best-buy ↔ laptop (67%), student ↔ university-students (66%), business ↔ windows (64%), budget ↔ under-1000 (62%). They show nearly the same picks with the same blurbs. Either give each list its own ranking metric and copy, or merge the weaker one with a 301. Check GSC for which URL of each pair already earns impressions before choosing.
+2. **14 short-answer guides** (`quickGuide` in `src/data/guides.ts`) are one-paragraph pages. Expand the ones with impressions into full guides (question H2s, tables, FAQ). Prune or `noindex` the ones with 0 impressions after 90 days.
+3. **253 generated comparisons.** Keep the template, but after 90 days prune match-ups with 0 impressions (most pairs, such as a Chromebook vs a gaming laptop, have no search demand), keeping one page per real query.
+4. **French list titles** reuse the English title formula. SearchPilot found a translated "best deals" title formula cut traffic 4.6%, so test fr-CA title patterns separately.
+5. **Bing:** verify in Bing Webmaster Tools (import from GSC), submit `/sitemap.xml`, and run `npm run indexnow` after each deploy. Read the 8+ word queries in Bing's keyword report monthly.

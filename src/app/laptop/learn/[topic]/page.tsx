@@ -87,7 +87,23 @@ export default async function GuidePage({ params }: { params: Promise<{ topic: s
   const sameCategory = guides.filter((x) => x.slug !== g.slug && x.category === g.category);
   const otherGuides = guides.filter((x) => x.slug !== g.slug && x.category !== g.category);
   const related = [...sameCategory, ...otherGuides].slice(0, 6);
-  const relatedReviews = laptops.slice(0, 3);
+  // Reviews relevant to this guide (not the same three on every page): laptops the
+  // guide names first, then laptops from best lists matching the guide's topic.
+  const text = [g.title, g.answer, ...g.sections.flatMap((s) => [s.heading, ...s.body]), ...g.faq.map((f) => f.a)].join(" ").toLowerCase();
+  const topicLists = ["gaming", "student", "business", "programming", "video-editing", "photo-editing", "chromebook", "macbook", "2-in-1", "budget", "touchscreen", "long-battery-life", "lightweight"]
+    .filter((cat) => (g.slug + " " + g.category.toLowerCase()).includes(cat.replace(/-/g, " ").split(" ")[0]));
+  const relatedReviews = laptops
+    .map((l) => ({
+      l,
+      score:
+        (text.includes(l.model.toLowerCase()) ? 10 : 0) +
+        (text.includes(l.series.toLowerCase()) ? 4 : 0) +
+        l.categories.filter((c) => topicLists.includes(c)).length * 3 +
+        l.overall / 10,
+    }))
+    .sort((x, y) => y.score - x.score)
+    .slice(0, 4)
+    .map((x) => x.l);
 
   const articleLd = {
     "@context": "https://schema.org",
@@ -148,9 +164,14 @@ export default async function GuidePage({ params }: { params: Promise<{ topic: s
           </section>
 
           <section className="mt-10">
-            <h2 className="mb-3 text-2xl font-bold">Related Reviews</h2>
+            <h2 className="mb-3 text-2xl font-bold">Tested laptops for this guide</h2>
             <ul className="space-y-1">
-              {relatedReviews.map((l) => <li key={l.id}><Link href={laptopHref(l)} className="link">{l.brand} {l.model} review</Link></li>)}
+              {relatedReviews.map((l) => (
+                <li key={l.id}>
+                  <Link href={laptopHref(l)} className="link">{l.brand} {l.model} review</Link>{" "}
+                  <span className="text-sm text-ink-400">({l.overall.toFixed(1)}/10 · {l.test.batteryWebHours} h battery · {l.weightKg} kg)</span>
+                </li>
+              ))}
             </ul>
           </section>
 
@@ -163,14 +184,8 @@ export default async function GuidePage({ params }: { params: Promise<{ topic: s
 
         <aside className="hidden lg:block">
           <div className="sticky top-20 space-y-4">
-            <TableOfContents items={g.sections.map((s) => ({ id: s.heading.toLowerCase().replace(/[^a-z0-9]+/g, "-"), label: s.heading }))} />
-            {related.length > 0 && (
-              <div className="card p-4">
-                <h2 className="mb-2 text-sm font-bold uppercase tracking-wide text-ink-400">Related guides</h2>
-                <ul className="space-y-2 text-sm">
-                  {related.map((r) => <li key={r.slug}><Link href={`/laptop/learn/${r.slug}`} className="text-ink-600 hover:text-brand-700">{r.title}</Link></li>)}
-                </ul>
-              </div>
+            {g.sections.length > 1 && (
+              <TableOfContents items={g.sections.map((s) => ({ id: s.heading.toLowerCase().replace(/[^a-z0-9]+/g, "-"), label: s.heading }))} />
             )}
           </div>
         </aside>

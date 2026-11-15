@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "indexnow": "node scripts/indexnow.mjs"
+    "indexnow": "node scripts/indexnow.mjs",
+    "check:overlap": "node scripts/check-overlap.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

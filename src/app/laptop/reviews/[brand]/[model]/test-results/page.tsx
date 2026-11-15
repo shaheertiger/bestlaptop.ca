@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SecondaryNav } from "@/components/SecondaryNav";
 import { laptops as all, getLaptop, laptopHref } from "@/data/laptops";
+import { rankBy, ordinalRank } from "@/lib/insights";
+import { SITE } from "@/lib/site";
 const laptops = all;
 
 export function generateStaticParams() {
@@ -14,23 +16,29 @@ export async function generateMetadata({ params }: { params: Promise<{ brand: st
   const { brand, model } = await params;
   const l = getLaptop(brand, model);
   if (!l) return {};
+  // Answer in the title: the measurements people search for ("{model} battery life", "{model} nits").
+  const t = l.test;
+  const title = `${l.brand} ${l.model} Test Results: ${t.batteryWebHours} h Battery, ${t.brightnessNits} Nits, ${t.gamingFps1080pHigh} FPS`;
+  const description = `Measured on Test Bench ${l.testBench}: ${t.batteryWebHours} h web battery, ${t.batteryVideoHours} h video, ${t.brightnessNits} nits, ${t.colorGamutDCIP3}% DCI-P3, Geekbench ${t.geekbenchMulti.toLocaleString()} multi-core, ${t.loadNoiseDb} dB under load, 4K export in ${t.videoExportMinutes} min.`;
   return {
-    title: `${l.brand} ${l.model} — Test Results & Measurements`,
-    description: `Raw test data for the ${l.brand} ${l.model}: display, performance, battery, thermals, and noise measurements.`,
+    title,
+    description,
     alternates: { canonical: `${laptopHref(l)}/test-results` },
+    openGraph: { type: "article", title, description, url: `${laptopHref(l)}/test-results` },
   };
 }
 
 // A horizontal bar that compares this laptop's measurement against the tested range.
-function MeasureBar({ label, value, unit, min, max, higherIsBetter = true }: { label: string; value: number; unit: string; min: number; max: number; higherIsBetter?: boolean }) {
+function MeasureBar({ label, value, unit, min, max, higherIsBetter = true, rank }: { label: string; value: number; unit: string; min: number; max: number; higherIsBetter?: boolean; rank: string }) {
   const pct = max === min ? 50 : Math.max(2, Math.min(100, ((value - min) / (max - min)) * 100));
   return (
-    <div className="grid grid-cols-[180px_1fr_90px] items-center gap-3 py-1.5 text-sm">
-      <span className="text-ink-600">{label}</span>
+    <div className="grid grid-cols-[minmax(0,140px)_1fr_80px] items-center gap-3 py-1.5 text-sm sm:grid-cols-[180px_1fr_90px_70px]">
+      <span className="text-ink-500">{label}</span>
       <div className="h-2.5 w-full rounded-full bg-slate-100">
         <div className="h-full rounded-full bg-brand-500" style={{ width: `${higherIsBetter ? pct : 100 - pct}%` }} />
       </div>
       <span className="text-right font-semibold tabular-nums">{value.toLocaleString()} {unit}</span>
+      <span className="hidden text-right text-xs text-ink-400 sm:block" title="Rank among all laptops we have tested">{rank}</span>
     </div>
   );
 }
@@ -95,27 +103,67 @@ export default async function TestResultsPage({ params }: { params: Promise<{ br
     },
   ];
 
+  const url = `${SITE.url}${laptopHref(l)}/test-results`;
+  const name = `${l.brand} ${l.model}`;
+  const rankOf = (r: { sel: (x: typeof t) => number; higher?: boolean }) => rankBy(l, (x) => r.sel(x.test), r.higher !== false);
+  const batteryRank = ordinalRank(rankOf({ sel: (x) => x.batteryWebHours }));
+  const brightRank = ordinalRank(rankOf({ sel: (x) => x.brightnessNits }));
+
+  // Dataset schema: the page's core is a table of measured values, a type no
+  // competing review page carries. variableMeasured repeats the visible numbers.
+  const datasetLd = {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name: `${name} laptop test results`,
+    description: `Lab measurements of the ${name} (${l.cpu}, ${l.ram}GB RAM, ${l.storage}GB) from BestLaptop.ca Test Bench ${l.testBench}: display, CPU, GPU, storage, battery, thermals and noise.`,
+    url,
+    isAccessibleForFree: true,
+    creator: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    dateModified: l.testedDate,
+    temporalCoverage: l.testedDate,
+    spatialCoverage: { "@type": "Place", name: "Canada" },
+    measurementTechnique: `${SITE.url}/laptop/learn/how-we-test`,
+    about: { "@type": "Product", name, brand: { "@type": "Brand", name: l.brand }, category: "Laptop" },
+    variableMeasured: groups.flatMap((g) =>
+      g.rows.map((r) => ({ "@type": "PropertyValue", name: r.label, value: r.value, ...(r.unit ? { unitText: r.unit } : {}) })),
+    ),
+  };
+
   return (
     <>
       <SecondaryNav />
       <Breadcrumbs items={[{ label: "Laptops", href: "/laptop" }, { label: "Reviews", href: "/laptop/reviews" }, { label: l.brand, href: `/laptop/reviews/${l.brandSlug}` }, { label: l.model, href: laptopHref(l) }, { label: "Test Results" }]} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetLd) }} />
       <div className="container-site pb-12">
         <header className="mb-6">
-          <h1 className="text-3xl font-extrabold">{l.brand} {l.model} — Test Results</h1>
-          <p className="mt-2 text-ink-500">Raw measurements from our standardized testing (Test Bench {l.testBench}). Bars compare this laptop against the range of all tested laptops. <Link href={laptopHref(l)} className="link">Back to the review</Link>.</p>
+          <h1 className="text-3xl font-extrabold">{name} Test Results</h1>
+          <div id="quick-answer" className="mt-4 rounded-xl border border-brand-200 bg-brand-50 p-4">
+            <p className="text-xs font-bold uppercase tracking-wide text-brand-700">Quick answer</p>
+            <p className="mt-1 text-ink-900">
+              The {name} lasted {t.batteryWebHours} hours in our web-browsing battery test ({batteryRank} tested), measured {t.brightnessNits} nits of
+              brightness ({brightRank}), scored {t.geekbenchMulti.toLocaleString()} in Geekbench multi-core and averaged {t.gamingFps1080pHigh} FPS at 1080p high.
+              Under load it reached {t.loadNoiseDb} dB and {t.cpuTempLoadC}°C.
+            </p>
+            <p className="mt-2 text-xs text-ink-500">
+              Source: BestLaptop.ca lab, Test Bench {l.testBench} · Last verified {l.testedDate} · Tested config: {l.cpu}, {l.gpu}, {l.ram}GB, {l.storage}GB ·{" "}
+              <Link href="/laptop/learn/how-we-test" className="link">How we test</Link>
+            </p>
+          </div>
+          <p className="mt-4 text-ink-500">Bars compare the {l.model} against the range of all {all.length} laptops we have tested; the right column is its rank. <Link href={laptopHref(l)} className="link">Read the full {l.model} review</Link>.</p>
         </header>
 
         <div className="space-y-8">
           {groups.map((g) => (
             <section key={g.title} className="card p-5">
               <div className="mb-3 flex items-center justify-between">
-                <h2 className="text-xl font-bold">{g.title}</h2>
+                <h2 className="text-xl font-bold">{l.model} {g.title.toLowerCase().replace("cpu", "CPU").replace("gpu", "GPU")} results</h2>
                 <Link href={`/laptop/tests/${g.method}`} className="text-sm link">Methodology →</Link>
               </div>
               <div className="divide-y divide-slate-50">
                 {g.rows.map((r) => {
                   const { min, max } = range(r.sel);
-                  return <MeasureBar key={r.label} label={r.label} value={r.value} unit={r.unit} min={min} max={max} higherIsBetter={r.higher !== false} />;
+                  return <MeasureBar key={r.label} label={r.label} value={r.value} unit={r.unit} min={min} max={max} higherIsBetter={r.higher !== false} rank={ordinalRank(rankOf(r))} />;
                 })}
               </div>
             </section>

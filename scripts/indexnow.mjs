@@ -15,12 +15,18 @@ const SITEMAP = process.env.SITEMAP || "https://bestlaptop.ca/sitemap.xml";
 const ENDPOINT = process.env.INDEXNOW_ENDPOINT || "https://api.indexnow.org/indexnow";
 
 async function main() {
-  console.log(`Fetching sitemap: ${SITEMAP}`);
-  const res = await fetch(SITEMAP);
-  if (!res.ok) throw new Error(`Sitemap fetch failed: HTTP ${res.status}`);
-  const xml = await res.text();
-
-  const urlList = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim()).filter(Boolean);
+  // /sitemap.xml is a sitemap index (one sitemap per page family): follow it.
+  const locs = async (url) => {
+    console.log(`Fetching sitemap: ${url}`);
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Sitemap fetch failed: HTTP ${res.status} (${url})`);
+    const xml = await res.text();
+    const found = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim()).filter(Boolean);
+    if (!xml.includes("<sitemapindex")) return found;
+    const nested = await Promise.all(found.map(locs));
+    return nested.flat();
+  };
+  const urlList = [...new Set(await locs(SITEMAP))];
   if (urlList.length === 0) throw new Error("No <loc> URLs found in sitemap.");
 
   const host = new URL(urlList[0]).host;
