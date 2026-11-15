@@ -57,9 +57,10 @@ const baseCategories: BestCategory[] = [
     h1: "The Best Laptops for College & University in Canada (2026)",
     group: "use-case",
     intro:
-      "College and university students need a laptop that survives long days, handles coursework, and fits a student budget. We weighed battery life, durability, and price.",
-    criteria: "We prioritize battery life, durability, performance for coursework, and value.",
-    filter: has("college"),
+      "College and university programs usually need full desktop software, so this list covers Windows and macOS laptops only (no Chromebooks), ranked by our school use-case score: battery life, weight, keyboard and enough performance for coursework.",
+    criteria: "We rank Windows and macOS student laptops by our school use-case score, then overall score.",
+    // Student-tagged laptops minus ChromeOS. /best/student keeps Chromebooks for high school and web-only coursework.
+    filter: (l) => (l.categories.includes("college") || l.categories.includes("student")) && l.os !== "ChromeOS",
   },
   {
     slug: "business",
@@ -69,8 +70,9 @@ const baseCategories: BestCategory[] = [
     group: "use-case",
     intro:
       "Business laptops should offer a great keyboard, strong security, reliable build, and long battery life. We tested typing, webcams, and battery, and considered manageability and warranty.",
-    criteria: "We weight keyboard quality, battery life, build, and security features.",
-    filter: has("business"),
+    criteria: "We rank by our business use-case score (keyboard, battery life, webcam and build), including MacBooks, which many offices issue.",
+    // Business-tagged laptops plus any laptop (Windows or macOS) scoring 8.4+ for business use.
+    filter: (l) => l.categories.includes("business") || l.useCases.business >= 8.4,
   },
   {
     slug: "windows",
@@ -215,16 +217,8 @@ const baseCategories: BestCategory[] = [
     criteria: "We rank by measured 1080p frame rate per Canadian dollar, then weigh thermals and display.",
     filter: (l) => l.categories.includes("gaming") && l.currentPrice <= 2600,
   },
-  {
-    slug: "university-students",
-    navLabel: "Best for University Students",
-    title: "Best Laptops for University Students in Canada",
-    h1: "The Best Laptops for University Students in Canada (2026)",
-    group: "use-case",
-    intro: "The best laptop for university students balances all-day battery life, portability, and price so it lasts through lectures and the library. We weighed battery life, weight, and value.",
-    criteria: "We prioritize battery life, portability, keyboard comfort, and value.",
-    filter: (l) => l.categories.includes("student") || l.categories.includes("college"),
-  },
+  // "university-students" was merged into "college" (identical picks to "student";
+  // college already targets "College & University"). 301 in next.config.mjs.
   {
     slug: "engineering-students",
     navLabel: "Best for Engineering Students",
@@ -241,9 +235,16 @@ const baseCategories: BestCategory[] = [
     title: "Best Laptop Brands in Canada",
     h1: "The Best Laptop Brands in Canada (2026)",
     group: "brand",
-    intro: "Every brand has strengths and weaknesses. Below are the top-scoring laptops across the brands we test, which is the fastest way to see which brands are performing best right now.",
-    criteria: "We rank the highest-scoring laptops across all brands we test.",
-    filter: has("laptop"),
+    intro: "This list ranks laptop brands, not individual laptops: each brand is scored by the median of every model we have tested from it, and represented below by its best model. It is the fastest way to see which brands are building the best laptops right now.",
+    criteria: "We rank brands by the median overall score of all their tested models.",
+    // One entry per brand: its highest-scoring published model.
+    filter: (l) => {
+      const { laptops } = require("./laptops") as typeof import("./laptops");
+      const best = laptops
+        .filter((x: Laptop) => x.status === "published" && x.brandSlug === l.brandSlug)
+        .sort((a: Laptop, b: Laptop) => b.overall - a.overall)[0];
+      return best?.id === l.id;
+    },
   },
   // Keyword-gap lists (Semrush CA, Nov 2026): battery life, lightweight, home use,
   // touchscreen, retailer and price-band intents that had no dedicated page.
@@ -293,9 +294,9 @@ const baseCategories: BestCategory[] = [
     title: "Best Laptops at Best Buy Canada",
     h1: "The Best Laptops You Can Buy at Best Buy Canada (2026)",
     group: "price",
-    intro: "Shopping at Best Buy Canada? These are the laptops we have tested that Best Buy sells, ranked by our overall score, with the Best Buy price we last recorded. We are independent and not affiliated with Best Buy.",
-    criteria: "We rank laptops sold at Best Buy Canada by overall test score.",
-    filter: (l) => l.retailers.some((r) => r.name === "Best Buy Canada"),
+    intro: "Shopping at Best Buy Canada? These are the laptops we have tested that Best Buy sells and that score 7.5/10 or better, ranked by value at Best Buy's own price: test-score points per $1,000. We are independent and not affiliated with Best Buy.",
+    criteria: "We rank laptops sold at Best Buy Canada (7.5/10 or better) by overall score per $1,000 at the Best Buy price.",
+    filter: (l) => l.overall >= 7.5 && l.retailers.some((r) => r.name === "Best Buy Canada"),
   },
   {
     slug: "under-1500",

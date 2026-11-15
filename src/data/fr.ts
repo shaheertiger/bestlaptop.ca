@@ -26,12 +26,12 @@ export const frenchLists: FrenchList[] = [
     h1: "Les meilleurs ordinateurs portables pas chers au Canada (2026)",
     nav: "Pas cher",
     subject: "ordinateur portable pas cher",
-    intro: "Un bon ordinateur portable pas cher doit rester rapide pendant des années pour la navigation, les documents, le streaming et les appels vidéo. Nous avons classé les modèles abordables que nous avons testés selon leur note globale et leur rapport qualité-prix, avec les prix canadiens.",
+    intro: "Un bon ordinateur portable pas cher doit rester rapide pendant des années pour la navigation, les documents, le streaming et les appels vidéo. Nous avons classé les modèles abordables que nous avons testés selon les points de note obtenus par tranche de 1 000 $, avec les prix canadiens.",
     sections: [
       {
         heading: "Quel est le meilleur ordinateur portable pas cher en 2026 ?",
         body: [
-          "L'Acer Swift Go 14 est le meilleur rapport qualité-prix que nous avons testé : écran OLED, 16 Go de mémoire vive et 13,8 heures d'autonomie pour moins de 1 000 $. Sous 500 $, l'Acer Chromebook Plus 514 a tenu 16,2 heures dans notre test d'autonomie.",
+          "Par dollar dépensé, l'Acer Chromebook Plus 514 est le meilleur portable pas cher que nous avons testé : 16,2 heures dans notre test d'autonomie pour moins de 500 $. Sous Windows, l'Acer Swift Go 14 est le meilleur choix : écran OLED, 16 Go de mémoire vive et 13,8 heures d'autonomie pour moins de 1 000 $.",
         ],
       },
       {
@@ -241,7 +241,7 @@ export const frHub = {
     {
       heading: "Quel est le meilleur rapport qualité-prix ?",
       body: [
-        "L'Acer Swift Go 14 offre le meilleur rapport qualité-prix que nous avons mesuré : écran OLED, 16 Go et 13,8 heures d'autonomie pour moins de 1 000 $. Sous 500 $, les Chromebook Plus sont les seuls portables qui restent vraiment rapides.",
+        "Sous Windows, l'Acer Swift Go 14 offre le meilleur rapport qualité-prix que nous avons mesuré : écran OLED, 16 Go et 13,8 heures d'autonomie pour moins de 1 000 $. Sous 500 $, les Chromebook Plus sont les seuls portables qui restent vraiment rapides.",
       ],
     },
     {

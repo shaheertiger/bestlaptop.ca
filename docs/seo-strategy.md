@@ -135,8 +135,36 @@ Source: the "Master SEO Playbook" (FontB, EatBetter, LoadMuscle, BodyPal, NutriS
 | Brands (13) | 17.4% | 15.7% |
 
 **Open items, need GSC data or an editorial decision**
-1. **Near-duplicate best lists.** Pairs above 60% overlap: best-buy ↔ brands (80%), chromebook ↔ under-500 (76%), brands ↔ laptop (73%), acer ↔ under-1000 (67%), best-buy ↔ laptop (67%), student ↔ university-students (66%), business ↔ windows (64%), budget ↔ under-1000 (62%). They show nearly the same picks with the same blurbs. Either give each list its own ranking metric and copy, or merge the weaker one with a 301. Check GSC for which URL of each pair already earns impressions before choosing.
+1. ~~Near-duplicate best lists~~ — done, see "Near-duplicate best lists fixed" below.
 2. **14 short-answer guides** (`quickGuide` in `src/data/guides.ts`) are one-paragraph pages. Expand the ones with impressions into full guides (question H2s, tables, FAQ). Prune or `noindex` the ones with 0 impressions after 90 days.
 3. **253 generated comparisons.** Keep the template, but after 90 days prune match-ups with 0 impressions (most pairs, such as a Chromebook vs a gaming laptop, have no search demand), keeping one page per real query.
 4. **French list titles** reuse the English title formula. SearchPilot found a translated "best deals" title formula cut traffic 4.6%, so test fr-CA title patterns separately.
 5. **Bing:** verify in Bing Webmaster Tools (import from GSC), submit `/sitemap.xml`, and run `npm run indexnow` after each deploy. Read the 8+ word queries in Bing's keyword report monthly.
+
+## Near-duplicate best lists fixed (Nov 15, 2026)
+
+Eight best-list pairs shared 62–80% of their text. `laptop`, `brands` and `best-buy` showed the identical top 6 in identical order; so did `chromebook`/`under-500`, `business`/`windows` and `student`/`university-students`.
+
+**Merged (301)**
+- `/laptop/reviews/best/university-students` → `/laptop/reviews/best/college`. It had the same picks as `student`, and `college` already targets "College & University".
+
+**Each list now has its own ranking** (`sort` + `rankedBy` in `src/data/categoryContent.ts`, filters in `src/data/categories.ts`)
+
+| List | Now ranked by / filter |
+|---|---|
+| brands | Ranks brands, not laptops: one flagship per brand, brands ordered by the median score of all their tested models. Brand ranking section and brand quick answer |
+| best-buy | Score per $1,000 at the Best Buy Canada price, 7.5/10+ only (overall ranking lives on /best/laptop) |
+| budget | Score per $1,000 at the lowest price (under-1000 keeps "best laptop under the cap") |
+| under-500 | Cheapest first, plus a computed "Can you get a Windows laptop under $500?" answer |
+| chromebook | Measured battery life |
+| college | Windows and macOS only (no Chromebooks), school use-case score; owns "university" sections |
+| business | Business use-case score, includes MacBooks scoring 8.4+ (windows stays on overall score) |
+| programming / engineering-students / working-from-home | Programming score / workstation score / keyboard + battery + display |
+
+**Template (`src/app/laptop/reviews/best/[category]/page.tsx`)**
+- Pick cards show a list-specific reason (rank on this list, this list's metric vs #1, price vs #1) plus the verdict's first sentence, instead of repeating the review's full verdict and buy/skip paragraphs on every list.
+- "How we picked" and "How to choose" are computed from each list's picks (qualifying count, price/battery/weight ranges, cheapest/longest/lightest alternatives). The identical "How we test" section is removed; the methodology link stays.
+- The two generic FAQs ("How did you choose…", "Are these prices in CAD?") are replaced with list-specific ones (ranking basis and pick count, price range of the picks).
+- A "Ranked by …" line sits under every quick answer.
+
+**Result:** best-list median overlap 23.5% → 16.0%, worst pair 80% → 55%. No pair is above 60% (there were 8). The pairs left at about 50% come from the data, not the template: the only two laptops under $500 are the two Chromebooks, and three of the four laptops under $1,000 are Acers. They will separate as more laptops are tested.

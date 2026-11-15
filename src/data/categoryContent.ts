@@ -1,4 +1,5 @@
 import type { BestCategory, Laptop } from "@/lib/types";
+import { laptops } from "./laptops";
 
 // Per-list SEO content layered onto `bestCategories`.
 //
@@ -11,10 +12,43 @@ import type { BestCategory, Laptop } from "@/lib/types";
 //
 // Section and FAQ copy only cites numbers that exist in src/data/laptops.ts.
 
-type Content = Partial<Pick<BestCategory, "seoTitle" | "sort" | "metric" | "sections" | "faq" | "related">>;
+type Content = Partial<Pick<BestCategory, "seoTitle" | "sort" | "metric" | "sections" | "faq" | "related" | "quickAnswer" | "rankedBy">>;
 
 const byOverall = (a: Laptop, b: Laptop) => b.overall - a.overall;
 const fpsPerDollar = (l: Laptop) => l.test.gamingFps1080pHigh / l.currentPrice;
+const cad = (n: number) => `$${Math.round(n).toLocaleString("en-CA")}`;
+const price = (l: Laptop) => {
+  const stocked = l.retailers.filter((r) => r.inStock).map((r) => r.price);
+  return stocked.length ? Math.min(...stocked) : l.currentPrice;
+};
+const bestBuyPrice = (l: Laptop) => l.retailers.find((r) => r.name === "Best Buy Canada")?.price ?? l.currentPrice;
+/** Overall-score points per $1,000 CAD. */
+export const pointsPerK = (l: Laptop, p = price(l)) => (l.overall / p) * 1000;
+
+// Brand ranking for the "best laptop brands" list: brands ranked by the median
+// score of their tested models, so the page ranks brands, not the same laptops
+// as the main "best laptops" list.
+const published = laptops.filter((l) => l.status === "published");
+const median = (xs: number[]) => {
+  const s = xs.slice().sort((a, b) => a - b);
+  const m = Math.floor(s.length / 2);
+  return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
+};
+export const brandRanking = Array.from(new Set(published.map((l) => l.brandSlug)))
+  .map((slug) => {
+    const models = published.filter((l) => l.brandSlug === slug).sort(byOverall);
+    return {
+      slug,
+      name: models[0].brand,
+      count: models.length,
+      median: median(models.map((m) => m.overall)),
+      best: models[0],
+      priceMin: Math.min(...models.map(price)),
+      priceMax: Math.max(...models.map(price)),
+    };
+  })
+  .sort((a, b) => b.median - a.median || b.best.overall - a.best.overall);
+const brandOf = (l: Laptop) => brandRanking.find((b) => b.slug === l.brandSlug)!;
 
 export const metrics = {
   battery: { label: "Battery (web, hrs)", value: (l: Laptop) => `${l.test.batteryWebHours} h` },
@@ -287,14 +321,16 @@ export const categoryContent: Record<string, Content> = {
 
   budget: {
     seoTitle: "Best Budget Laptops in Canada (2026): Tested Picks Under $1,300",
-    metric: metrics.value,
-    sort: (a, b) => b.scores.value + b.overall - (a.scores.value + a.overall),
+    metric: { label: "Points per $1,000", value: (l: Laptop) => pointsPerK(l).toFixed(1) },
+    // Most test-score per dollar; /best/under-1000 ranks the best laptop under a fixed cap instead.
+    sort: (a, b) => pointsPerK(b) - pointsPerK(a),
+    rankedBy: "overall test score per $1,000 CAD, so the cheapest good laptops rise to the top",
     related: ["under-500", "under-1000", "budget-gaming", "chromebook", "student", "home-use"],
     sections: [
       {
         heading: "What is the best budget laptop in 2026?",
         body: [
-          "The Acer Swift Go 14 is the best budget laptop we have tested: an OLED screen, 16 GB RAM and 13.8 hours of battery life for under $1,000 CAD. Under $500, the Acer Chromebook Plus 514 lasted 16.2 hours in our battery test.",
+          "Per dollar, the Acer Chromebook Plus 514 is the best budget laptop we have tested: 16.2 hours in our battery test for under $500 CAD. If you need Windows, the Acer Swift Go 14 is the best budget pick, with an OLED screen, 16 GB RAM and 13.8 hours of battery life for under $1,000.",
         ],
       },
       {
@@ -313,6 +349,8 @@ export const categoryContent: Record<string, Content> = {
   business: {
     seoTitle: "Best Laptops for Work & Business in Canada (2026), Tested",
     metric: metrics.keyboard,
+    sort: (a, b) => b.useCases.business - a.useCases.business || byOverall(a, b),
+    rankedBy: "our business use-case score (keyboard, battery, webcam and build), Windows and macOS",
     related: ["working-from-home", "lightweight", "long-battery-life", "windows", "lenovo", "dell"],
     sections: [
       {
@@ -454,14 +492,26 @@ export const categoryContent: Record<string, Content> = {
   },
 
   "best-buy": {
-    seoTitle: "Best Laptops at Best Buy Canada (2026): Our Tested Picks",
-    metric: metrics.bestBuy,
+    seoTitle: "Best Laptops at Best Buy Canada (2026): Ranked by Score per Dollar",
+    metric: {
+      label: "Best Buy price · pts per $1k",
+      value: (l: Laptop) => `${cad(bestBuyPrice(l))} · ${pointsPerK(l, bestBuyPrice(l)).toFixed(1)}`,
+    },
+    // Value at Best Buy's own price, not the overall ranking (which /best/laptop already covers).
+    sort: (a, b) => pointsPerK(b, bestBuyPrice(b)) - pointsPerK(a, bestBuyPrice(a)),
+    rankedBy: "overall test score per $1,000 at the Best Buy Canada price",
+    quickAnswer: (picks) => {
+      const v = picks[0];
+      const top = picks.slice().sort(byOverall)[0];
+      return `The best-value laptop at Best Buy Canada is the ${v.brand} ${v.model}: ${v.overall.toFixed(1)}/10 for ${cad(bestBuyPrice(v))}, or ${pointsPerK(v, bestBuyPrice(v)).toFixed(1)} score points per $1,000.` +
+        (top.id !== v.id ? ` The highest-scoring laptop Best Buy sells is the ${top.brand} ${top.model} (${top.overall.toFixed(1)}/10, ${cad(bestBuyPrice(top))}).` : "");
+    },
     related: ["laptop", "budget", "gaming", "student", "under-1000", "macbook"],
     sections: [
       {
         heading: "Which Best Buy laptops are actually worth buying?",
         body: [
-          "These are the laptops we have tested that are sold at Best Buy Canada, ranked by our overall score. The price column shows the Best Buy Canada price we last recorded. BestLaptop.ca is independent and not affiliated with Best Buy.",
+          "These are the laptops we have tested that Best Buy Canada sells and that score at least 7.5/10, ranked by how many test-score points you get per $1,000 at the Best Buy price we last recorded. For the best laptops regardless of price, see our [overall ranking](/laptop/reviews/best/laptop). BestLaptop.ca is independent and not affiliated with Best Buy.",
         ],
       },
       {
@@ -495,6 +545,7 @@ export const categoryContent: Record<string, Content> = {
 
   windows: {
     metric: metrics.battery,
+    rankedBy: "overall test score across every Windows 11 laptop we have tested",
     related: ["business", "gaming", "2-in-1", "touchscreen", "lightweight", "macbook"],
     faq: [
       { q: "What is the best Windows laptop in 2026?", a: "The ASUS Zenbook 14 OLED and Lenovo ThinkPad X1 Carbon Gen 12 both scored 8.4/10 in our testing; the Zenbook is the better value at $1,499 CAD." },
@@ -503,6 +554,8 @@ export const categoryContent: Record<string, Content> = {
 
   chromebook: {
     metric: metrics.battery,
+    sort: (a, b) => b.test.batteryWebHours - a.test.batteryWebHours || byOverall(a, b),
+    rankedBy: "measured web-browsing battery life, the spec that matters most on ChromeOS",
     related: ["under-500", "budget", "student", "home-use", "long-battery-life"],
     faq: [
       { q: "Is a Chromebook worth buying in 2026?", a: "Yes for web-based work, students and home use. Choose a Chromebook Plus model with 8 GB RAM for smoother performance and longer software support." },
@@ -518,19 +571,103 @@ export const categoryContent: Record<string, Content> = {
   },
 
   "under-500": {
-    metric: metrics.battery,
+    metric: { label: "Price (CAD)", value: (l: Laptop) => cad(price(l)) },
+    // Cheapest first: the price cap is the whole intent of this list.
+    sort: (a, b) => price(a) - price(b) || byOverall(a, b),
+    rankedBy: "lowest current Canadian price, among laptops that still pass our tests",
     related: ["budget", "chromebook", "under-1000", "student", "home-use"],
+    sections: [
+      {
+        heading: "Can you get a Windows laptop for under $500 in Canada?",
+        body: [(() => {
+          const win = published.filter((l) => l.os === "Windows 11").sort((a, b) => price(a) - price(b))[0];
+          const under = published.filter((l) => price(l) <= 500);
+          return `Not one we would recommend. Every laptop under $500 that passed our testing runs ChromeOS (${under.map((l) => `${l.brand} ${l.model}, ${cad(price(l))}`).join("; ")}). The cheapest Windows laptop we have tested is the [${win.brand} ${win.model}](/laptop/reviews/${win.brandSlug}/${win.slug}) at ${cad(price(win))}, so budget about ${cad(Math.ceil(price(win) / 50) * 50)} if you need Windows software.`;
+        })()],
+      },
+      {
+        heading: "What does a laptop under $500 handle well?",
+        body: [
+          "Web browsing, Google Docs and Microsoft 365 on the web, streaming, video calls and homework. It will not run Windows-only programs, Adobe apps or games beyond Android titles. If you need those, see the [best laptops under $1,000](/laptop/reviews/best/under-1000).",
+        ],
+      },
+    ],
   },
   "under-1000": {
     metric: metrics.value,
+    rankedBy: "overall test score: the best laptop you can buy for $1,000 or less",
     related: ["under-500", "under-1500", "budget", "student", "home-use"],
   },
   "2-in-1": { metric: metrics.screen, related: ["touchscreen", "photo-editing", "business", "student"] },
-  programming: { metric: metrics.keyboard, related: ["engineering-students", "business", "macbook", "lightweight"] },
-  "working-from-home": { metric: metrics.keyboard, related: ["business", "home-use", "long-battery-life", "14-inch"] },
-  college: { metric: metrics.battery, related: ["student", "university-students", "engineering-students", "budget"] },
-  "university-students": { metric: metrics.battery, related: ["student", "college", "engineering-students", "lightweight"] },
-  "engineering-students": { metric: metrics.exportTime, related: ["student", "programming", "gaming", "video-editing"] },
+  programming: {
+    metric: metrics.keyboard,
+    sort: (a, b) => b.useCases.programming - a.useCases.programming || byOverall(a, b),
+    rankedBy: "our programming use-case score (multi-core speed, keyboard, RAM and battery)",
+    related: ["engineering-students", "business", "macbook", "lightweight"],
+  },
+  "working-from-home": {
+    metric: metrics.keyboard,
+    sort: (a, b) => b.scores.keyboard + b.scores.battery + b.scores.display - (a.scores.keyboard + a.scores.battery + a.scores.display),
+    rankedBy: "keyboard, battery and display scores combined, the three things you use all day at a home desk",
+    related: ["business", "home-use", "long-battery-life", "14-inch"],
+  },
+  college: {
+    metric: metrics.battery,
+    sort: (a, b) => b.useCases.school - a.useCases.school || byOverall(a, b),
+    rankedBy: "our school use-case score, Windows and macOS laptops only",
+    related: ["student", "engineering-students", "budget", "lightweight", "macbook"],
+    sections: [
+      {
+        heading: "What is the best laptop for university students in Canada?",
+        body: [
+          "For university and college, pick a Windows or macOS laptop with 16 GB of RAM and all-day battery. We leave Chromebooks off this list because most degree and diploma programs need desktop software (statistics packages, Microsoft Office desktop apps, CAD or Adobe tools) that ChromeOS cannot run. For high school or web-only coursework, see the [best student laptops](/laptop/reviews/best/student), which include Chromebooks.",
+        ],
+      },
+      {
+        heading: "Mac or Windows for university?",
+        body: [
+          "Engineering, architecture and some business programs require Windows-only software; check your program's laptop requirements first. Arts, humanities and most science programs work well on a MacBook Air, which lasted the longest in our battery test. See [engineering student laptops](/laptop/reviews/best/engineering-students) for CAD and simulation work.",
+        ],
+      },
+    ],
+  },
+  "engineering-students": {
+    metric: metrics.exportTime,
+    sort: (a, b) => b.useCases.workstation - a.useCases.workstation || byOverall(a, b),
+    rankedBy: "our workstation use-case score (sustained CPU and GPU performance for CAD and simulation)",
+    related: ["student", "programming", "gaming", "video-editing"],
+  },
+  brands: {
+    seoTitle: `Best Laptop Brands in Canada (2026): ${brandRanking.length} Brands Ranked by Lab Scores`,
+    metric: { label: "Brand median score", value: (l: Laptop) => `${brandOf(l).median.toFixed(1)}/10 (${brandOf(l).count} tested)` },
+    // One flagship per brand, brands ordered by the median score of all their tested models.
+    sort: (a, b) => brandRanking.indexOf(brandOf(a)) - brandRanking.indexOf(brandOf(b)),
+    rankedBy: "the median test score of every model we have tested from each brand, showing each brand's best model",
+    quickAnswer: () => {
+      const [b1, b2, b3] = brandRanking;
+      return `The best laptop brand in our testing is ${b1.name}: its ${b1.count} tested model${b1.count === 1 ? "" : "s"} have a median score of ${b1.median.toFixed(1)}/10, led by the ${b1.best.model} (${b1.best.overall.toFixed(1)}). ${b2.name} (${b2.median.toFixed(1)}) and ${b3.name} (${b3.median.toFixed(1)}) follow.`;
+    },
+    related: ["laptop", "lenovo", "dell", "hp", "asus", "acer", "macbook"],
+    sections: [
+      {
+        heading: "Which laptop brand is best in 2026?",
+        body: brandRanking.map(
+          (b, i) =>
+            `${i + 1}. [${b.name}](/laptop/reviews/${b.slug}): median ${b.median.toFixed(1)}/10 across ${b.count} tested model${b.count === 1 ? "" : "s"}, best is the ${b.best.model} (${b.best.overall.toFixed(1)}), prices ${b.count === 1 ? cad(b.priceMin) : `${cad(b.priceMin)}–${cad(b.priceMax)}`}.`,
+        ),
+      },
+      {
+        heading: "Does the brand matter when buying a laptop?",
+        body: [
+          "Less than the model. Within one brand our scores can span several points: a brand's flagship and its budget line are different products. Use the brand ranking to shortlist, then compare specific models with our [results table](/laptop/tools/table). Warranty and service matter too: business lines (ThinkPad, Latitude, EliteBook) offer on-site service that consumer lines do not.",
+        ],
+      },
+    ],
+    faq: [
+      { q: "Which laptop brand is the most reliable?", a: "We measure performance, not long-term failure rates. Business lines such as Lenovo ThinkPad, Dell Latitude and HP EliteBook carry longer and on-site warranties, which is the best proxy for reliability you can buy." },
+      { q: "Is Apple or Windows the better laptop brand?", a: `Apple has the highest median score in our testing (${brandRanking.find((b) => b.slug === "apple")?.median.toFixed(1) ?? "n/a"}/10), mostly from battery life. Windows brands win on choice, gaming and price.` },
+    ],
+  },
   "13-inch": { metric: metrics.weight, related: ["14-inch", "lightweight", "long-battery-life"] },
   "14-inch": { metric: metrics.weight, related: ["13-inch", "15-inch", "lightweight"] },
   "15-inch": { metric: metrics.weight, related: ["14-inch", "16-inch", "home-use"] },

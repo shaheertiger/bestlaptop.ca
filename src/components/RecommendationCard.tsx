@@ -5,7 +5,10 @@ import { formatCAD, lowestPrice } from "@/lib/scoring";
 import { ProductImage } from "./ProductImage";
 import { ScoreCircle } from "./Score";
 
-export function RecommendationCard({ laptop, role, id }: { laptop: Laptop; role: string; id: string }) {
+// `why` is the list-specific reason this laptop ranks where it does. The review's
+// full verdict and buy/skip advice stay on the review page, so the same paragraphs
+// are not repeated on every best list the laptop appears in.
+export function RecommendationCard({ laptop, role, id, why }: { laptop: Laptop; role: string; id: string; why?: string }) {
   const retailers = laptop.retailers.filter((r) => r.inStock).map((r) => r.name);
   return (
     <section id={id} className="card scroll-mt-20 overflow-hidden">
@@ -33,7 +36,11 @@ export function RecommendationCard({ laptop, role, id }: { laptop: Laptop; role:
             <div><dt className="text-ink-400">Tested config</dt><dd className="font-medium">{laptop.cpu.split(" ").slice(0, 3).join(" ")}, {laptop.ram}GB</dd></div>
             <div><dt className="text-ink-400">Price (CAD)</dt><dd className="font-medium">{formatCAD(lowestPrice(laptop))}</dd></div>
           </dl>
-          <p className="mt-3 text-sm text-ink-700">{laptop.verdict}</p>
+          {why ? (
+            <p className="mt-3 text-sm text-ink-700">{why} {laptop.verdict.split(". ")[0].replace(/\.$/, "")}.</p>
+          ) : (
+            <p className="mt-3 text-sm text-ink-700">{laptop.verdict}</p>
+          )}
 
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             <div>
@@ -50,10 +57,12 @@ export function RecommendationCard({ laptop, role, id }: { laptop: Laptop; role:
             </div>
           </div>
 
-          <div className="mt-4 grid gap-2 text-sm sm:grid-cols-2">
-            <p><span className="font-semibold">Who should buy it:</span> {laptop.whoShouldBuy}</p>
-            <p><span className="font-semibold">Who should skip it:</span> {laptop.whoShouldSkip}</p>
-          </div>
+          {!why && (
+            <div className="mt-4 grid gap-2 text-sm sm:grid-cols-2">
+              <p><span className="font-semibold">Who should buy it:</span> {laptop.whoShouldBuy}</p>
+              <p><span className="font-semibold">Who should skip it:</span> {laptop.whoShouldSkip}</p>
+            </div>
+          )}
 
           <p className="mt-3 text-xs text-ink-400">Available at: {retailers.join(", ") || "Check retailers"}</p>
 

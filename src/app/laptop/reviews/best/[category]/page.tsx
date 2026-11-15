@@ -8,7 +8,7 @@ import { AuthorBox, AffiliateDisclosure, FAQ, TableOfContents, SectionCard, Link
 import { ScoreBadge } from "@/components/Score";
 import { Newsletter } from "@/components/Newsletter";
 import { bestCategories, getBestCategory, categoryPicks } from "@/data/categories";
-import { laptopHref } from "@/data/laptops";
+import { laptopHref, laptops } from "@/data/laptops";
 import { comparisons, comparisonLaptops } from "@/data/comparisons";
 import { formatCAD, lowestPrice } from "@/lib/scoring";
 import { SITE, CONTENT_UPDATED } from "@/lib/site";
@@ -98,6 +98,25 @@ export default async function BestListPage({ params }: { params: Promise<{ categ
   // Lists with a custom ranking (battery, weight, FPS per dollar…) get numbered
   // ranks rather than "Best Overall" style roles, which would be misleading.
   const role = (i: number) => (cat.sort ? `#${i + 1}${metric ? ` · ${metric.label}: ${metric.value(picks[i])}` : ""}` : ROLES[i] ?? "Notable Mention");
+  const listName = cat.title.replace(/ in Canada$/, "");
+  const rankedBy = cat.rankedBy ?? "overall test score";
+  // List-specific reason for each pick (rank, this list's metric, price vs #1),
+  // so a laptop that appears on several lists gets different copy on each.
+  const why = (l: Laptop, i: number) => {
+    const m = metric ? `${metric.label}: ${metric.value(l)}` : `${l.overall.toFixed(1)}/10`;
+    if (i === 0) return `Ranked #1 of ${picks.length} on our ${listName} list (${m}; ${l.overall.toFixed(1)}/10 overall, ${formatCAD(lowestPrice(l))}).`;
+    const d = lowestPrice(l) - lowestPrice(top);
+    const priceCmp = d === 0 ? "the same price as" : d < 0 ? `${formatCAD(-d)} less than` : `${formatCAD(d)} more than`;
+    return `Ranked #${i + 1} of ${picks.length} here (${m}${metric ? ` vs ${metric.value(top)} for #1` : ""}); ${l.overall.toFixed(1)}/10 overall and ${priceCmp} the ${top.model}.`;
+  };
+  const prices = picks.map(lowestPrice);
+  const range = (xs: number[], unit: string, digits = 1) => {
+    const lo = Math.min(...xs), hi = Math.max(...xs);
+    return lo === hi ? `${lo.toFixed(digits)}${unit}` : `${lo.toFixed(digits)}–${hi.toFixed(digits)}${unit}`;
+  };
+  const cheapest = picks.slice().sort((a, b) => lowestPrice(a) - lowestPrice(b))[0];
+  const longest = picks.slice().sort((a, b) => b.test.batteryWebHours - a.test.batteryWebHours)[0];
+  const lightest = picks.slice().sort((a, b) => a.weightKg - b.weightKg)[0];
   const pickIds = new Set(picks.slice(0, 6).map((l) => l.id));
   const headToHead = comparisons
     .filter((c) => pickIds.has(c.a) && pickIds.has(c.b))
@@ -109,7 +128,7 @@ export default async function BestListPage({ params }: { params: Promise<{ categ
     { id: "specs", label: "Specs & test results compared" },
     ...sections.map((sec, i) => ({ id: sectionId(i), label: sec.heading })),
     { id: "how-we-picked", label: "How we picked" },
-    { id: "how-to-choose", label: "How to choose" },
+    ...(picks.length > 1 ? [{ id: "how-to-choose", label: "How to choose" }] : []),
     { id: "faq", label: "FAQ" },
   ];
 
@@ -151,8 +170,13 @@ export default async function BestListPage({ params }: { params: Promise<{ categ
   const faq = [
     { q: `What is the best ${label}?`, a: `Our top pick is the ${top.brand} ${top.model}, which scored ${top.overall.toFixed(1)}/10 in our testing and costs from ${formatCAD(lowestPrice(top))} CAD.${value ? ` For less money, the ${value.brand} ${value.model} (${formatCAD(lowestPrice(value))}) is the best value.` : ""}` },
     ...(cat.faq ?? []),
-    { q: "How did you choose these laptops?", a: cat.criteria + " Every laptop runs through the same standardized Test Bench, and we factor in Canadian pricing and availability." },
-    { q: "Are these prices in Canadian dollars?", a: "Yes. All prices are in CAD from major Canadian retailers and can change daily." },
+    { q: `How did you rank the ${listName.replace(/^Best /, "").toLowerCase()}?`, a: `By ${rankedBy}. ${picks.length} of the ${laptops.length} laptops we have tested qualify, and every number comes from our own lab measurements.` },
+    {
+      q: `How much does a good ${label.replace(/ in Canada$/, "")} cost in Canada?`,
+      a: picks.length > 1
+        ? `Our ${picks.length} picks cost ${formatCAD(Math.min(...prices))} to ${formatCAD(Math.max(...prices))} CAD; the #1 pick is ${formatCAD(lowestPrice(top))}. Prices are from Canadian retailers and change daily.`
+        : `Our pick costs ${formatCAD(lowestPrice(top))} CAD at Canadian retailers; prices change daily.`,
+    },
   ];
   const relatedSlugs = [...(cat.related ?? []), ...bestCategories.filter((c) => c.group === cat.group).map((c) => c.slug)];
   const related = Array.from(new Set(relatedSlugs))
@@ -179,6 +203,9 @@ export default async function BestListPage({ params }: { params: Promise<{ categ
             {/* Quick answer: the direct, quotable answer in the first screen. */}
             <div id="quick-answer" className="mt-5 scroll-mt-20 rounded-xl border-2 border-brand-200 bg-brand-50 p-5">
               <p className="text-xs font-bold uppercase tracking-wide text-brand-700">Quick answer</p>
+              {cat.quickAnswer ? (
+                <p className="mt-2 text-lg text-ink-900">{cat.quickAnswer(picks)}</p>
+              ) : (
               <p className="mt-2 text-lg text-ink-900">
                 The best {label} is the{" "}
                 <Link href={laptopHref(top)} className="font-bold text-brand-700 hover:underline">{top.brand} {top.model}</Link>, scoring{" "}
@@ -186,6 +213,8 @@ export default async function BestListPage({ params }: { params: Promise<{ categ
                 <strong>{formatCAD(lowestPrice(top))}</strong>.
                 {value && <> Best value: the <Link href={laptopHref(value)} className="font-semibold text-brand-700 hover:underline">{value.brand} {value.model}</Link> at {formatCAD(lowestPrice(value))}.</>}
               </p>
+              )}
+              <p className="mt-2 text-xs text-ink-500">Ranked by {rankedBy}.</p>
             </div>
             <div className="mt-4"><AuthorBox updated={updated} testBench={SITE.testBench} /></div>
             <p className="mt-4 text-lg text-ink-700">{cat.intro}</p>
@@ -227,7 +256,7 @@ export default async function BestListPage({ params }: { params: Promise<{ categ
           {/* Recommendation sections */}
           <div className="mt-8 space-y-8">
             {picks.slice(0, 6).map((l, i) => (
-              <RecommendationCard key={l.id} laptop={l} role={role(i)} id={`pick-${i}`} />
+              <RecommendationCard key={l.id} laptop={l} role={role(i)} id={`pick-${i}`} why={why(l, i)} />
             ))}
           </div>
 
@@ -279,19 +308,23 @@ export default async function BestListPage({ params }: { params: Promise<{ categ
               </SectionCard>
             ))}
 
-            <SectionCard id="how-we-picked" title="How We Picked">
-              <p>{cat.criteria} We start with every laptop we have tested on our current Test Bench, then rank them by the scores most relevant to this use case. We adjust for Canadian street price and retailer availability, and we note where a laptop only makes sense when discounted.</p>
-              <p>We do not accept payment for placement. We buy or independently source the laptops we test. <Link href="/editorial-policy" className="link">Read our editorial policy</Link>.</p>
+            {/* Computed from this list's own picks, so no two lists share this copy. */}
+            <SectionCard id="how-we-picked" title={`How we picked the ${listName.replace(/^Best /, "").toLowerCase()}`}>
+              <p>{cat.criteria} Of the {laptops.length} laptops we have tested on Test Bench {SITE.testBench}, {picks.length} qualify for this list, ranked by {rankedBy}.</p>
+              <p>No placement is paid for. <Link href="/laptop/learn/how-we-test" className="link">How we test</Link> · <Link href="/editorial-policy" className="link">Editorial policy</Link>.</p>
             </SectionCard>
 
-            <SectionCard id="how-we-test" title="How We Test">
-              <p>Every laptop goes through the same standardized tests for display, performance, battery life, keyboard, build, thermals, and ports. We measure real battery life at a fixed brightness and report sustained performance, not just peak benchmarks.</p>
-              <p><Link href="/laptop/learn/how-we-test" className="link">See our full testing methodology →</Link></p>
-            </SectionCard>
-
-            <SectionCard id="how-to-choose" title="How to Choose">
-              <p>Start with your main use case and budget, then prioritize the two or three categories that matter most. For most people that means battery life, display quality, and a comfortable keyboard. Use our <Link href="/laptop/tools/table" className="link">results table</Link> to filter by the specs you care about, or our <Link href="/laptop/tools/compare" className="link">compare tool</Link> to weigh finalists side by side.</p>
-            </SectionCard>
+            {picks.length > 1 && (
+              <SectionCard id="how-to-choose" title={`How to choose between these ${picks.length} laptops`}>
+                <p>
+                  Across these picks, prices run {formatCAD(Math.min(...prices))}–{formatCAD(Math.max(...prices))}, battery life {range(picks.map((l) => l.test.batteryWebHours), " h")} and weight {range(picks.map((l) => l.weightKg), " kg", 2)}.
+                  {cheapest.id !== top.id && <> If the {top.model} is over budget, the <Link href={laptopHref(cheapest)} className="link">{cheapest.brand} {cheapest.model}</Link> is the cheapest pick at {formatCAD(lowestPrice(cheapest))}.</>}
+                  {longest.id !== top.id && <> For the longest battery, the {longest.model} lasted {longest.test.batteryWebHours} h.</>}
+                  {lightest.id !== top.id && lightest.id !== longest.id && <> To carry the least weight, the {lightest.model} is {lightest.weightKg} kg.</>}
+                </p>
+                <p>Filter every tested laptop by these specs in the <Link href="/laptop/tools/table" className="link">results table</Link>, or weigh finalists in the <Link href="/laptop/tools/compare" className="link">compare tool</Link>.</p>
+              </SectionCard>
+            )}
 
             <section id="faq" className="scroll-mt-20"><FAQ items={faq} /></section>
 

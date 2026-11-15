@@ -167,6 +167,10 @@ export interface BestCategory {
   faq?: { q: string; a: string }[];
   /** Hand-picked sibling lists for internal linking. */
   related?: string[];
+  /** Optional replacement for the generated quick-answer sentence (plain text). */
+  quickAnswer?: (picks: Laptop[]) => string;
+  /** What the ranking is based on, in a few words (shown in "How we picked"). */
+  rankedBy?: string;
 }
 
 export interface Guide {
