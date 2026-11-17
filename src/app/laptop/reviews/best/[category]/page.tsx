@@ -7,6 +7,9 @@ import { RecommendationCard } from "@/components/RecommendationCard";
 import { AuthorBox, AffiliateDisclosure, FAQ, TableOfContents, SectionCard, Linkify } from "@/components/blocks";
 import { ScoreBadge } from "@/components/Score";
 import { Newsletter } from "@/components/Newsletter";
+import { AmazonButton } from "@/components/AmazonButton";
+import { ProductImage } from "@/components/ProductImage";
+import { amazonImage, laptopAmazonLink } from "@/lib/affiliate";
 import { bestCategories, getBestCategory, categoryPicks } from "@/data/categories";
 import { laptopHref, laptops } from "@/data/laptops";
 import { comparisons, comparisonLaptops } from "@/data/comparisons";
@@ -162,6 +165,7 @@ export default async function BestListPage({ params }: { params: Promise<{ categ
           position: i + 1,
           url: `${SITE.url}${laptopHref(l)}`,
           name: `${l.brand} ${l.model}`,
+          ...(amazonImage(l.id) ? { image: amazonImage(l.id) } : {}),
         })),
       },
     ],
@@ -215,6 +219,20 @@ export default async function BestListPage({ params }: { params: Promise<{ categ
               </p>
               )}
               <p className="mt-2 text-xs text-ink-500">Ranked by {rankedBy}.</p>
+              <AmazonButton laptop={top} className="mt-4 sm:max-w-xs" />
+            </div>
+
+            {/* Quick picks: top three with image and a buy button, in the first screen on desktop. */}
+            <div className="mt-5 grid gap-3 sm:grid-cols-3">
+              {shown.slice(0, 3).map((l, i) => (
+                <div key={l.id} className="card flex flex-col p-3">
+                  <p className="text-[11px] font-extrabold uppercase tracking-wide text-brand-700">{cat.sort ? `#${i + 1}` : ROLES[i]}</p>
+                  <Link href={`#pick-${i}`} className="mt-2 block"><ProductImage laptop={l} size={300} className="aspect-[4/3] w-full" /></Link>
+                  <p className="mt-2 line-clamp-2 text-sm font-semibold leading-snug"><Link href={laptopHref(l)} className="hover:text-brand-700">{l.brand} {l.model}</Link></p>
+                  <p className="mt-0.5 text-xs text-ink-500">{l.overall.toFixed(1)}/10 · {formatCAD(lowestPrice(l))}</p>
+                  <AmazonButton laptop={l} size="sm" label="Check price" note={false} className="mt-auto pt-3" />
+                </div>
+              ))}
             </div>
             <div className="mt-4"><AuthorBox updated={updated} testBench={SITE.testBench} /></div>
             <p className="mt-4 text-lg text-ink-700">{cat.intro}</p>
@@ -245,7 +263,10 @@ export default async function BestListPage({ params }: { params: Promise<{ categ
                       <td className="p-3"><ScoreBadge score={l.overall} /></td>
                       {metric && <td className="p-3">{metric.value(l)}</td>}
                       <td className="p-3 font-medium">{formatCAD(lowestPrice(l))}</td>
-                      <td className="p-3"><a href={`#pick-${i}`} className="link">Details</a></td>
+                      <td className="p-3 whitespace-nowrap">
+                        <a href={laptopAmazonLink(l)} target="_blank" rel="sponsored nofollow noopener" className="font-bold text-[#C45500] hover:underline">Amazon</a>
+                        {" · "}<a href={`#pick-${i}`} className="link">Details</a>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -352,6 +373,13 @@ export default async function BestListPage({ params }: { params: Promise<{ categ
 
         <aside className="hidden lg:block">
           <div className="sticky top-20 space-y-4">
+            <div className="card p-4">
+              <p className="text-xs font-bold uppercase tracking-wide text-brand-700">Our top pick</p>
+              <ProductImage laptop={top} size={300} className="mt-2 aspect-[4/3] w-full" />
+              <p className="mt-2 text-sm font-semibold">{top.brand} {top.model}</p>
+              <p className="text-xs text-ink-500">{top.overall.toFixed(1)}/10 · {formatCAD(lowestPrice(top))}</p>
+              <AmazonButton laptop={top} size="sm" className="mt-3" />
+            </div>
             <TableOfContents items={toc} />
           </div>
         </aside>

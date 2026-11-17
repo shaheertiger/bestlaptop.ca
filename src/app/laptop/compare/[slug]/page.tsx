@@ -11,6 +11,8 @@ import { comparisons, getComparison, comparisonLaptops } from "@/data/comparison
 import { laptopHref } from "@/data/laptops";
 import { formatCAD, lowestPrice } from "@/lib/scoring";
 import { comparisonAnalysis, sharedRankings, comparisonQuickAnswer, comparisonSections, comparisonFaq, comparisonWinner } from "@/lib/insights";
+import { AmazonButton } from "@/components/AmazonButton";
+import { amazonImage } from "@/lib/affiliate";
 import { SITE } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -92,8 +94,55 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
     speakable: { "@type": "SpeakableSpecification", cssSelector: ["#quick-answer"] },
   };
 
+  // Head-to-head facts, in the best-proteinpowder.com compare-page pattern:
+  // a quick answer up top, then "buy X if..." personas and specific FAQs.
+  const pick = (fa: number, fb: number, higher = true) => (fa === fb ? null : (higher ? fa > fb : fa < fb) ? a : b);
+  const other = (x: typeof a) => (x.id === a.id ? b : a);
+  const cheaper = pick(lowestPrice(a), lowestPrice(b), false);
+  const longer = pick(a.test.batteryWebHours, b.test.batteryWebHours);
+  const lighter = pick(a.weightKg, b.weightKg, false);
+  const faster = pick(a.test.geekbenchMulti, b.test.geekbenchMulti);
+  const gamer = pick(a.test.gamingFps1080pHigh, b.test.gamingFps1080pHigh);
+  const brighter = pick(a.test.brightnessNits, b.test.brightnessNits);
+  const better = pick(a.overall, b.overall);
+  const quick = [
+    better ? `The ${better.brand} ${better.model} scores higher overall (${better.overall.toFixed(1)} vs ${other(better).overall.toFixed(1)}).` : `They tie on overall score at ${a.overall.toFixed(1)}.`,
+    cheaper ? `The ${cheaper.model} is ${formatCAD(Math.abs(lowestPrice(a) - lowestPrice(b)))} cheaper in Canada right now.` : "They currently cost the same in Canada.",
+    longer ? `The ${longer.model} lasts longer on battery (${longer.test.batteryWebHours} h vs ${other(longer).test.batteryWebHours} h web browsing).` : "",
+    lighter ? `The ${lighter.model} is lighter (${lighter.weightKg} kg vs ${other(lighter).weightKg} kg).` : "",
+  ].filter(Boolean);
+  const buyIf = [
+    cheaper && { who: "You want the lower price", l: cheaper, why: `${formatCAD(lowestPrice(cheaper))} vs ${formatCAD(lowestPrice(other(cheaper)))}` },
+    longer && { who: "Battery life matters most", l: longer, why: `${longer.test.batteryWebHours} h vs ${other(longer).test.batteryWebHours} h in our web test` },
+    lighter && { who: "You carry it every day", l: lighter, why: `${lighter.weightKg} kg vs ${other(lighter).weightKg} kg` },
+    faster && { who: "You need more performance", l: faster, why: `Geekbench multi ${faster.test.geekbenchMulti.toLocaleString()} vs ${other(faster).test.geekbenchMulti.toLocaleString()}` },
+    gamer && Math.max(a.test.gamingFps1080pHigh, b.test.gamingFps1080pHigh) >= 40 && { who: "You play games", l: gamer, why: `${gamer.test.gamingFps1080pHigh} vs ${other(gamer).test.gamingFps1080pHigh} FPS at 1080p High` },
+  ].filter(Boolean) as { who: string; l: typeof a; why: string }[];
+
+
+  const url = `${SITE.url}/laptop/compare/${c.slug}`;
+  // Breadcrumbs and Article are emitted elsewhere; this adds the two products with images.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ItemList",
+        numberOfItems: 2,
+        itemListElement: [a, b].map((l, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          url: `${SITE.url}${laptopHref(l)}`,
+          name: `${l.brand} ${l.model}`,
+          ...(amazonImage(l.id) ? { image: amazonImage(l.id) } : {}),
+        })),
+        url,
+      },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <SecondaryNav />
       <Breadcrumbs items={[{ label: "Laptops", href: "/laptop" }, { label: "Comparisons", href: "/laptop/compare" }, { label: `${a.model} vs ${b.model}` }]} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
@@ -108,6 +157,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
             <Link href="/laptop/learn/how-we-test" className="link">How we test</Link>
           </p>
         </div>
+        <p className="mt-2 text-xs text-ink-400">We may earn a commission if you buy through our Amazon links. As an Amazon Associate we earn from qualifying purchases.</p>
 
         {/* Header cards */}
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -117,6 +167,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
               <h2 className="mt-3 font-bold"><Link href={laptopHref(l)} className="hover:text-brand-700">{l.brand} {l.model}</Link></h2>
               <div className="mt-2 flex justify-center"><ScoreCircle score={l.overall} size={56} /></div>
               <p className="mt-1 font-semibold">{formatCAD(lowestPrice(l))}</p>
+              <AmazonButton laptop={l} size="sm" className="mx-auto mt-3 max-w-xs" />
             </div>
           ))}
         </div>
@@ -208,6 +259,23 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
           </div>
         </section>
 
+        <SectionCard id="recommendation" title="Which one should you buy?">
+          {buyIf.length > 0 && (
+            <ul className="not-prose mt-4 divide-y divide-slate-100 rounded-xl border border-slate-200">
+              {buyIf.map((x) => (
+                <li key={x.who} className="flex flex-col gap-2 p-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <p className="font-semibold text-ink-900">{x.who}: buy the {x.l.brand} {x.l.model}</p>
+                    <p className="text-sm text-ink-500">{x.why}</p>
+                  </div>
+                  <AmazonButton laptop={x.l} size="sm" note={false} label="Check price" className="sm:w-40" />
+                </li>
+              ))}
+            </ul>
+          )}
+        </SectionCard>
+
+        <div className="mt-8" />
         <SectionCard id="recommendation" title="Compare them yourself">
           <p>Open both laptops in the compare tool to weight the scores for your own priorities.</p>
           <div className="mt-3 flex flex-wrap gap-2">

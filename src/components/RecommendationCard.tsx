@@ -4,6 +4,7 @@ import { laptopHref } from "@/data/laptops";
 import { formatCAD, lowestPrice } from "@/lib/scoring";
 import { ProductImage } from "./ProductImage";
 import { ScoreCircle } from "./Score";
+import { AmazonButton } from "./AmazonButton";
 
 // `why` is the list-specific reason this laptop ranks where it does. The review's
 // full verdict and buy/skip advice stay on the review page, so the same paragraphs
@@ -17,7 +18,8 @@ export function RecommendationCard({ laptop, role, id, why }: { laptop: Laptop; 
       </div>
       <div className="grid gap-6 p-5 md:grid-cols-[200px_1fr]">
         <div>
-          <ProductImage laptop={laptop} className="aspect-[4/3] w-full" />
+          <ProductImage laptop={laptop} className="aspect-[4/3] w-full border border-slate-100" />
+          <AmazonButton laptop={laptop} size="sm" className="mt-3" />
           <div className="mt-3 flex items-center gap-3">
             <ScoreCircle score={laptop.overall} size={52} />
             <div className="text-xs text-ink-500">
@@ -67,7 +69,7 @@ export function RecommendationCard({ laptop, role, id, why }: { laptop: Laptop; 
           <p className="mt-3 text-xs text-ink-400">Available at: {retailers.join(", ") || "Check retailers"}</p>
 
           <div className="mt-4 flex flex-wrap gap-2">
-            <Link href={laptopHref(laptop)} className="btn-primary">See review</Link>
+            <Link href={laptopHref(laptop)} className="btn-primary">See full review</Link>
             <Link href={`/laptop/tools/compare?add=${laptop.id}`} className="btn-secondary">Compare</Link>
           </div>
         </div>

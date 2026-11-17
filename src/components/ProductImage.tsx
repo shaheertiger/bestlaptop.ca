@@ -1,7 +1,9 @@
 import type { Laptop } from "@/lib/types";
+import { amazonImage } from "@/lib/affiliate";
 
-// Lightweight, dependency-free product image placeholder. It renders a stylized
-// laptop silhouette with the model name so the UI is complete without binary assets.
+// Product image. Uses the laptop's Amazon product photo when one has been matched
+// (src/data/amazon/product-images.json, filled by `npm run images:fetch:all`) and
+// falls back to a stylized laptop silhouette with the model name otherwise.
 const palettes: Record<string, [string, string]> = {
   apple: ["#1d1d1f", "#3a3a3c"],
   lenovo: ["#1b1b1b", "#3a0d0d"],
@@ -17,11 +19,32 @@ export function ProductImage({
   laptop,
   className = "",
   rounded = "rounded-lg",
+  size = 500,
+  priority = false,
 }: {
-  laptop: Pick<Laptop, "brand" | "model" | "brandSlug" | "imageAlt">;
+  laptop: Pick<Laptop, "id" | "brand" | "model" | "brandSlug" | "imageAlt">;
   className?: string;
   rounded?: string;
+  /** Amazon image edge in px (Amazon serves any size via the file name). */
+  size?: number;
+  priority?: boolean;
 }) {
+  const src = amazonImage(laptop.id, size);
+  if (src) {
+    return (
+      <div className={`relative flex items-center justify-center overflow-hidden bg-white ${rounded} ${className}`}>
+        {/* eslint-disable-next-line @next/next/no-img-element -- Amazon-hosted image; Amazon's terms require serving it from their CDN */}
+        <img
+          src={src}
+          alt={laptop.imageAlt}
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          referrerPolicy="no-referrer-when-downgrade"
+          className="h-full w-full object-contain p-3"
+        />
+      </div>
+    );
+  }
   const [from, to] = palettes[laptop.brandSlug] ?? palettes.default;
   return (
     <div

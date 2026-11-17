@@ -4,6 +4,7 @@ import { laptopHref } from "@/data/laptops";
 import { formatCAD, lowestPrice } from "@/lib/scoring";
 import { ProductImage } from "./ProductImage";
 import { ScoreBadge } from "./Score";
+import { laptopAmazonLink } from "@/lib/affiliate";
 
 export function LaptopCard({ laptop, tag }: { laptop: Laptop; tag?: string }) {
   return (
@@ -24,7 +25,9 @@ export function LaptopCard({ laptop, tag }: { laptop: Laptop; tag?: string }) {
         <p className="mt-1 line-clamp-2 text-sm text-ink-500">{laptop.bestFor}</p>
         <div className="mt-3 flex items-center justify-between border-t border-slate-100 pt-3 text-sm">
           <span className="font-semibold text-ink-900">{formatCAD(lowestPrice(laptop))}</span>
-          <span className="text-ink-400">{laptop.testedDate.slice(0, 7)}</span>
+          <a href={laptopAmazonLink(laptop)} target="_blank" rel="sponsored nofollow noopener" className="text-xs font-bold text-[#C45500] hover:underline">
+            Check price on Amazon →
+          </a>
         </div>
       </div>
     </article>
@@ -54,6 +57,9 @@ export function ReviewRowCard({ laptop }: { laptop: Laptop }) {
           <span>Tested {laptop.testedDate}</span>
           <span>{formatCAD(lowestPrice(laptop))}</span>
           <span>Test Bench {laptop.testBench}</span>
+          <a href={laptopAmazonLink(laptop)} target="_blank" rel="sponsored nofollow noopener" className="font-bold text-[#C45500] hover:underline">
+            Check price on Amazon →
+          </a>
         </div>
       </div>
     </article>
