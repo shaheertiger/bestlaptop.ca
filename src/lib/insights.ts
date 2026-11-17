@@ -369,3 +369,114 @@ export function brandStats(models: Laptop[]) {
 
 const round1 = (n: number) => Math.round(n * 10) / 10;
 const lowerFirst = (s: string) => (s ? s.charAt(0).toLowerCase() + s.slice(1) : s);
+
+// ---------------------------------------------------------------------------
+// Review page: "Mistakes to avoid" and "Who should skip it", in the pattern of
+// the best-proteinpowder.com brand reviews (their best-ranking page type).
+// Every sentence is built from this laptop's own record, so nothing is invented.
+
+export interface ReviewMistake {
+  title: string;
+  body: string;
+}
+
+export function reviewMistakes(l: Laptop): ReviewMistake[] {
+  const m = l.model;
+  const out: ReviewMistake[] = [];
+  out.push({
+    title: "Assuming every listing is the configuration we tested",
+    body: `Our scores are for the ${l.cpu}, ${l.ram}GB RAM and ${l.storage >= 1000 ? `${l.storage / 1000}TB` : `${l.storage}GB`} configuration. Retail and Amazon listings often bundle several versions of the ${m} under one name, so check the CPU, RAM and storage on the exact listing before you buy.`,
+  });
+  if (!l.ramUpgradeable) {
+    out.push({
+      title: "Buying too little RAM",
+      body: `The ${l.ram}GB of ${l.ramType} is soldered to the board and cannot be upgraded later. ${l.ram < 16 ? "Step up to 16GB if you keep many browser tabs or apps open." : l.ram < 32 && (l.useCases.workstation >= 7.5 || l.gpuType === "Discrete") ? "If you edit 4K video, run virtual machines or keep a big project open alongside a game, 32GB is the safer buy." : "Buy the capacity you will need in four years, not just today."}`,
+    });
+  }
+  if (!l.storageUpgradeable) {
+    out.push({
+      title: "Picking the smallest SSD",
+      body: `Storage is not user-replaceable on the ${m}, so the SSD you buy is the one you keep. ${l.storage <= 512 ? "512GB fills quickly with photos, games or video projects; size up at checkout if you can." : "Plan for your largest projects or game library at purchase."}`,
+    });
+  }
+  if (l.msrp - lowestPrice(l) >= 100) {
+    out.push({
+      title: "Paying the full MSRP",
+      body: `The ${m} lists at ${formatCAD(l.msrp)} but sold for around ${formatCAD(lowestPrice(l))} when we last checked, a ${formatCAD(l.msrp - lowestPrice(l))} gap. Compare street prices across retailers rather than the manufacturer's list price.`,
+    });
+  }
+  if (l.gpuType === "Discrete" && l.test.batteryGamingHours > 0) {
+    out.push({
+      title: "Judging battery life by the web-browsing number",
+      body: `It lasted ${l.test.batteryWebHours} hours browsing the web but only ${l.test.batteryGamingHours} hours gaming on battery. Plan to stay plugged in for games and heavy exports.`,
+    });
+  }
+  if (l.cpuBrand === "Qualcomm" && l.os === "Windows 11") {
+    out.push({
+      title: "Assuming every Windows app runs natively",
+      body: `The ${m} uses an Arm-based Snapdragon chip. Most apps run fine, but some games with anti-cheat, older drivers and niche engineering tools do not. Check your must-have software first.`,
+    });
+  }
+  if (l.os === "ChromeOS") {
+    out.push({
+      title: "Expecting desktop Windows or Mac software",
+      body: `ChromeOS runs web apps, Android apps and Linux apps, not full desktop Microsoft Office, Adobe Creative Cloud or most PC games. If a course or job requires desktop software, read our [Chromebook vs Windows guide](/laptop/learn/chromebook-vs-windows-laptop) first.`,
+    });
+  }
+  if (l.os === "macOS") {
+    out.push({
+      title: "Not checking for Windows-only software",
+      body: `Some engineering, architecture and accounting programs (and many PC games) only run on Windows. Check your course or workplace requirements before choosing the ${m}; see [Mac vs Windows](/laptop/learn/mac-vs-windows-laptop).`,
+    });
+  }
+  if (l.test.loadNoiseDb >= 45) {
+    out.push({
+      title: "Expecting it to stay quiet under load",
+      body: `We measured ${l.test.loadNoiseDb} dB under sustained load. That is fine with headphones, but noticeable in a quiet library or on calls.`,
+    });
+  }
+  return out.slice(0, 5);
+}
+
+export interface SkipReason {
+  who: string;
+  why: string;
+  alternative?: Laptop;
+  altWhy?: string;
+}
+
+/** Who should skip this laptop, each with the tested laptop that suits them better. */
+export function reviewSkipReasons(l: Laptop): SkipReason[] {
+  const others = testedLaptops.filter((x) => x.id !== l.id && x.status === "published");
+  const best = (pool: Laptop[], score: (x: Laptop) => number) => [...pool].sort((x, y) => score(y) - score(x))[0];
+  const price = lowestPrice(l);
+  const out: SkipReason[] = [];
+  const of = (k: MetricKey) => metricRank(l, k);
+  const bottomHalf = (r: { rank: number; of: number }) => r.rank > Math.ceil(r.of / 2);
+
+  if (l.useCases.gaming < 6) {
+    const alt = best(others.filter((x) => x.gpuType === "Discrete"), (x) => x.test.gamingFps1080pHigh / lowestPrice(x));
+    if (alt) out.push({ who: "Gamers", why: `It averaged ${l.test.gamingFps1080pHigh} FPS in our 1080p High suite (gaming score ${l.useCases.gaming.toFixed(1)}/10).`, alternative: alt, altWhy: `${alt.test.gamingFps1080pHigh} FPS for ${formatCAD(lowestPrice(alt))}` });
+  }
+  if (bottomHalf(of("battery"))) {
+    const alt = best(others, (x) => x.test.batteryWebHours);
+    if (alt) out.push({ who: "Anyone who works unplugged all day", why: `${l.test.batteryWebHours} hours in our web test ranks ${ordinalRank(of("battery"))} laptops tested.`, alternative: alt, altWhy: `${alt.test.batteryWebHours} h of web browsing` });
+  }
+  if (l.weightKg >= 1.8) {
+    const alt = best(others.filter((x) => x.weightKg < 1.4), (x) => x.overall);
+    if (alt) out.push({ who: "Commuters and students who carry it daily", why: `At ${l.weightKg} kg it is one of the heavier laptops we have tested.`, alternative: alt, altWhy: `${alt.weightKg} kg, ${alt.overall.toFixed(1)}/10` });
+  }
+  if (l.scores.value < 7) {
+    const alt = best(others.filter((x) => lowestPrice(x) < price && x.os === l.os), (x) => x.scores.value + x.overall);
+    if (alt) out.push({ who: "Buyers on a tight budget", why: `It costs ${formatCAD(price)} and scored ${l.scores.value.toFixed(1)}/10 for value.`, alternative: alt, altWhy: `${formatCAD(lowestPrice(alt))}, ${alt.overall.toFixed(1)}/10 overall` });
+  }
+  if (l.test.loadNoiseDb >= 45) {
+    const alt = best(others.filter((x) => x.os === l.os || l.os !== "macOS"), (x) => -x.test.loadNoiseDb + x.overall);
+    if (alt) out.push({ who: "People who need a quiet machine", why: `${l.test.loadNoiseDb} dB of fan noise under load.`, alternative: alt, altWhy: alt.test.loadNoiseDb === 0 ? "fanless and silent" : `${alt.test.loadNoiseDb} dB under load` });
+  }
+  if (l.os !== "Windows 11") {
+    const alt = best(others.filter((x) => x.os === "Windows 11" && Math.abs(lowestPrice(x) - price) <= Math.max(400, price * 0.3)), (x) => x.overall);
+    if (alt) out.push({ who: "Anyone who needs Windows software", why: `It runs ${l.os}, which cannot run many Windows-only programs and games.`, alternative: alt, altWhy: `Windows 11, ${formatCAD(lowestPrice(alt))}, ${alt.overall.toFixed(1)}/10` });
+  }
+  return out.slice(0, 4);
+}

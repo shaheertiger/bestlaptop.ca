@@ -5,14 +5,15 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SecondaryNav } from "@/components/SecondaryNav";
 import { ProductImage } from "@/components/ProductImage";
 import { ScoreCircle, ScoreBar, ScoreBadge } from "@/components/Score";
-import { ProsCons, RetailerButtons, AffiliateDisclosure, AuthorBox, FAQ, SectionCard, TableOfContents } from "@/components/blocks";
+import { ProsCons, RetailerButtons, AffiliateDisclosure, AuthorBox, FAQ, SectionCard, TableOfContents, Linkify } from "@/components/blocks";
 import { Newsletter } from "@/components/Newsletter";
 import { AmazonButton } from "@/components/AmazonButton";
 import { amazonImage, laptopAmazonLink } from "@/lib/affiliate";
 import { laptops, getLaptop, laptopHref } from "@/data/laptops";
 import { comparisons, comparisonLaptops } from "@/data/comparisons";
 import { DEFAULT_WEIGHTS, WEIGHT_LABELS, formatCAD, lowestPrice } from "@/lib/scoring";
-import { laptopRankings, reviewQuickAnswer, reviewFaq, metricRank, ordinalRank } from "@/lib/insights";
+import { laptopRankings, reviewQuickAnswer, reviewFaq, metricRank, ordinalRank, reviewMistakes, reviewSkipReasons } from "@/lib/insights";
+import { comparisons as allComparisons } from "@/data/comparisons";
 import { SITE } from "@/lib/site";
 import type { CategoryScores, UseCaseScores } from "@/lib/types";
 
@@ -112,6 +113,10 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
   const bestUseCase = useCaseKeys.reduce((x, y) => (l.useCases[y] > l.useCases[x] ? y : x));
   const worstUseCase = useCaseKeys.reduce((x, y) => (l.useCases[y] < l.useCases[x] ? y : x));
 
+  const mistakes = reviewMistakes(l);
+  const skip = reviewSkipReasons(l);
+  const compareSlug = (x: { id: string }) =>
+    allComparisons.find((c) => (c.a === l.id && c.b === x.id) || (c.a === x.id && c.b === l.id))?.slug;
   const toc = [
     { id: "quick-answer", label: "Quick answer" },
     { id: "verdict", label: "Quick verdict" },
@@ -126,6 +131,8 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
     { id: "thermals", label: "Thermals & noise" },
     { id: "pricing", label: "Pricing & availability" },
     { id: "compared", label: "Compared to others" },
+    { id: "who-should-skip", label: "Who should skip it" },
+    { id: "mistakes", label: "Mistakes to avoid" },
     { id: "final", label: "Final verdict" },
     { id: "faq", label: "FAQ" },
   ];
@@ -325,6 +332,50 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
                 </table>
               </div>
             </section>
+
+            <section id="who-should-skip" className="scroll-mt-20">
+              <h2 className="mb-2 text-2xl font-bold">Who should skip the {m}?</h2>
+              <p className="mb-4 text-ink-600">{l.whoShouldSkip}</p>
+              {skip.length > 0 && (
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {skip.map((r) => {
+                    const alt = r.alternative;
+                    const slug = alt && compareSlug(alt);
+                    return (
+                      <div key={r.who} className="card flex flex-col p-4">
+                        <p className="font-bold text-ink-900">{r.who}</p>
+                        <p className="mt-1 text-sm text-ink-600">{r.why}</p>
+                        {alt && (
+                          <>
+                            <p className="mt-3 text-sm">
+                              <span className="font-semibold">Better pick:</span>{" "}
+                              <Link href={laptopHref(alt)} className="link font-semibold">{alt.brand} {alt.model}</Link>{" "}
+                              <span className="text-ink-500">({r.altWhy})</span>
+                              {slug && <> · <Link href={`/laptop/compare/${slug}`} className="link">compare</Link></>}
+                            </p>
+                            <AmazonButton laptop={alt} size="sm" note={false} label="Check price" className="mt-auto pt-3" />
+                          </>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </section>
+
+            {mistakes.length > 0 && (
+              <section id="mistakes" className="scroll-mt-20">
+                <h2 className="mb-4 text-2xl font-bold">Mistakes to avoid when buying the {m}</h2>
+                <div className="space-y-3">
+                  {mistakes.map((x) => (
+                    <div key={x.title} className="rounded-xl border border-red-200 bg-red-50/60 p-4">
+                      <h3 className="font-bold text-red-900">{x.title}</h3>
+                      <p className="mt-1 text-sm text-ink-700"><Linkify text={x.body} /></p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
 
             <SectionCard id="final" title={`Should you buy the ${m}?`}>
               <p>{l.verdict}</p>
