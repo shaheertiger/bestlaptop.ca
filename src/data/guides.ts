@@ -91,22 +91,94 @@ export const guides: Guide[] = [
   },
   {
     slug: "intel-vs-amd-vs-apple-silicon",
-    title: "Intel vs AMD vs Apple Silicon",
-    h1: "Intel vs AMD vs Apple Silicon: Which Laptop CPU Is Best?",
-    excerpt: "How the three main laptop platforms compare on performance, battery life, and software.",
+    title: "Intel vs AMD vs Snapdragon vs Apple Silicon (2026): Which Is Best?",
+    h1: "Intel vs AMD vs Snapdragon vs Apple Silicon: Which Laptop CPU Should You Buy?",
+    excerpt: "How Intel, AMD, Qualcomm Snapdragon and Apple M-series laptops compare on speed, battery life, gaming and app compatibility.",
     category: "Performance",
-    updated: "2026-05-02",
-    readingTime: 8,
+    updated: "2026-11-17",
+    readingTime: 10,
     answer:
-      "Apple Silicon leads on battery life and performance per watt and suits creators on macOS. AMD offers strong multi-core value in Windows laptops. Intel remains versatile with broad compatibility and good integrated graphics. Pick the platform that matches your software and battery needs rather than chasing benchmark wins.",
+      "For most Windows buyers, an Intel Core Ultra 200V or Qualcomm Snapdragon X laptop gives the longest battery life, AMD Ryzen gives the best multi-core value, and an Intel or AMD H-series chip paired with an RTX GPU is best for gaming. Choose Snapdragon only if every app you need runs on Windows on Arm. On a Mac, every Apple M-series chip is fast and efficient, so choose by RAM, storage and budget.",
     sections: [
-      { heading: "Apple Silicon", body: ["Apple's M-series chips deliver class-leading battery life and quiet, fanless or near-silent operation. They excel at video editing and everyday work.", "The trade-off is the macOS ecosystem and a limited gaming library."] },
-      { heading: "AMD Ryzen", body: ["AMD offers excellent multi-core performance for the price in Windows laptops, with competitive integrated graphics.", "It is a strong choice for programming and value-focused buyers."] },
-      { heading: "Intel Core", body: ["Intel's Core and Core Ultra chips are versatile, with broad software compatibility and solid integrated graphics in newer models.", "Qualcomm's Snapdragon adds excellent battery life to Windows but still emulates some x86 apps."] },
+      {
+        heading: "Which processor is best for a laptop?",
+        body: [
+          "The best laptop processor depends on what you do more than on the logo. Use this as a quick guide:",
+          "- Longest battery life on Windows: Intel Core Ultra 200V (Lunar Lake) or Qualcomm Snapdragon X.",
+          "- Best value and multi-core speed on Windows: AMD Ryzen, especially the Ryzen AI 300 series.",
+          "- Gaming: an Intel Core H/HX or AMD Ryzen HS/HX chip with an NVIDIA RTX GPU. The GPU matters far more than the CPU.",
+          "- macOS, video and photo editing on battery: Apple M-series (M4, M4 Pro and up).",
+          "- Widest software compatibility: Intel or AMD (x86). Snapdragon runs most, but not all, Windows apps.",
+          "Battery life also depends on the screen, battery size and tuning of each laptop, so compare tested results in our [results table](/laptop/tools/table) rather than chip names alone.",
+        ],
+      },
+      {
+        heading: "Intel vs AMD: which is better for laptops?",
+        body: [
+          "Both are good in 2026, and the specific chip generation matters more than the brand. AMD Ryzen chips usually deliver more multi-core performance and stronger integrated Radeon graphics for the money, which makes them a favourite for programming and value buyers. Intel's Core Ultra 200V chips are tuned for battery life: the [ASUS Zenbook 14 OLED](/laptop/reviews/asus/zenbook-14-oled-2025) (Core Ultra 7 258V) lasted 15.6 hours in our web-browsing test and the [Acer Swift Go 14](/laptop/reviews/acer/swift-go-14-2025) (Core Ultra 5 226V) lasted 13.8 hours.",
+          "For gaming, both work well. The Intel-based [Lenovo Legion Pro 5](/laptop/reviews/lenovo/legion-pro-5-2025) and the AMD-based [ASUS ROG Zephyrus G14](/laptop/reviews/asus/rog-zephyrus-g14-2025) both run RTX 4070 graphics, and the GPU and its power limit decide most of the frame-rate difference. See the [best gaming laptops](/laptop/reviews/best/gaming).",
+        ],
+      },
+      {
+        heading: "Snapdragon vs Intel: which is better?",
+        body: [
+          "Qualcomm's Snapdragon X chips are Arm processors, like a phone's or a Mac's, running Windows 11 on Arm. They are fast and very efficient: the [Dell XPS 13 (9350)](/laptop/reviews/dell/xps-13-9350) with a Snapdragon X Elite lasted 15.2 hours in our web test and scored 14,100 in Geekbench multi-core, and the Snapdragon X Plus [Surface Laptop 7](/laptop/reviews/microsoft/surface-laptop-7-13) lasted 16 hours.",
+          "Intel's Core Ultra 200V chips have closed most of the battery gap while keeping full x86 compatibility and better integrated graphics: the Zenbook 14 OLED matched the XPS 13 on battery (15.6 hours) and nearly doubled its frame rate in our 1080p gaming test (32 fps vs 18 fps). See the head-to-head: [Zenbook 14 OLED vs XPS 13](/laptop/compare/zenbook-14-oled-2025-vs-xps-13-9350).",
+          "Choose Snapdragon if your work lives in a browser, Microsoft 365, Teams and Zoom and you want long battery life and instant wake. Choose Intel if you rely on older Windows software, specialised hardware drivers or play games.",
+        ],
+      },
+      {
+        heading: "Snapdragon vs AMD Ryzen: which should you buy?",
+        body: [
+          "Snapdragon usually wins on battery life and standby; AMD Ryzen wins on compatibility, integrated graphics and price, and Ryzen laptops are widely available under $1,000. The AMD-based [Framework Laptop 13](/laptop/reviews/framework/laptop-13-2025) (Ryzen AI 7 350) adds upgradeability that no Arm laptop offers. If you game even casually, choose AMD or Intel.",
+        ],
+      },
+      {
+        heading: "Can Snapdragon laptops run all Windows apps?",
+        body: [
+          "Most, but not all. Windows on Arm runs native Arm apps at full speed, and Microsoft's Prism emulation runs most traditional x86 apps automatically. Microsoft 365, Edge, Chrome, Teams, Zoom and Adobe Photoshop and Lightroom all have native Arm versions.",
+          "Things that can still fail or run poorly include games that use kernel-level anti-cheat, older printer, scanner and peripheral drivers, some VPN and security software, and specialised engineering or scientific programs. Check each must-have app and device before buying, and keep the receipt in case something does not work. Second-generation Snapdragon X2 chips are arriving in 2026 laptops with more performance, but the compatibility rules are the same.",
+        ],
+      },
+      {
+        heading: "Apple Silicon vs Intel, AMD and Snapdragon",
+        body: [
+          "Apple's M-series chips lead on performance per watt and keep full speed on battery. The [MacBook Air 13 (M4)](/laptop/reviews/apple/macbook-air-13-m4) lasted 18 hours in our web test with a Geekbench multi-core score of 14,800, and the [MacBook Pro 14 (M4 Pro)](/laptop/reviews/apple/macbook-pro-14-m4-pro) scored 22,600 while still lasting 16.8 hours.",
+          "The trade-off is that Apple chips only come in Macs, so you are choosing macOS too, with a smaller gaming library and no Windows-only software. Read [Mac vs Windows laptop](/laptop/learn/mac-vs-windows-laptop) if you are weighing the switch.",
+        ],
+      },
+      {
+        heading: "What is a Copilot+ PC, and does the NPU matter?",
+        body: [
+          "A Copilot+ PC is a Windows 11 laptop with a neural processing unit (NPU) rated at 40 TOPS or more. Snapdragon X, AMD Ryzen AI 300 and Intel Core Ultra 200V chips qualify. The NPU runs on-device AI features such as live caption translation, Windows Studio Effects for the webcam and improved search, using less power than the CPU or GPU would.",
+          "These features are pleasant but not a reason to buy on their own. Most AI tools people use today, including ChatGPT, Copilot in the browser and Gemini, run in the cloud and work on any laptop.",
+        ],
+      },
+      {
+        heading: "How to read laptop processor names",
+        body: [
+          "- Intel: Core Ultra 5/7/9 is the current naming. A 'V' suffix (such as 258V) means a battery-focused chip; 'U' means low power; 'H' means higher performance; 'HX' means desktop-class performance for gaming laptops.",
+          "- AMD: Ryzen 5/7/9 or Ryzen AI 5/7/9. 'U' is low power, 'HS' is a balanced performance chip for thin gaming laptops, and 'HX' is the fastest.",
+          "- Qualcomm: Snapdragon X Plus is the mainstream tier and Snapdragon X Elite is the faster tier.",
+          "- Apple: M4 powers the MacBook Air and base MacBook Pro; M4 Pro and M4 Max add CPU and GPU cores for heavy creative work.",
+          "A tier number (5, 7, 9) only compares chips within the same generation. A new Core Ultra 5 can beat an older Core i7.",
+        ],
+      },
+      {
+        heading: "Which processor should you buy?",
+        body: [
+          "For school and office work, any current Intel Core Ultra 5, Ryzen 5, Snapdragon X Plus or Apple M4 is plenty; prioritise 16GB of RAM (see [how much RAM you need](/laptop/learn/how-much-ram-do-you-need)) and battery life: see the [laptops with the best battery life](/laptop/reviews/best/long-battery-life). For programming, see the [best laptops for programming](/laptop/reviews/best/programming); for editing, the [best laptops for video editing](/laptop/reviews/best/video-editing). On a tight budget, a Chromebook may make more sense than any Windows chip: read [Chromebook vs Windows laptop](/laptop/learn/chromebook-vs-windows-laptop).",
+        ],
+      },
     ],
     faq: [
-      { q: "Is Apple Silicon better than Intel?", a: "For battery life and efficiency, yes. For Windows software and gaming, Intel or AMD is the better fit." },
-      { q: "Is AMD or Intel better for laptops?", a: "AMD often wins on multi-core value; Intel offers broad compatibility. Both are good in 2026." },
+      { q: "Is AMD or Intel better for laptops?", a: "Both are good in 2026. AMD Ryzen usually wins on multi-core value and integrated graphics; Intel Core Ultra 200V chips are excellent for battery life. Compare specific tested laptops rather than brands." },
+      { q: "Is Snapdragon better than Intel?", a: "Snapdragon X laptops have excellent battery life and instant wake, but Intel's Core Ultra 200V chips now match them on battery in our testing while running every Windows app and offering better integrated graphics. Choose Snapdragon only if your apps run well on Windows on Arm." },
+      { q: "Can a Snapdragon laptop run all Windows apps?", a: "Most apps run natively or through Microsoft's Prism emulation. Some games with anti-cheat, older printer and peripheral drivers, certain VPNs and specialised engineering software may not work, so check your must-have apps first." },
+      { q: "Is Apple Silicon better than Intel?", a: "For battery life and performance per watt, yes. For Windows-only software and gaming, an Intel or AMD Windows laptop is the better fit." },
+      { q: "Which processor is best for a gaming laptop?", a: "An Intel Core H/HX or AMD Ryzen HS/HX chip paired with an NVIDIA RTX GPU. The GPU and its power limit matter much more for frame rates than the CPU brand. Avoid Snapdragon for gaming." },
+      { q: "Is a Core Ultra 5 or Ryzen 5 enough?", a: "Yes for school, office work, browsing and light photo editing. Step up to a 7-series chip for programming, heavy multitasking or video editing." },
+      { q: "Is a Snapdragon laptop good for students?", a: "Often, yes, thanks to long battery life. Check that your program's software and any exam or lockdown browser your school uses support Windows on Arm before buying." },
     ],
   },
   {
@@ -204,7 +276,7 @@ export const guides: Guide[] = [
       {
         heading: "Which should you buy?",
         body: [
-          "Choose a Chromebook if your budget is under $500, you live in Chrome and Google or Microsoft web apps, and you value battery life and simplicity: see the [best Chromebooks](/laptop/reviews/best/chromebook). Choose Windows if you need specific desktop software, want to game, or want the most flexibility: see the [best Windows laptops](/laptop/reviews/best/windows). Considering a Mac too? Read [MacBook vs Windows](/laptop/learn/macbook-vs-windows-laptop).",
+          "Choose a Chromebook if your budget is under $500, you live in Chrome and Google or Microsoft web apps, and you value battery life and simplicity: see the [best Chromebooks](/laptop/reviews/best/chromebook). Choose Windows if you need specific desktop software, want to game, or want the most flexibility: see the [best Windows laptops](/laptop/reviews/best/windows). Considering a Mac too? Read [Mac vs Windows laptop](/laptop/learn/mac-vs-windows-laptop). Wondering whether you need a laptop at all? Read [laptop vs tablet](/laptop/learn/laptop-vs-tablet).",
         ],
       },
     ],
@@ -216,7 +288,594 @@ export const guides: Guide[] = [
       { q: "How long do Chromebooks last?", a: "Recent Chromebooks receive about 10 years of automatic updates from release. Check the Auto Update Expiration date on Google's support site before buying." },
     ],
   },
-  ...quickGuide("macbook-vs-windows-laptop", "MacBook vs Windows Laptop", "Comparisons", "MacBooks lead on battery life, efficiency, and build, and suit creators. Windows laptops offer more choice, better gaming, and lower entry prices. Pick based on the software you rely on."),
+  // "X vs Y: which should you buy?" comparisons, modelled on the Chromebook vs
+  // Windows guide (answer first, H2s phrased the way Canadians search).
+  {
+    slug: "mac-vs-windows-laptop",
+    title: "Mac vs Windows Laptop (2026): Which Should You Buy?",
+    h1: "Mac vs Windows Laptop: Which Is Best in 2026?",
+    excerpt: "MacBooks win on battery life, build and creative performance; Windows laptops win on choice, gaming, price range and software compatibility.",
+    category: "Comparisons",
+    updated: "2026-11-17",
+    readingTime: 9,
+    answer:
+      "Buy a MacBook if you want the longest battery life, a premium build and smooth creative performance, and all your software runs on macOS: the MacBook Air 13 (M4) starts at $1,399. Buy a Windows laptop if you game, need Windows-only software (many engineering, CAD and accounting programs), want a touchscreen or 2-in-1, or want a good laptop for under $1,000.",
+    sections: [
+      {
+        heading: "What is the difference between a Mac and a Windows laptop?",
+        body: [
+          "A Mac (MacBook Air or MacBook Pro) runs macOS and is made only by Apple, using Apple's own M-series processors. A Windows laptop runs Windows 11 and is made by dozens of brands, including Lenovo, Dell, HP, ASUS, Acer and Microsoft, with Intel, AMD or Qualcomm Snapdragon processors. That means Windows covers everything from $500 budget laptops to $4,000 gaming machines, while Apple offers a few well-made models at premium prices.",
+        ],
+      },
+      {
+        heading: "Which is best: a laptop or a MacBook?",
+        body: [
+          "A MacBook is a laptop, so the real question is MacBook vs Windows laptop. A MacBook is the better laptop for people who value battery life, quiet operation, build quality and resale value. A Windows laptop is better if you need specific software, gaming, a touchscreen, a lower price or more models to choose from. If you only browse and write documents, also consider a Chromebook: see [Chromebook vs Windows laptop](/laptop/learn/chromebook-vs-windows-laptop).",
+        ],
+      },
+      {
+        heading: "Mac vs Windows laptop: price in Canada",
+        body: [
+          "The cheapest current MacBook we test, the [MacBook Air 13 (M4)](/laptop/reviews/apple/macbook-air-13-m4), lists at $1,399, the [MacBook Air 15 (M4)](/laptop/reviews/apple/macbook-air-15-m4) at $1,699 and the [MacBook Pro 14 (M4 Pro)](/laptop/reviews/apple/macbook-pro-14-m4-pro) at $2,799, with Best Buy often a little lower. Windows starts much lower: the [Acer Swift Go 14](/laptop/reviews/acer/swift-go-14-2025) is a strong all-rounder at $949 and the [Acer Aspire 5](/laptop/reviews/acer/aspire-5-15-2025) costs $749.",
+          "Apple's RAM and storage cannot be upgraded later and Apple charges a lot for higher configurations, so buy the size you need up front. Students and teachers can save with Apple's education pricing in Canada, and back-to-school promotions often add extras. See the [best laptops under $1,000](/laptop/reviews/best/under-1000) if budget comes first.",
+        ],
+      },
+      {
+        heading: "Mac vs Windows laptop: battery life",
+        body: [
+          "MacBooks lead. In our web-browsing battery test the MacBook Air 15 lasted 18.4 hours, the Air 13 lasted 18 hours and the MacBook Pro 14 lasted 16.8 hours. The best Windows laptops come close: the [Surface Laptop 7](/laptop/reviews/microsoft/surface-laptop-7-13) lasted 16 hours, the [ASUS Zenbook 14 OLED](/laptop/reviews/asus/zenbook-14-oled-2025) 15.6 hours and the [Dell XPS 13](/laptop/reviews/dell/xps-13-9350) 15.2 hours. Windows gaming laptops typically last 6 to 9 hours. Macs also keep full performance unplugged, while many Windows laptops slow down on battery. See [laptops with the best battery life](/laptop/reviews/best/long-battery-life).",
+        ],
+      },
+      {
+        heading: "Best Windows laptop vs MacBook Air",
+        body: [
+          "The closest Windows rivals to the MacBook Air are premium ultraportables around $1,500: the Zenbook 14 OLED ($1,499) adds an OLED screen, the Surface Laptop 7 ($1,499) adds a touchscreen, and the XPS 13 ($1,499) is smaller and lighter at 1.19 kg. The MacBook Air 13 still leads on battery life and multi-core speed (14,800 in Geekbench vs 11,200 for the Zenbook and 14,100 for the Snapdragon-based XPS 13).",
+          "Compare them directly: [MacBook Air 13 vs Zenbook 14 OLED](/laptop/compare/macbook-air-13-m4-vs-zenbook-14-oled-2025), [Surface Laptop 7 vs MacBook Air 13](/laptop/compare/surface-laptop-7-13-vs-macbook-air-13-m4) and [MacBook Air 15 vs XPS 13](/laptop/compare/macbook-air-15-m4-vs-dell-xps-13-9350).",
+        ],
+      },
+      {
+        heading: "Best Windows laptop vs MacBook Pro",
+        body: [
+          "For creative work on battery, the MacBook Pro 14 (M4 Pro) is hard to beat: it exported our test video in 2.6 minutes and lasted 16.8 hours on battery. The [Dell XPS 16](/laptop/reviews/dell/xps-16-9640) ($3,199) took 4.6 minutes and lasted 9 hours. Windows wins when you need an NVIDIA GPU: the [HP Omen Transcend 14](/laptop/reviews/hp/omen-transcend-14-2026) ($2,399) exported the same video in 3.2 minutes and averaged 112 fps in our 1080p gaming suite, versus 52 fps for the MacBook Pro. See [MacBook Pro 14 vs XPS 16](/laptop/compare/macbook-pro-14-m4-pro-vs-xps-16-9640) and the [best laptops for video editing](/laptop/reviews/best/video-editing).",
+        ],
+      },
+      {
+        heading: "Is a Mac or Windows laptop better for gaming?",
+        body: [
+          "Windows, by a wide margin. Most PC games, Xbox PC Game Pass and nearly all multiplayer games with anti-cheat run only on Windows, and Windows gaming laptops have far more powerful GPUs. In our 1080p gaming test, MacBooks averaged 34 to 52 fps, while RTX gaming laptops such as the [ASUS TUF Gaming A15](/laptop/reviews/asus/tuf-gaming-a15-2025) ($1,299, 104 fps) and [Lenovo Legion Pro 5](/laptop/reviews/lenovo/legion-pro-5-2025) (118 fps) were two to three times faster. See the [best gaming laptops](/laptop/reviews/best/gaming).",
+        ],
+      },
+      {
+        heading: "What software runs on Mac vs Windows?",
+        body: [
+          "- Runs on both: Microsoft 365 (Word, Excel, PowerPoint, Outlook, Teams), web browsers, Zoom, Adobe Creative Cloud, Spotify, Slack and most popular apps.",
+          "- Mac only: Final Cut Pro, Logic Pro, Xcode (needed to build iPhone apps) and Apple's iMessage and AirDrop integration.",
+          "- Windows only, or best on Windows: SolidWorks, Revit and many other engineering and CAD programs, some accounting and tax software used in Canada, Excel features such as Power Pivot and some VBA add-ins, and most PC games.",
+          "You can run Windows 11 on an Apple-silicon Mac through virtualisation software such as Parallels, but not every app or game works, so do not count on it for required coursework or work software.",
+        ],
+      },
+      {
+        heading: "Is a Mac or Windows laptop better for students?",
+        body: [
+          "Check your program's requirements first. Engineering, architecture, and some business and computer-science courses require Windows-only software, so a MacBook can be the wrong choice. Arts, humanities, health sciences and general-science students do very well on a MacBook Air thanks to its battery life and longevity. High-school and web-only coursework suits a Chromebook. See the [best laptops for students](/laptop/reviews/best/student), [best laptops for university students](/laptop/reviews/best/college) and [best laptops for engineering students](/laptop/reviews/best/engineering-students).",
+        ],
+      },
+      {
+        heading: "Mac vs Windows laptop: security, updates and how long they last",
+        body: [
+          "Both are secure when kept updated. macOS has fewer malware threats aimed at it and Apple supports Macs with updates for many years; MacBooks also hold their resale value better than most Windows laptops. Windows 11 with Microsoft Defender is secure too, but a Windows laptop's longevity depends more on the specific model's build quality and how much RAM and storage it has. Windows 10 support ended in October 2025, so make sure any used or discounted laptop runs Windows 11. See [how long a laptop should last](/laptop/learn/how-long-should-a-laptop-last).",
+        ],
+      },
+      {
+        heading: "Which should you buy?",
+        body: [
+          "Choose a Mac if your software runs on macOS, you value battery life and build quality, and your budget starts around $1,400: see the [best MacBooks](/laptop/reviews/best/macbook). Choose Windows if you game, need Windows-only software, want a touchscreen or 2-in-1, or want to spend less: see the [best Windows laptops](/laptop/reviews/best/windows). Still deciding on brand? Read [Dell vs HP vs Lenovo](/laptop/learn/dell-vs-hp-vs-lenovo-laptops). Curious about the chips? Read [Intel vs AMD vs Snapdragon vs Apple Silicon](/laptop/learn/intel-vs-amd-vs-apple-silicon).",
+        ],
+      },
+    ],
+    faq: [
+      { q: "Is a Mac better than a Windows laptop?", a: "For battery life, build quality, creative work on battery and resale value, a MacBook is usually better. For gaming, Windows-only software, touchscreens and budgets under $1,000, a Windows laptop is better." },
+      { q: "Which is best, a laptop or a MacBook?", a: "A MacBook is a laptop. Compared with a Windows laptop at the same price, a MacBook usually lasts longer on battery and feels better built, while the Windows laptop offers more ports, touchscreen options, gaming and software compatibility." },
+      { q: "Is a MacBook Air or a Windows laptop better for university?", a: "A MacBook Air is excellent for most programs thanks to 18 hours of battery life in our testing. Engineering, architecture and some business programs require Windows software, so check your course requirements first." },
+      { q: "Can a MacBook run Windows?", a: "Not natively. Apple-silicon Macs do not support Boot Camp, but virtualisation software such as Parallels can run Windows 11 on Arm. Many apps work, but games with anti-cheat and some specialised software do not." },
+      { q: "Are MacBooks worth the money in Canada?", a: "Often, yes. A MacBook Air costs more up front than a mid-range Windows laptop but typically lasts longer, keeps more resale value and has class-leading battery life. Buy enough RAM and storage, since neither can be upgraded later." },
+      { q: "Is a Mac or Windows laptop easier to use?", a: "Both are easy once you are used to them. If you already have an iPhone, a Mac integrates neatly with it. If you have used Windows at work or school for years, staying on Windows avoids relearning shortcuts and software." },
+    ],
+  },
+  {
+    slug: "dell-vs-hp-vs-lenovo-laptops",
+    title: "Dell vs HP vs Lenovo vs ASUS (2026): Which Laptop Brand Is Best?",
+    h1: "Dell vs HP vs Lenovo vs ASUS: Which Laptop Brand Should You Buy?",
+    excerpt: "No brand wins outright: the product line matters more than the logo. Here is how Dell, HP, Lenovo and ASUS compare in Canada.",
+    category: "Comparisons",
+    updated: "2026-11-17",
+    readingTime: 9,
+    answer:
+      "There is no single best laptop brand: the product line matters more than the logo. Lenovo is the safest all-round pick thanks to ThinkPad keyboards and strong value, Dell is best for premium ultraportables and business support, HP is strongest for 2-in-1 convertibles and business laptops, and ASUS offers the most performance for the money, especially in gaming. Compare tested models in your budget rather than brands.",
+    sections: [
+      {
+        heading: "Dell vs HP vs Lenovo: which laptop brand is best?",
+        body: [
+          "All four brands make excellent laptops and poor ones. Each sells a budget line, a mainstream line, a premium line, a business line and a gaming line, and the gap between a brand's budget and premium models is much bigger than the gap between brands. Here is where each one stands out:",
+          "- Lenovo: ThinkPad business laptops with the best keyboards we test, IdeaPad and Yoga for home and school, Legion and LOQ for gaming. Strong value across the range.",
+          "- Dell: XPS-class premium ultraportables with excellent screens and build, Inspiron for budgets, Latitude and Dell Pro for business, Alienware for gaming. Good onsite support options.",
+          "- HP: Spectre and OmniBook premium laptops (especially 2-in-1 convertibles), Pavilion and Envy-class mainstream models, EliteBook and ProBook for business, Omen and Victus for gaming.",
+          "- ASUS: Zenbook ultraportables, Vivobook budget models, ROG and TUF gaming laptops, plus some of the best-value Chromebooks. Often the most hardware for the money.",
+        ],
+      },
+      {
+        heading: "Dell vs Lenovo laptop: which is best?",
+        body: [
+          "For business, programming and anyone who types all day, Lenovo's ThinkPads have the edge: the [ThinkPad X1 Carbon Gen 12](/laptop/reviews/lenovo/thinkpad-x1-carbon-gen-12) weighs just 1.09 kg, scored 9.4 for its keyboard and lasted 11.8 hours on battery. For a premium ultraportable at a lower price, Dell competes strongly: the [Dell XPS 13 (9350)](/laptop/reviews/dell/xps-13-9350) costs $1,499 versus $2,199 for the X1 Carbon and lasted 15.2 hours, though it uses a Snapdragon chip with Windows on Arm.",
+          "In gaming, Lenovo's Legion line is one of the best values in Canada; the [Legion Pro 5](/laptop/reviews/lenovo/legion-pro-5-2025) averaged 118 fps in our 1080p gaming test. See the full head-to-head: [ThinkPad X1 Carbon vs XPS 13](/laptop/compare/thinkpad-x1-carbon-gen-12-vs-dell-xps-13-9350).",
+        ],
+      },
+      {
+        heading: "HP vs Dell: which laptop is better?",
+        body: [
+          "Choose HP if you want a 2-in-1: the [HP Spectre x360 14](/laptop/reviews/hp/spectre-x360-14-2025) ($1,849) folds into a tablet, includes pen support and lasted 11 hours in our test. Choose Dell if you want a traditional clamshell with long battery life: the XPS 13 lasted 15.2 hours for $1,499. For creators, the [Dell XPS 16](/laptop/reviews/dell/xps-16-9640) pairs a large touchscreen with an RTX 4070, while HP's [Omen Transcend 14](/laptop/reviews/hp/omen-transcend-14-2026) is a lighter, faster gaming-and-creator option at $2,399.",
+          "In business, Dell Latitude/Dell Pro and HP EliteBook are closely matched; both offer onsite warranty upgrades and strong IT management tools. Compare: [XPS 13 vs Spectre x360 14](/laptop/compare/xps-13-9350-vs-spectre-x360-14-2025).",
+        ],
+      },
+      {
+        heading: "HP or Lenovo: which laptop brand is better?",
+        body: [
+          "These two are the closest match. For 2-in-1s, Lenovo's [Yoga 9i](/laptop/reviews/lenovo/yoga-9i-2-in-1-2026) ($1,999) lasted 14.2 hours in our battery test against 11 hours for the HP Spectre x360 14, while the Spectre costs less. For business, ThinkPad keyboards are better, while EliteBooks are known for security features and premium design. For gaming, the Legion Pro 5 and Omen Transcend 14 were within a few frames of each other (118 vs 112 fps), but the Omen weighs 1.63 kg against 2.5 kg for the Legion.",
+          "Compare: [Spectre x360 14 vs Yoga 9i](/laptop/compare/spectre-x360-14-2025-vs-yoga-9i-2-in-1-2026) and [Legion Pro 5 vs Omen Transcend 14](/laptop/compare/legion-pro-5-2025-vs-omen-transcend-14-2026).",
+        ],
+      },
+      {
+        heading: "ASUS vs HP: which laptop is better?",
+        body: [
+          "ASUS usually gives more hardware for the money. The [ASUS Zenbook 14 OLED](/laptop/reviews/asus/zenbook-14-oled-2025) ($1,499) has an OLED screen and lasted 15.6 hours in our battery test, against 11 hours for the $1,849 Spectre x360 14. In gaming, the [ASUS TUF Gaming A15](/laptop/reviews/asus/tuf-gaming-a15-2025) delivered 104 fps for $1,299, one of the best values we have tested, and the [ROG Zephyrus G14](/laptop/reviews/asus/rog-zephyrus-g14-2025) is a premium 14-inch alternative.",
+          "HP's advantages are its convertible designs, broad retail availability in Canada and business lines with longer warranty options. Compare: [Spectre x360 14 vs Zenbook 14 OLED](/laptop/compare/spectre-x360-14-2025-vs-zenbook-14-oled-2025).",
+        ],
+      },
+      {
+        heading: "Which laptop brand is the most reliable?",
+        body: [
+          "We have not seen independent, brand-wide reliability data we trust enough to rank them, and reliability varies more by product line than by brand. Business lines (ThinkPad, Latitude/Dell Pro, EliteBook, ExpertBook) are built to tougher standards, are easier to service and often come with three-year warranty options. The cheapest consumer lines in every brand cut corners on hinges, keyboards and screens. Our reviews score build quality and note repairability and RAM and storage upgradeability for every model.",
+        ],
+      },
+      {
+        heading: "Warranty and support in Canada: Dell vs HP vs Lenovo vs ASUS",
+        body: [
+          "Most consumer laptops from all four brands include a one-year limited warranty in Canada, while business models often offer one to three years. Dell, Lenovo and HP sell upgrades that add onsite service and accidental-damage coverage (such as Dell Premium Support, Lenovo Premium Care and HP Care Pack). ASUS consumer repairs are usually mail-in. Check whether service is mail-in, depot or onsite before you buy, and remember that many Canadian credit cards extend the manufacturer's warranty. See [laptop warranties in Canada explained](/laptop/learn/laptop-warranty-explained-canada).",
+        ],
+      },
+      {
+        heading: "Which brand is best for students, business and gaming?",
+        body: [
+          "- Students: ASUS, Acer and Lenovo offer the best value; the [Acer Swift Go 14](/laptop/reviews/acer/swift-go-14-2025) ($949, 13.8 hours) is a standout. See the [best laptops for students](/laptop/reviews/best/student).",
+          "- Business: Lenovo ThinkPad first, then Dell Latitude/Dell Pro and HP EliteBook. See the [best business laptops](/laptop/reviews/best/business).",
+          "- Gaming: ASUS ROG/TUF, Lenovo Legion and HP Omen. See the [best gaming laptops](/laptop/reviews/best/gaming).",
+          "- 2-in-1: HP Spectre and Lenovo Yoga. See the [best 2-in-1 laptops](/laptop/reviews/best/2-in-1).",
+          "- Thin and light: Dell XPS, ASUS Zenbook, Lenovo ThinkPad X1 and LG gram. See the [best lightweight laptops](/laptop/reviews/best/lightweight).",
+        ],
+      },
+      {
+        heading: "Which should you buy?",
+        body: [
+          "Pick the use case and budget first, then compare the best tested model from each brand: the [best Lenovo laptops](/laptop/reviews/best/lenovo), [best Dell laptops](/laptop/reviews/best/dell), [best HP laptops](/laptop/reviews/best/hp) and [best ASUS laptops](/laptop/reviews/best/asus). For a full overview of every brand, see our [laptop brands guide](/laptop/brands). Not sure about Windows at all? Read [Mac vs Windows laptop](/laptop/learn/mac-vs-windows-laptop) and [Chromebook vs Windows laptop](/laptop/learn/chromebook-vs-windows-laptop).",
+        ],
+      },
+    ],
+    faq: [
+      { q: "Is Dell or Lenovo better for laptops?", a: "Lenovo is better for business users and typists thanks to ThinkPad keyboards, and for gaming value with Legion. Dell is better if you want a premium ultraportable like the XPS 13 with long battery life. Compare the specific models in your budget." },
+      { q: "Is HP or Dell better?", a: "HP is better for 2-in-1 convertibles; Dell is better for traditional premium ultraportables. Their business lines (EliteBook and Latitude/Dell Pro) are closely matched." },
+      { q: "Which is better, HP or Lenovo?", a: "They are evenly matched. Lenovo leads on keyboards, business laptops and battery life in its Yoga 2-in-1s; HP leads on design and offers lighter premium gaming laptops like the Omen Transcend 14." },
+      { q: "Is ASUS better than HP?", a: "ASUS usually offers more performance and battery life for the money, especially in gaming and ultraportables. HP is stronger for convertibles, business support and in-store availability." },
+      { q: "Which laptop brand lasts the longest?", a: "Business lines from any of these brands (ThinkPad, Latitude/Dell Pro, EliteBook, ExpertBook) tend to last longest because they are built tougher and are easier to repair. Budget consumer lines from every brand are the least durable." },
+      { q: "What about Acer, Apple and Microsoft?", a: "Acer offers excellent value, such as the Swift Go 14. Apple's MacBooks lead on battery life (see Mac vs Windows laptop). Microsoft's Surface Laptop 7 is a strong premium choice with 16 hours of battery life in our test." },
+      { q: "Which laptop brand is best for students?", a: "For value, ASUS, Acer and Lenovo. For long battery life and longevity, a MacBook Air. For web-only coursework, a Chromebook from ASUS or Acer." },
+    ],
+  },
+  {
+    slug: "laptop-vs-desktop",
+    title: "Laptop vs Desktop (2026): Which Should You Buy?",
+    h1: "Laptop vs Desktop Computer: Which Is Best for You?",
+    excerpt: "Laptops win on portability and space; desktops win on performance per dollar, upgrades, ergonomics and gaming value.",
+    category: "Comparisons",
+    updated: "2026-11-17",
+    readingTime: 7,
+    answer:
+      "Buy a laptop if you need to move your computer at all, whether to class, work, the couch or on trips. Buy a desktop if it will stay on one desk and you want the most performance for your money, easy upgrades and a big screen, especially for gaming. For most students and households, a laptop (plus a monitor at home if you like) is the better single computer.",
+    sections: [
+      {
+        heading: "What is the difference between a computer and a laptop?",
+        body: [
+          "A laptop is a computer, so the question usually means desktop vs laptop. A laptop builds the screen, keyboard, trackpad, speakers, webcam and battery into one portable case. A desktop is a tower (or an all-in-one) that sits on a desk and needs a separate monitor, keyboard and mouse, but it can use larger, more powerful and more easily replaced parts.",
+        ],
+      },
+      {
+        heading: "Laptop vs desktop: price and performance",
+        body: [
+          "Dollar for dollar, a desktop is faster. Desktop processors and graphics cards run at much higher power with bigger coolers, so a laptop GPU with the same name as a desktop card is noticeably slower. Remember to add the cost of a monitor, keyboard, mouse and webcam to a desktop budget, though.",
+          "For everyday work such as browsing, Microsoft 365, video calls and streaming, a modern laptop is more than fast enough, and the price gap mostly disappears. A good everyday laptop starts around $750 to $950 in Canada: see the [best laptops under $1,000](/laptop/reviews/best/under-1000).",
+        ],
+      },
+      {
+        heading: "Laptop or desktop: which is best for gaming?",
+        body: [
+          "A desktop gives you more frames per dollar, quieter cooling and the ability to upgrade the graphics card later. A gaming laptop makes sense if you need to game in more than one place or have no room for a tower. Good ones are no longer extreme: the [ASUS TUF Gaming A15](/laptop/reviews/asus/tuf-gaming-a15-2025) averaged 104 fps in our 1080p gaming test for $1,299, and the [Lenovo Legion Pro 5](/laptop/reviews/lenovo/legion-pro-5-2025) hit 118 fps for $2,499.",
+          "The trade-offs are weight (2.2 to 2.5 kg for those two), fan noise and battery life (6.4 to 7.4 hours of web browsing in our tests, and far less while gaming). See the [best gaming laptops](/laptop/reviews/best/gaming), the [best budget gaming laptops](/laptop/reviews/best/budget-gaming) and our [gaming laptop buying guide](/laptop/learn/gaming-laptop-buying-guide).",
+        ],
+      },
+      {
+        heading: "Laptop or desktop: which is best for students?",
+        body: [
+          "A laptop, almost always. Students need to take notes in class, work in the library, write exams on their own device in some programs and fit into a small dorm or shared apartment. A desktop only makes sense as a second computer at home for gaming or heavy editing. See the [best laptops for students](/laptop/reviews/best/student) and the [best laptops for university students](/laptop/reviews/best/college); if your coursework is web-based, read [Chromebook vs Windows laptop](/laptop/learn/chromebook-vs-windows-laptop).",
+        ],
+      },
+      {
+        heading: "Laptop vs desktop: upgrades and lifespan",
+        body: [
+          "Desktops can be upgraded part by part: add RAM, swap the graphics card, add drives or replace a failed power supply, which can stretch their life well past a laptop's. Many thin laptops have soldered RAM, though most still let you replace the SSD. Buy enough memory up front (see [how much RAM you need](/laptop/learn/how-much-ram-do-you-need)), or consider a modular laptop like the [Framework Laptop 13](/laptop/reviews/framework/laptop-13-2025). A well-chosen laptop typically lasts four to six years: see [how long a laptop should last](/laptop/learn/how-long-should-a-laptop-last).",
+        ],
+      },
+      {
+        heading: "Laptop vs desktop: screen size and ergonomics",
+        body: [
+          "Laptop screens range from 13 to 16 inches (17 or 18 inches on a few gaming models), and using one all day means looking down at the screen. A desktop lets you use a large monitor at eye level with a full-size keyboard. You can get the same set-up with a laptop by adding an external monitor, keyboard and mouse, or a single USB-C or Thunderbolt dock: see [laptop ports explained](/laptop/learn/laptop-ports-explained) and the [best laptops for working from home](/laptop/reviews/best/working-from-home).",
+        ],
+      },
+      {
+        heading: "Laptop vs desktop: power use and noise",
+        body: [
+          "Laptops use far less electricity. A thin laptop like the ThinkPad X1 Carbon drew 38 watts under full load in our testing, while a gaming desktop can draw several hundred. Laptops also keep working through short power outages thanks to their battery. Gaming laptops are the exception on noise: their small fans have to spin fast to cool powerful chips.",
+        ],
+      },
+      {
+        heading: "Can a laptop replace a desktop?",
+        body: [
+          "Yes, for most people. Plug a laptop into a monitor at home and it works like a desktop, then unplug it and take it with you. Large 16-inch laptops work especially well as desktop replacements: see the [best 16-inch laptops](/laptop/reviews/best/16-inch). The exceptions are high-end gaming, 3D rendering and other workloads where you want the fastest possible GPU running for hours.",
+        ],
+      },
+      {
+        heading: "Which should you buy?",
+        body: [
+          "Choose a laptop if you need portability, have limited space or want one computer for everything: start with the [best laptops in Canada](/laptop/reviews/best/laptop). Choose a desktop if it will never leave your desk and you want maximum gaming or rendering performance for the money and easy upgrades. Considering a tablet instead? Read [laptop vs tablet](/laptop/learn/laptop-vs-tablet). Choosing a size? Read [14 vs 15 inch laptop](/laptop/learn/14-vs-15-inch-laptop).",
+        ],
+      },
+    ],
+    faq: [
+      { q: "Is it better to buy a laptop or a desktop?", a: "A laptop if you need portability or have limited space; a desktop if it will stay on one desk and you want the most performance and upgradeability for your money." },
+      { q: "Is a laptop or desktop better for gaming?", a: "A desktop offers more performance per dollar, quieter cooling and GPU upgrades. A gaming laptop is the right choice if you need to game in more than one place." },
+      { q: "Is a desktop cheaper than a laptop?", a: "For the same performance, yes, especially for gaming. But once you add a monitor, keyboard, mouse and webcam, the gap for everyday use is small." },
+      { q: "Which lasts longer, a laptop or a desktop?", a: "A desktop usually lasts longer because you can replace or upgrade individual parts. A well-chosen laptop typically lasts four to six years." },
+      { q: "Is a laptop or desktop better for students?", a: "A laptop. Students need to work in class, the library and at home, and most dorms have little space for a desktop." },
+      { q: "Is a laptop or desktop better for home use?", a: "If the computer will be shared at one spot and used mainly for browsing, email and photos, either works; a laptop adds the flexibility to use it anywhere in the house. See our best laptops for home use." },
+    ],
+  },
+  {
+    slug: "laptop-vs-tablet",
+    title: "Laptop vs Tablet (2026): Which Should You Buy?",
+    h1: "Laptop vs Tablet: Which Is Best for You?",
+    excerpt: "Laptops win for typing, full software and multitasking; tablets win for reading, streaming, drawing and simplicity.",
+    category: "Comparisons",
+    updated: "2026-11-17",
+    readingTime: 8,
+    answer:
+      "Buy a laptop if you type a lot, need full desktop software, or will write essays, run a business or manage lots of files. Buy a tablet if you mostly read, stream, browse, video-call or draw with a stylus, and want something lighter and simpler. If you want both, a 2-in-1 laptop with a touchscreen and pen is the best compromise.",
+    sections: [
+      {
+        heading: "What is the difference between a laptop and a tablet?",
+        body: [
+          "A tablet (such as an iPad or Samsung Galaxy Tab) is a touchscreen first, running a mobile operating system like iPadOS or Android, with an optional keyboard case. Windows tablets such as the Surface Pro are really 2-in-1 laptops in tablet form. A laptop is built around a keyboard and trackpad and runs a full desktop operating system (Windows, macOS or ChromeOS), so it can run full desktop software, connect to more accessories and handle long typing sessions comfortably.",
+        ],
+      },
+      {
+        heading: "Laptop or tablet: which is best for students?",
+        body: [
+          "For university and college, a laptop. Essays, research, spreadsheets, coding and many exam and lockdown-browser tools work best, or only, on Windows or macOS. A tablet with a stylus is a great second device for handwritten notes and reading PDFs, but it struggles as the only computer. For high-school students on a budget, a Chromebook is cheaper and better for typing than a tablet. See the [best laptops for students](/laptop/reviews/best/student) and [Chromebook vs Windows laptop](/laptop/learn/chromebook-vs-windows-laptop).",
+        ],
+      },
+      {
+        heading: "Is an iPad or a laptop better for students?",
+        body: [
+          "An iPad is excellent for note-taking with an Apple Pencil, reading and light writing, and recent iPadOS versions have made multitasking more laptop-like. But by the time you add a keyboard case and pencil, a mid-range iPad often costs as much as a [MacBook Air 13 (M4)](/laptop/reviews/apple/macbook-air-13-m4) ($1,399), which lasted 18 hours in our battery test and runs full desktop apps. If you can only buy one device for school, choose the laptop.",
+        ],
+      },
+      {
+        heading: "Laptop or tablet for drawing: which is best?",
+        body: [
+          "For sketching, illustration and casual art, a tablet with a stylus (an iPad with Apple Pencil, or an Android tablet with a pen) is the most natural and affordable option. For professional work in full desktop software like Photoshop, Clip Studio Paint or Illustrator with complete file and plug-in support, choose a Windows 2-in-1 with pen support, or a regular laptop with a separate drawing tablet. See the [best 2-in-1 laptops](/laptop/reviews/best/2-in-1), the [best touchscreen laptops](/laptop/reviews/best/touchscreen) and the [best laptops for photo editing](/laptop/reviews/best/photo-editing).",
+        ],
+      },
+      {
+        heading: "Laptop or tablet for seniors: which is best?",
+        body: [
+          "A tablet is easiest for seniors who mainly video-call family, view photos, read news and browse: there is less to manage and the touchscreen is intuitive. A laptop is better for anyone who writes long emails, does online banking with many tabs open, prints documents or manages files. A Chromebook is a good middle ground: simple, secure, automatically updated and with a real keyboard. See the [best laptops for home use](/laptop/reviews/best/home-use).",
+        ],
+      },
+      {
+        heading: "Laptop or tablet for small business: which is best?",
+        body: [
+          "A laptop for running the business: accounting software, spreadsheets, invoicing, email and video meetings all work better with a keyboard and desktop apps, and some accounting software used in Canada is Windows-only. Tablets shine as add-ons for point-of-sale, signatures, inventory checks and field work. See the [best business laptops](/laptop/reviews/best/business).",
+        ],
+      },
+      {
+        heading: "Laptop or tablet for trading: which is best?",
+        body: [
+          "A laptop. Most trading and charting platforms are built for desktop operating systems, and a laptop can drive one or more external monitors for charts, order entry and news side by side. A tablet is fine for checking positions and placing simple orders on the go, but not as your main trading screen. Look for 16GB of RAM and enough video outputs for your monitors: see [laptop ports explained](/laptop/learn/laptop-ports-explained).",
+        ],
+      },
+      {
+        heading: "Laptop vs tablet: price in Canada",
+        body: [
+          "A basic tablet costs less than a laptop, but keyboards and styluses are often sold separately and add up quickly. Below $500, a Chromebook such as the [Acer Chromebook Plus 514](/laptop/reviews/acer/chromebook-plus-514-2025) ($449, 16.2 hours in our battery test) is a better typing and schoolwork machine than a similarly priced tablet. At the high end, a pro tablet with a keyboard costs as much as a premium laptop. See the [best laptops under $500](/laptop/reviews/best/under-500).",
+        ],
+      },
+      {
+        heading: "What about a 2-in-1 laptop?",
+        body: [
+          "A 2-in-1 is a laptop whose screen folds back into a tablet, with a touchscreen and usually pen support. It runs full Windows apps while still letting you draw, sign documents or watch videos in tablet mode. The trade-off is weight: the [HP Spectre x360 14](/laptop/reviews/hp/spectre-x360-14-2025) weighs 1.44 kg and the [Lenovo Yoga 9i](/laptop/reviews/lenovo/yoga-9i-2-in-1-2026) 1.36 kg, much heavier than a tablet to hold in one hand. Compare them: [Spectre x360 14 vs Yoga 9i](/laptop/compare/spectre-x360-14-2025-vs-yoga-9i-2-in-1-2026).",
+        ],
+      },
+      {
+        heading: "Which should you buy?",
+        body: [
+          "Choose a laptop if you type, study, run a business or need desktop software: start with the [best laptops in Canada](/laptop/reviews/best/laptop). Choose a tablet if you mostly consume content, draw or want the simplest device. Choose a 2-in-1 if you want both in one device. Weighing a desktop too? Read [laptop vs desktop](/laptop/learn/laptop-vs-desktop). Choosing an operating system? Read [Mac vs Windows laptop](/laptop/learn/mac-vs-windows-laptop).",
+        ],
+      },
+    ],
+    faq: [
+      { q: "Can a tablet replace a laptop?", a: "For reading, streaming, browsing, email and light writing, yes. For long typing sessions, desktop software, file management, coding or schoolwork that needs Windows or macOS apps, a laptop is still better." },
+      { q: "Is an iPad better than a laptop for university?", a: "Not as your only device. An iPad is a great note-taking companion, but essays, research, specialised software and some exam tools work best on a laptop." },
+      { q: "Is a laptop or tablet better for home use?", a: "A tablet is simpler for browsing, streaming and video calls from the couch. A laptop is better if anyone in the home writes, prints, does taxes or manages files." },
+      { q: "Is a laptop or tablet better for watching movies?", a: "A tablet is lighter to hold and great for streaming in bed or on a plane. A laptop has a bigger screen and better speakers on many models, especially OLED ultraportables." },
+      { q: "Is a 2-in-1 laptop worth it?", a: "Yes if you will use the touchscreen and pen for drawing, notes or signing documents. If you will always use it as a laptop, a regular clamshell is usually lighter, cheaper and lasts longer on battery." },
+      { q: "Should I get a tablet or laptop for my child?", a: "Young children do well with a tablet. Once school involves typing assignments, a Chromebook or budget laptop with a real keyboard is the better tool." },
+    ],
+  },
+  {
+    slug: "14-vs-15-inch-laptop",
+    title: "14 vs 15 Inch Laptop: Which Size Should You Buy?",
+    h1: "14-Inch vs 15-Inch Laptop: Which Size Is Best?",
+    excerpt: "14 inches is the best size for most people; 15 to 16 inches suits desk work, gaming and editing; 13 inches suits frequent travellers.",
+    category: "Comparisons",
+    updated: "2026-11-17",
+    readingTime: 7,
+    answer:
+      "A 14-inch laptop is the best size for most people: it is light enough to carry every day (usually 1.1 to 1.5 kg) while still comfortable for a full day of work. Choose 15 or 16 inches if the laptop mostly stays on a desk, you want a number pad, or you edit video, game or work in big spreadsheets. Choose 13 inches only if portability matters more than screen space.",
+    sections: [
+      {
+        heading: "14 or 15 inch laptop: which is best?",
+        body: [
+          "For portability, 14 inches. The 14-inch laptops we have tested weigh between 1.09 kg (ThinkPad X1 Carbon) and about 1.6 kg, apart from gaming models. 15- and 16-inch laptops usually weigh 1.6 to 2.5 kg and are harder to fit in a backpack and on a plane tray table.",
+          "For screen space and comfort at a desk, 15 inches or more, often with a number pad. A good example is price: the 14-inch [Acer Swift Go 14](/laptop/reviews/acer/swift-go-14-2025) ($949) weighs 1.3 kg and lasted 13.8 hours in our battery test, while the 15.6-inch [Acer Aspire 5](/laptop/reviews/acer/aspire-5-15-2025) ($749) weighs 1.75 kg and lasted 9.4 hours. Bigger is often cheaper in the budget segment. Compare them: [Aspire 5 vs Swift Go 14](/laptop/compare/aspire-5-15-2025-vs-swift-go-14-2025).",
+        ],
+      },
+      {
+        heading: "Is a 14-inch laptop screen too small?",
+        body: [
+          "Not for most people. Many 14-inch laptops now use taller 16:10 screens that show noticeably more of a document or web page than older 16:9 panels, and high resolutions keep text sharp. If you split two windows side by side all day or work with large spreadsheets, a 16-inch screen or an external monitor at home helps. See the [best 14-inch laptops](/laptop/reviews/best/14-inch).",
+        ],
+      },
+      {
+        heading: "13 or 14 inch laptop: which is best?",
+        body: [
+          "Thin screen borders mean today's 14-inch laptops are about the size of older 13-inch models, so most people should choose 14 inches. A 13-inch laptop is still the most compact option: the [Dell XPS 13](/laptop/reviews/dell/xps-13-9350) weighs 1.19 kg and the [MacBook Air 13 (M4)](/laptop/reviews/apple/macbook-air-13-m4) 1.24 kg. But some 14-inch models are just as light, such as the 1.09 kg [ThinkPad X1 Carbon Gen 12](/laptop/reviews/lenovo/thinkpad-x1-carbon-gen-12). See the [best 13-inch laptops](/laptop/reviews/best/13-inch).",
+        ],
+      },
+      {
+        heading: "15 or 16 inch laptop: what is the difference?",
+        body: [
+          "Most 15.6-inch laptops are budget or gaming models with wider 16:9 screens, while 16-inch laptops usually have taller 16:10 screens in a similar footprint, and are more often premium or creator models. The MacBook Air 15 (15.3 inches) shows the trade-off well: it weighs 1.51 kg against 1.24 kg for the 13-inch model, with the same chip and similar battery life (18.4 vs 18 hours in our test). See [MacBook Air 13 vs MacBook Air 15](/laptop/compare/macbook-air-13-m4-vs-macbook-air-15-m4), the [best 15-inch laptops](/laptop/reviews/best/15-inch) and the [best 16-inch laptops](/laptop/reviews/best/16-inch).",
+        ],
+      },
+      {
+        heading: "15 or 17 inch laptop: which is best?",
+        body: [
+          "A 17-inch laptop is a desktop replacement: it is heavy, needs a large bag and rarely leaves the desk. Most brands now offer 16-inch 16:10 screens instead, which give nearly as much usable space with less bulk, and a few gaming laptops go up to 18 inches. If you want a huge screen but still carry the laptop, a light 16-inch model such as the 1.29 kg [LG gram Pro 16](/laptop/reviews/lg/gram-pro-16-2025) is a better compromise. If it never moves, a 15- or 16-inch laptop plus an external monitor beats a 17-inch laptop.",
+        ],
+      },
+      {
+        heading: "Does screen size affect battery life and performance?",
+        body: [
+          "Indirectly. Bigger laptops have room for larger batteries and better cooling, so 16-inch models can sustain more performance and fit more powerful graphics cards, which is why most serious gaming and creator laptops are 16 inches. But a bigger screen also uses more power, and the processor matters more than size: in our tests the 16-inch LG gram Pro 16 lasted 14.6 hours, while many 14-inch gaming laptops lasted 8 to 9 hours. Check tested battery life in each review.",
+        ],
+      },
+      {
+        heading: "Which laptop size is best for students, work and gaming?",
+        body: [
+          "- Students: 13 to 14 inches, since you will carry it every day. See the [best laptops for students](/laptop/reviews/best/student).",
+          "- Office and business travel: 14 inches. See the [best business laptops](/laptop/reviews/best/business).",
+          "- Working from home at a desk: 15 to 16 inches, or 14 inches with a monitor. See the [best laptops for working from home](/laptop/reviews/best/working-from-home).",
+          "- Gaming and video editing: 16 inches for better cooling and a bigger screen, or 14 inches for a portable gaming laptop like the [ASUS ROG Zephyrus G14](/laptop/reviews/asus/rog-zephyrus-g14-2025).",
+          "- Programming: 14 inches for portability, 16 inches if you want more code on screen.",
+        ],
+      },
+      {
+        heading: "Which should you buy?",
+        body: [
+          "If you are unsure, buy a 14-inch laptop. Go bigger only if the laptop will mostly stay on a desk or you need the extra performance of a larger chassis, and go smaller only if every gram counts. For more detail on every size class, read our [laptop screen size guide](/laptop/learn/best-laptop-screen-size). Still choosing a platform? Read [Mac vs Windows laptop](/laptop/learn/mac-vs-windows-laptop) or [Chromebook vs Windows laptop](/laptop/learn/chromebook-vs-windows-laptop).",
+        ],
+      },
+    ],
+    faq: [
+      { q: "Is a 14-inch or 15.6-inch laptop better?", a: "A 14-inch laptop is better if you carry it often; a 15.6-inch laptop is better for desk use, number-pad typing and a lower price in the budget range." },
+      { q: "Is a 14-inch laptop good for students?", a: "Yes. It is the best balance of portability and screen space for carrying to class every day." },
+      { q: "Is a 15.6-inch laptop too big to carry?", a: "Not too big for occasional carrying, but most weigh 1.6 to 2.5 kg and need a larger backpack. If you carry it daily, a 14-inch model will be more comfortable." },
+      { q: "Is a 13-inch laptop too small?", a: "For most people, a 14-inch laptop is the better choice because it is nearly as compact. A 13-inch laptop suits frequent travellers who rarely work for long stretches." },
+      { q: "Is 14 or 16 inches better for programming?", a: "14 inches for portability, 16 inches if you want more lines of code and side-by-side windows. Many developers use a 14-inch laptop with an external monitor." },
+      { q: "How is laptop screen size measured?", a: "Diagonally across the visible screen, corner to corner, in inches. The laptop body is slightly larger, though thin bezels keep the difference small." },
+    ],
+  },
+  {
+    slug: "best-buy-vs-costco-laptops-canada",
+    title: "Best Buy vs Costco for Laptops in Canada: Where Should You Buy?",
+    h1: "Best Buy vs Costco (vs Amazon, Staples and Walmart): Where to Buy a Laptop in Canada",
+    excerpt: "Costco wins on returns and warranty coverage; Best Buy wins on selection, open-box deals and Geek Squad. Here is how Canadian retailers compare.",
+    category: "Comparisons",
+    updated: "2026-11-17",
+    readingTime: 8,
+    answer:
+      "Buy at Costco if you are a member and it stocks the laptop you want: its longer return window on electronics and extra warranty coverage are hard to beat. Buy at Best Buy for the widest selection, in-store pickup, open-box deals and optional Geek Squad protection. Amazon.ca is good for price drops if you buy from Amazon itself, Staples suits business buyers, and Walmart suits tight budgets. Always compare the exact model number and check the current return policy before you buy.",
+    sections: [
+      {
+        heading: "Best Buy or Costco for a laptop: which is better?",
+        body: [
+          "- Costco: smaller, rotating selection and a membership required, but a longer return window on computers, added warranty coverage and support, and often a lower price on the models it carries.",
+          "- Best Buy: the biggest selection of laptops in Canada, including gaming laptops and MacBooks, open-box and Geek Squad Certified refurbished deals, in-store pickup, and optional paid protection plans.",
+          "We are independent and not affiliated with either retailer. Policies change, so treat the details below as a guide and confirm the current terms on the retailer's site or receipt.",
+        ],
+      },
+      {
+        heading: "Best Buy vs Costco: return policy",
+        body: [
+          "Costco is known for generous returns. For computers and most other major electronics, Costco Canada's return window is 90 days rather than its usual open-ended policy, which still gives you about three months to test a laptop. Best Buy Canada's standard return window for laptops is much shorter, typically a matter of weeks, with extended return periods for purchases made over the holidays.",
+          "Whichever you choose, test a new laptop right away: check for dead pixels, keyboard and trackpad faults, Wi-Fi problems and battery life, keep the box and receipt, and ask whether opened items carry any restocking fee.",
+        ],
+      },
+      {
+        heading: "Best Buy vs Costco: warranty and support",
+        body: [
+          "Every new laptop includes the manufacturer's warranty, usually one year in Canada. Costco adds to that: it typically extends the manufacturer's warranty on computers to two years in total and includes free technical support through Costco Concierge Services. Check the terms for your specific item, since programs change.",
+          "Best Buy sells optional Geek Squad Protection plans that extend coverage and can add accidental-damage protection, plus Geek Squad set-up and repair services in store. Accidental-damage coverage is worth considering for students, kids and laptops that travel. Before paying for any plan, check whether your credit card already extends the manufacturer's warranty (many Canadian cards do), and Quebec residents also have a legal warranty under provincial consumer law. See [laptop warranties in Canada explained](/laptop/learn/laptop-warranty-explained-canada).",
+        ],
+      },
+      {
+        heading: "Best Buy vs Costco: price and selection",
+        body: [
+          "Costco carries a smaller selection, often in bundles or configurations with model numbers you will not find elsewhere, which makes direct price comparisons harder. When it stocks the same laptop, it is often cheaper: in the prices we last recorded, Costco undercut Best Buy on the [Dell XPS 13](/laptop/reviews/dell/xps-13-9350) ($1,479 vs $1,549), [HP Spectre x360 14](/laptop/reviews/hp/spectre-x360-14-2025) ($1,799 vs $1,899), [Lenovo Yoga 9i](/laptop/reviews/lenovo/yoga-9i-2-in-1-2026) ($1,949 vs $2,049) and [Acer Swift Go 14](/laptop/reviews/acer/swift-go-14-2025) ($929 vs $949).",
+          "Best Buy stocks far more models, including most gaming laptops, every current MacBook and most Chromebooks, and it runs frequent sales, especially around Black Friday and Boxing Day. See the [best laptops at Best Buy Canada](/laptop/reviews/best/best-buy) and [when to buy a laptop in Canada](/laptop/learn/best-time-to-buy-a-laptop-in-canada).",
+        ],
+      },
+      {
+        heading: "Does Best Buy price match?",
+        body: [
+          "Best Buy Canada has a price-match policy for identical, in-stock items sold by major Canadian competitors, but exclusions apply: marketplace sellers, bundles, clearance and membership-only pricing are commonly excluded, and Costco's unique model numbers rarely qualify as identical. If the price drops soon after you buy, ask any retailer about a price adjustment; policies differ and change, so check before you buy.",
+        ],
+      },
+      {
+        heading: "Best Buy vs Staples for laptops",
+        body: [
+          "Staples Canada focuses on school and business laptops and runs strong back-to-school promotions, plus business services like set-up and printing. Its laptop selection is smaller than Best Buy's, and in our latest price checks it was higher on the two models it carried: the [Acer Aspire 5](/laptop/reviews/acer/aspire-5-15-2025) ($799 vs $749 at Best Buy) and [ASUS Chromebook Plus CX34](/laptop/reviews/asus/chromebook-plus-cx34) ($549 vs $499). Staples is worth checking during sales and for business accounts.",
+        ],
+      },
+      {
+        heading: "Best Buy vs Amazon for laptops",
+        body: [
+          "Amazon.ca often has the lowest price on a given day and frequent price drops. Buy items shipped and sold by Amazon.ca for the simplest returns, and be careful with third-party marketplace sellers: confirm the seller's rating, that the laptop is new (not open-box or refurbished), that it carries a Canadian manufacturer warranty, and the keyboard layout, since laptops sold in Canada often use a bilingual Canadian keyboard while imports use a US layout. Best Buy is better if you want to see the laptop in person, pick it up today or return it at a store.",
+        ],
+      },
+      {
+        heading: "What about Walmart, Canada Computers and buying direct?",
+        body: [
+          "- Walmart: good for budget laptops and Chromebooks, such as the [Acer Chromebook Plus 514](/laptop/reviews/acer/chromebook-plus-514-2025). Watch for marketplace listings from other sellers.",
+          "- Canada Computers and Memory Express: strong for gaming laptops and enthusiast models, with knowledgeable staff and component upgrades.",
+          "- Directly from Dell, HP, Lenovo, Apple or Microsoft: the most configuration choices (more RAM or storage), direct warranty upgrades, education pricing and frequent online sales.",
+          "- Refurbished and open-box: certified refurbished units can save 20 to 40%. See our [refurbished laptop buying guide](/laptop/learn/refurbished-laptop-buying-guide-canada).",
+        ],
+      },
+      {
+        heading: "Tips for buying a laptop at any Canadian retailer",
+        body: [
+          "- Compare the exact model number, not just the name: two laptops called the same thing can have different processors, RAM, storage and screens.",
+          "- Check the return window, any restocking fees and who handles warranty repairs before you pay.",
+          "- Test everything in the first few days and keep all packaging.",
+          "- Buy during Black Friday, Boxing Day or back-to-school sales if you can wait.",
+          "- Choose the laptop first using tested reviews, then shop for the best price: start with the [best laptops in Canada](/laptop/reviews/best/laptop).",
+        ],
+      },
+      {
+        heading: "Where should you buy?",
+        body: [
+          "If Costco has the exact laptop you want, its longer return window and extended warranty make it the best place to buy for most members. If it does not, Best Buy is the default for selection, in-person service and fast returns, with Amazon.ca, Staples, Walmart and manufacturer stores worth checking on price. Still choosing the laptop itself? Read [Chromebook vs Windows laptop](/laptop/learn/chromebook-vs-windows-laptop), [Mac vs Windows laptop](/laptop/learn/mac-vs-windows-laptop) and [Dell vs HP vs Lenovo](/laptop/learn/dell-vs-hp-vs-lenovo-laptops).",
+        ],
+      },
+    ],
+    faq: [
+      { q: "Is it better to buy a laptop from Costco or Best Buy?", a: "Costco, if it stocks the laptop you want and you are a member, thanks to its longer return window on electronics and added warranty coverage. Best Buy, if you want more choice, open-box deals, in-store service or a model Costco does not carry." },
+      { q: "What is Costco's return policy on laptops in Canada?", a: "Computers and most major electronics can generally be returned within 90 days of purchase, which is shorter than Costco's usual policy for other goods. Check the current policy on Costco's website or your receipt." },
+      { q: "Is Geek Squad Protection worth it?", a: "It can be for students, children and laptops that travel, mainly for accidental-damage coverage. If you only want a longer warranty against defects, check whether your credit card already extends the manufacturer's warranty first." },
+      { q: "Is it safe to buy a laptop on Amazon.ca?", a: "Yes, if it is shipped and sold by Amazon.ca or a highly rated seller. Confirm it is new, carries a Canadian warranty and has the keyboard layout you want." },
+      { q: "Does Best Buy price match Costco?", a: "Rarely in practice. Price-match policies usually exclude membership-only pricing and bundles, and Costco often sells model numbers no other store carries, so they are not identical items. Ask before you buy." },
+      { q: "Does Costco sell gaming laptops?", a: "Sometimes, but the selection is small and rotates. Best Buy, Canada Computers, Memory Express and manufacturer stores carry far more gaming laptops." },
+    ],
+  },
+  {
+    slug: "sleep-vs-shut-down-laptop",
+    title: "Shut Down or Sleep: Which Is Better for Your Laptop?",
+    h1: "Is It Better to Shut Down Your Laptop or Put It to Sleep?",
+    excerpt: "Sleep is fine for daily use; shut down or hibernate before travel or a few days off, and restart weekly.",
+    category: "Maintenance",
+    updated: "2026-11-17",
+    readingTime: 6,
+    answer:
+      "For daily use, sleep is fine and the more convenient choice: modern laptops use very little power while asleep and wake instantly. Shut down or hibernate if you will not use the laptop for more than a day or two, before putting it in a bag to travel, and restart at least once a week so updates install and the system starts fresh. Sleeping every night does not harm your laptop.",
+    sections: [
+      {
+        heading: "Sleep vs shut down vs hibernate: what is the difference?",
+        body: [
+          "- Sleep: the laptop keeps your open apps in memory (RAM) and uses a small amount of power to keep them there. It wakes in a second or two, exactly where you left off.",
+          "- Hibernate: the laptop saves the contents of memory to the SSD and powers off completely. It uses no battery and resumes where you left off, but takes a little longer to wake than sleep.",
+          "- Shut down: closes everything and powers off. It uses no battery, and you start from scratch next time.",
+          "- Restart: shuts down and starts up again, fully reloading Windows, drivers and updates. It is the best fix for a laptop that feels slow or glitchy.",
+        ],
+      },
+      {
+        heading: "Is it bad to put your laptop to sleep every night?",
+        body: [
+          "No. Sleep does not wear out the SSD, screen or other parts, and losing a few percent of battery overnight is normal. Many recent Windows laptops use Modern Standby, which works like a phone: the laptop can stay lightly connected to fetch email and updates while asleep. That convenience can cost more battery than older sleep modes, so if your laptop loses a lot of charge overnight, see the battery-drain section below.",
+        ],
+      },
+      {
+        heading: "When should you shut down your laptop?",
+        body: [
+          "- When you will not use it for more than a day or two, so the battery does not drain.",
+          "- Before putting it in a backpack or suitcase. A laptop that wakes in a closed bag can get hot, which is bad for the battery: see [laptop overheating fixes](/laptop/learn/laptop-overheating-fixes).",
+          "- Before a flight or long trip, and whenever you will be away from a charger for a while.",
+          "- When storing it for weeks or months: charge to roughly half, shut it down and top it up every few months.",
+          "- When troubleshooting. Use Restart rather than Shut down for this on Windows (see below).",
+        ],
+      },
+      {
+        heading: "Does shutting down a Windows laptop fully reset it?",
+        body: [
+          "Not always. Windows 11 enables Fast Startup by default on many laptops, which makes Shut down save part of the system to disk, similar to hibernation, so the laptop boots faster. Restart skips Fast Startup and performs a full reload. That is why Restart, not Shut down, is the better choice after updates or when your laptop is acting up. Restarting once a week also clears out memory leaks and background clutter: see [how to speed up a slow laptop](/laptop/learn/speed-up-slow-laptop-windows).",
+        ],
+      },
+      {
+        heading: "Why does my laptop battery drain in sleep mode?",
+        body: [
+          "Common causes are background apps and sync services waking the laptop, wake timers for updates, USB devices that are allowed to wake the PC, and Modern Standby staying connected to Wi-Fi. To investigate on Windows, open Command Prompt and run 'powercfg /a' to see which sleep states your laptop supports, and 'powercfg /sleepstudy' (on Modern Standby laptops) for a report of what drained the battery while asleep.",
+          "The easiest fix is to make closing the lid hibernate instead of sleep: in Control Panel, open Power Options and choose what closing the lid does. You can also set the laptop to hibernate automatically after a few hours of sleep. See [how to extend your battery life on Windows](/laptop/learn/extend-battery-life-windows) for more settings.",
+        ],
+      },
+      {
+        heading: "Should you shut down a MacBook or Chromebook?",
+        body: [
+          "Macs are designed to sleep and use very little power when the lid is closed; Apple-silicon MacBooks can sit asleep for days with modest battery loss. Restart occasionally to install macOS updates. Chromebooks also sleep when you close the lid, and they install updates in the background and apply them on the next restart, so restart when ChromeOS prompts you. See [Mac vs Windows laptop](/laptop/learn/mac-vs-windows-laptop) and [Chromebook vs Windows laptop](/laptop/learn/chromebook-vs-windows-laptop).",
+        ],
+      },
+      {
+        heading: "Is it bad to leave your laptop plugged in all the time?",
+        body: [
+          "Modern laptops stop charging when the battery is full, so leaving one plugged in is safe. Keeping a battery at 100% and warm for long periods does wear it a little faster, though. If your laptop stays on a desk, turn on its charge limit or battery-care mode if it has one (often in the manufacturer's app, such as Lenovo Vantage, MyASUS, Dell's or HP's power utilities), or use macOS Optimized Battery Charging. See [how to check your laptop battery health](/laptop/learn/how-to-check-laptop-battery-health).",
+        ],
+      },
+      {
+        heading: "The best routine for most people",
+        body: [
+          "- Close the lid (sleep) between uses during the day and overnight.",
+          "- Restart once a week, and whenever updates ask you to.",
+          "- Shut down or hibernate before travel or a few days off.",
+          "- If the battery drains overnight, switch the lid action to hibernate.",
+          "Battery life is one of the biggest differences between laptops in our testing. If yours no longer lasts, see the [laptops with the best battery life](/laptop/reviews/best/long-battery-life).",
+        ],
+      },
+    ],
+    faq: [
+      { q: "Is it OK to leave my laptop in sleep mode overnight?", a: "Yes. Sleep uses very little power, does not harm the laptop and lets you pick up instantly in the morning. If you lose more than a few percent of battery overnight, set the lid to hibernate instead." },
+      { q: "How often should I restart my laptop?", a: "About once a week, and whenever updates ask for it. On Windows, Restart performs a fuller reset than Shut down because of Fast Startup." },
+      { q: "Does sleep mode damage a laptop?", a: "No. Sleep does not wear out the SSD, screen or battery in any meaningful way. Avoid letting a laptop sleep in a closed bag, though, where it can warm up if it wakes." },
+      { q: "Is hibernate bad for an SSD?", a: "No. Hibernating writes the contents of memory to the SSD, which is a small amount of data compared with what modern SSDs are rated to handle over their lifetime." },
+      { q: "Should I shut down my laptop if I am not using it for a week?", a: "Yes. Shut it down (or hibernate it) so the battery does not drain. For storage longer than a month, leave the battery around half charged." },
+      { q: "Is closing the lid the same as sleep?", a: "By default, yes, on most laptops. On Windows you can change what closing the lid does in Power Options, choosing sleep, hibernate, shut down or do nothing." },
+    ],
+  },
   ...quickGuide("laptop-battery-life-explained", "Laptop Battery Life Explained", "Specs explained", "Real battery life depends on the screen brightness, workload, and chip efficiency, not just the battery's Wh rating. We test web browsing and video playback at a fixed brightness so results are comparable.", "Already have a laptop? See [how to extend your battery life on Windows](/laptop/learn/extend-battery-life-windows) for settings and habits that add hours."),
   ...quickGuide("laptop-ports-explained", "Laptop Ports Explained", "Specs explained", "USB-C and Thunderbolt handle charging, data, and displays; USB-A connects older accessories; HDMI drives monitors. Thunderbolt 4/USB4 is the most flexible. Count the ports you actually need before buying a thin laptop."),
   ...quickGuide("when-is-the-best-time-to-buy-a-laptop-in-canada", "Best Time to Buy a Laptop", "Buying advice", "The best times to buy a laptop in Canada are Black Friday, Boxing Day, and back-to-school season, plus right after new models launch when last year's models are discounted."),

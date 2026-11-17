@@ -27,7 +27,7 @@ export function generateStaticParams() {
 const PROPER: [RegExp, string][] = [
   [/\bmacbooks?\b/g, "MacBook"], [/\bchromebooks?\b/g, "Chromebook"], [/\bwindows\b/g, "Windows"],
   [/\blenovo\b/g, "Lenovo"], [/\bdell\b/g, "Dell"], [/\bhp\b/g, "HP"], [/\basus\b/g, "ASUS"], [/\bacer\b/g, "Acer"],
-  [/\bbest buy canada\b/g, "Best Buy Canada"], [/\bcanada\b/g, "Canada"],
+  [/\bbest buy canada\b/g, "Best Buy Canada"], [/\bit students\b/g, "IT students"], [/\blinux\b/g, "Linux"], [/\bcad\b/g, "CAD"], [/\bcanada\b/g, "Canada"],
 ];
 function topicLabel(c: BestCategory): string {
   if (c.slug === "brands") return "laptop from any brand in Canada";
