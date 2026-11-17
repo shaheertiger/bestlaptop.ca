@@ -54,7 +54,7 @@ export function Footer() {
         <div className="container-site flex flex-col gap-2 py-5 text-xs text-ink-400 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} BestLaptop.ca. All rights reserved. Prices in CAD.</p>
           <p>
-            BestLaptop.ca may earn a commission from retailer links. This never affects our scores or recommendations.{" "}
+            As an Amazon Associate, BestLaptop.ca earns from qualifying purchases. Commissions never affect our scores or recommendations.{" "}
             <Link href="/affiliate-disclosure" className="underline hover:text-brand-700">Affiliate disclosure</Link>.
           </p>
         </div>

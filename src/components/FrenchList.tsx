@@ -4,6 +4,8 @@ import { laptopHref } from "@/data/laptops";
 import { lowestPrice } from "@/lib/scoring";
 import { formatCADfr, frNum } from "@/data/fr";
 import { Linkify } from "./blocks";
+import { AmazonButton } from "./AmazonButton";
+import { hasAmazonListing } from "@/lib/affiliate";
 
 // Shared French (fr-CA) building blocks. Text is French; product and chip
 // names stay as the manufacturer writes them.
@@ -54,6 +56,7 @@ export function FrenchPickCards({ picks }: { picks: Laptop[] }) {
             <li>Autonomie (web) : {dec(l.test.batteryWebHours)} h · Export 4K : {dec(l.test.videoExportMinutes)} min{l.gpuType === "Discrete" ? ` · ${l.test.gamingFps1080pHigh} FPS en 1080p` : ""}</li>
           </ul>
           <p className="mt-3 text-sm"><strong>À partir de {formatCADfr(lowestPrice(l))}</strong> · <Link href={laptopHref(l)} className="link" hrefLang="en-CA">Test complet (en anglais)</Link></p>
+          <AmazonButton laptop={l} size="sm" note={false} label={hasAmazonListing(l.id) ? "Voir le prix sur Amazon" : "Chercher sur Amazon"} className="mt-3 sm:max-w-xs" />
         </article>
       ))}
     </div>

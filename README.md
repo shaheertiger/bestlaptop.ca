@@ -21,6 +21,31 @@ npm run indexnow # submit all sitemap URLs to IndexNow (after the domain is live
 > `/85612cad3e794add8e4b33f466c6e10d.txt`. Override with `SITEMAP=…` or
 > `INDEXNOW_KEY=…` env vars.
 
+## Amazon links and product images
+
+Same pipeline as best-proteinpowder.com. Every buy button resolves through
+`src/lib/affiliate.ts` (`amazonLink` / `laptopAmazonLink`, tag `sktiger-20`), best option first:
+a hand-picked Amazon URL on the record → a direct `/dp/<ASIN>` link → the closest equivalent
+listing → a tagged Amazon search for the model. Product photos come from the same match.
+
+| File | What it holds |
+| --- | --- |
+| `scripts/amazon-products.json` | One row per laptop: Amazon search query + tokens a listing title must contain (`"14\|14.2"` = either) and optional `prefer` tokens |
+| `src/data/amazon/product-asins.json` | laptop id → ASIN (written by the script) |
+| `src/data/amazon/product-images.json` | laptop id → Amazon image URL (written by the script) |
+| `src/data/amazon/product-similar-asins.json` | hand-picked closest listing when the exact model is not on Amazon |
+| `src/data/amazon/asin-quarantine.json` | ids whose match a person rejected; never linked or re-matched |
+| `scripts/amazon-match-report.json` | what matched / was rejected on the last run |
+
+```bash
+cp .env.example .env          # AMAZON_CREATORS_CLIENT_ID / _SECRET / _PARTNER_TAG
+npm run images:fetch:all      # match new laptops (add a row to scripts/amazon-products.json first)
+npm run images:fetch:all -- --force   # re-match everything
+npm run images:refresh        # refresh image URLs for known ASINs, list dead ones
+```
+
+The build never calls Amazon: the JSON files are committed and read statically.
+
 ## Architecture
 
 ```

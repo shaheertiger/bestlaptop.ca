@@ -13,6 +13,10 @@ import { getBestCategory } from "@/data/categories";
 import { formatCAD, lowestPrice } from "@/lib/scoring";
 import { laptopRankings } from "@/lib/insights";
 import { guides } from "@/data/guides";
+import { comparisons, comparisonLaptops } from "@/data/comparisons";
+import { ProductImage } from "@/components/ProductImage";
+import { AmazonButton } from "@/components/AmazonButton";
+import { hasAmazonListing, laptopAmazonLink } from "@/lib/affiliate";
 
 export function generateStaticParams() {
   return brands.map((b) => ({ brand: b.slug }));
@@ -55,7 +59,31 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
         .map((c) => [c.slug, c] as const),
     ).values(),
   ).slice(0, 8);
-  const relatedGuides = guides.filter((g) => ["Getting started", "Buying advice", "Comparisons"].includes(g.category)).slice(0, 4);
+  // "X vs Y" guides first: they are the guide format that earns the most search impressions.
+  const relatedGuides = [
+    ...guides.filter((g) => g.category === "Comparisons"),
+    ...guides.filter((g) => ["Getting started", "Buying advice"].includes(g.category)),
+  ].slice(0, 8);
+  const modelIds = new Set(models.map((m) => m.id));
+  // Head-to-heads against other brands first, then within the brand.
+  const brandComparisons = comparisons
+    .filter((c) => modelIds.has(c.a) || modelIds.has(c.b))
+    .sort((x, y) => Number(modelIds.has(x.a) && modelIds.has(x.b)) - Number(modelIds.has(y.a) && modelIds.has(y.b)))
+    .slice(0, 12);
+  const top = models[0];
+  const onAmazon = models.filter((m) => hasAmazonListing(m.id));
+  const faq = [
+    ...(top ? [{ q: `What is the best ${b.name} laptop?`, a: `The best ${b.name} laptop we have tested is the ${top.model}, which scored ${top.overall.toFixed(1)}/10 and costs from ${formatCAD(lowestPrice(top))} CAD.${models[1] ? ` The ${models[1].model} (${models[1].overall.toFixed(1)}/10, ${formatCAD(lowestPrice(models[1]))}) is the runner-up.` : ""}` }] : []),
+    ...b.faq,
+    ...(models.length && !b.faq.some((f) => /amazon/i.test(f.q))
+      ? [{
+          q: `Can you buy ${b.name} laptops on Amazon?`,
+          a: onAmazon.length
+            ? `Yes. ${onAmazon.map((m) => `The ${m.model}`).join(", ")} ${onAmazon.length === 1 ? "is" : "are"} listed on Amazon. Check the seller and the exact configuration (CPU, RAM, storage) before you buy, since listings often bundle several versions.`
+            : `${b.name} sells mainly direct, so Amazon listings are usually third-party sellers or older models. Check the seller and warranty carefully, or buy direct.`,
+        }]
+      : []),
+  ];
 
   return (
     <>
@@ -67,6 +95,18 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
           <p className="mt-3 max-w-3xl text-lg text-ink-700">{b.overview}</p>
           {hasBestList && (
             <Link href={`/laptop/reviews/best/${b.slug}`} className="btn-primary mt-4">See the best {b.name} laptops →</Link>
+          )}
+          {top && (
+            <div className="mt-6 grid gap-4 rounded-2xl border-2 border-brand-200 bg-brand-50 p-4 sm:grid-cols-[180px_1fr] sm:items-center">
+              <ProductImage laptop={top} size={300} className="aspect-[4/3] w-full" priority />
+              <div>
+                <p className="text-xs font-bold uppercase tracking-wide text-brand-700">Top-rated {b.name} laptop</p>
+                <p className="mt-1 text-lg text-ink-900">
+                  <Link href={laptopHref(top)} className="font-bold text-brand-700 hover:underline">{b.name} {top.model}</Link>: <strong>{top.overall.toFixed(1)}/10</strong> in our tests, from <strong>{formatCAD(lowestPrice(top))}</strong>. {top.bestFor}.
+                </p>
+                <AmazonButton laptop={top} className="mt-3 sm:max-w-xs" />
+              </div>
+            </div>
           )}
         </header>
 
@@ -120,7 +160,7 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
               <div className="overflow-x-auto rounded-xl border border-slate-200">
                 <table className="w-full text-sm">
                   <thead className="bg-slate-50 text-left text-xs uppercase text-ink-400">
-                    <tr><th className="p-3">Model</th><th className="p-3">Score</th><th className="p-3">CPU</th><th className="p-3">Battery</th><th className="p-3">Weight</th><th className="p-3">Price</th></tr>
+                    <tr><th className="p-3">Model</th><th className="p-3">Score</th><th className="p-3">CPU</th><th className="p-3">Battery</th><th className="p-3">Weight</th><th className="p-3">Price</th><th className="p-3"></th></tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
                     {models.map((l) => (
@@ -131,6 +171,7 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
                         <td className="p-3">{l.test.batteryWebHours} h</td>
                         <td className="p-3">{l.weightKg} kg</td>
                         <td className="p-3">{formatCAD(lowestPrice(l))}</td>
+                        <td className="p-3"><a href={laptopAmazonLink(l)} target="_blank" rel="sponsored nofollow noopener" className="whitespace-nowrap font-bold text-[#C45500] hover:underline">Amazon →</a></td>
                       </tr>
                     ))}
                   </tbody>
@@ -142,7 +183,20 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
           <p className="mt-10 rounded-lg border border-slate-200 bg-slate-50 p-4 text-ink-500">We have not published a {b.name} review yet. <Link href="/laptop/vote" className="link">Vote to see one tested next</Link>.</p>
         )}
 
-        <div className="mt-10"><FAQ items={b.faq} heading={`${b.name} Laptop FAQ`} /></div>
+        {brandComparisons.length > 0 && (
+          <section className="mt-10">
+            <h2 className="mb-3 text-2xl font-bold">{b.name} laptops compared head-to-head</h2>
+            <p className="mb-3 text-ink-600">How {b.name} models stack up against the competition in our side-by-side tests:</p>
+            <ul className="grid gap-x-6 gap-y-1.5 sm:grid-cols-2">
+              {brandComparisons.map((c) => {
+                const [x, y] = comparisonLaptops(c);
+                return <li key={c.slug}><Link href={`/laptop/compare/${c.slug}`} className="link">{x.brand} {x.model} vs {y.brand} {y.model}</Link></li>;
+              })}
+            </ul>
+          </section>
+        )}
+
+        <div className="mt-10"><FAQ items={faq} heading={`${b.name} Laptop FAQ`} /></div>
 
         <section className="mt-10">
           <h2 className="mb-4 text-2xl font-bold">Helpful buying guides</h2>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Laptop } from "@/lib/types";
 import { formatCAD } from "@/lib/scoring";
-import { AFFILIATE_URL } from "@/lib/site";
+import { AmazonButton } from "./AmazonButton";
 
 export function AuthorBox({ updated, testBench }: { updated: string; testBench?: string }) {
   return (
@@ -25,7 +25,7 @@ export function AffiliateDisclosure() {
   return (
     <p className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-xs text-ink-500">
       <strong className="text-ink-700">Affiliate disclosure:</strong> BestLaptop.ca may earn a commission when you buy
-      through retailer links on this page. This never affects our scores or recommendations.{" "}
+      through retailer links on this page. As an Amazon Associate we earn from qualifying purchases. This never affects our scores or recommendations.{" "}
       <Link href="/affiliate-disclosure" className="link">Learn more</Link>.
     </p>
   );
@@ -58,24 +58,27 @@ export function ProsCons({ pros, cons }: { pros: string[]; cons: string[] }) {
   );
 }
 
-export function RetailerButtons({ laptop }: { laptop: Laptop }) {
+export function RetailerButtons({ laptop, button = true }: { laptop: Laptop; button?: boolean }) {
+  // One product-specific Amazon button (tagged /dp/ link when we know the ASIN),
+  // then the Canadian retailer prices we last recorded, for reference.
   return (
-    <div className="space-y-2">
-      {laptop.retailers.map((r) => (
-        <a
-          key={r.name}
-          href={AFFILIATE_URL}
-          target="_blank"
-          rel="nofollow sponsored noopener"
-          className={`flex items-center justify-between rounded-lg border px-4 py-3 text-sm transition ${r.inStock ? "border-slate-300 hover:border-brand-400 hover:bg-brand-50" : "border-slate-200 opacity-60"}`}
-        >
-          <span className="font-medium">{r.name}{r.condition && r.condition !== "New" ? ` · ${r.condition}` : ""}</span>
-          <span className="flex items-center gap-2">
-            <span className="font-bold text-ink-900">{formatCAD(r.price)}</span>
-            <span className={`text-xs ${r.inStock ? "text-accent-600" : "text-ink-400"}`}>{r.inStock ? "In stock" : "Out of stock"}</span>
-          </span>
-        </a>
-      ))}
+    <div className="space-y-3">
+      {button && <AmazonButton laptop={laptop} size="lg" />}
+      <div>
+        <p className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-ink-400">Prices we last recorded in Canada</p>
+        <ul className="divide-y divide-slate-100 rounded-lg border border-slate-200">
+          {/* Amazon rows are left out: Amazon prices may only be shown live from its API, and the button above covers Amazon. */}
+          {laptop.retailers.filter((r) => !r.name.startsWith("Amazon")).map((r) => (
+            <li key={r.name} className={`flex items-center justify-between px-4 py-2.5 text-sm ${r.inStock ? "" : "opacity-60"}`}>
+              <span className="font-medium">{r.name}{r.condition && r.condition !== "New" ? ` · ${r.condition}` : ""}</span>
+              <span className="flex items-center gap-2">
+                <span className="font-bold text-ink-900">{formatCAD(r.price)}</span>
+                <span className={`text-xs ${r.inStock ? "text-accent-600" : "text-ink-400"}`}>{r.inStock ? "In stock" : "Out of stock"}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

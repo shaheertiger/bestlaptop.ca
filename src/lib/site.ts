@@ -1,6 +1,3 @@
-// Default affiliate destination used for deal "View deal" links.
-export const AFFILIATE_URL = "https://amzn.to/3RW6gfZ";
-
 // Date the editorial content (best lists, hubs) was last reviewed. Used for
 // visible "Updated" stamps, Article schema dateModified, and sitemap lastmod,
 // so every signal agrees.

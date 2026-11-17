@@ -8,6 +8,9 @@ import { Newsletter } from "@/components/Newsletter";
 import { guides, getGuide } from "@/data/guides";
 import { laptops, laptopHref } from "@/data/laptops";
 import { SITE } from "@/lib/site";
+import { ProductImage } from "@/components/ProductImage";
+import { AmazonButton } from "@/components/AmazonButton";
+import { formatCAD, lowestPrice } from "@/lib/scoring";
 
 export function generateStaticParams() {
   return guides.map((g) => ({ topic: g.slug }));
@@ -152,6 +155,20 @@ export default async function GuidePage({ params }: { params: Promise<{ topic: s
             <ul className="space-y-1">
               {relatedReviews.map((l) => <li key={l.id}><Link href={laptopHref(l)} className="link">{l.brand} {l.model} review</Link></li>)}
             </ul>
+          </section>
+
+          <section className="mt-10">
+            <h2 className="mb-3 text-2xl font-bold">Top-rated laptops we have tested</h2>
+            <div className="grid gap-3 sm:grid-cols-3">
+              {[...laptops].filter((l) => l.status === "published").sort((x, y) => y.overall - x.overall).slice(0, 3).map((l) => (
+                <div key={l.id} className="card flex flex-col p-3">
+                  <Link href={laptopHref(l)}><ProductImage laptop={l} size={300} className="aspect-[4/3] w-full" /></Link>
+                  <p className="mt-2 text-sm font-semibold leading-snug"><Link href={laptopHref(l)} className="hover:text-brand-700">{l.brand} {l.model}</Link></p>
+                  <p className="text-xs text-ink-500">{l.overall.toFixed(1)}/10 · {formatCAD(lowestPrice(l))}</p>
+                  <AmazonButton laptop={l} size="sm" label="Check price" note={false} className="mt-auto pt-3" />
+                </div>
+              ))}
+            </div>
           </section>
 
           <section className="mt-8 flex flex-wrap gap-2">

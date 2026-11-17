@@ -7,6 +7,8 @@ import { ProductImage } from "@/components/ProductImage";
 import { ScoreCircle, ScoreBar, ScoreBadge } from "@/components/Score";
 import { ProsCons, RetailerButtons, AffiliateDisclosure, AuthorBox, FAQ, SectionCard, TableOfContents } from "@/components/blocks";
 import { Newsletter } from "@/components/Newsletter";
+import { AmazonButton } from "@/components/AmazonButton";
+import { amazonImage, laptopAmazonLink } from "@/lib/affiliate";
 import { laptops, getLaptop, laptopHref } from "@/data/laptops";
 import { comparisons, comparisonLaptops } from "@/data/comparisons";
 import { DEFAULT_WEIGHTS, WEIGHT_LABELS, formatCAD, lowestPrice } from "@/lib/scoring";
@@ -56,7 +58,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
       brand: { "@type": "Brand", name: l.brand },
       category: "Laptop",
       operatingSystem: l.os,
-      image: `${SITE.url}/og/${l.id}.png`,
+      ...(amazonImage(l.id) ? { image: amazonImage(l.id) } : {}),
       offers: {
         "@type": "AggregateOffer",
         priceCurrency: "CAD",
@@ -78,6 +80,24 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
     { q: `Who should buy the ${l.model}?`, a: l.whoShouldBuy },
     { q: `What is the battery life of the ${l.model}?`, a: `In our web browsing test at a fixed brightness, it lasted ${l.test.batteryWebHours} hours; video playback lasted ${l.test.batteryVideoHours} hours.` },
     { q: `How much does the ${l.model} cost in Canada?`, a: `It currently starts around ${formatCAD(lowestPrice(l))} in Canada, down from an MSRP of ${formatCAD(l.msrp)}.` },
+    {
+      q: `Where can I buy the ${l.brand} ${l.model} in Canada?`,
+      a: `We last recorded it at ${l.retailers.map((r) => `${r.name} (${formatCAD(r.price)}${r.inStock ? "" : ", out of stock"})`).join(", ")}. Prices change often, so check the current listing before you buy.`,
+    },
+    {
+      q: `Is the ${l.model} good for gaming?`,
+      a: l.useCases.gaming >= 7.5
+        ? `Yes. It scored ${l.useCases.gaming.toFixed(1)}/10 for gaming and averaged ${l.test.gamingFps1080pHigh} FPS across our 1080p High suite.`
+        : `Not for demanding games. It scored ${l.useCases.gaming.toFixed(1)}/10 for gaming and averaged ${l.test.gamingFps1080pHigh} FPS at 1080p High, so stick to light or older titles.`,
+    },
+    {
+      q: `Is the ${l.model} good for students?`,
+      a: `It scored ${l.useCases.school.toFixed(1)}/10 for school use, with ${l.test.batteryWebHours} hours of web battery life and a weight of ${l.weightKg} kg. ${l.useCases.school >= 8 ? "That makes it a strong student laptop." : "There are better-value student picks in our student rankings."}`,
+    },
+    {
+      q: `Can you upgrade the RAM in the ${l.model}?`,
+      a: `${l.ramUpgradeable ? `Yes, the ${l.ram}GB of ${l.ramType} is user-upgradeable.` : `No. The ${l.ram}GB of ${l.ramType} is soldered, so buy the capacity you need up front.`} Storage is ${l.storageUpgradeable ? "user-replaceable" : "not user-replaceable"}.`,
+    },
   ];
 
   const toc = [
@@ -116,10 +136,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
           <div className="card overflow-hidden">
             <div className="grid gap-6 p-5 md:grid-cols-[280px_1fr]">
               <div>
-                <ProductImage laptop={l} className="aspect-[4/3] w-full" />
-                <div className="mt-2 grid grid-cols-3 gap-2">
-                  {[0, 1, 2].map((i) => <ProductImage key={i} laptop={l} className="aspect-[4/3] w-full opacity-80" />)}
-                </div>
+                <ProductImage laptop={l} className="aspect-[4/3] w-full border border-slate-100" priority />
               </div>
               <div>
                 <div className="flex items-center gap-4">
@@ -137,6 +154,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
                   <div><dt className="text-ink-400">MSRP</dt><dd className="font-medium">{formatCAD(l.msrp)}</dd></div>
                   <div><dt className="text-ink-400">Warranty</dt><dd className="font-medium">{l.warranty}</dd></div>
                 </dl>
+                <AmazonButton laptop={l} size="lg" className="mt-5" />
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Link href={`/laptop/tools/compare?add=${l.id}`} className="btn-secondary">Compare</Link>
                   <Link href={laptopHref(l) + "/test-results"} className="btn-secondary">Test results</Link>
@@ -145,8 +163,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
               </div>
             </div>
             <div className="border-t border-slate-100 bg-slate-50 p-4">
-              <p className="mb-2 text-xs font-bold uppercase text-ink-400">Where to buy (CAD)</p>
-              <RetailerButtons laptop={l} />
+              <RetailerButtons laptop={l} button={false} />
             </div>
           </div>
 
@@ -325,11 +342,20 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
             <div className="card p-4">
               <p className="text-sm font-bold">Quick verdict</p>
               <div className="mt-2 flex items-center gap-3"><ScoreCircle score={l.overall} size={48} /><p className="text-xs text-ink-500">{l.bestFor}</p></div>
+              <AmazonButton laptop={l} size="sm" className="mt-3" />
             </div>
           </div>
         </aside>
       </div>
       <Newsletter />
+      {/* Mobile sticky buy bar */}
+      <div className="fixed inset-x-0 bottom-0 z-40 flex items-center gap-3 border-t border-slate-200 bg-white/95 px-4 py-2.5 shadow-[0_-4px_16px_rgba(0,0,0,0.06)] backdrop-blur lg:hidden">
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-sm font-bold">{l.brand} {l.model}</p>
+          <p className="text-xs text-ink-500">{l.overall.toFixed(1)}/10 · from {formatCAD(lowestPrice(l))}</p>
+        </div>
+        <a href={laptopAmazonLink(l)} target="_blank" rel="sponsored nofollow noopener" className="shrink-0 rounded-lg bg-[#FF9900] px-4 py-2.5 text-sm font-extrabold text-ink-900">Check price</a>
+      </div>
     </>
   );
 }
