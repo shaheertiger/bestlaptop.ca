@@ -28,9 +28,9 @@ export default function NewsPage() {
         <p className="mt-2 text-ink-500">Reviews, comparisons, and testing changes, newest first.</p>
         <div className="mt-8 space-y-4">
           {items.map((it, i) => (
-            <Link key={i} href={it.href} className="card flex flex-col gap-1 p-5 transition hover:shadow-md">
+            <Link key={i} href={it.href} className="card flex flex-col gap-1 p-5 transition-colors hover:border-brand-400">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold uppercase tracking-wide text-brand-700">{it.type}</span>
+                <span className="text-xs font-semibold text-brand-700">{it.type}</span>
                 <span className="text-xs text-ink-400">{it.date}</span>
               </div>
               <h2 className="text-lg font-semibold">{it.title}</h2>

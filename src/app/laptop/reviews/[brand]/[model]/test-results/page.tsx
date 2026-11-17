@@ -138,8 +138,8 @@ export default async function TestResultsPage({ params }: { params: Promise<{ br
       <div className="container-site pb-12">
         <header className="mb-6">
           <h1 className="text-3xl font-extrabold">{name} Test Results</h1>
-          <div id="quick-answer" className="mt-4 rounded-xl border border-brand-200 bg-brand-50 p-4">
-            <p className="text-xs font-bold uppercase tracking-wide text-brand-700">Quick answer</p>
+          <div id="quick-answer" className="mt-4 rounded-md border border-brand-200 bg-brand-50 p-4">
+            <p className="text-xs font-bold text-brand-700">Quick answer</p>
             <p className="mt-1 text-ink-900">
               The {name} lasted {t.batteryWebHours} hours in our web-browsing battery test ({batteryRank} tested), measured {t.brightnessNits} nits of
               brightness ({brightRank}), scored {t.geekbenchMulti.toLocaleString()} in Geekbench multi-core and averaged {t.gamingFps1080pHigh} FPS at 1080p high.
@@ -158,7 +158,7 @@ export default async function TestResultsPage({ params }: { params: Promise<{ br
             <section key={g.title} className="card p-5">
               <div className="mb-3 flex items-center justify-between">
                 <h2 className="text-xl font-bold">{l.model} {g.title.toLowerCase().replace("cpu", "CPU").replace("gpu", "GPU")} results</h2>
-                <Link href={`/laptop/tests/${g.method}`} className="text-sm link">Methodology →</Link>
+                <Link href={`/laptop/tests/${g.method}`} className="text-sm link">Methodology</Link>
               </div>
               <div className="divide-y divide-slate-50">
                 {g.rows.map((r) => {

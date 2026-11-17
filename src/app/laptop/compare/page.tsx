@@ -55,7 +55,7 @@ export default function ComparisonsHub() {
       <div className="container-site pb-12">
         <header className="mb-6">
           <h1 className="text-3xl font-extrabold sm:text-4xl">Laptop Comparisons</h1>
-          <div id="quick-answer" className="mt-4 rounded-xl border border-brand-200 bg-brand-50 p-4">
+          <div id="quick-answer" className="mt-4 rounded-md border border-brand-200 bg-brand-50 p-4">
             <p className="text-ink-900">
               We have compared all {laptops.length} laptops we tested against each other: {comparisons.length} head-to-heads, each built from the same lab
               measurements (battery life, weight, Geekbench, 1080p FPS, brightness) and current Canadian prices. Pick a laptop below to see how it stacks up.
@@ -69,9 +69,9 @@ export default function ComparisonsHub() {
 
         <section className="mb-10">
           <h2 className="mb-3 text-2xl font-bold">Most-read laptop comparisons</h2>
-          <div className="overflow-x-auto rounded-xl border border-slate-200">
+          <div className="overflow-x-auto rounded-md border border-line">
             <table className="w-full text-sm">
-              <thead className="bg-slate-50 text-left text-xs uppercase text-ink-400">
+              <thead className="bg-frost text-left text-xs text-ink-400">
                 <tr><th className="p-3">Comparison</th><th className="p-3">Scores</th><th className="p-3">Winner</th><th className="p-3">Battery (web)</th></tr>
               </thead>
               <tbody className="divide-y divide-slate-100">

@@ -23,7 +23,7 @@ export default function BrandsPage() {
           {brands.map((b) => {
             const count = laptops.filter((l) => l.brandSlug === b.slug).length;
             return (
-              <Link key={b.slug} href={`/laptop/reviews/${b.slug}`} className="card p-5 transition hover:shadow-md">
+              <Link key={b.slug} href={`/laptop/reviews/${b.slug}`} className="card p-5 transition-colors hover:border-brand-400">
                 <div className="flex items-center justify-between">
                   <h2 className="text-lg font-bold">{b.name}</h2>
                   <span className="chip">{count} review{count === 1 ? "" : "s"}</span>

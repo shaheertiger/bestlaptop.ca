@@ -105,8 +105,8 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
           <h1 className="text-3xl font-extrabold sm:text-4xl">{b.name} Laptops in Canada</h1>
           {itemListLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />}
           {stats && (
-            <div id="quick-answer" className="mt-4 max-w-3xl rounded-xl border border-brand-200 bg-brand-50 p-4">
-              <p className="text-xs font-bold uppercase tracking-wide text-brand-700">Quick answer</p>
+            <div id="quick-answer" className="mt-4 max-w-3xl rounded-md border border-brand-200 bg-brand-50 p-4">
+              <p className="text-xs font-bold text-brand-700">Quick answer</p>
               <p className="mt-1 text-ink-900">
                 The best {b.name} laptop we have tested is the <Link href={laptopHref(stats.top)} className="link font-semibold">{stats.top.model}</Link> ({stats.top.overall.toFixed(1)}/10, from {formatCAD(lowestPrice(stats.top))} CAD).
                 {stats.count > 1 && <>
@@ -120,13 +120,13 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
           )}
           <p className="mt-4 max-w-3xl text-lg text-ink-700">{b.overview}</p>
           {hasBestList && (
-            <Link href={`/laptop/reviews/best/${b.slug}`} className="btn-primary mt-4">See the best {b.name} laptops →</Link>
+            <Link href={`/laptop/reviews/best/${b.slug}`} className="btn-primary mt-4">See the best {b.name} laptops</Link>
           )}
           {top && (
             <div className="mt-6 grid gap-4 rounded-2xl border-2 border-brand-200 bg-brand-50 p-4 sm:grid-cols-[180px_1fr] sm:items-center">
               <ProductImage laptop={top} size={300} className="aspect-[4/3] w-full" priority />
               <div>
-                <p className="text-xs font-bold uppercase tracking-wide text-brand-700">Top-rated {b.name} laptop</p>
+                <p className="text-xs font-bold text-brand-700">Top-rated {b.name} laptop</p>
                 <p className="mt-1 text-lg text-ink-900">
                   <Link href={laptopHref(top)} className="font-bold text-brand-700 hover:underline">{b.name} {top.model}</Link>: <strong>{top.overall.toFixed(1)}/10</strong> in our tests, from <strong>{formatCAD(lowestPrice(top))}</strong>. {top.bestFor}.
                 </p>
@@ -183,9 +183,9 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
 
             <section className="mt-10">
               <h2 className="mb-4 text-2xl font-bold">{b.name} laptops compared: scores, battery, weight and price</h2>
-              <div className="overflow-x-auto rounded-xl border border-slate-200">
+              <div className="overflow-x-auto rounded-md border border-line">
                 <table className="w-full text-sm">
-                  <thead className="bg-slate-50 text-left text-xs uppercase text-ink-400">
+                  <thead className="bg-frost text-left text-xs text-ink-400">
                     <tr><th className="p-3">Model</th><th className="p-3">Score</th><th className="p-3">CPU</th><th className="p-3">Battery</th><th className="p-3">Weight</th><th className="p-3">Price</th><th className="p-3"></th></tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
@@ -197,7 +197,7 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
                         <td className="p-3">{l.test.batteryWebHours} h</td>
                         <td className="p-3">{l.weightKg} kg</td>
                         <td className="p-3">{formatCAD(lowestPrice(l))}</td>
-                        <td className="p-3"><a href={laptopAmazonLink(l)} target="_blank" rel="sponsored nofollow noopener" className="whitespace-nowrap font-bold text-[#C45500] hover:underline">Amazon →</a></td>
+                        <td className="p-3"><a href={laptopAmazonLink(l)} target="_blank" rel="sponsored nofollow noopener" className="whitespace-nowrap font-bold text-[#C45500] hover:underline">Amazon</a></td>
                       </tr>
                     ))}
                   </tbody>
@@ -206,7 +206,7 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
             </section>
           </>
         ) : (
-          <p className="mt-10 rounded-lg border border-slate-200 bg-slate-50 p-4 text-ink-500">We have not published a {b.name} review yet. <Link href="/laptop/vote" className="link">Vote to see one tested next</Link>.</p>
+          <p className="mt-10 rounded-lg border border-line bg-frost p-4 text-ink-500">We have not published a {b.name} review yet. <Link href="/laptop/vote" className="link">Vote to see one tested next</Link>.</p>
         )}
 
         {inBrand.length > 0 && (
@@ -246,7 +246,7 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
           <h2 className="mb-4 text-2xl font-bold">Helpful buying guides</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {relatedGuides.map((g) => (
-              <Link key={g.slug} href={`/laptop/learn/${g.slug}`} className="card p-4 transition hover:shadow-md">
+              <Link key={g.slug} href={`/laptop/learn/${g.slug}`} className="card p-4 transition-colors hover:border-brand-400">
                 <span className="chip">{g.category}</span>
                 <h3 className="mt-2 text-sm font-semibold leading-snug">{g.title}</h3>
               </Link>

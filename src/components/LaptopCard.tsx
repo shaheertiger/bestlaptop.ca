@@ -8,7 +8,7 @@ import { laptopAmazonLink } from "@/lib/affiliate";
 
 export function LaptopCard({ laptop, tag }: { laptop: Laptop; tag?: string }) {
   return (
-    <article className="card group flex flex-col overflow-hidden transition hover:shadow-md">
+    <article className="card group flex flex-col overflow-hidden transition-colors hover:border-brand-400">
       <Link href={laptopHref(laptop)} className="block">
         <ProductImage laptop={laptop} rounded="rounded-none" className="aspect-[4/3] w-full" />
       </Link>
@@ -26,7 +26,7 @@ export function LaptopCard({ laptop, tag }: { laptop: Laptop; tag?: string }) {
         <div className="mt-3 flex items-center justify-between border-t border-slate-100 pt-3 text-sm">
           <span className="font-semibold text-ink-900">{formatCAD(lowestPrice(laptop))}</span>
           <a href={laptopAmazonLink(laptop)} target="_blank" rel="sponsored nofollow noopener" className="text-xs font-bold text-[#C45500] hover:underline">
-            Check price on Amazon →
+            Check price on Amazon
           </a>
         </div>
       </div>
@@ -43,7 +43,7 @@ export function ReviewRowCard({ laptop }: { laptop: Laptop }) {
       <div className="min-w-0 flex-1">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wide text-brand-700">Review</span>
+            <span className="text-xs font-semibold text-brand-700">Review</span>
             <h3 className="text-base font-semibold leading-snug">
               <Link href={laptopHref(laptop)} className="hover:text-brand-700">
                 {laptop.brand} {laptop.model}
@@ -58,7 +58,7 @@ export function ReviewRowCard({ laptop }: { laptop: Laptop }) {
           <span>{formatCAD(lowestPrice(laptop))}</span>
           <span>Test Bench {laptop.testBench}</span>
           <a href={laptopAmazonLink(laptop)} target="_blank" rel="sponsored nofollow noopener" className="font-bold text-[#C45500] hover:underline">
-            Check price on Amazon →
+            Check price on Amazon
           </a>
         </div>
       </div>

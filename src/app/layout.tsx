@@ -1,10 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
+import { Archivo } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SITE } from "@/lib/site";
 import { Analytics } from "@vercel/analytics/next";
+
+// One family, two voices: Archivo's width axis gives expanded "spec plate"
+// headlines and scores, normal width for reading.
+const archivo = Archivo({ subsets: ["latin"], axes: ["wdth"], variable: "--font-archivo", display: "swap" });
 
 const ADSENSE_CLIENT = "ca-pub-2963693328827195";
 
@@ -50,7 +55,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1b5ff1",
+  themeColor: "#0E3B43",
   width: "device-width",
   initialScale: 1,
 };
@@ -81,7 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     },
   };
   return (
-    <html lang="en-CA">
+    <html lang="en-CA" className={archivo.variable}>
       <head>
         <Script
           id="adsbygoogle-init"

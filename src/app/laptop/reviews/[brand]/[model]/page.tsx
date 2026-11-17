@@ -150,8 +150,8 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
           <Link href={`/laptop/reviews/${l.brandSlug}`} className="hover:text-brand-700">{l.brand} laptops</Link> · {l.series} · {l.year} · Released {l.releaseDate} · Tested {l.testedDate} · Test Bench {l.testBench} · <span className="font-medium capitalize text-accent-600">{l.status}</span>
         </p>
         {/* Answer-first block: score + key measurements in the first screen (quotable on its own). */}
-        <div id="quick-answer" className="mt-4 scroll-mt-20 rounded-xl border border-brand-200 bg-brand-50 p-4">
-          <p className="text-xs font-bold uppercase tracking-wide text-brand-700">Quick answer</p>
+        <div id="quick-answer" className="mt-4 scroll-mt-20 rounded-md border border-brand-200 bg-brand-50 p-4">
+          <p className="text-xs font-bold text-brand-700">Quick answer</p>
           <p className="mt-1 text-ink-900">{reviewQuickAnswer(l)}</p>
           <p className="mt-2 text-xs text-ink-500">
             Source: BestLaptop.ca lab measurements, Test Bench {l.testBench} · Last verified {l.testedDate} ·{" "}
@@ -171,11 +171,8 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
               </div>
               <div>
                 <div className="flex items-center gap-4">
-                  <ScoreCircle score={l.overall} size={72} />
-                  <div>
-                    <p className="text-2xl font-extrabold">{l.overall.toFixed(1)}<span className="text-base font-normal text-ink-400">/10</span></p>
-                    <p className="text-sm text-ink-500">Overall · Test Bench {l.testBench}</p>
-                  </div>
+                  <ScoreBadge score={l.overall} size="lg" />
+                  <p className="text-sm leading-snug text-ink-500">Overall score out of 10<br />Test Bench {l.testBench}</p>
                 </div>
                 <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
                   <div><dt className="text-ink-400">Best for</dt><dd className="font-medium">{l.bestFor}</dd></div>
@@ -193,7 +190,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
                 </div>
               </div>
             </div>
-            <div className="border-t border-slate-100 bg-slate-50 p-4">
+            <div className="border-t border-slate-100 bg-frost p-4">
               <RetailerButtons laptop={l} button={false} />
             </div>
           </div>
@@ -202,7 +199,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
           <div className="mt-4"><AuthorBox updated={l.testedDate} testBench={l.testBench} /></div>
 
           {rankings.length > 0 && (
-            <div className="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+            <div className="mt-4 rounded-lg border border-line bg-frost p-4">
               <p className="text-sm">
                 <span className="font-semibold text-ink-900">Featured in our rankings:</span>{" "}
                 {rankings.slice(0, 6).map((cat, i) => (
@@ -260,7 +257,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
 
             <SectionCard id="display" title={`How good is the ${m} display?`}>
               <p>The {m}&apos;s {l.screenSize}-inch {l.panelType} panel measured {l.test.brightnessNits} nits ({rank.brightness} for brightness), {l.test.colorGamutSRGB}% sRGB, {l.test.colorGamutDCIP3}% DCI-P3 and a colour accuracy of Delta E {l.test.colorAccuracyDeltaE}. It runs at {l.resolution} ({l.aspectRatio}) and {l.refreshRate}Hz.</p>
-              <p>{l.touchscreen ? `The ${m} has a touchscreen${l.convertible ? " and a 360° hinge for tablet use" : ""}.` : `The ${m} does not have a touchscreen.`} <Link href={laptopHref(l) + "/test-results"} className="link">See full display measurements →</Link></p>
+              <p>{l.touchscreen ? `The ${m} has a touchscreen${l.convertible ? " and a 360° hinge for tablet use" : ""}.` : `The ${m} does not have a touchscreen.`} <Link href={laptopHref(l) + "/test-results"} className="link">See full display measurements</Link></p>
             </SectionCard>
 
             <SectionCard id="keyboard" title={`How is the ${m} keyboard for typing?`}>
@@ -301,9 +298,9 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
             {/* Compared to */}
             <section id="compared" className="scroll-mt-20">
               <h2 className="mb-3 text-2xl font-bold">How does the {m} compare to similar laptops?</h2>
-              <div className="overflow-x-auto rounded-xl border border-slate-200">
+              <div className="overflow-x-auto rounded-md border border-line">
                 <table className="w-full text-sm">
-                  <thead className="bg-slate-50 text-left text-xs uppercase text-ink-400">
+                  <thead className="bg-frost text-left text-xs text-ink-400">
                     <tr><th className="p-3">Laptop</th><th className="p-3">Overall</th><th className="p-3">Battery (web)</th><th className="p-3">Weight</th><th className="p-3">Price</th><th className="p-3">Head-to-head</th></tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
@@ -368,7 +365,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
                 <h2 className="mb-4 text-2xl font-bold">Mistakes to avoid when buying the {m}</h2>
                 <div className="space-y-3">
                   {mistakes.map((x) => (
-                    <div key={x.title} className="rounded-xl border border-red-200 bg-red-50/60 p-4">
+                    <div key={x.title} className="rounded-md border border-red-200 bg-red-50/60 p-4">
                       <h3 className="font-bold text-red-900">{x.title}</h3>
                       <p className="mt-1 text-sm text-ink-700"><Linkify text={x.body} /></p>
                     </div>
@@ -392,7 +389,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
                     return <li key={c.slug}><Link href={`/laptop/compare/${c.slug}`} className="link">{a.brand} {a.model} vs {b.brand} {b.model}</Link></li>;
                   })}
                 </ul>
-                <p className="mt-2 text-sm"><Link href={`/laptop/compare#${l.id}`} className="link">All {comparisons.filter((c) => c.a === l.id || c.b === l.id).length} {m} comparisons →</Link></p>
+                <p className="mt-2 text-sm"><Link href={`/laptop/compare#${l.id}`} className="link">All {comparisons.filter((c) => c.a === l.id || c.b === l.id).length} {m} comparisons</Link></p>
               </SectionCard>
             )}
 
@@ -400,7 +397,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
               <SectionCard id="related-reviews" title="Related Reviews">
                 <div className="grid gap-4 sm:grid-cols-3">
                   {related.map((r) => (
-                    <Link key={r.id} href={laptopHref(r)} className="card overflow-hidden transition hover:shadow-md">
+                    <Link key={r.id} href={laptopHref(r)} className="card overflow-hidden transition-colors hover:border-brand-400">
                       <ProductImage laptop={r} rounded="rounded-none" className="aspect-[16/9] w-full" />
                       <div className="p-3"><p className="text-sm font-semibold">{r.brand} {r.model}</p><ScoreBadge score={r.overall} /></div>
                     </Link>
@@ -414,7 +411,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
               <h2 className="mb-3 text-2xl font-bold">Discussion</h2>
               <form className="card p-4">
                 <label htmlFor="comment" className="sr-only">Add a comment</label>
-                <textarea id="comment" rows={3} placeholder="Ask a question or share your experience with this laptop…" className="w-full rounded-lg border border-slate-300 p-3 text-sm" />
+                <textarea id="comment" rows={3} placeholder="Ask a question or share your experience with this laptop…" className="w-full rounded-lg border border-line p-3 text-sm" />
                 <button type="submit" className="btn-primary mt-2">Post comment</button>
               </form>
             </section>
@@ -434,7 +431,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ brand: 
       </div>
       <Newsletter />
       {/* Mobile sticky buy bar */}
-      <div className="fixed inset-x-0 bottom-0 z-40 flex items-center gap-3 border-t border-slate-200 bg-white/95 px-4 py-2.5 shadow-[0_-4px_16px_rgba(0,0,0,0.06)] backdrop-blur lg:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-40 flex items-center gap-3 border-t border-line bg-white/95 px-4 py-2.5 shadow-[0_-4px_16px_rgba(0,0,0,0.06)] backdrop-blur lg:hidden">
         <div className="min-w-0 flex-1">
           <p className="truncate text-sm font-bold">{l.brand} {l.model}</p>
           <p className="text-xs text-ink-500">{l.overall.toFixed(1)}/10 · from {formatCAD(lowestPrice(l))}</p>

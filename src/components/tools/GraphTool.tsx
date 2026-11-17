@@ -33,7 +33,7 @@ export function GraphTool() {
       <aside className="space-y-5">
         <div>
           <label htmlFor="metric" className="text-sm font-semibold">Metric</label>
-          <select id="metric" value={metric} onChange={(e) => setMetric(e.target.value)} className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+          <select id="metric" value={metric} onChange={(e) => setMetric(e.target.value)} className="mt-1 w-full rounded-lg border border-line px-3 py-2 text-sm">
             {METRICS.map((x) => <option key={x.key} value={x.key}>{x.label}</option>)}
           </select>
         </div>

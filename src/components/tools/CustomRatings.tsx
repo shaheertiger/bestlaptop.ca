@@ -31,7 +31,7 @@ export function CustomRatings() {
           </div>
           <div className="mb-4 flex flex-wrap gap-1.5">
             {Object.keys(WEIGHT_PRESETS).map((p) => (
-              <button key={p} onClick={() => applyPreset(p)} className="rounded-full border border-slate-300 px-2.5 py-1 text-xs font-medium hover:bg-slate-50">{p}</button>
+              <button key={p} onClick={() => applyPreset(p)} className="rounded-full border border-line px-2.5 py-1 text-xs font-medium hover:bg-frost">{p}</button>
             ))}
           </div>
           <div className="space-y-3">

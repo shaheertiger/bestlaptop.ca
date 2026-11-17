@@ -65,7 +65,7 @@ export function CompareTool({ initialIds }: { initialIds: string[] }) {
       {/* Add / remove */}
       <div className="mb-6 flex flex-wrap items-center gap-3">
         <label htmlFor="add-laptop" className="text-sm font-semibold">Add a laptop:</label>
-        <select id="add-laptop" value={picker} onChange={(e) => add(e.target.value)} disabled={selected.length >= 4} className="rounded-lg border border-slate-300 px-3 py-2 text-sm disabled:opacity-50">
+        <select id="add-laptop" value={picker} onChange={(e) => add(e.target.value)} disabled={selected.length >= 4} className="rounded-lg border border-line px-3 py-2 text-sm disabled:opacity-50">
           <option value="">{selected.length >= 4 ? "Maximum 4 laptops" : "Select a laptop…"}</option>
           {laptops.filter((l) => !selected.find((s) => s.id === l.id)).map((l) => (
             <option key={l.id} value={l.id}>{l.brand} {l.model}</option>
@@ -75,15 +75,15 @@ export function CompareTool({ initialIds }: { initialIds: string[] }) {
       </div>
 
       {selected.length < 2 ? (
-        <p className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-ink-500">Add at least two laptops to compare.</p>
+        <p className="rounded-lg border border-line bg-frost p-4 text-ink-500">Add at least two laptops to compare.</p>
       ) : (
         <>
           {/* Sticky headers */}
-          <div className="overflow-x-auto rounded-xl border border-slate-200">
+          <div className="overflow-x-auto rounded-md border border-line">
             <table className="w-full min-w-[640px] text-sm">
               <thead className="sticky top-0 z-10 bg-white">
-                <tr className="border-b border-slate-200">
-                  <th className="p-3 text-left text-xs uppercase text-ink-400">Spec</th>
+                <tr className="border-b border-line">
+                  <th className="p-3 text-left text-xs text-ink-400">Spec</th>
                   {selected.map((l) => (
                     <th key={l.id} className="p-3 text-center align-top">
                       <ProductImage laptop={l} className="mx-auto mb-2 aspect-[16/10] w-32" />

@@ -13,8 +13,8 @@ export function RecommendationCard({ laptop, role, id, why }: { laptop: Laptop; 
   const retailers = laptop.retailers.filter((r) => r.inStock).map((r) => r.name);
   return (
     <section id={id} className="card scroll-mt-20 overflow-hidden">
-      <div className="border-b border-slate-100 bg-slate-50 px-5 py-3">
-        <span className="text-xs font-bold uppercase tracking-wide text-brand-700">{role}</span>
+      <div className="border-b border-slate-100 bg-frost px-5 py-3">
+        <span className="text-xs font-bold text-brand-700">{role}</span>
       </div>
       <div className="grid gap-6 p-5 md:grid-cols-[200px_1fr]">
         <div>
@@ -46,13 +46,13 @@ export function RecommendationCard({ laptop, role, id, why }: { laptop: Laptop; 
 
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             <div>
-              <p className="text-xs font-bold uppercase text-accent-600">What it does well</p>
+              <p className="text-sm font-bold text-accent-600">What it does well</p>
               <ul className="mt-1 space-y-1 text-sm text-ink-600">
                 {laptop.pros.slice(0, 3).map((p) => <li key={p}>+ {p}</li>)}
               </ul>
             </div>
             <div>
-              <p className="text-xs font-bold uppercase text-red-600">What it does poorly</p>
+              <p className="text-sm font-bold text-red-600">What it does poorly</p>
               <ul className="mt-1 space-y-1 text-sm text-ink-600">
                 {laptop.cons.slice(0, 3).map((c) => <li key={c}>– {c}</li>)}
               </ul>

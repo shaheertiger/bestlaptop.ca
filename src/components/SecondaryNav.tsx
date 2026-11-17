@@ -6,24 +6,24 @@ import { toolsNav } from "@/lib/site";
 export function SecondaryNav({ active }: { active?: string }) {
   const best = bestCategories.filter((c) => c.group !== "brand" && c.group !== "size").slice(0, 14);
   return (
-    <div className="border-b border-slate-200 bg-white">
+    <div className="border-b border-line bg-frost">
       <div className="container-site flex gap-6 overflow-x-auto py-2.5 text-sm">
         <div className="flex shrink-0 items-center gap-1">
-          <span className="mr-1 text-xs font-bold uppercase tracking-wide text-ink-400">Best</span>
+          <span className="mr-1 text-sm font-bold text-brand-900">Best for</span>
           {best.map((c) => (
             <Link
               key={c.slug}
               href={`/laptop/reviews/best/${c.slug}`}
-              className={`whitespace-nowrap rounded-md px-2.5 py-1 ${active === c.slug ? "bg-brand-600 text-white" : "text-ink-700 hover:bg-slate-100"}`}
+              className={`whitespace-nowrap rounded-md px-2.5 py-1 ${active === c.slug ? "bg-brand-800 text-white" : "text-ink-700 hover:bg-white"}`}
             >
-              {c.navLabel.replace("Best ", "")}
+              {c.navLabel.replace(/^Best (for )?/, "")}
             </Link>
           ))}
         </div>
-        <div className="flex shrink-0 items-center gap-1 border-l border-slate-200 pl-4">
-          <span className="mr-1 text-xs font-bold uppercase tracking-wide text-ink-400">Tools</span>
+        <div className="flex shrink-0 items-center gap-1 border-l border-line pl-4">
+          <span className="mr-1 text-sm font-bold text-brand-900">Tools</span>
           {toolsNav.map((t) => (
-            <Link key={t.href} href={t.href} className="whitespace-nowrap rounded-md px-2.5 py-1 text-ink-700 hover:bg-slate-100">
+            <Link key={t.href} href={t.href} className="whitespace-nowrap rounded-md px-2.5 py-1 text-ink-700 hover:bg-white">
               {t.label}
             </Link>
           ))}

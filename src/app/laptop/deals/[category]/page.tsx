@@ -44,7 +44,7 @@ export default async function DealCategoryPage({ params }: { params: Promise<{ c
         {list.length ? (
           <div className="grid gap-5 md:grid-cols-2">{list.map((d, i) => <DealCard key={i} deal={d} />)}</div>
         ) : (
-          <p className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-ink-500">No current deals in this category. Check <Link href="/laptop/deals" className="link">all laptop deals</Link>.</p>
+          <p className="rounded-lg border border-line bg-frost p-4 text-ink-500">No current deals in this category. Check <Link href="/laptop/deals" className="link">all laptop deals</Link>.</p>
         )}
       </div>
       <Newsletter />

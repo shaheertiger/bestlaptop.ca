@@ -137,7 +137,7 @@ export default async function GuidePage({ params }: { params: Promise<{ topic: s
           <h1 className="mt-3 text-3xl font-extrabold sm:text-4xl">{g.h1}</h1>
           <p className="mt-2 text-sm text-ink-400">Updated {g.updated} · {g.readingTime} min read · BestLaptop.ca Test Team</p>
 
-          <div className="guide-answer mt-5 rounded-xl border-l-4 border-brand-500 bg-brand-50 p-4">
+          <div className="guide-answer mt-5 rounded-md border-l-4 border-brand-500 bg-brand-50 p-4">
             <p className="font-semibold text-ink-900">Short answer</p>
             <p className="mt-1 text-ink-700">{g.answer}</p>
           </div>
@@ -157,7 +157,7 @@ export default async function GuidePage({ params }: { params: Promise<{ topic: s
             <h2 className="mb-4 text-2xl font-bold">Continue reading</h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((r) => (
-                <Link key={r.slug} href={`/laptop/learn/${r.slug}`} className="card p-4 transition hover:shadow-md">
+                <Link key={r.slug} href={`/laptop/learn/${r.slug}`} className="card p-4 transition-colors hover:border-brand-400">
                   <span className="chip">{r.category}</span>
                   <h3 className="mt-2 text-sm font-semibold leading-snug">{r.title}</h3>
                   <p className="mt-1 line-clamp-2 text-xs text-ink-500">{r.excerpt}</p>

@@ -15,7 +15,7 @@ export function AuthorBox({ updated, testBench }: { updated: string; testBench?:
           Reviewed and tested in-house · Updated {updated}
           {testBench && <> · Test Bench {testBench}</>}
         </p>
-        <Link href="/laptop/learn/how-we-test" className="link text-xs">How we test →</Link>
+        <Link href="/laptop/learn/how-we-test" className="link text-xs">How we test</Link>
       </div>
     </div>
   );
@@ -23,7 +23,7 @@ export function AuthorBox({ updated, testBench }: { updated: string; testBench?:
 
 export function AffiliateDisclosure() {
   return (
-    <p className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-xs text-ink-500">
+    <p className="rounded-lg border border-line bg-frost p-3 text-xs text-ink-500">
       <strong className="text-ink-700">Affiliate disclosure:</strong> BestLaptop.ca may earn a commission when you buy
       through retailer links on this page. As an Amazon Associate we earn from qualifying purchases. This never affects our scores or recommendations.{" "}
       <Link href="/affiliate-disclosure" className="link">Learn more</Link>.
@@ -65,8 +65,8 @@ export function RetailerButtons({ laptop, button = true }: { laptop: Laptop; but
     <div className="space-y-3">
       {button && <AmazonButton laptop={laptop} size="lg" />}
       <div>
-        <p className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-ink-400">Prices we last recorded in Canada</p>
-        <ul className="divide-y divide-slate-100 rounded-lg border border-slate-200">
+        <p className="mb-1.5 text-xs font-semibold text-ink-400">Prices we last recorded in Canada</p>
+        <ul className="divide-y divide-slate-100 rounded-lg border border-line">
           {/* Amazon rows are left out: Amazon prices may only be shown live from its API, and the button above covers Amazon. */}
           {laptop.retailers.filter((r) => !r.name.startsWith("Amazon")).map((r) => (
             <li key={r.name} className={`flex items-center justify-between px-4 py-2.5 text-sm ${r.inStock ? "" : "opacity-60"}`}>
@@ -99,7 +99,7 @@ export function FAQ({ items, heading = "Frequently Asked Questions" }: { items: 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <h2 className="mb-4 text-2xl font-bold">{heading}</h2>
       {/* Answers are always visible (not collapsed) so they are easy to read, quote and extract. */}
-      <div className="divide-y divide-slate-200 rounded-xl border border-slate-200">
+      <div className="divide-y divide-slate-200 rounded-md border border-line">
         {items.map((it) => (
           <div key={it.q} className="p-4">
             <h3 className="font-semibold text-ink-900">{it.q}</h3>
@@ -114,7 +114,7 @@ export function FAQ({ items, heading = "Frequently Asked Questions" }: { items: 
 export function TableOfContents({ items }: { items: { id: string; label: string }[] }) {
   return (
     <nav aria-label="Table of contents" className="card p-4">
-      <h2 className="mb-2 text-sm font-bold uppercase tracking-wide text-ink-400">On this page</h2>
+      <h2 className="mb-2 text-sm font-bold text-ink-400">On this page</h2>
       <ol className="space-y-1.5 text-sm">
         {items.map((it) => (
           <li key={it.id}>

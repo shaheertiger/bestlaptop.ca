@@ -149,8 +149,8 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
       <div className="container-site pb-12">
         <h1 className="text-3xl font-extrabold sm:text-4xl">{a.brand} {a.model} vs {b.brand} {b.model}</h1>
 
-        <div id="quick-answer" className="mt-4 rounded-xl border border-brand-200 bg-brand-50 p-4">
-          <p className="text-xs font-bold uppercase tracking-wide text-brand-700">Quick answer</p>
+        <div id="quick-answer" className="mt-4 rounded-md border border-brand-200 bg-brand-50 p-4">
+          <p className="text-xs font-bold text-brand-700">Quick answer</p>
           <p className="mt-1 text-ink-900">{comparisonQuickAnswer(a, b)}</p>
           <p className="mt-2 text-xs text-ink-500">
             Source: BestLaptop.ca lab measurements · Last verified {[a.testedDate, b.testedDate].sort().at(-1)} ·{" "}
@@ -230,11 +230,11 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
 
         <section id="specs" className="mt-8">
           <h2 className="mb-3 text-2xl font-bold">{a.model} vs {b.model} specs and test results</h2>
-          <div className="overflow-x-auto rounded-xl border border-slate-200">
+          <div className="overflow-x-auto rounded-md border border-line">
             <table className="w-full">
-              <thead className="bg-slate-50">
+              <thead className="bg-frost">
                 <tr>
-                  <th className="p-3 text-left text-xs uppercase text-ink-400">Spec</th>
+                  <th className="p-3 text-left text-xs text-ink-400">Spec</th>
                   <th className="p-3 text-left text-sm font-bold">{a.model}</th>
                   <th className="p-3 text-left text-sm font-bold">{b.model}</th>
                 </tr>
@@ -261,7 +261,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
 
         <SectionCard id="recommendation" title="Which one should you buy?">
           {buyIf.length > 0 && (
-            <ul className="not-prose mt-4 divide-y divide-slate-100 rounded-xl border border-slate-200">
+            <ul className="not-prose mt-4 divide-y divide-slate-100 rounded-md border border-line">
               {buyIf.map((x) => (
                 <li key={x.who} className="flex flex-col gap-2 p-4 sm:flex-row sm:items-center sm:justify-between">
                   <div>
@@ -296,7 +296,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
               </li>
             ))}
           </ul>
-          <p className="mt-2 text-sm"><Link href="/laptop/compare" className="link">All {comparisons.length} laptop comparisons →</Link></p>
+          <p className="mt-2 text-sm"><Link href="/laptop/compare" className="link">All {comparisons.length} laptop comparisons</Link></p>
         </SectionCard>
       </div>
       <Newsletter />

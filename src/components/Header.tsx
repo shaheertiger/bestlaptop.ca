@@ -7,13 +7,11 @@ import { primaryNav, SITE } from "@/lib/site";
 export function Header() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-brand-900 bg-brand-800 text-white">
       <div className="container-site flex h-16 items-center gap-4">
-        <Link href="/" className="flex shrink-0 items-center gap-2 font-extrabold tracking-tight">
-          <span className="flex h-8 w-8 items-center justify-center rounded-md bg-brand-600 text-white">BL</span>
-          <span className="text-lg">
-            BestLaptop<span className="text-brand-600">.ca</span>
-          </span>
+        <Link href="/" className="flex shrink-0 items-center gap-2.5 font-black" style={{ fontStretch: "125%" }} aria-label="BestLaptop.ca home">
+          <span className="flex h-8 w-8 items-center justify-center rounded-[3px] bg-maple-500 text-sm text-white">BL</span>
+          <span className="text-[1.0625rem] tracking-tight">BestLaptop.ca</span>
         </Link>
 
         <form action="/laptop/tools/table" className="ml-2 hidden flex-1 lg:flex" role="search">
@@ -23,10 +21,10 @@ export function Header() {
               id="site-search"
               name="q"
               type="search"
-              placeholder="Search laptops, reviews, comparisons…"
-              className="w-full rounded-lg border border-slate-300 bg-slate-50 py-2 pl-9 pr-3 text-sm"
+              placeholder="Search laptops"
+              className="w-full rounded-md border border-brand-700 bg-brand-900/60 py-2 pl-9 pr-3 text-sm text-white placeholder:text-brand-200 focus:bg-brand-900"
             />
-            <svg className="absolute left-2.5 top-2.5 h-4 w-4 text-ink-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
+            <svg className="absolute left-2.5 top-2.5 h-4 w-4 text-brand-200" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" strokeLinecap="round" />
             </svg>
           </div>
@@ -37,7 +35,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-md px-2.5 py-2 text-sm font-medium text-ink-700 hover:bg-slate-100"
+              className="rounded-md px-2.5 py-2 text-sm font-medium text-brand-50 hover:bg-brand-700 hover:text-white"
             >
               {item.label}
             </Link>
@@ -46,7 +44,7 @@ export function Header() {
 
         <button
           type="button"
-          className="ml-auto rounded-md p-2 hover:bg-slate-100 xl:hidden"
+          className="ml-auto rounded-md p-2 hover:bg-brand-700 xl:hidden"
           aria-label="Toggle menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -58,14 +56,14 @@ export function Header() {
       </div>
 
       {open && (
-        <nav className="border-t border-slate-200 bg-white xl:hidden" aria-label="Mobile">
+        <nav className="border-t border-brand-700 bg-brand-800 xl:hidden" aria-label="Mobile">
           <div className="container-site grid grid-cols-2 gap-1 py-3">
             {primaryNav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-2.5 text-sm font-medium text-ink-700 hover:bg-slate-100"
+                className="rounded-md px-3 py-2.5 text-sm font-medium text-brand-50 hover:bg-brand-700"
               >
                 {item.label}
               </Link>

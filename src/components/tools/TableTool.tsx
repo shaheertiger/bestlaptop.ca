@@ -81,7 +81,7 @@ export function TableTool({ initialQuery = "" }: { initialQuery?: string }) {
       <aside className="space-y-5">
         <div>
           <label htmlFor="table-search" className="text-sm font-semibold">Search</label>
-          <input id="table-search" type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Brand or model…" className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm" />
+          <input id="table-search" type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Brand or model…" className="mt-1 w-full rounded-lg border border-line px-3 py-2 text-sm" />
         </div>
 
         <fieldset>
@@ -129,12 +129,12 @@ export function TableTool({ initialQuery = "" }: { initialQuery?: string }) {
         <div className="mb-3 flex items-center justify-between">
           <p className="text-sm text-ink-500">{rows.length} laptop{rows.length === 1 ? "" : "s"}</p>
           {selected.length >= 2 && (
-            <Link href={`/laptop/tools/compare?${selected.map((id) => `add=${id}`).join("&")}`} className="btn-primary">Compare {selected.length} →</Link>
+            <Link href={`/laptop/tools/compare?${selected.map((id) => `add=${id}`).join("&")}`} className="btn-primary">Compare {selected.length}</Link>
           )}
         </div>
-        <div className="overflow-x-auto rounded-xl border border-slate-200">
+        <div className="overflow-x-auto rounded-md border border-line">
           <table className="w-full text-sm">
-            <thead className="sticky top-0 bg-slate-50 text-left text-xs uppercase text-ink-400">
+            <thead className="sticky top-0 bg-frost text-left text-xs text-ink-400">
               <tr>
                 <th className="p-3"></th>
                 <th className="cursor-pointer p-3" onClick={() => setSortCol("name")}>Laptop</th>
@@ -147,7 +147,7 @@ export function TableTool({ initialQuery = "" }: { initialQuery?: string }) {
             </thead>
             <tbody className="divide-y divide-slate-100">
               {rows.map((l) => (
-                <tr key={l.id} className="hover:bg-slate-50">
+                <tr key={l.id} className="hover:bg-frost">
                   <td className="p-3"><input type="checkbox" aria-label={`Select ${l.model} to compare`} checked={selected.includes(l.id)} onChange={() => toggle(selected, l.id, setSelected)} className="accent-brand-600" /></td>
                   <td className="p-3"><Link href={laptopHref(l)} className="font-medium hover:text-brand-700">{l.brand} {l.model}</Link><div className="text-xs text-ink-400">{l.cpu} · {l.ram}GB · {l.screenSize}"</div></td>
                   {COLUMNS.map((c) => <td key={c.key} className="whitespace-nowrap p-3">{c.render(l)}</td>)}

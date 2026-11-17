@@ -89,7 +89,7 @@ export default function HowWeTestPage() {
                   </div>
                 ))}
               </div>
-              <p className="mt-2"><Link href="/laptop/tests/changelogs" className="link">See full changelogs →</Link></p>
+              <p className="mt-2"><Link href="/laptop/tests/changelogs" className="link">See full changelogs</Link></p>
             </section>
 
             <SectionCard id="read" title="8. How To Read Our Results">

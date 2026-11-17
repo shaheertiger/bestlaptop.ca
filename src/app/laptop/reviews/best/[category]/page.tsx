@@ -205,8 +205,8 @@ export default async function BestListPage({ params }: { params: Promise<{ categ
               <span>Last updated <time dateTime={updated}>{monthYear(updated)}</time> · {picks.length} laptop{picks.length === 1 ? "" : "s"} ranked · Test Bench {SITE.testBench}</span>
             </div>
             {/* Quick answer: the direct, quotable answer in the first screen. */}
-            <div id="quick-answer" className="mt-5 scroll-mt-20 rounded-xl border-2 border-brand-200 bg-brand-50 p-5">
-              <p className="text-xs font-bold uppercase tracking-wide text-brand-700">Quick answer</p>
+            <div id="quick-answer" className="mt-5 scroll-mt-20 rounded-md border-2 border-brand-200 bg-brand-50 p-5">
+              <p className="text-xs font-bold text-brand-700">Quick answer</p>
               {cat.quickAnswer ? (
                 <p className="mt-2 text-lg text-ink-900">{cat.quickAnswer(picks)}</p>
               ) : (
@@ -226,7 +226,7 @@ export default async function BestListPage({ params }: { params: Promise<{ categ
             <div className="mt-5 grid gap-3 sm:grid-cols-3">
               {shown.slice(0, 3).map((l, i) => (
                 <div key={l.id} className="card flex flex-col p-3">
-                  <p className="text-[11px] font-extrabold uppercase tracking-wide text-brand-700">{cat.sort ? `#${i + 1}` : ROLES[i]}</p>
+                  <p className=" text-xs font-bold text-brand-700">{cat.sort ? `#${i + 1}` : ROLES[i]}</p>
                   <Link href={`#pick-${i}`} className="mt-2 block"><ProductImage laptop={l} size={300} className="aspect-[4/3] w-full" /></Link>
                   <p className="mt-2 line-clamp-2 text-sm font-semibold leading-snug"><Link href={laptopHref(l)} className="hover:text-brand-700">{l.brand} {l.model}</Link></p>
                   <p className="mt-0.5 text-xs text-ink-500">{l.overall.toFixed(1)}/10 · {formatCAD(lowestPrice(l))}</p>
@@ -243,9 +243,9 @@ export default async function BestListPage({ params }: { params: Promise<{ categ
           {/* Summary table */}
           <section id="summary" className="mt-8 scroll-mt-20">
             <h2 className="mb-3 text-2xl font-bold">Our picks at a glance</h2>
-            <div className="overflow-x-auto rounded-xl border border-slate-200">
+            <div className="overflow-x-auto rounded-md border border-line">
               <table className="w-full text-sm">
-                <thead className="bg-slate-50 text-left text-xs uppercase text-ink-400">
+                <thead className="bg-frost text-left text-xs text-ink-400">
                   <tr>
                     <th className="p-3">Role</th>
                     <th className="p-3">Laptop</th>
@@ -295,9 +295,9 @@ export default async function BestListPage({ params }: { params: Promise<{ categ
             <section id="specs" className="scroll-mt-20">
               <h2 className="mb-3 text-2xl font-bold">Specs &amp; test results compared</h2>
               <p className="mb-3 text-ink-600">Every number below was measured on our Test Bench {SITE.testBench}; battery is our web-browsing test at 150 nits.</p>
-              <div className="overflow-x-auto rounded-xl border border-slate-200">
+              <div className="overflow-x-auto rounded-md border border-line">
                 <table className="w-full text-sm">
-                  <thead className="bg-slate-50 text-left text-xs uppercase text-ink-400">
+                  <thead className="bg-frost text-left text-xs text-ink-400">
                     <tr>
                       <th className="p-3">Laptop</th><th className="p-3">CPU</th><th className="p-3">GPU</th><th className="p-3">RAM</th>
                       <th className="p-3">Screen</th><th className="p-3">Weight</th><th className="p-3">Battery</th><th className="p-3">1080p FPS</th><th className="p-3">4K export</th><th className="p-3">Price</th>
@@ -374,7 +374,7 @@ export default async function BestListPage({ params }: { params: Promise<{ categ
         <aside className="hidden lg:block">
           <div className="sticky top-20 space-y-4">
             <div className="card p-4">
-              <p className="text-xs font-bold uppercase tracking-wide text-brand-700">Our top pick</p>
+              <p className="text-xs font-bold text-brand-700">Our top pick</p>
               <ProductImage laptop={top} size={300} className="mt-2 aspect-[4/3] w-full" />
               <p className="mt-2 text-sm font-semibold">{top.brand} {top.model}</p>
               <p className="text-xs text-ink-500">{top.overall.toFixed(1)}/10 · {formatCAD(lowestPrice(top))}</p>

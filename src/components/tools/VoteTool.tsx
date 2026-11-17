@@ -34,7 +34,7 @@ export function VoteTool() {
   return (
     <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
       <div>
-        <input type="search" value={filter} onChange={(e) => setFilter(e.target.value)} placeholder="Search the request list…" className="mb-4 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm" />
+        <input type="search" value={filter} onChange={(e) => setFilter(e.target.value)} placeholder="Search the request list…" className="mb-4 w-full rounded-lg border border-line px-3 py-2 text-sm" />
         <ol className="space-y-2">
           {shown.map((p, i) => {
             const key = `${p.brand}-${p.model}`;
@@ -60,7 +60,7 @@ export function VoteTool() {
           <h2 className="font-bold">Request a laptop</h2>
           <p className="mt-1 text-sm text-ink-500">Don't see it? Add it to the list.</p>
           <label htmlFor="request" className="sr-only">Laptop to request</label>
-          <input id="request" value={request} onChange={(e) => setRequest(e.target.value)} placeholder="e.g. ASUS Zenbook 14 OLED" className="mt-3 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm" />
+          <input id="request" value={request} onChange={(e) => setRequest(e.target.value)} placeholder="e.g. ASUS Zenbook 14 OLED" className="mt-3 w-full rounded-lg border border-line px-3 py-2 text-sm" />
           <button type="submit" className="btn-primary mt-3 w-full">Add request</button>
         </form>
         <div className="card p-5 text-sm text-ink-600">

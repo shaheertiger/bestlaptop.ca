@@ -3,12 +3,12 @@ import { footerNav, SITE } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="mt-16 border-t border-slate-200 bg-slate-50">
+    <footer className="mt-16 border-t border-line bg-frost">
       <div className="container-site grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <div className="flex items-center gap-2 font-extrabold">
-            <span className="flex h-8 w-8 items-center justify-center rounded-md bg-brand-600 text-white">BL</span>
-            BestLaptop<span className="text-brand-600">.ca</span>
+            <span className="flex h-8 w-8 items-center justify-center rounded-[3px] bg-maple-500 text-sm text-white" style={{ fontStretch: "125%" }}>BL</span>
+            <span style={{ fontStretch: "125%" }}>BestLaptop.ca</span>
           </div>
           <p className="mt-3 text-sm text-ink-500">
             Canada's independent laptop testing site. We buy and test laptops, then publish objective reviews,
@@ -50,7 +50,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-slate-200">
+      <div className="border-t border-line">
         <div className="container-site flex flex-col gap-2 py-5 text-xs text-ink-400 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} BestLaptop.ca. All rights reserved. Prices in CAD.</p>
           <p>

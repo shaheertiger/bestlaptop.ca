@@ -14,9 +14,9 @@ export const dec = (n: number) => n.toLocaleString("fr-CA", { minimumFractionDig
 
 export function FrenchPicksTable({ picks }: { picks: Laptop[] }) {
   return (
-    <div className="overflow-x-auto rounded-xl border border-slate-200">
+    <div className="overflow-x-auto rounded-md border border-line">
       <table className="w-full text-sm">
-        <thead className="bg-slate-50 text-left text-xs uppercase text-ink-400">
+        <thead className="bg-frost text-left text-xs text-ink-400">
           <tr>
             <th className="p-3">Rang</th><th className="p-3">Portable</th><th className="p-3">Note</th><th className="p-3">Processeur</th>
             <th className="p-3">Mémoire</th><th className="p-3">Écran</th><th className="p-3">Poids</th><th className="p-3">Autonomie</th><th className="p-3">Prix</th>
@@ -47,7 +47,7 @@ export function FrenchPickCards({ picks }: { picks: Laptop[] }) {
     <div className="grid gap-4 sm:grid-cols-2">
       {picks.map((l, i) => (
         <article key={l.id} className="card p-5">
-          <p className="text-xs font-bold uppercase tracking-wide text-brand-700">N° {i + 1}</p>
+          <p className="text-xs font-bold text-brand-700">N° {i + 1}</p>
           <h3 className="mt-1 text-lg font-bold">{l.brand} {l.model}</h3>
           <ul className="mt-2 space-y-1 text-sm text-ink-700">
             <li>Note globale : <strong>{dec(l.overall)}/10</strong></li>
@@ -88,7 +88,7 @@ export function FrenchFAQ({ items }: { items: { q: string; a: string }[] }) {
     <section className="mt-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
       <h2 className="mb-4 text-2xl font-bold">Questions fréquentes</h2>
-      <div className="divide-y divide-slate-200 rounded-xl border border-slate-200">
+      <div className="divide-y divide-slate-200 rounded-md border border-line">
         {items.map((it) => (
           <div key={it.q} className="p-4">
             <h3 className="font-semibold text-ink-900">{it.q}</h3>

@@ -27,7 +27,7 @@ export default function ChangelogsPage() {
                 <span className="text-sm text-ink-400">{b.date}</span>
               </div>
               <p className="mt-2 text-ink-700">{b.summary}</p>
-              <h3 className="mt-4 text-sm font-bold uppercase text-ink-400">Changes</h3>
+              <h3 className="mt-4 text-sm font-bold text-ink-400">Changes</h3>
               <ul className="mt-1 list-disc space-y-1 pl-5 text-sm text-ink-700">{b.changes.map((c) => <li key={c}>{c}</li>)}</ul>
               <p className="mt-3 text-sm"><span className="font-semibold">Impact on scores:</span> {b.impact}</p>
             </article>

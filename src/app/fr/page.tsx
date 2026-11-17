@@ -39,8 +39,8 @@ export default function FrenchHub() {
           <h1 className="text-3xl font-extrabold sm:text-4xl">{frHub.h1}</h1>
           <p className="mt-3 text-lg text-ink-700">{frHub.intro}</p>
           <p className="mt-2 text-sm"><Link href="/" hrefLang="en-CA" className="link">English version</Link></p>
-          <div id="reponse-rapide" className="mt-5 rounded-xl border-2 border-brand-200 bg-brand-50 p-5">
-            <p className="text-xs font-bold uppercase tracking-wide text-brand-700">Réponse rapide</p>
+          <div id="reponse-rapide" className="mt-5 rounded-md border-2 border-brand-200 bg-brand-50 p-5">
+            <p className="text-xs font-bold text-brand-700">Réponse rapide</p>
             <p className="mt-2 text-lg text-ink-900">
               Le meilleur ordinateur portable au Canada en 2026 selon nos tests :{" "}
               <Link href={laptopHref(top)} className="font-bold text-brand-700 hover:underline">{top.brand} {top.model}</Link>, noté{" "}
@@ -57,7 +57,7 @@ export default function FrenchHub() {
               const p = cat && categoryPicks(cat)[0];
               return (
                 <li key={f.slug}>
-                  <Link href={`/fr/${f.slug}`} className="card block p-4 transition hover:shadow-md">
+                  <Link href={`/fr/${f.slug}`} className="card block p-4 transition-colors hover:border-brand-400">
                     <span className="font-semibold text-brand-700">{f.h1.replace(/^Les meilleurs? /, "Meilleurs ").replace(/ \(2026\)$/, "")}</span>
                     {p && <span className="mt-1 block text-sm text-ink-600">N° 1 : {p.brand} {p.model} · {dec(p.overall)}/10 · {formatCADfr(lowestPrice(p))}</span>}
                   </Link>

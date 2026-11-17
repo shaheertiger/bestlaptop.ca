@@ -85,15 +85,15 @@ export default async function FrenchListPage({ params }: { params: Promise<{ slu
             Mis à jour le <time dateTime={CONTENT_UPDATED}>{new Date(CONTENT_UPDATED + "T12:00:00Z").toLocaleDateString("fr-CA", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}</time> · {picks.length} portables classés · Banc d&apos;essai {SITE.testBench} ·{" "}
             <Link href={`/laptop/reviews/best/${cat.slug}`} hrefLang="en-CA" className="link">English version</Link>
           </p>
-          <div id="reponse-rapide" className="mt-5 rounded-xl border-2 border-brand-200 bg-brand-50 p-5">
-            <p className="text-xs font-bold uppercase tracking-wide text-brand-700">Réponse rapide</p>
+          <div id="reponse-rapide" className="mt-5 rounded-md border-2 border-brand-200 bg-brand-50 p-5">
+            <p className="text-xs font-bold text-brand-700">Réponse rapide</p>
             <p className="mt-2 text-lg text-ink-900">
               Le meilleur {f.subject} au Canada selon nos tests : <Link href={laptopHref(top)} className="font-bold text-brand-700 hover:underline">{top.brand} {top.model}</Link>,
               noté <strong>{dec(top.overall)}/10</strong> dans nos tests, avec {dec(top.test.batteryWebHours)} heures d&apos;autonomie, à partir de <strong>{formatCADfr(lowestPrice(top))}</strong>.
             </p>
           </div>
           <p className="mt-4 text-lg text-ink-700">{f.intro}</p>
-          <p className="mt-3 rounded-lg border border-slate-200 bg-slate-50 p-3 text-xs text-ink-500">
+          <p className="mt-3 rounded-lg border border-line bg-frost p-3 text-xs text-ink-500">
             <strong className="text-ink-700">Divulgation :</strong> BestLaptop.ca peut toucher une commission sur les achats faits via les liens des détaillants. Cela n&apos;influence jamais nos notes.
           </p>
         </header>

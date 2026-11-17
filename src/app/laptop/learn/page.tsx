@@ -30,7 +30,7 @@ export default function LearnHub() {
               <h2 className="mb-4 text-xl font-bold">{cat}</h2>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {byCat.get(cat)!.map((g) => (
-                  <Link key={g.slug} href={`/laptop/learn/${g.slug}`} className="card p-5 transition hover:shadow-md">
+                  <Link key={g.slug} href={`/laptop/learn/${g.slug}`} className="card p-5 transition-colors hover:border-brand-400">
                     <h3 className="font-semibold leading-snug">{g.title}</h3>
                     <p className="mt-1 line-clamp-2 text-sm text-ink-500">{g.excerpt}</p>
                   </Link>

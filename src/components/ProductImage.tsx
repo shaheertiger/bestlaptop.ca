@@ -40,7 +40,7 @@ export function ProductImage({
           loading={priority ? "eager" : "lazy"}
           decoding="async"
           referrerPolicy="no-referrer-when-downgrade"
-          className="h-full w-full object-contain p-3"
+          className="h-full w-full object-contain p-[7%]"
         />
       </div>
     );

@@ -32,7 +32,7 @@ export function DealCard({ deal }: { deal: Deal }) {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-between border-t border-slate-100 bg-slate-50 px-4 py-2.5 text-sm">
+      <div className="flex items-center justify-between border-t border-slate-100 bg-frost px-4 py-2.5 text-sm">
         <span className="flex items-center gap-2">Deal quality <ScoreBadge score={dealQualityScore(deal)} /></span>
         <a href={laptopAmazonLink(l)} target="_blank" rel="nofollow sponsored noopener" className="rounded-lg bg-[#FF9900] px-4 py-2 font-bold text-ink-900 hover:bg-[#F08804]">Check price on Amazon</a>
       </div>

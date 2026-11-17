@@ -1,35 +1,40 @@
 import type { Config } from "tailwindcss";
 
+// BestLaptop.ca tokens. "brand" is the spruce/lake scale used for structure and
+// links; "maple" is the brand mark only; "frost" is the cool section surface.
 const config: Config = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       colors: {
         brand: {
-          50: "#eef6ff",
-          100: "#d9ecff",
-          200: "#bcdcff",
-          300: "#8ec5ff",
-          400: "#59a4ff",
-          500: "#327ffc",
-          600: "#1b5ff1",
-          700: "#1549de",
-          800: "#173cb4",
-          900: "#19388e",
+          50: "#EEF5F5",
+          100: "#DCEBEC",
+          200: "#B5D5D9",
+          300: "#86B9C1",
+          400: "#4C94A2",
+          500: "#1F7A8C",
+          600: "#0B6A80",
+          700: "#0A5568",
+          800: "#0E3B43",
+          900: "#0A2A30",
         },
+        maple: { 500: "#D52B1E", 600: "#B32217" },
+        frost: "#F2F5F4",
+        line: "#D7DFDD",
         accent: {
-          500: "#0e9f6e",
-          600: "#057a55",
+          500: "#0E9F6E",
+          600: "#057A55",
         },
         ink: {
-          900: "#0f1722",
-          700: "#27313f",
-          500: "#54606e",
-          400: "#7b8694",
+          900: "#15232A",
+          700: "#2C3D45",
+          500: "#56666D",
+          400: "#7A898F",
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        sans: ["var(--font-archivo)", "system-ui", "sans-serif"],
       },
       maxWidth: {
         site: "1200px",
