@@ -30,7 +30,7 @@ listing → a tagged Amazon search for the model. Product photos come from the s
 
 | File | What it holds |
 | --- | --- |
-| `scripts/amazon-products.json` | One row per laptop: Amazon search query + tokens a listing title must contain (`"14\|14.2"` = either) and optional `prefer` tokens |
+| `scripts/amazon-products.json` | One row per laptop: Amazon search query, tokens a listing title must contain (`"14\|14.2"` = either), optional `prefer` and `reject` tokens |
 | `src/data/amazon/product-asins.json` | laptop id → ASIN (written by the script) |
 | `src/data/amazon/product-images.json` | laptop id → Amazon image URL (written by the script) |
 | `src/data/amazon/product-similar-asins.json` | hand-picked closest listing when the exact model is not on Amazon |

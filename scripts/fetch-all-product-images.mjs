@@ -72,6 +72,9 @@ const asins = readJson(ASIN_PATH, {});
 // Quarantined laptops were rejected by a person (wrong model, withdrawn listing).
 // Matching them again would bring the wrong product straight back, so skip them.
 const quarantined = new Set(Object.keys(readJson(QUARANTINE_PATH, {})));
+// Laptops with a hand-picked closest listing are left alone, so a search match
+// never overrides a person's choice.
+const similar = new Set(Object.keys(readJson(join(DATA_DIR, "product-similar-asins.json"), {})));
 
 // Listings that mention the laptop but are not the laptop.
 const REJECT = [
@@ -87,6 +90,8 @@ function isConfidentMatch(product, title) {
   if (!title) return false;
   const t = normalize(title);
   if (REJECT.some((w) => t.includes(` ${w} `) || t.includes(` ${w}s `))) return false;
+  // Per-laptop rejects, e.g. "flip" so the OmniBook Ultra 14 never matches the Ultra Flip.
+  if ((product.reject || []).some((w) => t.includes(normalize(w)))) return false;
   // Every required token must appear as a whole word/phrase, e.g. "xps" + "13" but not "130".
   // "a|b" accepts either spelling ("14|14.2" for Apple's "14.2-inch").
   return product.require.every((tok) => tok.split("|").some((alt) => t.includes(normalize(alt))));
@@ -100,6 +105,10 @@ for (let i = 0; i < products.length; i++) {
   const p = products[i];
   if (quarantined.has(p.id)) {
     report.push({ id: p.id, status: "quarantined" });
+    continue;
+  }
+  if (similar.has(p.id)) {
+    report.push({ id: p.id, status: "similar-listing" });
     continue;
   }
   if (!FORCE && images[p.id] && asins[p.id]) {

@@ -21,5 +21,10 @@
   {"id": "asus-tuf-gaming-a15-2025", "query": "ASUS TUF Gaming A15 2025 gaming laptop", "require": ["tuf gaming a15"]},
   {"id": "lenovo-yoga-9i-2026", "query": "Lenovo Yoga 9i 2-in-1 14 OLED laptop", "require": ["yoga 9i"]},
   {"id": "hp-omen-transcend-14-2026", "query": "HP OMEN Transcend 14 gaming laptop", "require": ["omen transcend 14"]},
-  {"id": "acer-chromebook-plus-514-2025", "query": "Acer Chromebook Plus 514", "require": ["chromebook plus 514"]}
+  {"id": "acer-chromebook-plus-514-2025", "query": "Acer Chromebook Plus 514", "require": ["chromebook plus 514"]},
+  {"id": "apple-macbook-air-13-m5", "query": "Apple MacBook Air 13-inch M5 chip", "require": ["macbook air", "m5", "13|13.6"]},
+  {"id": "dell-xps-14-2026", "query": "Dell XPS 14 2026 laptop", "require": ["xps", "14"], "prefer": ["2026"]},
+  {"id": "asus-rog-zephyrus-g16-2026", "query": "ASUS ROG Zephyrus G16 2026 gaming laptop", "require": ["zephyrus", "g16"], "prefer": ["2026"]},
+  {"id": "asus-zenbook-a14-2026", "query": "ASUS Zenbook A14 laptop Snapdragon", "require": ["zenbook a14"]},
+  {"id": "hp-omnibook-ultra-14-2026", "query": "HP OmniBook Ultra 14 laptop", "require": ["omnibook ultra", "14"], "reject": ["flip", "2-in-1"]}
 ]

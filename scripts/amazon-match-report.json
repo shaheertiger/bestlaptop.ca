@@ -1,139 +1,141 @@
 [
   {
     "id": "lenovo-thinkpad-x1-carbon-gen-12",
-    "status": "accepted",
-    "asin": "B0D1D5J1J1",
-    "matchedTitle": "Lenovo Gen 12 ThinkPad X1 Carbon Laptop with Intel Ultra 7 165U vPro Processor, 14\" WUXGA 100% sRGB Touchscreen, 32GB 6400MHz RAM, 1TB Gen4 Performance SSD, FHD+ IR+ RGB Camera, and Windows 11 Pro"
+    "status": "already-cached",
+    "asin": "B0D1D5J1J1"
   },
   {
     "id": "apple-macbook-air-15-m4",
-    "status": "accepted",
-    "asin": "B0F5S9NWLX",
-    "matchedTitle": "Apple 2025 MacBook Air 15-inch Laptop with M4 chip: Built for Apple Intelligence, 15.3-inch Liquid Retina Display, 24GB Unified Memory, 512GB SSD Storage, 12MP Center Stage Camera, Touch ID; Midnight"
+    "status": "already-cached",
+    "asin": "B0F5S9NWLX"
   },
   {
     "id": "asus-rog-zephyrus-g14-2025",
-    "status": "accepted",
-    "asin": "B0FCPP5K2R",
-    "matchedTitle": "ASUS ROG Zephyrus G14 14\" 3K OLED 120Hz Gaming Laptop Copilot+ PC AMD Ryzen AI 9 HX 370 RTX 5080 32GB RAM 2TB SSD Platinum White"
+    "status": "already-cached",
+    "asin": "B0FCPP5K2R"
   },
   {
     "id": "dell-xps-13-9350",
-    "status": "accepted",
-    "asin": "B0HF6FMJTX",
-    "matchedTitle": "Dell XPS 13 9350 13.4\" FHD+ Laptop, Intel Core Ultra 7-256V, 16GB DDR5 RAM, 512GB NVMe SSD, Intel Arc Graphics, Webcam, Wi-Fi 7, Bluetooth, Thunderbolt 4, Backlit Keyboard, Windows 11 Home, Platinum"
+    "status": "already-cached",
+    "asin": "B0HF6FMJTX"
   },
   {
     "id": "acer-aspire-5-15-2025",
-    "status": "accepted",
-    "asin": "B0BXLYH8GX",
-    "matchedTitle": "acer Aspire 5 15 Slim Laptop | 15.6\" FHD (1920 x 1080) IPS |Core i7-1355U | Intel Iris Xe Graphics | 16GB LPDDR5 | 512GB Gen 4 SSD | Wi-Fi 6E | USB4/Thunderbolt 4 | Backlit KB | A515-58M-7570, Gray"
+    "status": "already-cached",
+    "asin": "B0BXLYH8GX"
   },
   {
     "id": "hp-spectre-x360-14-2025",
-    "status": "accepted",
-    "asin": "B0DS8XJBN9",
-    "matchedTitle": "HP Spectre x360 AI Powered 2-in-1 Laptop 14.0\" Touchscreen OLED 2.8K Display (Intel Ultra 7-155H, 32GB LPDDR5X, 512GB SSD, Active Pen, Backlit KB, Fingerprint, Win 11 Home) w/DKZ USB Port Expander"
+    "status": "already-cached",
+    "asin": "B0DS8XJBN9"
   },
   {
     "id": "lenovo-legion-pro-5-2025",
-    "status": "accepted",
-    "asin": "B0HFWN93YP",
-    "matchedTitle": "Lenovo Legion Pro 5 16\" WQXGA 240Hz Gaming Laptop, Intel Ultra 9 275HX, GeForce RTX 5070 Ti, 32GB DDR5, 2TB Storage (1TB SSD+1TB Docking Station), 24-Zone RGB Backlit Keyboard, Win 11, Eclipse Black"
+    "status": "already-cached",
+    "asin": "B0HFWN93YP"
   },
   {
     "id": "asus-chromebook-plus-cx34",
-    "status": "accepted",
-    "asin": "B0H45H1R8H",
-    "matchedTitle": "ASUS Chromebook Plus CX34 Laptop, 14\" Touchscreen, Intel i5-1335U, 8GB RAM | 128GB Storage, FHD Anti-Glare, Enterprise Business, Student, Home, 1080p Webcam, Gemini AI, 10-Hr Battery Life, Chrome OS"
+    "status": "already-cached",
+    "asin": "B0H45H1R8H"
   },
   {
     "id": "apple-macbook-pro-14-m4-pro",
-    "status": "accepted",
-    "asin": "B0DLHY2BJ6",
-    "matchedTitle": "Apple 2024 MacBook Pro Laptop with M4 Pro, 12‑core CPU, 16‑core GPU: Built for Apple Intelligence 14.2-inch Liquid Retina XDR Display, 24GB Unified Memory, 512GB SSD Storage; Space Black"
+    "status": "already-cached",
+    "asin": "B0DLHY2BJ6"
   },
   {
     "id": "microsoft-surface-laptop-7-13",
-    "status": "accepted",
-    "asin": "B0G1S7C7J4",
-    "matchedTitle": "Microsoft Surface Laptop 7, 13.8\" Touchscreen, Snapdragon X Plus, 16GB/1TB | 2K+ 120Hz, AI Copilot+ PC, > Intel i7-1355U, 20-Hr Long Battery Life, 1080p IR Webcam, Wi-Fi 7, Backlit, Windows 11, Black"
+    "status": "already-cached",
+    "asin": "B0G1S7C7J4"
   },
   {
     "id": "apple-macbook-air-13-m4",
-    "status": "accepted",
-    "asin": "B0DZD9S5GC",
-    "matchedTitle": "Apple 2025 MacBook Air 13-inch Laptop with M4 chip: Built for Apple Intelligence, 13.6-inch Liquid Retina Display, 16GB Unified Memory, 256GB SSD Storage, 12MP Center Stage Camera, Touch ID; Midnight"
+    "status": "already-cached",
+    "asin": "B0DZD9S5GC"
   },
   {
     "id": "asus-zenbook-14-oled-2025",
-    "status": "accepted",
-    "asin": "B0FJY1JL67",
-    "matchedTitle": "ASUS Zenbook 14 OLED 2025 Laptop 14\" WUXGA 8-Core Qualcomm Snapdragon X Plus X1P-42-100 16GB LPDDR5 1TB SSD QS X Plus Adreno Thunderbolt 4 Wi-Fi 6E Backlit Keyboard Win11 Home w/ONT 32GB USB"
+    "status": "already-cached",
+    "asin": "B0FJY1JL67"
   },
   {
     "id": "dell-xps-16-9640",
-    "status": "accepted",
-    "asin": "B0GXLML5G9",
-    "matchedTitle": "Dell Premium 16 (Previously XPS 16) High Performance Laptop, 16.3\" 2K Intel Ultra 7 255H 32GB LPDDR5X 1TB M.2 SSD NVIDIA GeForce RTX 5050 Fingerprint W11H"
+    "status": "similar-listing"
   },
   {
     "id": "acer-swift-go-14-2025",
-    "status": "accepted",
-    "asin": "B0GS1LVL4T",
-    "matchedTitle": "acer Swift Go 14 Laptop / 14\" Touch Intel Arc Graphics/Intel Core Ultra 7 Processor 155H / 16GB LPDDR5 512GB NVMe SSD M.2 / Backlit Keyboard Fingerprint Thunderbolt 4 Wi-Fi 6E / Win11"
+    "status": "already-cached",
+    "asin": "B0GS1LVL4T"
   },
   {
     "id": "msi-stealth-16-ai-2025",
-    "status": "accepted",
-    "asin": "B0GVPSK8M7",
-    "matchedTitle": "msi Stealth 16 AI+ 16” 240Hz QHD+ OLED Gaming Laptop: Intel Core Ultra 9 386H, NVIDIA Geforce RTX 5070Ti, 32GB DDR5, 1TB NVMe SSD, Wi-Fi 7, Win 11 Home: Charcoal Black B3WH-036US"
+    "status": "already-cached",
+    "asin": "B0GVPSK8M7"
   },
   {
     "id": "samsung-galaxy-book5-pro-2025",
-    "status": "accepted",
-    "asin": "B0F3KR578P",
-    "matchedTitle": "Galaxy Book5 Pro 14 U7-258V (32GB 1TB) Gray"
+    "status": "already-cached",
+    "asin": "B0F3KR578P"
   },
   {
     "id": "lg-gram-pro-16-2025",
-    "status": "accepted",
-    "asin": "B0H8RNCQRF",
-    "matchedTitle": "LG Gram Pro 16 Touchscreen Laptop 32GB RAM 1TB SSD Intel Core Ultra 7 355 | Up to 4.7GHz, 16\" 2K IPS 350nit, 7500MHz LPDDR5X, 28.5H Battery Life, Office Lifetime Wi-Fi 7, Bluetooth 6.0, Windows 11 Pro"
+    "status": "already-cached",
+    "asin": "B0H8RNCQRF"
   },
   {
     "id": "razer-blade-14-2025",
-    "status": "accepted",
-    "asin": "B0FP47DNFQ",
-    "matchedTitle": "Razer Blade 14 (2025) Gaming Laptop, RTX 5060, 16GB DDR5 RAM, 1TB, Black | AMD Ryzen AI 9 365, 3K 120Hz OLED Display, Thin & Lightweight, Chroma RGB, Windows"
+    "status": "already-cached",
+    "asin": "B0FP47DNFQ"
   },
   {
     "id": "framework-laptop-13-2025",
     "status": "rejected",
-    "topResultTitle": "Lenovo ThinkPad X13 Gen 2 13.3\" FHD (1920x1080) Laptop, 11th Gen Quad-Core i5-1135G7, 16GB DDR4 RAM, 256GB SSD, HDMI, Windows 11 Pro (Renewed)"
+    "topResultTitle": "NIMO 15.6\" FHD AI-Ready-Laptop, Intel 8 Core i5-13420H, 16GB RAM 512GB SSD Win 11 (Beat i7-1355U, Up to 4.6 GHz) 100W Type-C Fingerprint Backlit-KB for Professionals & Students Office, Study & Travel"
   },
   {
     "id": "asus-tuf-gaming-a15-2025",
-    "status": "accepted",
-    "asin": "B0FB19DNJW",
-    "matchedTitle": "ASUS TUF Gaming A15 Gaming Laptop, 15.6” FHD 16:9 144Hz Display, AMD Ryzen™ 5 7535HS Processor, NVIDIA® GeForce RTX™ 3050, 16GB DDR5, 512GB PCIe® Gen 4.0 SSD, Wi-Fi 6, Windows 11 Home, FA506NC-DS53"
+    "status": "already-cached",
+    "asin": "B0FB19DNJW"
   },
   {
     "id": "lenovo-yoga-9i-2026",
-    "status": "accepted",
-    "asin": "B0FTBSZ4TD",
-    "matchedTitle": "Lenovo Yoga 9i 2-in-1 Aura Edition with 14” OLED 4K Touchscreen, 32GB RAM | Intel Ultra 7 258V 8-Core Processor, 1TB M.2 NVMe SSD, Copilot+ Laptop, Yoga Pen, Wi-Fi 7, Windows 11 Pro - Cosmic Blue"
+    "status": "already-cached",
+    "asin": "B0FTBSZ4TD"
   },
   {
     "id": "hp-omen-transcend-14-2026",
-    "status": "accepted",
-    "asin": "B0HB3LP5JK",
-    "matchedTitle": "HP Omen Transcend 14 Gaming AI Laptop 14\" 3k OLED 120Hz (100% DCI-P3, HDR 500nits) Intel 16-core Ultra 9 285H 32GB RAM 1TB SSD GeForce RTX 5070 (798 AI Tops) RGB Backlit Thunderbolt Win11 ICP Acc"
+    "status": "already-cached",
+    "asin": "B0HB3LP5JK"
   },
   {
     "id": "acer-chromebook-plus-514-2025",
-    "status": "accepted",
-    "asin": "B0DYNLGYHG",
-    "matchedTitle": "Acer Chromebook Plus 514 Laptop, 14\" Touchscreen, Intel i3-N355, 8GB/512GB | FHD+, 8-Core, for Education, K12, Students & Business, 1080p Webcam, Backlit KB, Lightweight, Gemini AI, HDMI, Chrome OS"
+    "status": "already-cached",
+    "asin": "B0DYNLGYHG"
+  },
+  {
+    "id": "apple-macbook-air-13-m5",
+    "status": "already-cached",
+    "asin": "B0GR1JTFP8"
+  },
+  {
+    "id": "dell-xps-14-2026",
+    "status": "already-cached",
+    "asin": "B0GT6C7JNR"
+  },
+  {
+    "id": "asus-rog-zephyrus-g16-2026",
+    "status": "already-cached",
+    "asin": "B0H6QJ8NNK"
+  },
+  {
+    "id": "asus-zenbook-a14-2026",
+    "status": "already-cached",
+    "asin": "B0HKW6HXLC"
+  },
+  {
+    "id": "hp-omnibook-ultra-14-2026",
+    "status": "rejected",
+    "topResultTitle": "HP OmniBook X 14 Laptop (Previously Elitebook X) 14\" 3k OLED 120Hz Touch Intel 8-core Ultra 7 355 (49 AI Tops) 16GB RAM 1TB SSD Backlit for Creator Designer Business Professional Win11Pro ICP Acc"
   }
 ]
