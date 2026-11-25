@@ -1158,8 +1158,8 @@ const seeds: LaptopSeed[] = [
     whoShouldSkip: "Gamers and buyers who prioritize battery life.",
     test: { brightnessNits: 478, contrast: 1300, colorGamutSRGB: 100, colorGamutDCIP3: 80, colorAccuracyDeltaE: 1.8, geekbenchSingle: 2680, geekbenchMulti: 12200, cinebenchMulti: 13000, mark3d: 3700, ssdReadMBps: 6100, ssdWriteMBps: 4500, gamingFps1080pHigh: 24, videoExportMinutes: 8.8, batteryWebHours: 11.4, batteryVideoHours: 13.4, batteryGamingHours: 1.9, chargeTo80Minutes: 60, idleNoiseDb: 24, loadNoiseDb: 42, cpuTempLoadC: 88, keyboardTempLoadC: 42, powerDrawLoadW: 54 },
     warranty: "1-year limited",
-    seoTitle: "Framework Laptop 13 (2025) Review (Canada)",
-    metaDescription: "Tested review of the Framework Laptop 13: repairability, upgradeability, performance, and Canadian pricing.",
+    seoTitle: "Framework Laptop 13 (2025) Review: Tested in Canada, 11.4 h Battery",
+    metaDescription: "Framework Laptop 13 (Ryzen AI 7 350) tested in Canada: 7.7/10, 11.4 h battery, 1.3 kg, $1,799 CAD. Repairability, upgrades, Linux and who should skip it.",
     imageAlt: "Framework Laptop 13 with configurable ports",
   },
   {

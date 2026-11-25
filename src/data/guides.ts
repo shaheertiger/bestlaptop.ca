@@ -203,20 +203,118 @@ export const guides: Guide[] = [
   },
   {
     slug: "best-time-to-buy-a-laptop-in-canada",
-    title: "When Is the Best Time to Buy a Laptop in Canada?",
+    title: "Best Time to Buy a Laptop in Canada (Black Friday 2026)",
     h1: "When Is the Best Time to Buy a Laptop in Canada?",
-    excerpt: "The best months and sales events to buy a laptop in Canada, and when to wait.",
+    excerpt: "The best months and sales events to buy a laptop in Canada, including Black Friday 2026 dates, and when to wait.",
     category: "Buying advice",
-    updated: "2026-05-22",
+    updated: "2026-11-25",
     readingTime: 5,
     answer:
       "The best times to buy a laptop in Canada are Black Friday and Cyber Monday (late November), Boxing Day (late December), and back-to-school sales (July to early September). New models often launch in spring and fall, which discounts the previous generation.",
     sections: [
       { heading: "Major sale events", body: ["Black Friday and Boxing Day deliver the deepest discounts. Back-to-school season is strong for student laptops and Chromebooks."] },
       { heading: "Buy last year's model", body: ["When new models launch in spring and fall, retailers discount the outgoing generation, which is often the best value."] },
+      {
+        heading: "When is Black Friday 2026 in Canada?",
+        body: [
+          "Black Friday 2026 is Friday, November 27, and Cyber Monday is November 30. Canadian retailers including Best Buy, Amazon.ca, Costco, Staples and Canada Computers usually start their laptop deals the week before, so the best stock often sells out before Friday.",
+          "Boxing Day (December 26) and Boxing Week follow a month later. If the laptop you want is not discounted on Black Friday, it often is then.",
+        ],
+      },
+      {
+        heading: "How to spot a real Black Friday laptop deal",
+        body: [
+          "Compare the sale price with the laptop's normal price over the past few months, not the \"was\" price on the tag. Check the exact model number: some doorbuster laptops are special configurations with 8 GB RAM or a slow screen. A discounted 2025 model often beats a full-price 2026 model; our tests show the [best laptops for video editing](/laptop/reviews/best/video-editing) and [best laptops under $1,000](/laptop/reviews/best/under-1000) still include 2025 machines.",
+          "Before you buy, check the [tested review](/laptop/reviews) and our [current deals](/laptop/deals), and confirm the retailer's holiday return window.",
+        ],
+      },
     ],
     faq: [
       { q: "Is Black Friday or Boxing Day better for laptops?", a: "Both are strong. Black Friday usually has more selection; Boxing Day can clear remaining stock at steep discounts." },
+      { q: "When is Black Friday 2026 in Canada?", a: "Friday, November 27, 2026. Cyber Monday is November 30, and many Canadian retailers start laptop deals the week before." },
+      { q: "Should I buy a laptop on Black Friday or wait?", a: "Buy on Black Friday if the model you want hits its lowest price of the year. Wait if a new generation is due within a few months, or for Boxing Day if the deal is not deep enough." },
+    ],
+  },
+  {
+    slug: "which-framework-laptop-to-buy-canada",
+    title: "Which Framework Laptop Should You Buy in Canada? (2026)",
+    h1: "Which Framework Laptop Should You Buy in Canada? Laptop 12 vs 13 vs 16",
+    excerpt: "Framework Laptop 12, 13 and 16 compared for Canadian buyers: who each one suits, DIY vs pre-built, refurbished options and the cheapest way in.",
+    category: "Buying advice",
+    updated: "2026-11-25",
+    readingTime: 7,
+    answer:
+      "Most Canadians should buy the Framework Laptop 13: it is the lightest full-power Framework (1.3 kg), lasted 11.4 hours in our battery test and scored 7.7/10 overall. Choose the Laptop 12 only if you want a small touchscreen 2-in-1 for school, and the Laptop 16 only if you need a 16-inch screen or a discrete GPU for gaming and editing. All three are sold only through Framework's own online store in Canada, priced in CAD.",
+    sections: [
+      {
+        heading: "Framework Laptop 12 vs 13 vs 16 at a glance",
+        body: [
+          "Laptop 12: a 12.2-inch touchscreen convertible with pen support and a tough plastic shell, aimed at students and younger users. It uses lower-power Intel chips, so it is the slowest of the three.",
+          "Laptop 13: the 13.5-inch, 3:2 all-rounder and Framework's most popular model. Mainboards are available with AMD Ryzen AI and Intel Core Ultra chips. It is the one we tested: [Framework Laptop 13 (2025) review](/laptop/reviews/framework/laptop-13-2025).",
+          "Laptop 16: a 16-inch laptop with swappable keyboard and number-pad modules and an expansion bay that takes an optional discrete GPU module. It is the only Framework that can game or edit 4K video seriously, but it is far heavier and more expensive.",
+        ],
+      },
+      {
+        heading: "Which Framework laptop is best for most people?",
+        body: [
+          "The Laptop 13. In our testing the Ryzen AI 7 350 version posted 12,200 in Geekbench multi-core, exported our 4K timeline in 8.8 minutes, lasted 11.4 hours of web browsing and weighed 1.3 kg. That is fast enough for coding, school, office work and light photo editing, and it is the model with the widest choice of mainboards, screens and spare parts.",
+          "It is not the best value laptop if you never plan to repair or upgrade it: a [MacBook Air 13 (M4)](/laptop/compare/macbook-air-13-m4-vs-laptop-13-2025) or [ASUS Zenbook 14 OLED](/laptop/compare/zenbook-14-oled-2025-vs-laptop-13-2025) lasts longer on battery for less money. You pay the Framework premium for the next five to eight years, not for day one.",
+        ],
+      },
+      {
+        heading: "Is the Framework Laptop 12 good for students?",
+        body: [
+          "It is designed for them: a rugged shell, a touchscreen with stylus support and a 360-degree hinge for note-taking. The trade-off is speed, since its Intel chips are a step below the Laptop 13's. For university programs that need virtual machines, CAD or video work, the Laptop 13 is the safer choice. See the [best laptops for students](/laptop/reviews/best/student) for alternatives at every price.",
+        ],
+      },
+      {
+        heading: "Is the Framework Laptop 16 worth it for gaming or video editing?",
+        body: [
+          "Only if repairability matters as much as performance. With the GPU module installed it can game and edit, but similarly priced gaming laptops are lighter on the wallet for the same frame rates. In our lab the [Lenovo Legion Pro 5](/laptop/reviews/lenovo/legion-pro-5-2025) exported 4K in 3.4 minutes and the [HP OMEN Transcend 14](/laptop/reviews/hp/omen-transcend-14-2026) in 3.2 minutes. Compare more in the [best laptops for video editing](/laptop/reviews/best/video-editing).",
+        ],
+      },
+      {
+        heading: "DIY Edition or pre-built: which should you order?",
+        body: [
+          "The DIY Edition ships without RAM, an SSD or an operating system, so you can fit your own parts and install Linux or Windows yourself. It is the cheapest way to get a new Framework if you already own RAM and an SSD, and assembly takes about 15 minutes with the included screwdriver.",
+          "The pre-built version arrives assembled with Windows 11 installed. Choose it if you want the laptop working out of the box or need a Windows licence anyway.",
+        ],
+      },
+      {
+        heading: "What is the cheapest way to get a Framework laptop in Canada?",
+        body: [
+          "In order of savings: a refurbished or B-stock unit from Framework's Outlet when it has stock; a DIY Edition of the previous-generation mainboard with RAM and an SSD you already own; then a current DIY Edition. Because the mainboard is replaceable, buying an older board now and upgrading later is a realistic plan, not a dead end.",
+          "Prices change often, so check Framework's Canadian store for current CAD pricing. Our tested Laptop 13 configuration (Ryzen AI 7 350, 16 GB, 512 GB, Windows 11) cost $1,799 CAD.",
+        ],
+      },
+      {
+        heading: "Should you buy a refurbished or used Framework laptop?",
+        body: [
+          "A used Framework is one of the safest used laptops to buy, because a worn battery, keyboard, hinge or port can be replaced with official parts from Framework's Marketplace. Before you pay, check the mainboard generation (it decides speed and battery life), the battery's cycle count and that the expansion cards are included, since they are sold separately.",
+          "If a used Laptop 13 costs within about $200 of a new DIY Edition, buy new for the warranty.",
+        ],
+      },
+      {
+        heading: "How do you buy a Framework laptop in Canada?",
+        body: [
+          "Order from Framework's website with Canada selected as your region: prices show in CAD and GST/HST/PST is added at checkout. Framework is not sold at Best Buy, Costco, Staples or Canada Computers, so you cannot try one in a store. Spare parts and upgrades come from the same online Marketplace.",
+        ],
+      },
+      {
+        heading: "Framework vs the alternatives",
+        body: [
+          "Against a MacBook, a Framework wins on repairability, ports and Linux support, and loses on battery life and resale value: see [Framework Laptop 13 vs MacBook Air 13](/laptop/compare/macbook-air-13-m4-vs-laptop-13-2025). For typing and business features, compare it with the [ThinkPad X1 Carbon](/laptop/compare/thinkpad-x1-carbon-gen-12-vs-laptop-13-2025). For a compact Windows ultraportable, see [Framework vs Dell XPS 13](/laptop/compare/laptop-13-2025-vs-xps-13-9350).",
+          "More on the brand, including shipping and warranty: [Framework laptops in Canada](/laptop/reviews/framework). For Linux buyers specifically: [best laptops for Linux](/laptop/reviews/best/linux).",
+        ],
+      },
+    ],
+    faq: [
+      { q: "Which Framework laptop should I buy?", a: "The Framework Laptop 13 for most people. Pick the Laptop 12 for a small touchscreen 2-in-1 for school, or the Laptop 16 if you need a 16-inch screen or a discrete GPU." },
+      { q: "What is the cheapest Framework laptop?", a: "The Framework Laptop 12 has the lowest starting price. The cheapest way into a Laptop 13 is a refurbished Outlet unit or a DIY Edition with RAM and an SSD you already own." },
+      { q: "Is the Framework Laptop 13 better than the Laptop 16?", a: "For portability and battery life, yes: our tested Laptop 13 weighs 1.3 kg. The Laptop 16 is better only for gaming, 4K editing and anyone who needs a bigger screen." },
+      { q: "Can I buy a refurbished Framework laptop in Canada?", a: "Yes, when Framework's Outlet has stock for Canada. Used Framework laptops are also a safe buy because every major part can be replaced with official spares." },
+      { q: "Is a Framework laptop worth it in Canada?", a: "Yes, if you plan to keep it five years or more and upgrade or repair it along the way. If you replace laptops every two or three years, a MacBook Air or Zenbook 14 gives more battery life for less." },
+      { q: "Does the Framework Laptop work with Linux?", a: "Yes. Framework officially supports Ubuntu and Fedora, and the DIY Edition ships without an operating system so you can install your own." },
     ],
   },
   // Lighter guides (answer + FAQ) to round out the library.
