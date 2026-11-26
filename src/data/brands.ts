@@ -129,9 +129,15 @@ export const brands: Brand[] = [
         ],
       },
       {
-        heading: "Framework Laptop 13 vs Laptop 16: which should you buy?",
+        heading: "Which Framework laptop is best: Laptop 12, 13 or 16?",
         body: [
-          "The Laptop 13 is the light, portable choice for coding, school and travel. The Laptop 16 adds a bigger screen, a swappable input deck and an optional discrete-GPU expansion bay for gaming and creative work, at the cost of weight and price.",
+          "The Laptop 13 is the light, portable choice for coding, school and travel, and the one most buyers should get. The Laptop 12 is a smaller touchscreen 2-in-1 aimed at students, with slower chips. The Laptop 16 adds a bigger screen, a swappable input deck and an optional discrete-GPU expansion bay for gaming and creative work, at the cost of weight and price. Full breakdown: [which Framework laptop to buy in Canada](/laptop/learn/which-framework-laptop-to-buy-canada).",
+        ],
+      },
+      {
+        heading: "What is the cheapest Framework laptop in Canada?",
+        body: [
+          "The Laptop 12 has the lowest starting price. For a Laptop 13, the cheapest routes are a refurbished Outlet unit when one is available, or the DIY Edition fitted with RAM and an SSD you already own. Choosing a previous-generation mainboard saves more, and you can swap in a newer board later.",
         ],
       },
       {
@@ -143,7 +149,7 @@ export const brands: Brand[] = [
       {
         heading: "How does the Framework Laptop compare to other laptops?",
         body: [
-          "See our head-to-head [Framework Laptop 13 vs Dell XPS 13](/laptop/compare/laptop-13-2025-vs-xps-13-9350) comparison, or put it next to any laptop in the [compare tool](/laptop/tools/compare). For other strong coding machines, see the [best laptops for programming](/laptop/reviews/best/programming).",
+          "Our tested head-to-heads: [Framework Laptop 13 vs MacBook Air 13](/laptop/compare/macbook-air-13-m4-vs-laptop-13-2025), [Framework vs ThinkPad X1 Carbon](/laptop/compare/thinkpad-x1-carbon-gen-12-vs-laptop-13-2025), [Framework vs ASUS Zenbook 14 OLED](/laptop/compare/zenbook-14-oled-2025-vs-laptop-13-2025) and [Framework vs Dell XPS 13](/laptop/compare/laptop-13-2025-vs-xps-13-9350). Or put it next to any laptop in the [compare tool](/laptop/tools/compare). For other strong coding machines, see the [best laptops for programming](/laptop/reviews/best/programming) and [best laptops for Linux](/laptop/reviews/best/linux).",
         ],
       },
     ],
@@ -153,6 +159,8 @@ export const brands: Brand[] = [
       { q: "Is Framework good for Linux?", a: "Yes. Framework officially supports Ubuntu and Fedora on the Laptop 13 and 16, and the DIY Edition ships without an operating system." },
       { q: "Can you buy a Framework laptop at Best Buy or Costco in Canada?", a: "No. In Canada, Framework laptops are sold only through Framework's own online store." },
       { q: "What is the battery life of the Framework Laptop 13?", a: "The Framework Laptop 13 (2025) lasted 11.4 hours in our web-browsing battery test at 150 nits." },
+      { q: "Which Framework laptop should I buy?", a: "The Framework Laptop 13 for most people. Choose the Laptop 12 for a small touchscreen 2-in-1 for school, or the Laptop 16 for a 16-inch screen and an optional discrete GPU." },
+      { q: "Is a Framework laptop better than a MacBook Air?", a: "Not on battery or speed: the MacBook Air 13 (M4) lasted 18 hours in our test versus 11.4 for the Framework Laptop 13, and costs less. The Framework is better if you want to repair, upgrade or run Linux on your laptop for many years." },
     ],
   },
 ];

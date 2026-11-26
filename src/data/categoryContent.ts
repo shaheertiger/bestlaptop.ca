@@ -1306,7 +1306,7 @@ export const categoryContent: Record<string, Content> = {
       {
         heading: "Are mini laptops (10 to 12 inches) still worth buying?",
         body: [
-          "Very few 10- to 12-inch laptops are sold in Canada in 2026, and most of the ones left are low-powered Chromebooks or rugged education models. Thin bezels mean a 13- or 14-inch laptop is now roughly the size an 11- or 12-inch laptop used to be. If you want something smaller still, a tablet with a keyboard case is usually the better buy; see [laptop vs tablet](/laptop/learn/laptop-vs-tablet).",
+          "Very few 10- to 12-inch laptops are sold in Canada in 2026, and most of the ones left are low-powered Chromebooks or rugged education models. Thin bezels mean a 13- or 14-inch laptop is now roughly the size an 11- or 12-inch laptop used to be (screen size is measured diagonally; see [how to measure laptop screen size](/laptop/learn/how-to-measure-laptop-screen-size)). If you want something smaller still, a tablet with a keyboard case is usually the better buy; see [laptop vs tablet](/laptop/learn/laptop-vs-tablet).",
         ],
       },
       {
@@ -1318,7 +1318,7 @@ export const categoryContent: Record<string, Content> = {
       {
         heading: "Is a small laptop good for students?",
         body: [
-          "Yes. A 13- or 14-inch laptop fits a lecture-hall desk and a backpack, and every pick here weighs under 1.35 kg. The Framework Laptop 13 (1.3 kg) is the one to keep for a whole degree, because you can upgrade its RAM and storage and replace its parts yourself. The cheapest small laptop we have tested is the Acer Chromebook Plus 514 ($449), a 14-inch Chromebook that just misses this list's weight cut-off at 1.35 kg. See the [best student laptops](/laptop/reviews/best/student) and [best laptops for high school students](/laptop/reviews/best/high-school-students).",
+          "Yes. A 13- or 14-inch laptop fits a lecture-hall desk and a backpack, and every pick here weighs under 1.35 kg. The Framework Laptop 13 (1.3 kg) is the one to keep for a whole degree, because you can upgrade its RAM and storage and replace its parts yourself (see [which Framework laptop to buy](/laptop/learn/which-framework-laptop-to-buy-canada)). The cheapest small laptop we have tested is the Acer Chromebook Plus 514 ($449), a 14-inch Chromebook that just misses this list's weight cut-off at 1.35 kg. See the [best student laptops](/laptop/reviews/best/student) and [best laptops for high school students](/laptop/reviews/best/high-school-students).",
         ],
       },
     ],
@@ -1422,7 +1422,7 @@ export const categoryContent: Record<string, Content> = {
       {
         heading: "Can you bring a laptop and a power bank on a plane in Canada?",
         body: [
-          "Yes. Laptops can go in carry-on or checked bags, but keep yours in your carry-on so it is not damaged or stolen. Power banks and spare lithium batteries must go in your carry-on, never in checked baggage, and batteries over 100 Wh need airline approval (most laptop power banks are under that). Laptop batteries themselves are well under 100 Wh. Check your airline's rules before you fly.",
+          "Yes. Laptops can go in carry-on or checked bags, but keep yours in your carry-on so it is not damaged or stolen. Power banks and spare lithium batteries must go in your carry-on, never in checked baggage, and batteries over 100 Wh need airline approval (most laptop power banks are under that). Laptop batteries themselves are well under 100 Wh. Check your airline's rules before you fly, and see [can you put a laptop in checked luggage](/laptop/learn/can-you-put-a-laptop-in-checked-luggage).",
         ],
       },
       {

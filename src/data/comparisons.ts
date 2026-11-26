@@ -143,6 +143,51 @@ const curatedComparisons: Comparison[] = [
       { useCase: "Portability", winner: "dell-xps-13-9350" },
     ],
   },
+  {
+    slug: "macbook-air-13-m4-vs-laptop-13-2025",
+    a: "apple-macbook-air-13-m4",
+    b: "framework-laptop-13-2025",
+    verdict:
+      "The MacBook Air 13 (M4) is faster (14,800 vs 12,200 Geekbench multi-core), lasts far longer on battery (18 vs 11.4 hours in our web test) and costs less ($1,399 vs $1,799 CAD as tested). The Framework Laptop 13 wins on everything you can open up: RAM, SSD, battery, ports and even the mainboard are user-replaceable, and it runs Linux officially. Choose the MacBook Air for the best laptop today; choose the Framework for the laptop you will still be upgrading in 2032.",
+    winnerByUseCase: [
+      { useCase: "Battery life", winner: "apple-macbook-air-13-m4" },
+      { useCase: "Performance", winner: "apple-macbook-air-13-m4" },
+      { useCase: "Price", winner: "apple-macbook-air-13-m4" },
+      { useCase: "Repairability and upgrades", winner: "framework-laptop-13-2025" },
+      { useCase: "Ports", winner: "framework-laptop-13-2025" },
+      { useCase: "Linux", winner: "framework-laptop-13-2025" },
+    ],
+  },
+  {
+    slug: "zenbook-14-oled-2025-vs-laptop-13-2025",
+    a: "asus-zenbook-14-oled-2025",
+    b: "framework-laptop-13-2025",
+    verdict:
+      "The ASUS Zenbook 14 OLED scores higher overall (8.4 vs 7.7) thanks to its OLED screen, 15.6-hour battery result and lower $1,499 CAD price. The Framework Laptop 13 is faster in multi-core work (12,200 vs 11,200 Geekbench) and is the only one you can upgrade: its RAM is socketed, while the Zenbook's is soldered. Choose the Zenbook for value and battery; choose the Framework if you want to repair and upgrade it for years.",
+    winnerByUseCase: [
+      { useCase: "Battery life", winner: "asus-zenbook-14-oled-2025" },
+      { useCase: "Display", winner: "asus-zenbook-14-oled-2025" },
+      { useCase: "Value", winner: "asus-zenbook-14-oled-2025" },
+      { useCase: "Multi-core performance", winner: "framework-laptop-13-2025" },
+      { useCase: "Upgradeability", winner: "framework-laptop-13-2025" },
+      { useCase: "Ports", winner: "framework-laptop-13-2025" },
+    ],
+  },
+  {
+    slug: "thinkpad-x1-carbon-gen-12-vs-laptop-13-2025",
+    a: "lenovo-thinkpad-x1-carbon-gen-12",
+    b: "framework-laptop-13-2025",
+    verdict:
+      "The ThinkPad X1 Carbon Gen 12 has the best keyboard we have tested (9.4/10) and is lighter at 1.09 kg, with onsite warranty options for business buyers. The Framework Laptop 13 is faster (12,200 vs 9,850 Geekbench multi-core), $400 cheaper as tested ($1,799 vs $2,199 CAD) and far more repairable, with socketed RAM where the ThinkPad's is soldered. Choose the ThinkPad for business fleets and typing; choose the Framework for developers who want to upgrade it themselves.",
+    winnerByUseCase: [
+      { useCase: "Keyboard", winner: "lenovo-thinkpad-x1-carbon-gen-12" },
+      { useCase: "Portability", winner: "lenovo-thinkpad-x1-carbon-gen-12" },
+      { useCase: "Business features", winner: "lenovo-thinkpad-x1-carbon-gen-12" },
+      { useCase: "Performance", winner: "framework-laptop-13-2025" },
+      { useCase: "Upgradeability", winner: "framework-laptop-13-2025" },
+      { useCase: "Price", winner: "framework-laptop-13-2025" },
+    ],
+  },
 ];
 
 // Auto-generate a comparison for every laptop pair so each "{A} vs {B}" query
