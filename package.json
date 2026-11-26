@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "indexnow": "node scripts/indexnow.mjs",
+    "bing:submit": "node scripts/bing-submit.mjs",
     "check:overlap": "node scripts/check-overlap.mjs",
     "images:fetch:all": "node --env-file-if-exists=.env scripts/fetch-all-product-images.mjs",
     "images:refresh": "node --env-file-if-exists=.env scripts/fetch-product-images.mjs"

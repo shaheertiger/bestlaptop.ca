@@ -21,6 +21,12 @@ npm run indexnow # submit all sitemap URLs to IndexNow (after the domain is live
 > `/85612cad3e794add8e4b33f466c6e10d.txt`. Override with `SITEMAP=…` or
 > `INDEXNOW_KEY=…` env vars.
 
+`npm run bing:submit` (needs `BING_API_KEY`) sends sitemap URLs to Bing's URL
+Submission API in priority order, within Bing's 100/day and 500/month quota.
+It records sent URLs in `scripts/bing-submitted.json`; commit that file and run
+it again the next day until it reports nothing left. Use this while IndexNow
+returns 403 from Bing.
+
 ## Amazon links and product images
 
 Same pipeline as best-proteinpowder.com. Every buy button resolves through
