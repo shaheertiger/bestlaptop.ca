@@ -25,21 +25,21 @@ export const guides: Guide[] = [
         heading: "2. Set a realistic Canadian budget",
         body: [
           "Under $700 gets you a solid everyday laptop. $1,000–$1,500 buys a strong all-rounder. Gaming and creator laptops usually start around $1,800 in Canada.",
-          "Watch for sales around back-to-school, Black Friday, and Boxing Day, when prices drop meaningfully.",
+          "Watch for sales around back-to-school, Black Friday, and Boxing Day, when prices drop meaningfully. For typical prices by laptop type and sales tax by province, see [how much does a laptop cost in Canada](/laptop/learn/how-much-does-a-laptop-cost-canada).",
         ],
       },
       {
         heading: "3. Focus on the specs that matter",
         body: [
           "Aim for 16GB of RAM for most people, an SSD of at least 512GB, and a recent CPU. A bright 16:10 or 3:2 display is worth prioritizing.",
-          "Don't overpay for specs you won't use, such as a discrete GPU if you never game or edit video.",
+          "Don't overpay for specs you won't use, such as a discrete GPU if you never game or edit video. A Core i5 or Core Ultra 5 is enough for most people; see [Core i5 vs i7](/laptop/learn/core-i5-vs-i7-laptop). Gamers should read [how to choose a gaming laptop](/laptop/learn/how-to-choose-a-gaming-laptop).",
         ],
       },
       {
         heading: "4. Check battery life and weight",
         body: [
           "If you move around, look for a tested battery result above 10 hours of web use and a weight under 1.6 kg.",
-          "Our reviews list measured battery life rather than manufacturer claims.",
+          "Our reviews list measured battery life rather than manufacturer claims. Once you have a shortlist, see [how to compare laptops side by side](/laptop/learn/how-to-compare-laptops).",
         ],
       },
     ],
@@ -109,7 +109,7 @@ export const guides: Guide[] = [
           "- Gaming: an Intel Core H/HX or AMD Ryzen HS/HX chip with an NVIDIA RTX GPU. The GPU matters far more than the CPU.",
           "- macOS, video and photo editing on battery: Apple M-series (M4, M4 Pro and up).",
           "- Widest software compatibility: Intel or AMD (x86). Snapdragon runs most, but not all, Windows apps.",
-          "Battery life also depends on the screen, battery size and tuning of each laptop, so compare tested results in our [results table](/laptop/tools/table) rather than chip names alone.",
+          "Battery life also depends on the screen, battery size and tuning of each laptop, so compare tested results in our [results table](/laptop/tools/table) rather than chip names alone. Deciding between tiers of the same brand? See [Core i5 vs i7 (and Core Ultra 5 vs 7)](/laptop/learn/core-i5-vs-i7-laptop).",
         ],
       },
       {
@@ -214,17 +214,17 @@ export const guides: Guide[] = [
     sections: [
       { heading: "Major sale events", body: ["Black Friday and Boxing Day deliver the deepest discounts. Back-to-school season is strong for student laptops and Chromebooks."] },
       { heading: "Buy last year's model", body: ["When new models launch in spring and fall, retailers discount the outgoing generation, which is often the best value."] },
+      { heading: "Know the normal price first", body: ["A sale is only a deal if you know what the laptop normally costs. See [how much a laptop costs in Canada](/laptop/learn/how-much-does-a-laptop-cost-canada) for typical prices by type, then shortlist two or three models and [compare them side by side](/laptop/learn/how-to-compare-laptops) before the sale starts."] },
     ],
     faq: [
       { q: "Is Black Friday or Boxing Day better for laptops?", a: "Both are strong. Black Friday usually has more selection; Boxing Day can clear remaining stock at steep discounts." },
     ],
   },
   // Lighter guides (answer + FAQ) to round out the library.
-  ...quickGuide("laptop-specs-explained", "Laptop Specs Explained", "Specs explained", "A laptop's key specs are the CPU (overall speed), RAM (multitasking), storage (space and speed), GPU (graphics), and display. Match these to your use case rather than buying the highest numbers."),
+  ...quickGuide("laptop-specs-explained", "Laptop Specs Explained", "Specs explained", "A laptop's key specs are the CPU (overall speed), RAM (multitasking), storage (space and speed), GPU (graphics), and display. Match these to your use case rather than buying the highest numbers.", "For the CPU, see [Core i5 vs i7](/laptop/learn/core-i5-vs-i7-laptop) and [Intel vs AMD vs Apple silicon](/laptop/learn/intel-vs-amd-vs-apple-silicon); to weigh specs between two models, see [how to compare laptops side by side](/laptop/learn/how-to-compare-laptops)."),
   ...quickGuide("how-much-storage-do-you-need", "How Much Storage Do You Need?", "Specs explained", "512GB is the right amount of storage for most people in 2026. Choose 256GB only for light, cloud-based use, and 1TB or more for large media libraries, games, or video projects."),
   ...quickGuide("best-laptop-screen-size", "Best Laptop Screen Size", "Displays", "13–14 inches is best for portability, 15–16 inches for desk work and creative tasks, and 17 inches for desktop replacements. Most buyers are happiest with a 14-inch laptop."),
-  ...quickGuide("gaming-laptop-buying-guide", "Gaming Laptop Buying Guide", "Gaming", "For a gaming laptop, prioritize the GPU first, then cooling, then the display's refresh rate. In 2026, an RTX 4060 or 4070 hits the value sweet spot for 1080p and 1440p gaming."),
-  ...quickGuide("student-laptop-buying-guide-canada", "Student Laptop Buying Guide Canada", "Buying advice", "The best student laptop in Canada balances battery life, weight, and price. Aim for 16GB RAM, a 512GB SSD, all-day battery, and a sub-1.6 kg weight, ideally on sale during back-to-school season."),
+  ...quickGuide("student-laptop-buying-guide-canada", "Student Laptop Buying Guide Canada", "Buying advice", "The best student laptop in Canada balances battery life, weight, and price. Aim for 16GB RAM, a 512GB SSD, all-day battery, and a sub-1.6 kg weight, ideally on sale during back-to-school season.", "See [how much a laptop costs in Canada](/laptop/learn/how-much-does-a-laptop-cost-canada), whether a [Core i5 is enough](/laptop/learn/core-i5-vs-i7-laptop) for your program, and the [best small laptops](/laptop/reviews/best/small) for lecture-hall desks."),
   ...quickGuide("business-laptop-buying-guide", "Business Laptop Buying Guide", "Buying advice", "A good business laptop has a great keyboard, strong security, a reliable build, and long battery life. ThinkPad, EliteBook, and Latitude lines are the safe picks, ideally with onsite warranty."),
   {
     slug: "chromebook-vs-windows-laptop",
@@ -456,7 +456,7 @@ export const guides: Guide[] = [
       {
         heading: "Which should you buy?",
         body: [
-          "Pick the use case and budget first, then compare the best tested model from each brand: the [best Lenovo laptops](/laptop/reviews/best/lenovo), [best Dell laptops](/laptop/reviews/best/dell), [best HP laptops](/laptop/reviews/best/hp) and [best ASUS laptops](/laptop/reviews/best/asus). For a full overview of every brand, see our [laptop brands guide](/laptop/brands). Not sure about Windows at all? Read [Mac vs Windows laptop](/laptop/learn/mac-vs-windows-laptop) and [Chromebook vs Windows laptop](/laptop/learn/chromebook-vs-windows-laptop).",
+          "Pick the use case and budget first, then compare the best tested model from each brand: the [best Lenovo laptops](/laptop/reviews/best/lenovo), [best Dell laptops](/laptop/reviews/best/dell), [best HP laptops](/laptop/reviews/best/hp) and [best ASUS laptops](/laptop/reviews/best/asus). For a full overview of every brand, see our [laptop brands guide](/laptop/brands). Not sure about Windows at all? Read [Mac vs Windows laptop](/laptop/learn/mac-vs-windows-laptop) and [Chromebook vs Windows laptop](/laptop/learn/chromebook-vs-windows-laptop). Down to two models from different brands? See [how to compare laptops side by side](/laptop/learn/how-to-compare-laptops).",
         ],
       },
     ],
@@ -498,7 +498,7 @@ export const guides: Guide[] = [
         heading: "Laptop or desktop: which is best for gaming?",
         body: [
           "A desktop gives you more frames per dollar, quieter cooling and the ability to upgrade the graphics card later. A gaming laptop makes sense if you need to game in more than one place or have no room for a tower. Good ones are no longer extreme: the [ASUS TUF Gaming A15](/laptop/reviews/asus/tuf-gaming-a15-2025) averaged 104 fps in our 1080p gaming test for $1,299, and the [Lenovo Legion Pro 5](/laptop/reviews/lenovo/legion-pro-5-2025) hit 118 fps for $2,499.",
-          "The trade-offs are weight (2.2 to 2.5 kg for those two), fan noise and battery life (6.4 to 7.4 hours of web browsing in our tests, and far less while gaming). See the [best gaming laptops](/laptop/reviews/best/gaming), the [best budget gaming laptops](/laptop/reviews/best/budget-gaming) and our [gaming laptop buying guide](/laptop/learn/gaming-laptop-buying-guide).",
+          "The trade-offs are weight (2.2 to 2.5 kg for those two), fan noise and battery life (6.4 to 7.4 hours of web browsing in our tests, and far less while gaming). See the [best gaming laptops](/laptop/reviews/best/gaming), the [best budget gaming laptops](/laptop/reviews/best/budget-gaming) and our guide to [choosing a gaming laptop](/laptop/learn/how-to-choose-a-gaming-laptop).",
         ],
       },
       {
@@ -879,7 +879,7 @@ export const guides: Guide[] = [
   ...quickGuide("laptop-battery-life-explained", "Laptop Battery Life Explained", "Specs explained", "Real battery life depends on the screen brightness, workload, and chip efficiency, not just the battery's Wh rating. We test web browsing and video playback at a fixed brightness so results are comparable.", "Already have a laptop? See [how to extend your battery life on Windows](/laptop/learn/extend-battery-life-windows) for settings and habits that add hours."),
   ...quickGuide("laptop-ports-explained", "Laptop Ports Explained", "Specs explained", "USB-C and Thunderbolt handle charging, data, and displays; USB-A connects older accessories; HDMI drives monitors. Thunderbolt 4/USB4 is the most flexible. Count the ports you actually need before buying a thin laptop."),
   ...quickGuide("when-is-the-best-time-to-buy-a-laptop-in-canada", "Best Time to Buy a Laptop", "Buying advice", "The best times to buy a laptop in Canada are Black Friday, Boxing Day, and back-to-school season, plus right after new models launch when last year's models are discounted."),
-  ...quickGuide("is-a-gaming-laptop-good-for-school", "Is a Gaming Laptop Good for School?", "Gaming", "A gaming laptop works for school but is heavier and has shorter battery life than a typical student laptop. It makes sense if you also game or do creative work; otherwise a lighter ultraportable is a better fit."),
+  ...quickGuide("is-a-gaming-laptop-good-for-school", "Is a Gaming Laptop Good for School?", "Gaming", "A gaming laptop works for school but is heavier and has shorter battery life than a typical student laptop. It makes sense if you also game or do creative work; otherwise a lighter ultraportable is a better fit.", "If you do want one, read [how to choose a gaming laptop](/laptop/learn/how-to-choose-a-gaming-laptop) for which GPU and wattage to get, or see the [best travel laptops](/laptop/reviews/best/travel) for lighter alternatives."),
   ...quickGuide("how-long-should-a-laptop-last", "How Long Should a Laptop Last?", "Buying advice", "A well-chosen laptop should last four to six years. Buying enough RAM and storage up front, and a model with a healthy battery and good build, extends its useful life.", "Battery wear is a common reason laptops feel old; see [how to extend your battery life on Windows](/laptop/learn/extend-battery-life-windows) and [how to check your battery health](/laptop/learn/how-to-check-laptop-battery-health)."),
   ...quickGuide("should-you-buy-a-used-laptop", "Should You Buy a Used Laptop?", "Buying advice", "A used laptop can be a good deal if you verify battery health, check for damage, and confirm the configuration. Certified refurbished with a warranty is safer than a private used sale."),
   ...quickGuide("how-to-check-laptop-battery-health", "How to Check Laptop Battery Health", "Maintenance", "On Windows, run 'powercfg /batteryreport' to see design vs full-charge capacity. On macOS, check System Settings > Battery for cycle count and condition. A battery below 80% of its design capacity is worn.", "If your battery is healthy but still drains fast, see [how to extend your battery life on Windows](/laptop/learn/extend-battery-life-windows)."),
@@ -1396,6 +1396,365 @@ export const guides: Guide[] = [
       { q: "Can dust cause a laptop to overheat?", a: "Yes — dust-clogged fans and heatsinks are the most common cause of a laptop that used to run cool and now overheats. Cleaning them often fixes it." },
       { q: "Does a cooling pad actually help?", a: "It can add headroom, especially for gaming laptops on a desk, by feeding cooler air to the intakes. It is a supplement, not a substitute for clean fans and good airflow." },
       { q: "Is laptop overheating dangerous?", a: "Modern laptops throttle and shut down to protect themselves, so sudden damage is rare, but chronic heat shortens battery and component life and hurts performance, so it is worth fixing." },
+    ],
+  },
+  // Nov 2026 expansion from Search Console queries with impressions but no
+  // matching article: "how to choose a gaming laptop", "dell i5 laptop" /
+  // "best i5 laptop", "compare laptops side by side", "new laptop price".
+  {
+    slug: "how-to-choose-a-gaming-laptop",
+    title: "How to Choose a Gaming Laptop (2026): GPU, Wattage, Screen & Budget",
+    h1: "How to Choose a Gaming Laptop in Canada (2026)",
+    excerpt: "Why the GPU's wattage matters as much as its name, which screen and RAM to get, and what a good gaming laptop costs in Canada, with our test results.",
+    category: "Gaming",
+    updated: "2026-11-26",
+    readingTime: 11,
+    answer:
+      "To choose a gaming laptop, pick the graphics card first, then check its wattage, then match the screen to it. An RTX 4060 or 5060 is enough for 1080p gaming, and an RTX 4070/5070 or better suits 1440p and high-refresh screens. Look for 16 GB of RAM (32 GB if you also stream or edit), a 1 TB SSD, and a weight and battery life you can live with. In Canada, good gaming laptops start around $1,300.",
+    sections: [
+      {
+        heading: "What matters most in a gaming laptop?",
+        body: [
+          "In order of importance for frame rates:",
+          "- The GPU (graphics card): it decides most of your frame rate.",
+          "- The GPU's wattage (TGP): the same GPU can be 50% faster in one laptop than another.",
+          "- Cooling: a laptop that cannot shed heat lowers its clock speeds mid-game.",
+          "- The screen: refresh rate and resolution should match what the GPU can deliver.",
+          "- The CPU: it matters, but far less than the GPU in most games.",
+          "Then weigh what you will live with every day: weight, battery life, fan noise and price. Every gaming laptop we review is tested on the same game suite at 1080p High, so you can compare them directly in our [results table](/laptop/tools/table).",
+        ],
+      },
+      {
+        heading: "Which graphics card do you need?",
+        body: [
+          "- RTX 4050/5050: entry-level. Fine for esports titles and older games at 1080p; avoid it for new AAA games.",
+          "- RTX 4060/5060: the value sweet spot for 1080p. The [ASUS TUF Gaming A15](/laptop/reviews/asus/tuf-gaming-a15-2025) averaged 104 fps in our test for $1,299.",
+          "- RTX 4070/5070: 1440p and high-refresh 1080p. The [HP Omen Transcend 14](/laptop/reviews/hp/omen-transcend-14-2026) (RTX 5070) averaged 112 fps in a 1.63 kg body.",
+          "- RTX 4080/5080 and up: 1440p at high refresh rates and the most demanding games. The [ASUS ROG Zephyrus G16 (2026)](/laptop/reviews/asus/rog-zephyrus-g16-2026) (RTX 5080) averaged 165 fps, the fastest result in our lab.",
+          "Integrated graphics (Intel Arc, AMD Radeon, Apple M-series) can run lighter games, but the laptops without a dedicated GPU we have tested averaged 10 to 52 fps in our suite, with the MacBook Pro 14 (M4 Pro) at the top. If gaming is a priority, buy a dedicated GPU.",
+        ],
+      },
+      {
+        heading: "Why GPU wattage matters as much as the GPU name",
+        body: [
+          "Laptop makers set how much power the GPU can draw (its TGP), and a higher limit means higher frame rates. We tested the same RTX 4070 in four laptops:",
+          "- 60 W in the [Dell XPS 16](/laptop/reviews/dell/xps-16-9640): 78 fps",
+          "- 90 W in the [ASUS ROG Zephyrus G14](/laptop/reviews/asus/rog-zephyrus-g14-2025): 96 fps",
+          "- 100 W in the [Razer Blade 14](/laptop/reviews/razer/blade-14-2025): 102 fps",
+          "- 140 W in the [Lenovo Legion Pro 5](/laptop/reviews/lenovo/legion-pro-5-2025): 118 fps",
+          "That is a 51% gap between two laptops with the same GPU name. A 115 W RTX 4060 in the TUF Gaming A15 (104 fps) even beat the 60 W, 90 W and 100 W RTX 4070s. Thin laptops use lower wattages to stay cool and quiet, so check the TGP on the spec sheet or in our review before you pay for a bigger GPU name.",
+        ],
+      },
+      {
+        heading: "What screen should a gaming laptop have?",
+        body: [
+          "Match the screen to the GPU. A 1080p, 144 Hz screen suits an RTX 4060: the TUF Gaming A15 has one and averaged 104 fps, so the panel's refresh rate is well used. With an RTX 4070 or faster, a 1440p-class (2560 x 1600) screen at 165 to 240 Hz is the better match, as on the Legion Pro 5 and Zephyrus G16.",
+          "OLED gaming screens have near-instant response times and deep blacks: the Zephyrus G16 pairs OLED with 240 Hz. Bright IPS panels are cheaper and have no burn-in risk. See [OLED vs IPS laptop displays](/laptop/learn/oled-vs-ips-laptop-displays). Brightness matters less for gaming than for working outdoors, but avoid dim panels below 300 nits.",
+        ],
+      },
+      {
+        heading: "How much RAM and storage does a gaming laptop need?",
+        body: [
+          "16 GB of RAM is the minimum for gaming in 2026, and 32 GB is worth it if you stream, edit video or keep a browser open while you play. Most of the gaming laptops we have tested ship with 32 GB; the TUF Gaming A15 ships with 16 GB but, like the Legion Pro 5 and MSI Stealth 16, lets you add more later. The Zephyrus G14, Zephyrus G16, Razer Blade 14 and Omen Transcend 14 have soldered RAM, so buy enough up front.",
+          "Get a 1 TB SSD at minimum: many new games take 100 GB or more each. Every gaming laptop we have tested has at least 1 TB, and all of them let you replace or add an SSD. See [how much RAM do you need](/laptop/learn/how-much-ram-do-you-need).",
+        ],
+      },
+      {
+        heading: "Does the CPU matter for gaming laptops?",
+        body: [
+          "Less than you might think. Any recent Intel Core i7/Ultra 7, Core i9/Ultra 9, AMD Ryzen 7 or Ryzen 9 H-series chip is fast enough to feed a laptop GPU. The Legion Pro 5's Core i9-14900HX is the fastest CPU we have tested (28,400 in Cinebench multi-core) but its RTX 4070 averaged 118 fps, behind the RTX 4080 in the MSI Stealth 16 (122 fps) and the RTX 5080 in the Zephyrus G16 (165 fps). A faster CPU helps in strategy games, simulators and streaming; spend on the GPU first. See [Intel vs AMD vs Apple silicon](/laptop/learn/intel-vs-amd-vs-apple-silicon).",
+        ],
+      },
+      {
+        heading: "Thin gaming laptop or desktop replacement?",
+        body: [
+          "Thin gaming laptops (14 to 16 inches, 1.5 to 2 kg) like the Zephyrus G14 (1.5 kg) and Omen Transcend 14 (1.63 kg) fit in a backpack and work as everyday laptops. Thicker models like the Legion Pro 5 (2.5 kg) and TUF Gaming A15 (2.2 kg) give you more GPU wattage, more ports (both have Ethernet) and upgradeable RAM for less money.",
+          "Either way, gaming laptops are loud and short-lived on battery. The ones we tested measured 48 to 51 dB under load and lasted only 1.2 to 1.6 hours while gaming unplugged. Plan to play plugged in, and consider headphones. If the laptop rarely leaves your desk, read [laptop vs desktop](/laptop/learn/laptop-vs-desktop).",
+        ],
+      },
+      {
+        heading: "How much does a good gaming laptop cost in Canada?",
+        body: [
+          "- About $1,000 to $1,500: RTX 4050/4060-class. The TUF Gaming A15 ($1,299) is the best value we have tested. See the [best budget gaming laptops](/laptop/reviews/best/budget-gaming).",
+          "- About $2,000 to $2,700: RTX 4070/5070-class with better screens and builds, like the Legion Pro 5 ($2,499), Omen Transcend 14 ($2,399) and Zephyrus G14 ($2,699).",
+          "- About $3,000 and up: RTX 4080/5080-class, like the MSI Stealth 16 ($2,999) and Zephyrus G16 ($3,299).",
+          "Gaming laptops see some of the biggest discounts of the year on Black Friday and Boxing Day; see [the best time to buy a laptop in Canada](/laptop/learn/best-time-to-buy-a-laptop-in-canada).",
+        ],
+      },
+      {
+        heading: "Which gaming laptop should you buy?",
+        body: [
+          "Start with our [best gaming laptops](/laptop/reviews/best/gaming), ranked by measured frame rates. On a budget, go to the [best budget gaming laptops](/laptop/reviews/best/budget-gaming). Want the fastest machine regardless of price? See the [most powerful laptops](/laptop/reviews/best/powerful). Head-to-heads worth reading: [TUF Gaming A15 vs Zephyrus G14](/laptop/compare/tuf-gaming-a15-2025-vs-rog-zephyrus-g14-2025), [Zephyrus G14 vs Legion Pro 5](/laptop/compare/rog-zephyrus-g14-2025-vs-legion-pro-5-2025) and [Omen Transcend 14 vs Razer Blade 14](/laptop/compare/omen-transcend-14-2026-vs-blade-14-2025). Buying for a student? Read [is a gaming laptop good for school](/laptop/learn/is-a-gaming-laptop-good-for-school).",
+        ],
+      },
+    ],
+    faq: [
+      { q: "What is the most important spec in a gaming laptop?", a: "The GPU and its wattage. The same RTX 4070 averaged 78 fps at 60 W and 118 fps at 140 W in our tests, so check both the GPU model and its TGP." },
+      { q: "Is an RTX 4060 good enough for gaming?", a: "Yes, for 1080p. The ASUS TUF Gaming A15's 115 W RTX 4060 averaged 104 fps at 1080p High in our test suite, for $1,299 CAD." },
+      { q: "Is 16 GB of RAM enough for a gaming laptop?", a: "Yes for gaming alone. Choose 32 GB if you stream, edit video or multitask heavily, or if the RAM is soldered and you plan to keep the laptop for years." },
+      { q: "How long do gaming laptops last on battery?", a: "Not long while gaming: the gaming laptops we tested lasted 1.2 to 1.6 hours. For web browsing they lasted 6.4 to 8.6 hours." },
+      { q: "Which brand makes the best gaming laptops?", a: "ASUS (ROG and TUF), Lenovo (Legion), HP (Omen), MSI and Razer all make good ones. Compare the GPU, wattage, screen and price of the specific model, not the brand." },
+      { q: "Can a gaming laptop be used for school or work?", a: "Yes. Thin models like the ASUS ROG Zephyrus G14 (1.5 kg) work well as everyday laptops, though they are louder and have shorter battery life than ultraportables." },
+    ],
+  },
+  {
+    slug: "core-i5-vs-i7-laptop",
+    title: "Core i5 vs i7 Laptop (2026): Is an i5 or Core Ultra 5 Good Enough?",
+    h1: "Intel Core i5 vs i7 (and Core Ultra 5 vs 7): Which Laptop CPU Do You Need?",
+    excerpt: "What separates i5 from i7 and Core Ultra 5 from 7, how much faster the higher tier is in our tests, and when an i5 laptop is the smarter buy.",
+    category: "Performance",
+    updated: "2026-11-26",
+    readingTime: 9,
+    answer:
+      "For most people, a Core i5 or Core Ultra 5 laptop is enough. It handles office work, browsing, school and light photo editing, and in our tests a Core Ultra 7 was only about 10% faster in single-core work and about 19% faster in multi-core work than a Core Ultra 5 from the same generation. Choose a Core i7 or Ultra 7 for video editing, programming with large builds or heavy multitasking. The chip's generation and letter suffix matter more than 5 versus 7.",
+    sections: [
+      {
+        heading: "Is an i5 laptop good enough?",
+        body: [
+          "Yes, for most buyers. A current Core i5 or Core Ultra 5 laptop comfortably handles Microsoft 365, Google Docs, dozens of browser tabs, video calls, streaming and light photo editing. The [Acer Swift Go 14](/laptop/reviews/acer/swift-go-14-2025), with a Core Ultra 5 226V, scored 8.1/10 overall, lasted 13.8 hours in our battery test and costs $949 CAD.",
+          "Step up to an i7 or Ultra 7 if you regularly export video, compile large projects, run virtual machines or keep heavy apps open side by side, or if you want the laptop to feel quick for six years or more.",
+        ],
+      },
+      {
+        heading: "How much faster is an i7 than an i5?",
+        body: [
+          "Less than the name suggests. Compare two laptops with the same generation of Intel chip (Lunar Lake):",
+          "- [Acer Swift Go 14](/laptop/reviews/acer/swift-go-14-2025), Core Ultra 5 226V: 2,480 Geekbench single-core, 9,600 Cinebench multi-core, 9.8-minute 4K export, $949.",
+          "- [ASUS Zenbook 14 OLED](/laptop/reviews/asus/zenbook-14-oled-2025), Core Ultra 7 258V: 2,720 Geekbench single-core, 11,400 Cinebench multi-core, 8.0-minute 4K export, $1,499.",
+          "That is about 10% faster in single-core tasks (which decide how snappy everyday apps feel), about 19% faster in multi-core tasks, and an export that finished 1.8 minutes sooner. The Zenbook also has a faster 120 Hz screen (the Swift Go's is 90 Hz) and twice the storage, which account for much of its higher price. Compare them side by side: [Zenbook 14 OLED vs Swift Go 14](/laptop/compare/zenbook-14-oled-2025-vs-swift-go-14-2025).",
+        ],
+      },
+      {
+        heading: "Core i5 vs Core 5 vs Core Ultra 5: what is the difference?",
+        body: [
+          "Intel dropped the \"i\" in 2023. Laptops now ship with three naming styles:",
+          "- Core i5 / i7 (for example, i5-1335U or i7-13620H): older 12th, 13th and 14th-generation chips, still sold in budget and business laptops.",
+          "- Core 5 / Core 7 (for example, Core 5 120U): refreshed versions of those older designs, without an NPU for AI features.",
+          "- Core Ultra 5 / 7 / 9 (for example, Core Ultra 5 226V or Core Ultra 7 258V): Intel's newer designs, with an NPU, much stronger integrated graphics and, in the 200V series, much longer battery life.",
+          "Between a Core i7 and a Core Ultra 5 at the same price, the Core Ultra 5 is often the better buy for battery life and graphics. Check the full model number, not just the 5 or 7.",
+        ],
+      },
+      {
+        heading: "Why the generation and suffix matter more than i5 vs i7",
+        body: [
+          "The letters after the model number tell you how much power the chip is designed to draw:",
+          "- U (for example, Core Ultra 7 155U): low power for thin laptops; quiet and efficient, slower in sustained work.",
+          "- V (Core Ultra 200V, for example 258V): low power with built-in memory; excellent battery life.",
+          "- P and H (for example, Core Ultra 7 155H or 358H): more power for faster multi-core work.",
+          "- HX (for example, Core i9-14900HX): desktop-class power for gaming laptops and workstations.",
+          "Our results show how much this matters. The Core Ultra 7 155U in the [ThinkPad X1 Carbon Gen 12](/laptop/reviews/lenovo/thinkpad-x1-carbon-gen-12) scored 8,900 in Cinebench multi-core, lower than the Core Ultra 5 226V in the $949 Swift Go 14 (9,600). The newer Core Ultra 7 358H in the [Dell XPS 14 (2026)](/laptop/reviews/dell/xps-14-2026) scored 16,800, beating the older Core Ultra 9 185H in the [Dell XPS 16](/laptop/reviews/dell/xps-16-9640) (14,200).",
+        ],
+      },
+      {
+        heading: "Do you need an i7 for gaming, video editing or programming?",
+        body: [
+          "- Gaming: the graphics card matters far more than i5 vs i7. A Core i5/Ultra 5 H-series chip with an RTX 4060 will outperform a Core i7 laptop with integrated graphics. See [how to choose a gaming laptop](/laptop/learn/how-to-choose-a-gaming-laptop).",
+          "- Video editing: yes, choose an i7/Ultra 7 H-series or better, ideally with 32 GB RAM. See the [best laptops for video editing](/laptop/reviews/best/video-editing).",
+          "- Programming: an Ultra 5 is fine for web development and coursework; an i7/Ultra 7 saves time on large builds, Docker and virtual machines. See the [best laptops for programming](/laptop/reviews/best/programming).",
+          "- School and office: an i5/Ultra 5 is plenty. See the [best student laptops](/laptop/reviews/best/student) and [best laptops for work](/laptop/reviews/best/business).",
+        ],
+      },
+      {
+        heading: "What about AMD Ryzen 5 vs Ryzen 7?",
+        body: [
+          "AMD uses the same 5/7/9 tiers. The Ryzen 5 8540U in the $749 [Acer Aspire 5 15](/laptop/reviews/acer/aspire-5-15-2025) scored 6,400 in Cinebench multi-core, enough for everyday work. The Ryzen 7 8845HS in the ASUS TUF Gaming A15 scored 14,000, and the Ryzen AI 9 HX 375 in the [HP OmniBook Ultra 14](/laptop/reviews/hp/omnibook-ultra-14-2026) scored 17,400, the highest of any Windows laptop without a dedicated GPU we have tested. Ryzen chips often give more multi-core performance for the money than Intel; see [Intel vs AMD vs Apple silicon](/laptop/learn/intel-vs-amd-vs-apple-silicon).",
+        ],
+      },
+      {
+        heading: "Should you buy an i5 Dell laptop?",
+        body: [
+          "Dell sells Core i5 and Core Ultra 5 versions of most of its everyday and business laptops, and for school, home and office use an i5 configuration is usually the right value choice. Spend the difference on 16 GB of RAM and a 512 GB SSD rather than an i7 with 8 GB: RAM and storage are often soldered and cannot be upgraded later. If you are choosing between brands, see [Dell vs HP vs Lenovo](/laptop/learn/dell-vs-hp-vs-lenovo-laptops) and the [best Dell laptops](/laptop/reviews/best/dell).",
+        ],
+      },
+      {
+        heading: "Which should you buy: i5 or i7?",
+        body: [
+          "- Buy an i5 / Core Ultra 5 / Ryzen 5 for school, office work, browsing, streaming and light photo editing, especially under $1,000. See the [best laptops under $1,000](/laptop/reviews/best/under-1000).",
+          "- Buy an i7 / Core Ultra 7 / Ryzen 7 for video editing, large code projects, virtual machines and heavy multitasking, or to keep the laptop longer.",
+          "- Buy an i9 / Ultra 9 / Ryzen 9 HX only for gaming laptops and workstations that can cool it. See the [most powerful laptops](/laptop/reviews/best/powerful).",
+          "In every case, 16 GB of RAM matters more than the CPU tier for everyday speed; see [how much RAM do you need](/laptop/learn/how-much-ram-do-you-need).",
+        ],
+      },
+    ],
+    faq: [
+      { q: "Is Core i5 or i7 better for a laptop?", a: "An i7 is faster, but an i5 is enough for most people. In our tests a Core Ultra 7 was about 10% faster in single-core and 19% faster in multi-core work than a Core Ultra 5 of the same generation." },
+      { q: "Is an i5 laptop good for students?", a: "Yes. An i5 or Core Ultra 5 with 16 GB RAM handles coursework, research and video calls. The Acer Swift Go 14 (Core Ultra 5, $949) lasted 13.8 hours in our battery test." },
+      { q: "Is a Core Ultra 5 better than a Core i7?", a: "Often, if the Core i7 is an older U-series chip. Core Ultra chips have stronger integrated graphics and better battery life. Compare tested results, not tier numbers." },
+      { q: "Is an i5 good for gaming?", a: "Yes, if it is paired with a dedicated GPU such as an RTX 4060. The graphics card decides most of your frame rate." },
+      { q: "Is an i5 enough for video editing?", a: "For 1080p clips and social video, a recent Core Ultra 5 or i5 H-series chip with 16 GB RAM works. For 4K editing, choose an i7/Ultra 7 H-series or Apple M-series chip with 32 GB." },
+      { q: "Does i5 vs i7 affect battery life?", a: "Slightly. The bigger factors are the chip family and the screen. Our Core Ultra 5 Swift Go 14 lasted 13.8 hours and the Core Ultra 7 Zenbook 14 OLED lasted 15.6 hours." },
+    ],
+  },
+  {
+    slug: "how-to-compare-laptops",
+    title: "How to Compare Laptops Side by Side (2026): The Specs That Matter",
+    h1: "How to Compare Laptops Side by Side",
+    excerpt: "A step-by-step method for comparing two laptops, the spec-sheet traps to avoid, and how to use our free comparison tools with real test results.",
+    category: "Buying advice",
+    updated: "2026-11-26",
+    readingTime: 8,
+    answer:
+      "To compare laptops side by side, first rule out any that miss your must-haves (operating system, screen size, budget, ports), then compare tested results rather than spec sheets: battery life, benchmark scores, screen brightness and weight. Use a side-by-side tool such as our laptop comparison tool, which lines up measured results for any two to four laptops we have tested.",
+    sections: [
+      {
+        heading: "How do you compare two laptops?",
+        body: [
+          "1. Write down your must-haves: Windows, macOS or ChromeOS; screen size; budget in CAD; any ports you cannot live without.",
+          "2. Cut every laptop that misses one. This usually leaves two to four candidates.",
+          "3. Compare the three or four tested results that matter for your use (see below), not every spec.",
+          "4. Check the price in Canada at more than one retailer, and whether a sale is coming.",
+          "5. Read the cons in each review: deal-breakers hide there, not in the spec sheet.",
+          "Our [laptop comparison tool](/laptop/tools/compare) puts up to four laptops side by side with their measured test results, and you can add laptops from any review page.",
+        ],
+      },
+      {
+        heading: "Which specs should you compare?",
+        body: [
+          "Match the comparison to how you will use the laptop:",
+          "- School and office: battery life, weight, keyboard score and price.",
+          "- Creative work: export time, colour gamut (DCI-P3), colour accuracy (Delta E) and RAM.",
+          "- Gaming: frame rates, GPU wattage, screen refresh rate and fan noise.",
+          "- Travel: weight, battery life and charging (USB-C, HDMI).",
+          "Our [custom ratings tool](/laptop/tools/custom-ratings) lets you set your own weights for each score and re-ranks every laptop we have tested to match.",
+        ],
+      },
+      {
+        heading: "Why tested results beat spec sheets",
+        body: [
+          "Spec sheets list parts, not performance. Three laptops with the same Intel Core Ultra 7 258V chip scored 11,400 ([ASUS Zenbook 14 OLED](/laptop/reviews/asus/zenbook-14-oled-2025)), 11,200 ([Samsung Galaxy Book5 Pro](/laptop/reviews/samsung/galaxy-book5-pro-14-2025)) and 10,900 ([LG gram Pro 16](/laptop/reviews/lg/gram-pro-16-2025)) in Cinebench, and lasted 15.6, 15 and 14.6 hours on battery. The chip is the same; the cooling, battery size and screen are not.",
+          "Graphics are an even bigger trap: the same RTX 4070 averaged 78 fps in the Dell XPS 16 and 118 fps in the Lenovo Legion Pro 5 in our gaming test because of different power limits. See [how to choose a gaming laptop](/laptop/learn/how-to-choose-a-gaming-laptop).",
+        ],
+      },
+      {
+        heading: "Spec-sheet traps to watch for",
+        body: [
+          "- Manufacturer battery claims are usually measured at low brightness with light workloads. We test every laptop at a fixed 150 nits; see [how we test battery life](/laptop/tests/battery).",
+          "- Screen brightness varies widely: the Microsoft Surface Laptop 7 measured 596 nits and the Acer Aspire 5 15 measured 268 nits. Under 300 nits is hard to use near a window.",
+          "- Storage speed varies too: the 256 GB MacBook Air 13 (M4) read at 2,900 MB/s against 5,000 MB/s for the 512 GB MacBook Air 13 (M5).",
+          "- RAM that is soldered cannot be upgraded later. Every review lists RAM and storage upgradeability.",
+          "- \"Up to\" CPU clock speeds say little about sustained performance in a thin laptop.",
+          "- Weight is often listed without the charger; a gaming laptop's power brick can add half a kilogram to your bag.",
+        ],
+      },
+      {
+        heading: "How to use our side-by-side comparison tools",
+        body: [
+          "- [Compare tool](/laptop/tools/compare): pick two to four laptops and see specs, scores and test results in one table. For example: [Zenbook 14 OLED vs Dell XPS 13 vs MacBook Air 13 (M5)](/laptop/tools/compare?add=asus-zenbook-14-oled-2025&add=dell-xps-13-9350&add=apple-macbook-air-13-m5).",
+          "- [Results table](/laptop/tools/table): every laptop we have tested in one sortable table. Sort by battery life, weight, price or any benchmark.",
+          "- [Graph tool](/laptop/tools/graph): plot any two results against each other, such as price against battery life, to spot the best value.",
+          "- Head-to-head pages: our written comparisons pick a winner for each use case, such as [ThinkPad X1 Carbon vs XPS 13](/laptop/compare/thinkpad-x1-carbon-gen-12-vs-dell-xps-13-9350) and [MacBook Air 13 vs MacBook Air 15](/laptop/compare/macbook-air-13-m4-vs-macbook-air-15-m4).",
+        ],
+      },
+      {
+        heading: "How do you compare Chromebooks?",
+        body: [
+          "The same method works, with three Chromebook-specific checks: the automatic update expiration date (how long Google will send updates), whether it is a Chromebook Plus model (which guarantees a minimum level of CPU, RAM, storage and screen), and the price compared with a budget Windows laptop. For example, compare the [ASUS Chromebook Plus CX34 vs Acer Aspire 5 15](/laptop/compare/chromebook-plus-cx34-vs-acer-aspire-5-15-2025). See [Chromebook vs Windows laptop](/laptop/learn/chromebook-vs-windows-laptop) and the [best Chromebooks](/laptop/reviews/best/chromebook).",
+        ],
+      },
+      {
+        heading: "Comparing laptops from different brands",
+        body: [
+          "Compare the specific models, not the brands: each brand's budget and premium lines differ more than the brands do. See [Dell vs HP vs Lenovo vs ASUS](/laptop/learn/dell-vs-hp-vs-lenovo-laptops) for where each brand is strongest, and [Mac vs Windows laptop](/laptop/learn/mac-vs-windows-laptop) if you are choosing an operating system too.",
+        ],
+      },
+      {
+        heading: "Where to start",
+        body: [
+          "If you do not have a shortlist yet, start from a ranked list for your use: the [best laptops in Canada](/laptop/reviews/best/laptop), [best student laptops](/laptop/reviews/best/student), [best laptops for work](/laptop/reviews/best/business) or [best gaming laptops](/laptop/reviews/best/gaming). Then put your top two or three in the [compare tool](/laptop/tools/compare). Still unsure where to begin? Read [how to choose a laptop](/laptop/learn/how-to-choose-a-laptop).",
+        ],
+      },
+    ],
+    faq: [
+      { q: "What is the best way to compare laptops?", a: "Shortlist laptops that meet your must-haves, then compare tested battery life, benchmarks, screen brightness and weight side by side. Our compare tool lines up measured results for up to four laptops." },
+      { q: "What should I look for when comparing laptops?", a: "For most people: battery life, weight, keyboard comfort, screen brightness, RAM (16 GB) and storage (512 GB). Add GPU and frame rates for gaming, and colour accuracy for creative work." },
+      { q: "Is it better to compare specs or reviews?", a: "Reviews with test results. Laptops with the same chip can differ in speed and battery life because of cooling, battery size and screen, which a spec sheet does not show." },
+      { q: "Can I compare a MacBook with a Windows laptop?", a: "Yes. Our compare tool and results table test every laptop with the same benchmarks and battery test, so a MacBook and a Windows laptop are directly comparable." },
+      { q: "How do I compare laptop prices in Canada?", a: "Check Best Buy Canada, Amazon.ca, Costco, the manufacturer's store and Canada Computers. Each of our reviews lists Canadian retailer prices in CAD." },
+    ],
+  },
+  {
+    slug: "how-much-does-a-laptop-cost-canada",
+    title: "How Much Does a Laptop Cost in Canada? (2026 Prices by Type)",
+    h1: "How Much Does a Laptop Cost in Canada in 2026?",
+    excerpt: "What you can expect to pay for a Chromebook, a student laptop, a MacBook, a gaming laptop or a premium laptop in Canada, plus sales tax by province.",
+    category: "Buying advice",
+    updated: "2026-11-26",
+    readingTime: 9,
+    answer:
+      "A new laptop in Canada costs about $450 to $750 for a basic Chromebook or Windows laptop, $900 to $1,500 for a good all-rounder or MacBook Air, $1,300 to $3,300 for a gaming laptop, and $1,800 or more for a premium or pro laptop, before sales tax. Most people get the best value between $900 and $1,500. Add 5% to 15% in sales tax depending on your province.",
+    sections: [
+      {
+        heading: "How much should you spend on a laptop?",
+        body: [
+          "Spend enough to get 16 GB of RAM, a 512 GB SSD and a screen you will be happy looking at for years. In 2026 that usually means $900 to $1,500 CAD for a Windows laptop or MacBook Air. Spend less only for web-based use (a Chromebook), and more only if you game, edit video or want a premium build. Our price ranges below come from the Canadian prices of the laptops we have tested.",
+        ],
+      },
+      {
+        heading: "Laptop prices in Canada by type",
+        body: [
+          "- Chromebooks: about $400 to $700. The [Acer Chromebook Plus 514](/laptop/reviews/acer/chromebook-plus-514-2025) costs $449 and the [ASUS Chromebook Plus CX34](/laptop/reviews/asus/chromebook-plus-cx34) costs $499.",
+          "- Budget Windows laptops: about $500 to $800. The [Acer Aspire 5 15](/laptop/reviews/acer/aspire-5-15-2025) costs $749 with 16 GB RAM and a 512 GB SSD.",
+          "- Mid-range Windows laptops: about $900 to $1,500. The [Acer Swift Go 14](/laptop/reviews/acer/swift-go-14-2025) ($949) and [ASUS Zenbook 14 OLED](/laptop/reviews/asus/zenbook-14-oled-2025) ($1,499) are the best values we have tested.",
+          "- MacBooks: $1,399 for the [MacBook Air 13 (M4)](/laptop/reviews/apple/macbook-air-13-m4), $1,499 for the [MacBook Air 13 (M5)](/laptop/reviews/apple/macbook-air-13-m5), $1,699 for the [MacBook Air 15](/laptop/reviews/apple/macbook-air-15-m4) and $2,799 for the [MacBook Pro 14 (M4 Pro)](/laptop/reviews/apple/macbook-pro-14-m4-pro).",
+          "- Microsoft Surface: the [Surface Laptop 7 (13.8-inch)](/laptop/reviews/microsoft/surface-laptop-7-13) costs $1,499.",
+          "- Gaming laptops: about $1,300 to $3,300. The [ASUS TUF Gaming A15](/laptop/reviews/asus/tuf-gaming-a15-2025) costs $1,299; the [ASUS ROG Zephyrus G16 (2026)](/laptop/reviews/asus/rog-zephyrus-g16-2026) costs $3,299.",
+          "- Premium and business laptops: about $1,800 to $3,300, such as the [Lenovo ThinkPad X1 Carbon Gen 12](/laptop/reviews/lenovo/thinkpad-x1-carbon-gen-12) ($2,199) and [Dell XPS 14 (2026)](/laptop/reviews/dell/xps-14-2026) ($2,299).",
+        ],
+      },
+      {
+        heading: "What do you get at each price?",
+        body: [
+          "- Under $500: a Chromebook with 8 GB RAM and 128 GB storage. Fine for web, Google Docs and streaming. See the [best laptops under $500](/laptop/reviews/best/under-500).",
+          "- $500 to $1,000: a Windows laptop with 16 GB RAM, a 512 GB SSD and 9 to 14 hours of battery life. See the [best laptops under $1,000](/laptop/reviews/best/under-1000).",
+          "- $1,000 to $1,500: OLED or high-brightness screens, metal builds and often 15 hours or more of battery life, or an entry-level gaming laptop. See the [best laptops under $1,500](/laptop/reviews/best/under-1500).",
+          "- $1,500 to $2,500: 32 GB RAM, premium 2-in-1s, business laptops with the best keyboards, and RTX 4070/5070 gaming laptops.",
+          "- Over $2,500: pro creative laptops and the fastest gaming GPUs. See the [best premium laptops](/laptop/reviews/best/premium).",
+        ],
+      },
+      {
+        heading: "How much is sales tax on a laptop in Canada?",
+        body: [
+          "Laptops are taxed like other electronics, at your province's combined rate:",
+          "- Alberta, Yukon, Northwest Territories and Nunavut: 5% GST.",
+          "- Saskatchewan: 11% (5% GST + 6% PST).",
+          "- British Columbia and Manitoba: 12% (5% GST + 7% PST).",
+          "- Ontario: 13% HST.",
+          "- Nova Scotia: 14% HST.",
+          "- Quebec: 14.975% (5% GST + 9.975% QST).",
+          "- New Brunswick, Newfoundland and Labrador, and Prince Edward Island: 15% HST.",
+          "Most provinces also add a small environmental handling fee on electronics. On a $1,499 laptop, tax adds about $75 in Alberta and about $195 in Ontario.",
+        ],
+      },
+      {
+        heading: "Why do laptops cost more in Canada than in the US?",
+        body: [
+          "Mostly the exchange rate: Canadian prices are set in CAD and usually track the US price converted at the current rate. Cross-border shopping rarely saves much once you add currency-exchange fees, any taxes charged at the border and the hassle of a warranty that may only be honoured in the US. Compare Canadian retailers instead: see [Best Buy vs Costco for laptops in Canada](/laptop/learn/best-buy-vs-costco-laptops-canada).",
+        ],
+      },
+      {
+        heading: "How to pay less for a laptop in Canada",
+        body: [
+          "- Buy during Black Friday, Boxing Day or back-to-school sales: see [the best time to buy a laptop in Canada](/laptop/learn/best-time-to-buy-a-laptop-in-canada) and our [laptop deals](/laptop/deals).",
+          "- Buy last year's model when the new one launches.",
+          "- Use education pricing: Apple, Dell, Lenovo, HP and Microsoft offer student and educator discounts in Canada.",
+          "- Consider certified refurbished with a warranty: see the [refurbished laptop buying guide](/laptop/learn/refurbished-laptop-buying-guide-canada).",
+          "- Do not overpay for specs you will not use, like a gaming GPU for office work. Read [Core i5 vs i7](/laptop/learn/core-i5-vs-i7-laptop) before paying for a higher CPU tier.",
+        ],
+      },
+      {
+        heading: "Is a more expensive laptop worth it?",
+        body: [
+          "Up to about $1,500, usually yes: the jump from a $500 to a $1,000 laptop buys more RAM, a brighter screen, longer battery life and a better build, and those make a big difference every day. Above that, returns shrink for everyday use. The $1,499 MacBook Air 13 (M5) scored 8.6/10 in our testing, higher than many laptops that cost twice as much. Spend more only for a specific need: gaming, video editing, a 2-in-1 design or a business warranty. Use our [comparison tool](/laptop/tools/compare) and [how to compare laptops](/laptop/learn/how-to-compare-laptops) to check what the extra money buys.",
+        ],
+      },
+    ],
+    faq: [
+      { q: "How much does a good laptop cost in Canada?", a: "About $900 to $1,500 CAD before tax for a good Windows laptop or MacBook Air with 16 GB RAM and a 512 GB SSD." },
+      { q: "What is a reasonable price for a student laptop in Canada?", a: "$700 to $1,200 for most students. The Acer Swift Go 14 ($949) lasted 13.8 hours in our battery test; a Chromebook from $449 is enough for web-only coursework." },
+      { q: "How much is a MacBook in Canada?", a: "The MacBook Air 13 (M4) costs $1,399 CAD, the MacBook Air 13 (M5) $1,499, the MacBook Air 15 $1,699 and the MacBook Pro 14 (M4 Pro) $2,799 at the prices we tracked. Students get education pricing." },
+      { q: "How much is a gaming laptop in Canada?", a: "From about $1,300 for an RTX 4060 model like the ASUS TUF Gaming A15 ($1,299) to $3,000 or more for RTX 4080/5080 laptops." },
+      { q: "Is $500 enough for a laptop?", a: "For a Chromebook or a basic web laptop, yes. For Windows with 16 GB RAM, plan on $700 to $1,000, or wait for a sale." },
+      { q: "How much tax do you pay on a laptop in Canada?", a: "From 5% (Alberta and the territories) to 15% (New Brunswick, Newfoundland and Labrador, and PEI). Ontario is 13% HST and Quebec is 14.975%." },
     ],
   },
 ];

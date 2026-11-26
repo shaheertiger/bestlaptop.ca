@@ -14,6 +14,8 @@ const nextConfig = {
       { source: "/laptop/reviews/best/university-students", destination: "/laptop/reviews/best/college", permanent: true },
       // Thin duplicate merged into the full Mac vs Windows guide.
       { source: "/laptop/learn/macbook-vs-windows-laptop", destination: "/laptop/learn/mac-vs-windows-laptop", permanent: true },
+      // Thin stub replaced by the full gaming laptop guide.
+      { source: "/laptop/learn/gaming-laptop-buying-guide", destination: "/laptop/learn/how-to-choose-a-gaming-laptop", permanent: true },
     ];
   },
 };

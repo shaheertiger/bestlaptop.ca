@@ -1,5 +1,5 @@
 import type { BestCategory, Laptop } from "@/lib/types";
-import { categoryContent } from "./categoryContent";
+import { categoryContent, footprintCm2 } from "./categoryContent";
 
 const has = (cat: string) => (l: Laptop) => l.categories.includes(cat);
 
@@ -433,6 +433,48 @@ const baseCategories: BestCategory[] = [
     intro: "Teachers need a laptop that plugs straight into a classroom projector or TV, lasts a full teaching day and handles marking, slides and video calls. Every pick has an HDMI port (on the Framework Laptop 13, via an expansion card), lasted at least 11 hours in our battery test and costs $2,200 CAD or less.",
     criteria: "We include laptops with HDMI, 11+ hours of web-browsing battery life and a price at or under $2,200 CAD, ranked by overall score plus value.",
     filter: (l) => l.gpuType === "Integrated" && l.ports.some((p) => /HDMI/.test(p)) && l.test.batteryWebHours >= 11 && l.currentPrice <= 2200,
+  },
+  // Search Console expansion (Nov 2026): size, power, travel and price-tier
+  // intents that were earning impressions without a matching list.
+  {
+    slug: "small",
+    navLabel: "Best Small Laptops",
+    title: "Best Small Laptops in Canada",
+    h1: "The Best Small Laptops in Canada (2026)",
+    group: "size",
+    intro: "A small laptop should disappear into a bag and fit a cramped desk or tray table without feeling cramped to use. We measured every laptop we have tested and ranked the ones with a screen of 14 inches or less, a footprint under 685 cm² and a weight under 1.35 kg from smallest to largest.",
+    criteria: "We include laptops with a screen of 14 inches or smaller, a footprint under 685 cm², a weight under 1.35 kg and an overall score of 7.5/10 or higher, ranked by footprint.",
+    filter: (l) => l.screenSize <= 14 && l.weightKg < 1.35 && footprintCm2(l) <= 685 && l.overall >= 7.5,
+  },
+  {
+    slug: "powerful",
+    navLabel: "Most Powerful Laptops",
+    title: "Most Powerful Laptops in Canada",
+    h1: "The Most Powerful Laptops in Canada (2026)",
+    group: "use-case",
+    intro: "These are the fastest laptops we have tested, ranked by Cinebench multi-core score, the benchmark that best predicts how quickly a laptop gets through heavy work like video exports, code compiles and 3D renders. Every pick scored 15,000 or higher; we also list gaming and export results so you can see where each one's power goes.",
+    criteria: "We include every laptop that scored 15,000 or higher in Cinebench multi-core, ranked by that score.",
+    filter: (l) => l.test.cinebenchMulti >= 15000,
+  },
+  {
+    slug: "travel",
+    navLabel: "Best Travel Laptops",
+    title: "Best Travel Laptops in Canada",
+    h1: "The Best Laptops for Travel in Canada (2026)",
+    group: "use-case",
+    intro: "A travel laptop has to be light enough to carry all day and last a long-haul flight without a charger. Every pick weighs 1.4 kg or less and lasted at least 13 hours in our web-browsing battery test; we ranked them by our travel score, which also weighs build quality and charging.",
+    criteria: "We include Windows and macOS laptops that weigh 1.4 kg or less and lasted 13+ hours in our web-browsing battery test, ranked by our travel use-case score, then battery life.",
+    filter: (l) => l.os !== "ChromeOS" && l.weightKg <= 1.4 && l.test.batteryWebHours >= 13,
+  },
+  {
+    slug: "premium",
+    navLabel: "Best Premium Laptops",
+    title: "Best Premium Laptops in Canada",
+    h1: "The Best Premium Laptops in Canada (2026)",
+    group: "price",
+    intro: "If you are spending $1,800 CAD or more, the laptop should excel at everything: build, screen, keyboard, speed and battery life. These are the highest-scoring laptops we have tested at that price, with build quality as the tie-breaker, and we flag where a cheaper laptop does the same job.",
+    criteria: "We include laptops priced at $1,800 CAD or more that scored 8/10 or higher overall, ranked by overall score, then build quality.",
+    filter: (l) => l.currentPrice >= 1800 && l.overall >= 8,
   },
 ];
 

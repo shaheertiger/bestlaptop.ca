@@ -22,6 +22,15 @@ const price = (l: Laptop) => {
   return stocked.length ? Math.min(...stocked) : l.currentPrice;
 };
 const bestBuyPrice = (l: Laptop) => l.retailers.find((r) => r.name === "Best Buy Canada")?.price ?? l.currentPrice;
+/** Desk footprint in cm² from the "W x D x H mm" dimensions string. */
+export const footprintCm2 = (l: Laptop) => {
+  const [w, d] = l.dimensions.split(" x ").map((x) => parseFloat(x));
+  return (w * d) / 100;
+};
+const footprintLabel = (l: Laptop) => {
+  const [w, d] = l.dimensions.split(" x ").map((x) => parseFloat(x) / 10);
+  return `${w.toFixed(1)} × ${d.toFixed(1)} cm`;
+};
 /** Overall-score points per $1,000 CAD. */
 export const pointsPerK = (l: Laptop, p = price(l)) => (l.overall / p) * 1000;
 
@@ -159,18 +168,18 @@ export const categoryContent: Record<string, Content> = {
   gaming: {
     seoTitle: "Best Gaming Laptops in Canada (2026): Ranked by Real FPS",
     metric: metrics.fps,
-    related: ["budget-gaming", "16-inch", "video-editing", "asus", "lenovo", "under-1500"],
+    related: ["budget-gaming", "powerful", "16-inch", "video-editing", "asus", "lenovo", "under-1500"],
     sections: [
       {
         heading: "What is the best gaming laptop in 2026?",
         body: [
-          "We rank gaming laptops on average 1080p High frame rates across our game suite, then weigh thermals, display and price. The MSI Stealth 16 AI Studio led our suite at 122 fps with an RTX 4080; the Lenovo Legion Pro 5 hit 118 fps for $500 less.",
+          "We rank gaming laptops on average 1080p High frame rates across our game suite, then weigh thermals, display and price. The ASUS ROG Zephyrus G16 (2026) led our suite at 165 fps with an RTX 5080; the MSI Stealth 16 AI Studio hit 122 fps with an RTX 4080 and the Lenovo Legion Pro 5 hit 118 fps for $800 less than the Zephyrus.",
         ],
       },
       {
         heading: "Which GPU do you need for 1080p and 1440p gaming?",
         body: [
-          "An RTX 4060 or RTX 5060 runs most games at 1080p High above 60 fps. Step up to an RTX 4070/5070 or better for 1440p or 165 Hz+ panels. GPU wattage matters as much as the model name: a 140 W RTX 4070 is noticeably faster than a 60 W one.",
+          "An RTX 4060 or RTX 5060 runs most games at 1080p High above 60 fps. Step up to an RTX 4070/5070 or better for 1440p or 165 Hz+ panels. GPU wattage matters as much as the model name: a 140 W RTX 4070 is noticeably faster than a 60 W one. Our [how to choose a gaming laptop](/laptop/learn/how-to-choose-a-gaming-laptop) guide shows the same RTX 4070 tested at four different wattages.",
         ],
       },
       {
@@ -229,7 +238,7 @@ export const categoryContent: Record<string, Content> = {
     seoTitle: "Best Laptops for Video Editing (2026): Ranked by 4K Export Time",
     metric: metrics.exportTime,
     sort: (a, b) => a.test.videoExportMinutes - b.test.videoExportMinutes,
-    related: ["photo-editing", "graphic-design", "music-production", "architecture", "macbook", "gaming", "16-inch", "programming"],
+    related: ["photo-editing", "graphic-design", "music-production", "architecture", "powerful", "macbook", "gaming", "16-inch", "programming"],
     sections: [
       {
         heading: "What is the best laptop for video editing?",
@@ -425,7 +434,7 @@ export const categoryContent: Record<string, Content> = {
     seoTitle: "Laptops With the Best Battery Life (2026): Up to 18 Hours, Tested",
     metric: metrics.battery,
     sort: (a, b) => b.test.batteryWebHours - a.test.batteryWebHours,
-    related: ["student", "lightweight", "macbook", "business", "chromebook", "13-inch"],
+    related: ["student", "lightweight", "travel", "macbook", "business", "chromebook", "13-inch"],
     sections: [
       {
         heading: "Which laptop has the longest battery life?",
@@ -464,7 +473,7 @@ export const categoryContent: Record<string, Content> = {
     seoTitle: "Best Lightweight Laptops in Canada (2026): Under 1.3 kg, Tested",
     metric: metrics.weight,
     sort: (a, b) => a.weightKg - b.weightKg,
-    related: ["13-inch", "14-inch", "long-battery-life", "business", "student", "2-in-1"],
+    related: ["small", "travel", "13-inch", "14-inch", "long-battery-life", "business", "student", "2-in-1"],
     sections: [
       {
         heading: "What is the lightest laptop worth buying?",
@@ -578,7 +587,7 @@ export const categoryContent: Record<string, Content> = {
 
   "under-1500": {
     metric: metrics.value,
-    related: ["under-1000", "under-500", "budget", "budget-gaming", "student", "business"],
+    related: ["under-1000", "under-500", "budget", "budget-gaming", "premium", "student", "business"],
     sections: [
       {
         heading: "What is the best laptop under $1,500 in Canada?",
@@ -717,7 +726,7 @@ export const categoryContent: Record<string, Content> = {
       { q: "Is Apple or Windows the better laptop brand?", a: `Apple has the highest median score in our testing (${brandRanking.find((b) => b.slug === "apple")?.median.toFixed(1) ?? "n/a"}/10), mostly from battery life. Windows brands win on choice, gaming and price.` },
     ],
   },
-  "13-inch": { metric: metrics.weight, related: ["14-inch", "lightweight", "long-battery-life"] },
+  "13-inch": { metric: metrics.weight, related: ["14-inch", "small", "lightweight", "long-battery-life"] },
   "14-inch": { metric: metrics.weight, related: ["13-inch", "15-inch", "lightweight"] },
   "15-inch": { metric: metrics.weight, related: ["14-inch", "16-inch", "home-use"] },
   "16-inch": { metric: metrics.weight, related: ["15-inch", "gaming", "video-editing", "architecture"] },
@@ -1264,6 +1273,221 @@ export const categoryContent: Record<string, Content> = {
       { q: "What should teachers look for in a laptop?", a: "An HDMI port or adapter for projectors, 10+ hours of battery, a good webcam for parent meetings, 16 GB RAM on Windows, and a comfortable keyboard. Every pick here has HDMI and lasted 11+ hours in our battery test." },
       { q: "Is a MacBook good for teachers?", a: "Yes, though MacBook Airs have no HDMI port, so you need a USB-C adapter for projectors. The MacBook Air 13 (M4) lasted 18 hours in our battery test." },
       { q: "What is the best cheap laptop for teachers?", a: "The ASUS Chromebook Plus CX34 ($499 CAD) is the cheapest pick here, with HDMI and 12.6 hours of battery. On Windows, the Acer Swift Go 14 at $949 is the best value." },
+    ],
+  },
+  // Nov 2026 expansion from Search Console: "small laptop" / "smallest laptop" /
+  // "mini laptops", "powerful laptops" / "high performance laptop", "best travel
+  // laptop" and "premium laptop" were earning impressions with no matching list.
+  small: {
+    seoTitle: "Best Small Laptops in Canada (2026): Smallest Tested Picks",
+    metric: { label: "Footprint", value: footprintLabel },
+    sort: (a, b) => footprintCm2(a) - footprintCm2(b),
+    rankedBy: "desk footprint (width × depth), smallest first",
+    related: ["13-inch", "lightweight", "travel", "14-inch", "student", "macbook"],
+    sections: [
+      {
+        heading: "What is the smallest laptop worth buying?",
+        body: [
+          "The Dell XPS 13 (9350) is the smallest laptop we have tested: 29.5 × 19.9 cm and 1.19 kg, with a 13.4-inch touchscreen and 15.2 hours of battery life for $1,499 CAD. It takes up less desk space than a sheet of letter paper (587 vs 603 cm²). It runs Windows on a Snapdragon X Elite chip, so check that your apps support Windows on Arm first; see [Intel vs AMD vs Snapdragon vs Apple Silicon](/laptop/learn/intel-vs-amd-vs-apple-silicon).",
+        ],
+      },
+      {
+        heading: "What is the best small laptop overall?",
+        body: [
+          "The Apple MacBook Air 13 (M5) is the best small laptop for most people: 30.4 × 21.5 cm, 11 mm thin and 1.24 kg, with an 8.8/10 keyboard and 16.8 hours of battery life for $1,499. The MacBook Air 13 (M4) is the same size, costs $1,399 and lasted 18 hours. Torn between sizes? See [MacBook Air 13 vs MacBook Air 15](/laptop/compare/macbook-air-13-m4-vs-macbook-air-15-m4).",
+        ],
+      },
+      {
+        heading: "What is the best small Windows laptop?",
+        body: [
+          "The ASUS Zenbook A14 (2026) is the best small Windows laptop we have tested. At 0.98 kg it is the lightest laptop in our lab, it lasted 21 hours in our battery test, and it still has HDMI and USB-A ports, for $1,499. For a touchscreen, the Microsoft Surface Laptop 7 (13.8-inch) has the brightest screen on this list at 596 nits and lasted 16 hours. If you need an Intel chip for app compatibility, the ASUS Zenbook 14 OLED lasted 15.6 hours at 1.2 kg.",
+        ],
+      },
+      {
+        heading: "Are mini laptops (10 to 12 inches) still worth buying?",
+        body: [
+          "Very few 10- to 12-inch laptops are sold in Canada in 2026, and most of the ones left are low-powered Chromebooks or rugged education models. Thin bezels mean a 13- or 14-inch laptop is now roughly the size an 11- or 12-inch laptop used to be. If you want something smaller still, a tablet with a keyboard case is usually the better buy; see [laptop vs tablet](/laptop/learn/laptop-vs-tablet).",
+        ],
+      },
+      {
+        heading: "Small vs lightweight laptop: what is the difference?",
+        body: [
+          "A small laptop takes up little space; a lightweight laptop weighs little. The two usually go together, but not always: the LG gram Pro 16 weighs only 1.29 kg yet has a 16-inch screen and a 35.5 × 24.2 cm footprint. This list ranks by footprint. Our [best lightweight laptops](/laptop/reviews/best/lightweight) list ranks by weight, and the [best travel laptops](/laptop/reviews/best/travel) list combines low weight with long battery life.",
+        ],
+      },
+      {
+        heading: "Is a small laptop good for students?",
+        body: [
+          "Yes. A 13- or 14-inch laptop fits a lecture-hall desk and a backpack, and every pick here weighs under 1.35 kg. The Framework Laptop 13 (1.3 kg) is the one to keep for a whole degree, because you can upgrade its RAM and storage and replace its parts yourself. The cheapest small laptop we have tested is the Acer Chromebook Plus 514 ($449), a 14-inch Chromebook that just misses this list's weight cut-off at 1.35 kg. See the [best student laptops](/laptop/reviews/best/student) and [best laptops for high school students](/laptop/reviews/best/high-school-students).",
+        ],
+      },
+    ],
+    faq: [
+      { q: "What size is a small laptop?", a: "Usually a 13- to 14-inch screen and a footprint around 30 × 21 cm. Every laptop here has a screen of 14 inches or smaller, a footprint under 685 cm² and a weight under 1.35 kg." },
+      { q: "What is the smallest MacBook?", a: "The MacBook Air 13: 30.4 × 21.5 cm and 1.24 kg with a 13.6-inch screen. The M5 model lasted 16.8 hours in our battery test and costs $1,499 CAD." },
+      { q: "Is a 13-inch laptop too small?", a: "Not for most people, especially with a 16:10 screen. If you work in spreadsheets or edit video all day, a 15- or 16-inch screen, or an external monitor at your desk, is more comfortable." },
+      { q: "Are small laptops less powerful?", a: "Not for everyday work. The 0.98 kg Zenbook A14 scored 15,200 in Cinebench multi-core, more than the ASUS TUF Gaming A15 gaming laptop (14,000). Small laptops lack dedicated graphics, so they are not for serious gaming." },
+    ],
+  },
+  powerful: {
+    seoTitle: "Most Powerful Laptops in Canada (2026): Ranked by Benchmark",
+    metric: metrics.cinebench,
+    sort: (a, b) => b.test.cinebenchMulti - a.test.cinebenchMulti,
+    rankedBy: "Cinebench multi-core score, highest first",
+    quickAnswer: (picks) => {
+      const [top] = picks;
+      const gpu = picks.slice().sort((a, b) => b.test.gamingFps1080pHigh - a.test.gamingFps1080pHigh)[0];
+      const thin = picks.filter((l) => l.gpuType === "Integrated").sort((a, b) => b.test.cinebenchMulti - a.test.cinebenchMulti)[0];
+      return `The most powerful laptop we have tested is the ${top.brand} ${top.model}: ${top.test.cinebenchMulti.toLocaleString("en-CA")} in Cinebench multi-core for ${cad(price(top))}. ` +
+        `For graphics, the ${gpu.brand} ${gpu.model} is fastest at ${gpu.test.gamingFps1080pHigh} fps in our 1080p gaming test` +
+        (thin ? `, and the ${thin.brand} ${thin.model} is the most powerful without a dedicated GPU (${thin.test.cinebenchMulti.toLocaleString("en-CA")}, ${thin.weightKg} kg).` : ".");
+    },
+    related: ["gaming", "video-editing", "architecture", "programming", "premium", "16-inch"],
+    sections: [
+      {
+        heading: "What is the most powerful laptop we have tested?",
+        body: [
+          "The Lenovo Legion Pro 5 (2025) is the most powerful laptop we have tested. Its Intel Core i9-14900HX scored 28,400 in Cinebench multi-core, nearly 20% ahead of the next laptop, and its 140 W RTX 4070 averaged 118 fps in our 1080p gaming test, for $2,499 CAD. The cost of that power is a 2.5 kg chassis, 6.4 hours of battery life and the loudest fans on this list (51 dB under load).",
+        ],
+      },
+      {
+        heading: "What is the most powerful laptop for video and photo editing?",
+        body: [
+          "The Apple MacBook Pro 14 (M4 Pro) exported our 4K test video in 2.6 minutes, the fastest result in our lab, and scored 23,800 in Cinebench multi-core. Unlike the gaming laptops around it on this list, it also lasted 16.8 hours on battery and stayed quiet under load at 32 dB. It costs $2,799 with 24 GB RAM. See the [best laptops for video editing](/laptop/reviews/best/video-editing) and [best laptops for photo editing](/laptop/reviews/best/photo-editing).",
+        ],
+      },
+      {
+        heading: "What is the most powerful gaming laptop?",
+        body: [
+          "The ASUS ROG Zephyrus G16 (2026) has the fastest graphics we have tested: its 120 W RTX 5080 averaged 165 fps at 1080p High, and its Ryzen AI 9 HX 375 scored 19,000 in Cinebench, in a 1.95 kg body with a 240 Hz OLED screen ($3,299). The MSI Stealth 16 AI Studio (RTX 4080, 122 fps, $2,999) is the alternative if you want upgradeable RAM. Read [how to choose a gaming laptop](/laptop/learn/how-to-choose-a-gaming-laptop) before paying for a bigger GPU name.",
+        ],
+      },
+      {
+        heading: "What is the most powerful thin and light laptop?",
+        body: [
+          "The HP OmniBook Ultra 14 (2026) puts a Ryzen AI 9 HX 375 (17,400 in Cinebench) and 32 GB RAM into a 1.35 kg laptop that lasted 13.5 hours, for $1,949. The Dell XPS 14 (2026) scored 16,800 and lasted 15.5 hours. For the most power per kilogram, the ASUS Zenbook A14 scored 15,200 at just 0.98 kg and lasted 21 hours for $1,499, the cheapest laptop on this list.",
+        ],
+      },
+      {
+        heading: "Does a powerful laptop need a dedicated graphics card?",
+        body: [
+          "Only if your work runs on the GPU. Programming, data analysis, large spreadsheets and heavy multitasking lean on the CPU and RAM, so a thin laptop like the OmniBook Ultra 14 handles them well. Gaming, 3D rendering, CAD, local AI models and GPU-accelerated video effects need a dedicated NVIDIA GPU: the OmniBook averaged 36 fps in our gaming test against 165 fps for the Zephyrus G16. See the [best laptops for architecture and CAD](/laptop/reviews/best/architecture).",
+        ],
+      },
+      {
+        heading: "What makes one laptop more powerful than another?",
+        body: [
+          "The chip's tier and generation, and how much power and cooling the laptop maker gives it. The same RTX 4070 averaged 118 fps at 140 W in the Legion Pro 5 but 78 fps at 60 W in the slimmer Dell XPS 16. Newer chips also beat older, higher-tier ones: the Core Ultra 7 358H in the XPS 14 (16,800) outscored the Core Ultra 9 185H in the XPS 16 (14,200). Read [Core i5 vs i7](/laptop/learn/core-i5-vs-i7-laptop) and [Intel vs AMD vs Apple silicon](/laptop/learn/intel-vs-amd-vs-apple-silicon), and see [how we test CPUs](/laptop/tests/cpu).",
+        ],
+      },
+    ],
+    faq: [
+      { q: "What is the most powerful laptop in Canada?", a: "Of the laptops we have tested, the Lenovo Legion Pro 5 (Core i9-14900HX) has the fastest CPU at 28,400 in Cinebench multi-core, and the ASUS ROG Zephyrus G16 (RTX 5080) has the fastest graphics at 165 fps." },
+      { q: "Is a gaming laptop more powerful than a MacBook Pro?", a: "For games and GPU rendering, usually yes. For video export and anything done on battery, the MacBook Pro 14 (M4 Pro) was faster: it exported our 4K test in 2.6 minutes, the best result we have recorded." },
+      { q: "How much RAM does a powerful laptop need?", a: "32 GB for video editing, 3D, virtual machines and large datasets; 16 GB is enough for most other work. Eight of the ten laptops on this list have 32 GB. See how much RAM you need." },
+      { q: "What is the cheapest powerful laptop?", a: "The ASUS Zenbook A14 ($1,499) scored 15,200 in Cinebench multi-core. If you need a dedicated GPU, the ASUS TUF Gaming A15 ($1,299) scored 14,000 with an RTX 4060." },
+    ],
+  },
+  travel: {
+    seoTitle: "Best Travel Laptops in Canada (2026): Light, Tested for Battery",
+    metric: { label: "Weight / battery", value: (l: Laptop) => `${l.weightKg} kg · ${l.test.batteryWebHours} h` },
+    sort: (a, b) => b.useCases.travel - a.useCases.travel || b.test.batteryWebHours - a.test.batteryWebHours,
+    rankedBy: "our travel use-case score (weight, battery life and build), then battery life",
+    related: ["lightweight", "long-battery-life", "small", "business", "macbook", "2-in-1"],
+    sections: [
+      {
+        heading: "What is the best laptop for travel?",
+        body: [
+          "The ASUS Zenbook A14 (2026) is the best travel laptop we have tested. It weighs 0.98 kg, lasted 21 hours in our web-browsing battery test and 26 hours of video playback (long enough for a return flight to Europe on one charge), and has HDMI and USB-A ports for hotel TVs and older accessories. It costs $1,499 CAD. It runs Windows on a Snapdragon X2 Elite chip, so check that your apps support Windows on Arm.",
+        ],
+      },
+      {
+        heading: "What is the best MacBook for travel?",
+        body: [
+          "The MacBook Air 13 (M5): 1.24 kg, 16.8 hours of battery life, a fanless design and MagSafe charging that pops off instead of pulling the laptop off a tray table, for $1,499. The M4 model lasted even longer at 18 hours and costs $1,399. Neither has HDMI, so pack a USB-C adapter. See the [best MacBooks](/laptop/reviews/best/macbook).",
+        ],
+      },
+      {
+        heading: "What is the best big-screen laptop for travel?",
+        body: [
+          "The LG gram Pro 16 fits a 16-inch OLED screen into a 1.29 kg body, lighter than most 14-inch laptops, and lasted 14.6 hours. It also has HDMI, two USB-A ports and a microSD slot for camera cards. It costs $2,399.",
+        ],
+      },
+      {
+        heading: "What is the best cheap laptop for travel?",
+        body: [
+          "The Acer Swift Go 14 ($949) weighs 1.3 kg, lasted 13.8 hours and has HDMI 2.1, two Thunderbolt 4, two USB-A and a microSD slot (tied with the gram Pro 16 for the best ports on this list), so you can leave the dongles at home. For under $1,000, see the [best laptops under $1,000](/laptop/reviews/best/under-1000).",
+        ],
+      },
+      {
+        heading: "Can you bring a laptop and a power bank on a plane in Canada?",
+        body: [
+          "Yes. Laptops can go in carry-on or checked bags, but keep yours in your carry-on so it is not damaged or stolen. Power banks and spare lithium batteries must go in your carry-on, never in checked baggage, and batteries over 100 Wh need airline approval (most laptop power banks are under that). Laptop batteries themselves are well under 100 Wh. Check your airline's rules before you fly.",
+        ],
+      },
+      {
+        heading: "What chargers and ports do you need when travelling?",
+        body: [
+          "Most laptop chargers accept 100–240 V, so abroad you only need a plug adapter; check the label on your charger to confirm. A laptop that charges over USB-C lets one charger cover your laptop and phone. For hotel TVs and conference projectors, the Zenbook A14, Zenbook 14 OLED, Galaxy Book5 Pro, gram Pro 16 and Swift Go 14 have HDMI built in; the MacBook Airs, XPS 13, Surface Laptop 7, OmniBook Ultra 14 and Yoga 9i need a USB-C adapter. See [laptop ports explained](/laptop/learn/laptop-ports-explained).",
+        ],
+      },
+    ],
+    faq: [
+      { q: "What weight is good for a travel laptop?", a: "Under 1.4 kg (about 3 lb). Every pick here weighs 1.36 kg or less; the lightest, the ASUS Zenbook A14, weighs 0.98 kg." },
+      { q: "How much battery life does a travel laptop need?", a: "Enough for a long-haul flight plus layovers. Every laptop here lasted at least 13 hours in our web-browsing test, and the Zenbook A14 lasted 21 hours." },
+      { q: "Is a Snapdragon laptop good for travel?", a: "Yes, for battery life: the Snapdragon-based Zenbook A14 (21 hours) and Dell XPS 13 (15.2 hours) are among the longest-lasting Windows laptops we have tested. Check that your apps and VPN run on Windows on Arm first." },
+      { q: "Is a 2-in-1 laptop good for travel?", a: "It can be. The Lenovo Yoga 9i (1.36 kg, 14.2 hours) folds into a tent or tablet, which is handy on a cramped tray table. See the best 2-in-1 laptops." },
+    ],
+  },
+  premium: {
+    seoTitle: "Best Premium Laptops in Canada (2026): Worth the Money?",
+    metric: { label: "Build score", value: (l: Laptop) => `${l.scores.build.toFixed(1)}/10` },
+    sort: (a, b) => b.overall + b.scores.build / 10 - (a.overall + a.scores.build / 10),
+    rankedBy: "overall test score, then build quality",
+    related: ["under-1500", "macbook", "business", "2-in-1", "powerful", "laptop"],
+    sections: [
+      {
+        heading: "What is the best premium laptop?",
+        body: [
+          "The Apple MacBook Pro 14 (M4 Pro) is the best premium laptop we have tested and the highest-scoring laptop in our lab at 9.0/10. It has a 1,020-nit mini-LED screen, the fastest 4K export we have recorded (2.6 minutes), a 9.2/10 build score and 16.8 hours of battery life. It costs $2,799 CAD.",
+        ],
+      },
+      {
+        heading: "What is the best premium Windows laptop?",
+        body: [
+          "The Dell XPS 14 (2026) scored 8.4/10 with a 9.0/10 build score, a 14.5-inch OLED touchscreen, 32 GB RAM and 15.5 hours of battery life for $2,299. For business travel, the Lenovo ThinkPad X1 Carbon Gen 12 ($2,199) weighs just 1.09 kg and has the best keyboard we have tested (9.4/10). The HP OmniBook Ultra 14 ($1,949) costs less than both and still has 32 GB RAM and a 17,400 Cinebench score.",
+        ],
+      },
+      {
+        heading: "What is the best premium 2-in-1 laptop?",
+        body: [
+          "The Lenovo Yoga 9i 2-in-1 (2026) is our pick at $1,999: a 14-inch OLED touchscreen, 32 GB RAM and 14.2 hours of battery life. The HP Spectre x360 14 costs $1,849 and supports a pen but lasted 11 hours. Compare them: [Spectre x360 14 vs Yoga 9i](/laptop/compare/spectre-x360-14-2025-vs-yoga-9i-2-in-1-2026).",
+        ],
+      },
+      {
+        heading: "What is the best premium gaming laptop?",
+        body: [
+          "The ASUS ROG Zephyrus G16 (2026) pairs an RTX 5080 (165 fps in our 1080p test) with a 240 Hz OLED screen in an aluminium body that weighs 1.95 kg, for $3,299. The 14-inch ROG Zephyrus G14 weighs 1.5 kg and costs $2,699. See the [most powerful laptops](/laptop/reviews/best/powerful).",
+        ],
+      },
+      {
+        heading: "Is a premium laptop worth it?",
+        body: [
+          "Not always. The $1,499 MacBook Air 13 (M5) scored 8.6/10 and the $1,499 ASUS Zenbook A14 scored 8.5, higher than every Windows laptop on this list. The extra money for a premium laptop buys better build quality, brighter and sharper screens, better speakers and keyboards, 32 GB RAM, and business warranty options, not more everyday speed. If you mostly browse, write and stream, see the [best laptops under $1,500](/laptop/reviews/best/under-1500).",
+        ],
+      },
+      {
+        heading: "When do premium laptops go on sale in Canada?",
+        body: [
+          "Black Friday and Boxing Day bring the biggest discounts on premium models, and last year's model usually drops in price when its replacement launches. See [the best time to buy a laptop in Canada](/laptop/learn/best-time-to-buy-a-laptop-in-canada) and [how much a laptop costs in Canada](/laptop/learn/how-much-does-a-laptop-cost-canada).",
+        ],
+      },
+    ],
+    faq: [
+      { q: "What is considered a premium laptop?", a: "A laptop around $1,800 CAD or more with a metal or carbon-fibre body, a high-resolution OLED or mini-LED screen and 16–32 GB RAM. Every pick here costs $1,800+ and scored 8/10 or higher." },
+      { q: "Is the MacBook Pro worth it over the MacBook Air?", a: "For sustained video, photo and code work, yes: the MacBook Pro 14 (M4 Pro) exported our 4K test in 2.6 minutes against 7.5 for the MacBook Air 13 (M5), and its screen is twice as bright. For everyday use, the Air is better value." },
+      { q: "Which premium laptop has the best battery life?", a: "The MacBook Pro 14 (M4 Pro) lasted 16.8 hours in our web-browsing test, followed by the Dell XPS 14 (2026) at 15.5 hours." },
+      { q: "What is the lightest premium laptop?", a: "The Lenovo ThinkPad X1 Carbon Gen 12 at 1.09 kg, followed by the LG gram Pro 16 at 1.29 kg, which has a 16-inch screen." },
     ],
   },
 };

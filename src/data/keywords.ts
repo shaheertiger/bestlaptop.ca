@@ -73,6 +73,28 @@ function buildKeywords(): KeywordTarget[] {
     ["best laptop for graphic design canada", "/laptop/reviews/best/photo-editing"],
     ["best laptop for teachers canada", "/laptop/reviews/best/working-from-home"],
     ["best laptop for real estate agents canada", "/laptop/reviews/best/working-from-home"],
+    // Nov 2026 additions from Search Console queries.
+    ["small laptop", "/laptop/reviews/best/small"],
+    ["smallest laptop", "/laptop/reviews/best/small"],
+    ["best small laptop", "/laptop/reviews/best/small"],
+    ["mini laptops", "/laptop/reviews/best/small"],
+    ["powerful laptops", "/laptop/reviews/best/powerful"],
+    ["most powerful laptop", "/laptop/reviews/best/powerful"],
+    ["high performance laptop", "/laptop/reviews/best/powerful"],
+    ["performance laptop", "/laptop/reviews/best/powerful"],
+    ["best travel laptop", "/laptop/reviews/best/travel"],
+    ["best laptop for travel canada", "/laptop/reviews/best/travel"],
+    ["premium laptop", "/laptop/reviews/best/premium"],
+    ["best premium laptop canada", "/laptop/reviews/best/premium"],
+    ["how to choose a gaming laptop", "/laptop/learn/how-to-choose-a-gaming-laptop"],
+    ["gaming laptop buying guide", "/laptop/learn/how-to-choose-a-gaming-laptop"],
+    ["i5 vs i7 laptop", "/laptop/learn/core-i5-vs-i7-laptop"],
+    ["best i5 laptop", "/laptop/learn/core-i5-vs-i7-laptop"],
+    ["dell i5 laptop", "/laptop/learn/core-i5-vs-i7-laptop"],
+    ["compare laptops side by side", "/laptop/learn/how-to-compare-laptops"],
+    ["compare laptops", "/laptop/learn/how-to-compare-laptops"],
+    ["new laptop price", "/laptop/learn/how-much-does-a-laptop-cost-canada"],
+    ["how much does a laptop cost in canada", "/laptop/learn/how-much-does-a-laptop-cost-canada"],
   ];
   for (const [kw, url] of priority) add(kw, url, "Priority (Canada)");
 
