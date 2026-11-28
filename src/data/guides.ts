@@ -218,7 +218,7 @@ export const guides: Guide[] = [
         heading: "When is Black Friday 2026 in Canada?",
         body: [
           "Black Friday 2026 is Friday, November 27, and Cyber Monday is November 30. Canadian retailers including Best Buy, Amazon.ca, Costco, Staples and Canada Computers usually start their laptop deals the week before, so the best stock often sells out before Friday.",
-          "Boxing Day (December 26) and Boxing Week follow a month later. If the laptop you want is not discounted on Black Friday, it often is then.",
+          "Boxing Day (December 26) and Boxing Week follow a month later. If the laptop you want is not discounted on Black Friday, it often is then; see our guide to [Boxing Day laptop deals in Canada](/laptop/learn/boxing-day-laptop-deals-canada). Students should also check [student laptop discounts in Canada](/laptop/learn/student-laptop-discounts-canada).",
         ],
       },
       {
@@ -233,6 +233,174 @@ export const guides: Guide[] = [
       { q: "Is Black Friday or Boxing Day better for laptops?", a: "Both are strong. Black Friday usually has more selection; Boxing Day can clear remaining stock at steep discounts." },
       { q: "When is Black Friday 2026 in Canada?", a: "Friday, November 27, 2026. Cyber Monday is November 30, and many Canadian retailers start laptop deals the week before." },
       { q: "Should I buy a laptop on Black Friday or wait?", a: "Buy on Black Friday if the model you want hits its lowest price of the year. Wait if a new generation is due within a few months, or for Boxing Day if the deal is not deep enough." },
+    ],
+  },
+  {
+    slug: "boxing-day-laptop-deals-canada",
+    title: "Boxing Day Laptop Deals Canada 2026: What to Buy and What to Skip",
+    h1: "Boxing Day Laptop Deals in Canada (2026): Is It Worth Waiting?",
+    excerpt: "When Boxing Day 2026 laptop sales start in Canada, which retailers to watch, what a real deal looks like, and which tested laptops are worth buying on sale.",
+    category: "Buying advice",
+    updated: "2026-11-28",
+    readingTime: 7,
+    answer:
+      "Boxing Day 2026 falls on Saturday, December 26, and most Canadian retailers run Boxing Week laptop sales from about December 24 into early January. It is one of the two best times of the year to buy a laptop in Canada, alongside Black Friday. Expect the deepest cuts on last year's models and on stock retailers want to clear, and compare every sale price with the laptop's normal price, not the \"was\" price on the tag.",
+    sections: [
+      {
+        heading: "When is Boxing Day 2026 in Canada?",
+        body: [
+          "Boxing Day 2026 is Saturday, December 26. Canadian retailers no longer treat it as a single day: Best Buy, Amazon.ca, Costco, Staples, Walmart and Canada Computers usually post Boxing Day or Boxing Week laptop deals online from around December 24, and many run them until New Year's Day or the first week of January.",
+          "Online prices often go live the evening before, and popular configurations sell out early. Pick your laptop before the sale starts so you can buy as soon as the price drops.",
+        ],
+      },
+      {
+        heading: "Is Boxing Day or Black Friday better for laptops?",
+        body: [
+          "Both are strong, and the best price on a given laptop can land on either. Black Friday (November 27, 2026) usually has the widest selection. Boxing Day tends to be better for clearing out stock: last year's models, open-box units and laptops that did not sell in November.",
+          "If you missed Black Friday or the model you want was not discounted, Boxing Day is your next real chance before prices climb again for back-to-school season. See [the best time to buy a laptop in Canada](/laptop/learn/best-time-to-buy-a-laptop-in-canada) for the full calendar.",
+        ],
+      },
+      {
+        heading: "What does a good Boxing Day laptop deal look like?",
+        body: [
+          "A real deal beats the price the laptop normally sells for, not just its launch price. These are the gaps between launch price (MSRP) and the best price we last recorded on laptops we have tested. Treat a Boxing Day price at or below our recorded price as a good deal:",
+          "- [Lenovo ThinkPad X1 Carbon Gen 12](/laptop/reviews/lenovo/thinkpad-x1-carbon-gen-12): $2,599 MSRP, $2,199 recorded",
+          "- [Dell XPS 13 9350](/laptop/reviews/dell/xps-13-9350): $1,799 MSRP, $1,499 recorded",
+          "- [ASUS ROG Zephyrus G14 (2025)](/laptop/reviews/asus/rog-zephyrus-g14-2025): $2,999 MSRP, $2,699 recorded",
+          "- [HP Spectre x360 14 (2025)](/laptop/reviews/hp/spectre-x360-14-2025): $2,099 MSRP, $1,849 recorded",
+          "- [ASUS TUF Gaming A15 (2025)](/laptop/reviews/asus/tuf-gaming-a15-2025): $1,499 MSRP, $1,299 recorded",
+          "- [Acer Swift Go 14 (2025)](/laptop/reviews/acer/swift-go-14-2025): $1,099 MSRP, $949 recorded",
+          "- [MacBook Air 13 (M4)](/laptop/reviews/apple/macbook-air-13-m4): $1,499 MSRP, $1,399 recorded",
+          "- [Acer Chromebook Plus 514 (2025)](/laptop/reviews/acer/chromebook-plus-514-2025): $549 MSRP, $449 recorded",
+          "Prices change daily, so check the current price on each review and in our [laptop deals](/laptop/deals) before you buy.",
+        ],
+      },
+      {
+        heading: "Which laptops are best to buy on Boxing Day?",
+        body: [
+          "- 2025 models: anything with a 2026 successor is the most likely to see a deep cut. A discounted 2025 laptop often beats a full-price 2026 one; see the [best laptops under $1,000](/laptop/reviews/best/under-1000).",
+          "- Gaming laptops: retailers clear gaming stock after the holidays, and cuts of a few hundred dollars are common. Start with the [best budget gaming laptops](/laptop/reviews/best/budget-gaming) and [how to choose a gaming laptop](/laptop/learn/how-to-choose-a-gaming-laptop).",
+          "- MacBooks: Apple rarely cuts its own prices, but Best Buy, Costco and Amazon.ca often discount the MacBook Air at Boxing Day. The newest MacBook Air usually sees the smallest discount. See the [best MacBooks](/laptop/reviews/best/macbook) and [MacBook deals](/laptop/deals/macbook).",
+          "- Student laptops for January: if you need a laptop for the winter term, Boxing Week is the cheapest time to buy before classes start. See the [best student laptops](/laptop/reviews/best/student) and our guide to [student laptop discounts in Canada](/laptop/learn/student-laptop-discounts-canada).",
+        ],
+      },
+      {
+        heading: "Where to find Boxing Day laptop deals in Canada",
+        body: [
+          "- Best Buy Canada: the largest selection, including open-box and Geek Squad Certified refurbished units, and usually the most heavily advertised Boxing Day sale.",
+          "- Amazon.ca: frequent price drops through Boxing Week. Buy items shipped and sold by Amazon.ca for the simplest returns.",
+          "- Costco: fewer models, but a longer return window on computers and extended warranty coverage. See [Best Buy vs Costco for laptops](/laptop/learn/best-buy-vs-costco-laptops-canada).",
+          "- Canada Computers and Memory Express: strong for gaming laptops and in-store Boxing Day pricing.",
+          "- Staples and Walmart: good for budget laptops and Chromebooks.",
+          "- Dell, HP, Lenovo and Microsoft online stores: often run their own Boxing Week sales with more configuration choices.",
+        ],
+      },
+      {
+        heading: "How to avoid a bad Boxing Day laptop deal",
+        body: [
+          "- Check the exact model number. Some sale laptops are special configurations with 8 GB of RAM, a slow hard drive or a dim screen. Aim for 16 GB of RAM and a 512 GB SSD; see [how much RAM you need](/laptop/learn/how-much-ram-do-you-need).",
+          "- Compare against the normal price, not the \"was\" price. A big percentage off an inflated price is not a deal.",
+          "- Watch for marketplace sellers on Amazon.ca, Best Buy and Walmart. Confirm the laptop is new, sold with a Canadian warranty and has the keyboard layout you want.",
+          "- Check the return window. Holiday purchases often get an extended return period, but the terms differ by retailer, and open-box items may have shorter windows.",
+          "- Compare your shortlist first. Use our [laptop comparison tool](/laptop/tools/compare) to put two or three models side by side before the sale starts.",
+        ],
+      },
+      {
+        heading: "Should you buy on Boxing Day or wait?",
+        body: [
+          "Buy on Boxing Day if the laptop you want hits our recorded price or lower, or if you need it for January. Wait if the model you want has a successor due in the next couple of months, since the old one will drop further once the new one ships, or if the discount is small and you can hold out for back-to-school sales in July and August. For typical prices by laptop type, see [how much a laptop costs in Canada](/laptop/learn/how-much-does-a-laptop-cost-canada).",
+        ],
+      },
+    ],
+    faq: [
+      { q: "When is Boxing Day 2026 in Canada?", a: "Saturday, December 26, 2026. Most Canadian retailers run Boxing Week laptop sales from around December 24 into early January." },
+      { q: "Are Boxing Day laptop deals better than Black Friday?", a: "They are similar. Black Friday usually has more selection; Boxing Day is better for clearance on last year's models and open-box units. Compare the price with what the laptop normally sells for." },
+      { q: "Do MacBooks go on sale on Boxing Day in Canada?", a: "Apple rarely discounts its own store, but Best Buy, Costco and Amazon.ca often cut MacBook Air prices during Boxing Week. The newest model usually gets the smallest discount." },
+      { q: "When do Boxing Day laptop sales start online?", a: "Many Canadian retailers post Boxing Day prices online on December 24 or 25, a day or two before the 26th. Popular models can sell out early." },
+      { q: "Can I return a laptop bought on Boxing Day?", a: "Usually yes, within the retailer's return window. Holiday purchases often get extended return periods, but open-box items and marketplace sellers can have different terms, so check before you buy." },
+    ],
+  },
+  {
+    slug: "student-laptop-discounts-canada",
+    title: "Student Laptop Discounts in Canada (2026): Apple, Dell, HP, Lenovo & More",
+    h1: "Student Laptop Discounts in Canada: Where Students Save the Most",
+    excerpt: "Which brands give Canadian students a laptop discount, how to verify you qualify, and when a regular sale beats education pricing.",
+    category: "Buying advice",
+    updated: "2026-11-28",
+    readingTime: 7,
+    answer:
+      "Most major laptop brands sell to Canadian students at a discount through their online education stores, including Apple, Microsoft, Dell, HP, Lenovo and Samsung. You usually need to verify that you are enrolled at a college or university, often with your school email or a service like UNiDAYS or Student Beans. Education pricing typically saves around 5 to 10%, but a Black Friday, Boxing Day or back-to-school sale can beat it, so compare both before you buy.",
+    sections: [
+      {
+        heading: "Which laptop brands offer student discounts in Canada?",
+        body: [
+          "- Apple: the Apple Education Store offers lower prices on MacBooks for university and college students, staff, and parents buying for a student. During its summer back-to-school promotion, Apple often adds a gift card or accessory offer.",
+          "- Microsoft: the Microsoft Store education discount covers Surface laptops for verified students, parents and teachers.",
+          "- Dell: Dell's student and education offers give extra savings on Dell laptops, including the XPS line, after student verification.",
+          "- HP: the HP Education Store offers student pricing on HP laptops, including the Spectre and OmniBook lines.",
+          "- Lenovo: the Lenovo Education Store offers student pricing on ThinkPad, Yoga, IdeaPad and Legion laptops after verification.",
+          "- Samsung: Samsung Canada's education offers program includes Galaxy Book laptops for verified students.",
+          "Discount amounts, eligibility and verification methods change through the year, so check each brand's current education page before you buy. We are not affiliated with any of these programs.",
+        ],
+      },
+      {
+        heading: "How do you prove you are a student?",
+        body: [
+          "Most programs verify enrolment online in one of three ways: signing in with your school email address (ending in .ca or your school's domain), verifying through a service like UNiDAYS or Student Beans, or uploading proof such as a student ID or enrolment letter. In-store purchases may ask for your student ID.",
+          "Some programs also accept faculty, staff, and parents buying for a student, and a few include high-school students. Check the eligibility terms if you are not a full-time college or university student.",
+        ],
+      },
+      {
+        heading: "How much can students save on a laptop?",
+        body: [
+          "Education pricing usually takes about 5 to 10% off the regular price, sometimes more on select models during promotions. On a [MacBook Air 13 (M4)](/laptop/reviews/apple/macbook-air-13-m4) at $1,499 MSRP, that is roughly $75 to $150. On a [Surface Laptop 7](/laptop/reviews/microsoft/surface-laptop-7-13) at $1,649 MSRP, it is roughly $80 to $165.",
+          "Regular sales can beat that. In the prices we last recorded, the MacBook Air 13 (M4) was $1,399 at retailers, $100 under MSRP for anyone, and the [Acer Swift Go 14](/laptop/reviews/acer/swift-go-14-2025) was $949, $150 off its $1,099 MSRP. Student discounts generally cannot be combined with retailer sales, so compare the education price with the best retail price on the day.",
+        ],
+      },
+      {
+        heading: "Do Best Buy, Staples or Amazon.ca have student discounts?",
+        body: [
+          "Big Canadian retailers generally do not offer a permanent student discount on laptops. Instead, they run back-to-school sales from July to early September, plus Black Friday and Boxing Day sales that are open to everyone. Amazon offers a Prime Student membership with perks, but it does not usually discount laptops on its own.",
+          "That means a retailer sale can be the cheaper option, especially for Windows laptops and Chromebooks that are discounted heavily during sale events. See [Best Buy vs Costco for laptops](/laptop/learn/best-buy-vs-costco-laptops-canada) to compare retailers, and our [student laptop deals](/laptop/deals/student) for current prices.",
+        ],
+      },
+      {
+        heading: "When is the best time for students to buy a laptop?",
+        body: [
+          "- Back-to-school (July to early September): the main season for education promotions, including Apple's yearly offer.",
+          "- Black Friday and Cyber Monday (late November): deep retailer discounts that often beat education pricing on Windows laptops.",
+          "- Boxing Day (December 26) and Boxing Week: the best time to buy before the winter term. See our guide to [Boxing Day laptop deals in Canada](/laptop/learn/boxing-day-laptop-deals-canada).",
+          "For the full calendar, see [the best time to buy a laptop in Canada](/laptop/learn/best-time-to-buy-a-laptop-in-canada).",
+        ],
+      },
+      {
+        heading: "Which laptops are best for students on a budget?",
+        body: [
+          "- [Acer Chromebook Plus 514 (2025)](/laptop/reviews/acer/chromebook-plus-514-2025), $449 recorded: the cheapest tested laptop we recommend for web-based schoolwork.",
+          "- [Acer Aspire 5 15 (2025)](/laptop/reviews/acer/aspire-5-15-2025), $749 recorded: a budget Windows laptop with a large screen.",
+          "- [Acer Swift Go 14 (2025)](/laptop/reviews/acer/swift-go-14-2025), $949 recorded: the best-value Windows student laptop we have tested.",
+          "- [MacBook Air 13 (M4)](/laptop/reviews/apple/macbook-air-13-m4), $1,399 recorded: our top-rated laptop for school, and the strongest case for Apple education pricing.",
+          "- [ASUS Zenbook A14 (2026)](/laptop/reviews/asus/zenbook-a14-2026), $1,499 recorded: a very light Windows laptop with long battery life.",
+          "Check your program's software requirements before buying, since some engineering and IT courses need Windows. See the [best student laptops](/laptop/reviews/best/student), [best laptops for college](/laptop/reviews/best/college), [best laptops for engineering students](/laptop/reviews/best/engineering-students) and [best laptops for high school students](/laptop/reviews/best/high-school-students).",
+        ],
+      },
+      {
+        heading: "Other ways students save on laptops",
+        body: [
+          "- Certified refurbished: often 20 to 40% off new with a warranty. See our [refurbished laptop buying guide](/laptop/learn/refurbished-laptop-buying-guide-canada).",
+          "- Last year's model: often the best value when a new generation launches.",
+          "- Your school's bookstore or tech store: some Canadian campuses sell laptops at education prices or have deals with specific brands.",
+          "- Free software: most Canadian colleges and universities give students Microsoft 365 for free, so do not pay for it with a new laptop.",
+          "- Credit card warranty extensions: many Canadian cards extend the manufacturer's warranty, which can replace a paid protection plan. See [laptop warranties in Canada](/laptop/learn/laptop-warranty-explained-canada).",
+        ],
+      },
+    ],
+    faq: [
+      { q: "Does Apple give a student discount in Canada?", a: "Yes. The Apple Education Store offers lower MacBook prices to Canadian university and college students, staff, and parents buying for a student, plus a back-to-school promotion in the summer." },
+      { q: "Do Canadian high school students get laptop discounts?", a: "Some programs include them, but many are limited to college and university students. Check each brand's eligibility terms, or shop retailer sales, which are open to everyone." },
+      { q: "Does Best Buy Canada have a student discount?", a: "Best Buy Canada does not generally offer a permanent student discount on laptops. Its back-to-school, Black Friday and Boxing Day sales are often cheaper than education pricing anyway." },
+      { q: "Can I combine a student discount with a sale?", a: "Usually not. Education pricing and retailer sales are separate, so compare the education price with the best sale price on the day you buy." },
+      { q: "Is a student discount or Black Friday better for a laptop?", a: "Black Friday often wins on Windows laptops and Chromebooks. For MacBooks, education pricing plus Apple's back-to-school offer can be competitive, but retailer sales sometimes go lower." },
     ],
   },
   {
@@ -449,7 +617,7 @@ export const guides: Guide[] = [
   ...quickGuide("laptop-specs-explained", "Laptop Specs Explained", "Specs explained", "A laptop's key specs are the CPU (overall speed), RAM (multitasking), storage (space and speed), GPU (graphics), and display. Match these to your use case rather than buying the highest numbers.", "For the CPU, see [Core i5 vs i7](/laptop/learn/core-i5-vs-i7-laptop) and [Intel vs AMD vs Apple silicon](/laptop/learn/intel-vs-amd-vs-apple-silicon); to weigh specs between two models, see [how to compare laptops side by side](/laptop/learn/how-to-compare-laptops)."),
   ...quickGuide("how-much-storage-do-you-need", "How Much Storage Do You Need?", "Specs explained", "512GB is the right amount of storage for most people in 2026. Choose 256GB only for light, cloud-based use, and 1TB or more for large media libraries, games, or video projects."),
   ...quickGuide("best-laptop-screen-size", "Best Laptop Screen Size", "Displays", "13–14 inches is best for portability, 15–16 inches for desk work and creative tasks, and 17 inches for desktop replacements. Most buyers are happiest with a 14-inch laptop."),
-  ...quickGuide("student-laptop-buying-guide-canada", "Student Laptop Buying Guide Canada", "Buying advice", "The best student laptop in Canada balances battery life, weight, and price. Aim for 16GB RAM, a 512GB SSD, all-day battery, and a sub-1.6 kg weight, ideally on sale during back-to-school season.", "See [how much a laptop costs in Canada](/laptop/learn/how-much-does-a-laptop-cost-canada), whether a [Core i5 is enough](/laptop/learn/core-i5-vs-i7-laptop) for your program, and the [best small laptops](/laptop/reviews/best/small) for lecture-hall desks."),
+  ...quickGuide("student-laptop-buying-guide-canada", "Student Laptop Buying Guide Canada", "Buying advice", "The best student laptop in Canada balances battery life, weight, and price. Aim for 16GB RAM, a 512GB SSD, all-day battery, and a sub-1.6 kg weight, ideally on sale during back-to-school season.", "See [how much a laptop costs in Canada](/laptop/learn/how-much-does-a-laptop-cost-canada), whether a [Core i5 is enough](/laptop/learn/core-i5-vs-i7-laptop) for your program, and the [best small laptops](/laptop/reviews/best/small) for lecture-hall desks. To save money, see [student laptop discounts in Canada](/laptop/learn/student-laptop-discounts-canada)."),
   ...quickGuide("business-laptop-buying-guide", "Business Laptop Buying Guide", "Buying advice", "A good business laptop has a great keyboard, strong security, a reliable build, and long battery life. ThinkPad, EliteBook, and Latitude lines are the safe picks, ideally with onsite warranty."),
   {
     slug: "chromebook-vs-windows-laptop",
