@@ -1,3 +1,5 @@
+import { SITE } from "@/lib/site";
+
 export function Newsletter() {
   return (
     <section className="bg-brand-900 py-12 text-white">
@@ -8,7 +10,17 @@ export function Newsletter() {
             Get top-tested laptop picks, Canadian deal alerts, and buying advice.
           </p>
         </div>
-        <form className="flex flex-col gap-3" aria-label="Newsletter signup">
+        <form
+          action="https://formsubmit.co/shaheertiger1@gmail.com"
+          method="POST"
+          className="flex flex-col gap-3"
+          aria-label="Newsletter signup"
+        >
+          <input type="hidden" name="_subject" value="New BestLaptop.ca newsletter signup" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value={`${SITE.url}/?subscribed=1`} />
+          {/* Honeypot: bots fill this, humans never see it. */}
+          <input type="text" name="_honey" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
           <div className="flex flex-col gap-3 sm:flex-row">
             <label htmlFor="newsletter-email" className="sr-only">
               Email address
@@ -16,6 +28,7 @@ export function Newsletter() {
             <input
               id="newsletter-email"
               type="email"
+              name="email"
               required
               placeholder="you@example.com"
               className="w-full rounded-lg border-0 px-4 py-3 text-ink-900 placeholder:text-ink-400"
