@@ -633,7 +633,7 @@ export const categoryContent: Record<string, Content> = {
     // Cheapest first: the price cap is the whole intent of this list.
     sort: (a, b) => price(a) - price(b) || byOverall(a, b),
     rankedBy: "lowest current Canadian price, among laptops that still pass our tests",
-    related: ["budget", "chromebook", "under-1000", "student", "home-use"],
+    related: ["budget", "chromebook", "under-800", "under-1000", "student", "home-use"],
     sections: [
       {
         heading: "Can you get a Windows laptop for under $500 in Canada?",
@@ -654,7 +654,60 @@ export const categoryContent: Record<string, Content> = {
   "under-1000": {
     metric: metrics.value,
     rankedBy: "overall test score: the best laptop you can buy for $1,000 or less",
-    related: ["under-500", "under-1500", "budget", "student", "home-use"],
+    related: ["under-500", "under-800", "under-1500", "budget", "student", "home-use"],
+  },
+  "under-800": {
+    seoTitle: "Best Laptops Under $800 in Canada (2026): Tested Picks from $449",
+    metric: { label: "Price (CAD)", value: (l: Laptop) => cad(price(l)) },
+    rankedBy: "overall test score: the best laptop you can buy for $800 or less",
+    related: ["under-500", "under-1000", "budget", "student", "chromebook", "home-use"],
+    sections: [
+      {
+        heading: "What is the best laptop under $800 in Canada?",
+        body: [
+          "The [Acer Aspire 5 15 (2025)](/laptop/reviews/acer/aspire-5-15-2025) at $749 CAD is the best Windows laptop under $800 we have tested. It has an AMD Ryzen 5 8540U, 16 GB of RAM, a 512 GB SSD and a 15.6-inch screen, and both the RAM and storage can be upgraded later. If you mostly work in a browser, the [Acer Chromebook Plus 514 (2025)](/laptop/reviews/acer/chromebook-plus-514-2025) at $449 lasted 16.2 hours in our battery test and adds a touchscreen for $300 less.",
+        ],
+      },
+      {
+        heading: "Can you get a good Windows laptop for under $800?",
+        body: [
+          "Yes, but expect trade-offs. The Acer Aspire 5 is the only Windows laptop under $800 that passed our testing. It handles documents, web browsing, video calls and light photo editing, but its screen is dim at 268 nits and covers only 46% of DCI-P3, it weighs 1.75 kg, and it lasted 9.4 hours on battery: enough for a workday, not a long travel day.",
+          "Avoid sub-$800 Windows laptops with 8 GB of RAM, eMMC storage or a 1366 × 768 screen. They feel slow within a year. Sixteen gigabytes of RAM and an SSD are the minimum we recommend; see [how much RAM you need](/laptop/learn/how-much-ram-do-you-need).",
+        ],
+      },
+      {
+        heading: "Is it worth spending $949 instead of $800?",
+        body: [
+          "For most people, yes. The [Acer Swift Go 14 (2025)](/laptop/reviews/acer/swift-go-14-2025) costs about $200 more than the Aspire 5 at $949 (Costco has listed it at $929), and the upgrade is large: a 2880 × 1800 OLED screen covering 98% of DCI-P3, 13.8 hours of battery life versus 9.4, a 1.3 kg body versus 1.75 kg, and a video export in 9.8 minutes versus 16.2.",
+          "If $800 is a hard limit, buy the Aspire 5. If you can wait, the Swift Go 14 is the laptop to watch during sales: see [Boxing Day laptop deals in Canada](/laptop/learn/boxing-day-laptop-deals-canada) and the [best laptops under $1,000](/laptop/reviews/best/under-1000).",
+        ],
+      },
+      {
+        heading: "Chromebook or Windows laptop under $800?",
+        body: [
+          "Choose a Chromebook if everything you do runs in a browser: Google Docs, Microsoft 365 on the web, streaming and homework. The Acer Chromebook Plus 514 ($449) lasted 16.2 hours and the [ASUS Chromebook Plus CX34](/laptop/reviews/asus/chromebook-plus-cx34) ($499) lasted 12.6 hours, both longer than the Aspire 5, and you keep $250 to $300 in your pocket.",
+          "Choose Windows if you need desktop software such as full Microsoft Office, Adobe apps, coding tools or programs your school or job requires. See [Chromebook vs Windows laptop](/laptop/learn/chromebook-vs-windows-laptop) for the full comparison.",
+        ],
+      },
+      {
+        heading: "Can you game on a laptop under $800?",
+        body: [
+          "Not well. The Acer Aspire 5 averaged 16 fps in our 1080p High game suite, which is only enough for light, older games at low settings. The cheapest gaming laptop we recommend, the [ASUS TUF Gaming A15 (2025)](/laptop/reviews/asus/tuf-gaming-a15-2025), averaged 104 fps but costs $1,299. See the [best budget gaming laptops](/laptop/reviews/best/budget-gaming).",
+        ],
+      },
+      {
+        heading: "When is the best time to buy a laptop under $800?",
+        body: [
+          "Black Friday, Boxing Day and back-to-school season (July to early September). Those are the sales when laptops normally priced just above $800 most often drop into this budget. Students should also check [student laptop discounts in Canada](/laptop/learn/student-laptop-discounts-canada), and [certified refurbished laptops](/laptop/learn/refurbished-laptop-buying-guide-canada) can put a higher-end model within reach. See [the best time to buy a laptop in Canada](/laptop/learn/best-time-to-buy-a-laptop-in-canada).",
+        ],
+      },
+    ],
+    faq: [
+      { q: "Is $800 enough for a good laptop in Canada?", a: "Yes for everyday use. $800 CAD buys a Windows laptop with 16 GB RAM and a 512 GB SSD, like the $749 Acer Aspire 5, or a Chromebook with 12 to 16 hours of battery life for under $500." },
+      { q: "What is the best laptop under $800 for students?", a: "The Acer Aspire 5 ($749) if your program needs Windows software, or the Acer Chromebook Plus 514 ($449) if your school runs on Google Classroom or web apps. It lasted 16.2 hours in our battery test." },
+      { q: "Can you buy a MacBook for under $800 in Canada?", a: "Not new. The MacBook Air 13 (M4) was $1,399 at Canadian retailers in our last price check. Certified refurbished older MacBook Air models sometimes sell for under $800." },
+      { q: "Is the Acer Aspire 5 a good laptop?", a: "It is a good value laptop. It scored 9.0/10 for value with 16 GB RAM, upgradeable storage and plenty of ports, but its dim screen, 1.75 kg weight and 9.4-hour battery life are the trade-offs." },
+    ],
   },
   "2-in-1": { metric: metrics.screen, related: ["touchscreen", "photo-editing", "graphic-design", "teachers", "business", "student"] },
   programming: {

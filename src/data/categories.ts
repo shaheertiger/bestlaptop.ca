@@ -130,6 +130,17 @@ const baseCategories: BestCategory[] = [
     filter: (l) => l.currentPrice <= 1000,
   },
   {
+    slug: "under-800",
+    navLabel: "Best Laptops Under $800",
+    title: "Best Laptops Under $800 in Canada",
+    h1: "The Best Laptops Under $800 in Canada (2026)",
+    group: "price",
+    intro:
+      "Under $800 in Canada you can get a dependable Windows laptop with 16 GB of RAM, or a Chromebook with all-day battery and money left over. We tested which models hold up at this price, and when it pays to stretch your budget a little.",
+    criteria: "We weight Canadian value, everyday performance, and battery life within the $800 budget.",
+    filter: (l) => l.currentPrice <= 800,
+  },
+  {
     slug: "2-in-1",
     navLabel: "Best 2-in-1 Laptops",
     title: "Best 2-in-1 Laptops in Canada",
